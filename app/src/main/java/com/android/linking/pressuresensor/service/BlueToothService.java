@@ -155,6 +155,7 @@ public class BlueToothService extends Service {
         @Override
         public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic,
                                           int status) {
+            super.onCharacteristicWrite(gatt, characteristic, status);
             Log.e(TAG, "OnCharacteristicWrite");
         }
 

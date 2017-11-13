@@ -58,10 +58,10 @@ public class DeviceControlActivity extends Activity {
     private String mDeviceAddress;
     private BlueToothService mBluetoothLeService;
     private boolean mConnected = false;
-    
+
     EditText edtSend;
-	ScrollView svResult;
-	Button btnSend;
+    ScrollView svResult;
+    Button btnSend;
 
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -73,7 +73,7 @@ public class DeviceControlActivity extends Activity {
                 Log.e(TAG, "Unable to initialize Bluetooth");
                 finish();
             }
-            
+
             Log.e(TAG, "mBluetoothLeService is okay");
             // Automatically connects to the device upon successful start-up initialization.
             //mBluetoothLeService.connect(mDeviceAddress);
@@ -96,32 +96,32 @@ public class DeviceControlActivity extends Activity {
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
             if (BlueToothService.ACTION_GATT_CONNECTED.equals(action)) {  //���ӳɹ�
-            	Log.e(TAG, "Only gatt, just wait");
+                Log.e(TAG, "Only gatt, just wait");
             } else if (BlueToothService.ACTION_GATT_DISCONNECTED.equals(action)) { //�Ͽ�����
                 mConnected = false;
                 invalidateOptionsMenu();
                 btnSend.setEnabled(false);
                 clearUI();
-            }else if(BlueToothService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) //���Կ�ʼ�ɻ���
+            } else if (BlueToothService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) //���Կ�ʼ�ɻ���
             {
-            	mConnected = true;
-            	mDataField.setText("");
-            	ShowDialog();
-            	btnSend.setEnabled(true);
-            	Log.e(TAG, "In what we need");
-            	invalidateOptionsMenu();
-            }else if (BlueToothService.ACTION_DATA_AVAILABLE.equals(action)) { //�յ�����
-            	Log.e(TAG, "RECV DATA");
-            	String data = intent.getStringExtra(BlueToothService.EXTRA_DATA);
-            	if (data != null) {
-                	if (mDataField.length() > 500)
-                		mDataField.setText("");
-                    mDataField.append(data); 
+                mConnected = true;
+                mDataField.setText("");
+                ShowDialog();
+                btnSend.setEnabled(true);
+                Log.e(TAG, "In what we need");
+                invalidateOptionsMenu();
+            } else if (BlueToothService.ACTION_DATA_AVAILABLE.equals(action)) { //�յ�����
+                Log.e(TAG, "RECV DATA");
+                String data = intent.getStringExtra(BlueToothService.EXTRA_DATA);
+                if (data != null) {
+                    if (mDataField.length() > 500)
+                        mDataField.setText("");
+                    mDataField.append(data);
                     svResult.post(new Runnable() {
-            			public void run() {
-            				svResult.fullScroll(ScrollView.FOCUS_DOWN);
-            			}
-            		});
+                        public void run() {
+                            svResult.fullScroll(ScrollView.FOCUS_DOWN);
+                        }
+                    });
                 }
             }
         }
@@ -145,16 +145,16 @@ public class DeviceControlActivity extends Activity {
         edtSend = (EditText) this.findViewById(R.id.edtSend);
         edtSend.setText("www.jnhuamao.cn");
         svResult = (ScrollView) this.findViewById(R.id.svResult);
-        
+
         btnSend = (Button) this.findViewById(R.id.btnSend);
-		btnSend.setOnClickListener(new ClickEvent());
-		btnSend.setEnabled(false);
+        btnSend.setOnClickListener(new ClickEvent());
+        btnSend.setEnabled(false);
 
         getActionBar().setTitle(mDeviceName);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         Intent gattServiceIntent = new Intent(this, BlueToothService.class);
         Log.d(TAG, "Try to bindService=" + bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE));
-        
+
         registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
     }
 
@@ -180,10 +180,9 @@ public class DeviceControlActivity extends Activity {
         super.onDestroy();
         //this.unregisterReceiver(mGattUpdateReceiver);
         //unbindService(mServiceConnection);
-        if(mBluetoothLeService != null)
-        {
-        	mBluetoothLeService.close();
-        	mBluetoothLeService = null;
+        if (mBluetoothLeService != null) {
+            mBluetoothLeService.close();
+            mBluetoothLeService = null;
         }
         Log.d(TAG, "We are in destroy");
     }
@@ -202,8 +201,8 @@ public class DeviceControlActivity extends Activity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {                              //�����ť
-        switch(item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.menu_connect:
                 mBluetoothLeService.connect(mDeviceAddress);
                 return true;
@@ -211,44 +210,41 @@ public class DeviceControlActivity extends Activity {
                 mBluetoothLeService.disconnect();
                 return true;
             case android.R.id.home:
-            	if(mConnected)
-            	{
-            		mBluetoothLeService.disconnect();
-            		mConnected = false;
-            	}
+                if (mConnected) {
+                    mBluetoothLeService.disconnect();
+                    mConnected = false;
+                }
                 onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
-    
-    private void ShowDialog()
-    {
-    	Toast.makeText(this, "���ӳɹ������ڿ�������ͨ�ţ�", Toast.LENGTH_SHORT).show();
+
+    private void ShowDialog() {
+        Toast.makeText(this, "���ӳɹ������ڿ�������ͨ�ţ�", Toast.LENGTH_SHORT).show();
     }
 
- // ��ť�¼�
-	class ClickEvent implements View.OnClickListener {
-		@Override
-		public void onClick(View v) {
-			if (v == btnSend) {
-				if(!mConnected) return;
-				
-				if (edtSend.length() < 1) {
-					Toast.makeText(DeviceControlActivity.this, "������Ҫ���͵�����", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				mBluetoothLeService.WriteValue(edtSend.getText().toString());
-				
-				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-				if(imm.isActive())
-					imm.hideSoftInputFromWindow(edtSend.getWindowToken(), 0);
-				//todo Send data
-			}
-		}
+    class ClickEvent implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (v == btnSend) {
+                if (!mConnected) return;
 
-	}
-	
+                if (edtSend.length() < 1) {
+                    Toast.makeText(DeviceControlActivity.this, "发送的代码不能为空", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                mBluetoothLeService.WriteValue(edtSend.getText().toString());
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm.isActive())
+                    imm.hideSoftInputFromWindow(edtSend.getWindowToken(), 0);
+                //todo Send data
+            }
+        }
+
+    }
+
     private static IntentFilter makeGattUpdateIntentFilter() {                        //ע����յ��¼�
         final IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(BlueToothService.ACTION_GATT_CONNECTED);
