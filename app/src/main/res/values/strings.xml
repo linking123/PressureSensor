@@ -1,26 +1,742 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PressureSensor</string>
 
-    <string name="ble_not_supported">您的设备不支持BLE</string>
-    <string name="label_data">Data:</string>
-    <string name="label_device_address">Device address:</string>
-    <string name="label_state">State:</string>
-    <string name="no_data">No Connection</string>
-    <string name="connected">Connected</string>
-    <string name="disconnected">Disconnected</string>
-    <string name="title_devices">查找BLE设备</string>
-    <string name="error_bluetooth_not_supported">Bluetooth not supported.</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
 
-    <string name="unknown_device">Unknown device</string>
-    <string name="unknown_characteristic">Unknown characteristic</string>
-    <string name="unknown_service">Unknown service</string>
+    <!-- contentDescription start -->
+    <string name="index_scan_logo">首页扫描图Logo</string>
+    <string name="index_scan_start">开始扫描</string>
+    <string name="index_scan_ing">扫描</string>
+    <string name="index_scan_ed">（已扫描）</string>
+    <string name="type_in_info">信息录入</string>
+    <string name="permission_title_rationale">权限需求</string>
+    <string name="ok">确定</string>
+    <string name="cancle">取消</string>
+    <string name="loading">加载中…</string>
+    <string name="down_state">正在下载：%s</string>
+    <string name="you_have_news_messages">你有%s条最新消息</string>
+    <string name="copy_success">复制成功</string>
+    <string name="tip_save_image_suc">图片已保存(手机相册-> fire_img -> %s)</string>
+    <string name="equipment_name">设备名称</string>
+    <string name="equipment_name_text">消火栓</string>
+    <string name="equipment_location">设备位置</string>
+    <string name="equipment_status">设备状态</string>
+    <string name="equipment_location_text">1号楼东侧</string>
+    <string name="equipment_is_abnormal">设备是否异常</string>
+    <string name="big">>>>>>>>></string>
+    <string name="right">正常</string>
+    <string name="exception">异常</string>
+    <string name="unknow">未知</string>
+    <string name="exception_info">请输入备注信息</string>
+    <string name="exception_img">请上传周边环境照片</string>
+    <string name="exception_info_type_in">请输入异常信息</string>
+    <string name="equipment_inspect_sys">消防设施巡检系统</string>
+    <string name="equipment_productor">设备厂商</string>
+    <string name="equipment_install_position">安装位置</string>
+    <string name="equipment_person_incharge">负责人</string>
+    <string name="check_than_submit">检查确认无误后，请提交</string>
+    <string name="confirm_submit">确认提交</string>
+    <string name="scan_record">巡检记录</string>
+    <string name="scan_record_detail">巡检记录详情</string>
+    <string name="scan_record_last_time">上次巡检时间</string>
+    <string name="scan_record_next_time">下次巡检时间段</string>
+    <string name="scan_record_other_info">描述</string>
+    <string name="txt_user">个人信息</string>
+    <string name="clear_cache">清除缓存</string>
+    <string name="check_update_info">检查更新</string>
+    <string name="btn_logout">退出</string>
+    <string name="actionbar_title_about_fireiot">关于消防巡检系统</string>
+    <string name="about_fireiot">关于系统</string>
+    <string name="brief_introduction">消防巡检系统简介</string>
+    <string name="user_protocal">用户协议</string>
+    <string name="txt_user_name_edit">修改用户名</string>
+    <string name="txt_user_password_edit">修改密码</string>
+    <string name="txt_user_phone_edit">修改手机号</string>
+    <string name="txt_user_qq_edit">修改QQ号</string>
+    <string name="txt_user_email_edit">修改邮件号</string>
+    <string name="progress_logout">正在注销…</string>
+    <string name="tip_logout_success">注销成功</string>
+    <string name="logout">注销</string>
 
-    <string name="send">Send</string>
+    <string name="loading_img">加载图片</string>
+    <string name="mes_notice">消息通知</string>
+    <string name="clean_cache">清理缓存</string>
+    <string name="double_click_exit">双击退出</string>
+    <string name="loading_more">自动加载\"更多\"</string>
+    <string name="update">检查新版本</string>
+    <string name="about">关于我们</string>
+    <string name="feedback">意见反馈</string>
+    <string name="exit">退出</string>
+    <string name="grade">去评分</string>
 
-    <!-- Menu items -->
-    <string name="menu_connect">连接</string>
-    <string name="menu_disconnect">断开</string>
-    <string name="menu_scan">搜索</string>
-    <string name="menu_stop">停止</string>
+    <string name="notice_accept">接收新通知</string>
+    <string name="notice_voice">声音</string>
+    <string name="notice_vibration">震动</string>
+    <string name="notice_app_exit">退出后不提醒</string>
+    <string name="scan_notice_1">请将手机</string>
+    <string name="scan_notice_2">靠近</string>
+    <string name="scan_notice_3">电子标签</string>
+    <string name="scan_notice_small">点击开始扫描</string>
+
+
+
+    <!-- contentDescription end -->
+
+    <string name="app_name">产后康复机器</string>
+    <string name="owner_client">车主端</string>
+    <string name="tech_client">技师端</string>
+    <string name="garage_client">快修站端</string>
+
+    <string name="str_locate_city">定位城市</string>
+    <string name="txt_locating">定位中..</string>
+    <string name="txt_locate_failure">未知</string>
+
+
+    <string name="main_tab_name_news">首页</string>
+    <string name="main_tab_name_tweet">需求</string>
+    <string name="main_tab_name_order">订单</string>
+    <string name="main_tab_name_explore">消息</string>
+    <string name="contact_customer_server">联系客服</string>
+    <string name="main_tab_name_my">我的</string>
+    <string name="main_tab_name_quick">快速</string>
+    <string name="main_tab_name_question">问答</string>
+
+    <string name="event_status_end">活动结束</string>
+    <string name="event_status_ing">正在报名</string>
+    <string name="event_status_sing_up">截止报名</string>
+    <string name="event_type_osc">源创会</string>
+    <string name="event_type_tec">技术交流</string>
+    <string name="event_type_other">其他</string>
+    <string name="event_type_outside">站外活动</string>
+
+
+    <string name="app_error">应用程序错误</string>
+    <string name="submit_report">打报告去</string>
+
+    <!-- slide menu -->
+    <string name="menu_rss">订阅</string>
+    <string name="menu_opensoft">开源软件</string>
+    <string name="menu_blog">博客区</string>
+    <string name="menu_quests">技术问答</string>
+    <string name="menu_setting">设置</string>
+    <string name="system_setting">系统设置</string>
+    <string name="menu_theme">夜间</string>
+
+    <!-- qucik option -->
+    <string name="quick_option_text">文字</string>
+    <string name="quick_option_album">相册</string>
+    <string name="quick_option_photo">拍照</string>
+    <string name="quick_option_voice">语音</string>
+    <string name="quick_option_note">便签</string>
+    <string name="quick_option_scan">扫一扫</string>
+    <string name="quick_option_find">找人</string>
+
+    <string name="loading_no_more">已加载全部</string>
+    <string name="goods_search">搜索商品</string>
+    <!-- Error View -->
+    <string name="error_view_click_to_refresh">点击屏幕,重新加载</string>
+    <string name="error_view_no_data">暂无内容</string>
+    <string name="error_view_loading">加载中…</string>
+    <string name="error_view_load_error_click_to_refresh">内容加载失败\r\n点击重新加载</string>
+    <string name="error_view_network_error_click_to_refresh">没有可用的网络</string>
+    <string name="tip_network_error">没有可用的网络</string>
+
+    <!-- 注册登录 -->
+    <string name="hint_phone">手机号</string>
+    <string name="hint_register_usrname">用户名</string>
+    <string name="hint_psw">密码</string>
+    <string name="login_username">用户名</string>
+    <string name="login_pwd">密码</string>
+    <string name="btn_login">登 录</string>
+    <string name="btn_register">注册</string>
+    <string name="btn_register_Submit">提交注册</string>
+    <string name="login_register_fast">快速注册</string>
+    <string name="login_retrieve_password">找回密码</string>
+    <string name="login_ret_password">修改密码</string>
+    <string name="register_verifyCode">验证码</string>
+    <string name="register_getVerifyCode">获取验证码</string>
+    <string name="register_getVerifyCode_failure">获取验证码失败</string>
+    <string name="register_next">下一步</string>
+    <string name="register_verifyCode_send">短信验证码已发送</string>
+    <string name="register_verifyCode_send_failure">验证失败</string>
+    <string name="register_submit_send_failure">注册失败</string>
+    <string name="register_send_wait">重新获取(%1$s)</string>
+    <string name="register_tip_username">用&#160;&#160;户&#160;&#160;名：</string>
+    <string name="register_submit">提    交</string>
+
+    <string name="verify_register">注册</string>
+    <string name="verify_reget_psw">找回密码</string>
+    <string name="verify_password_short">密码长度不小于6位</string>
+    <string name="verify_password_diff">您两次输入的密码不一致</string>
+    <string name="verify_confirm">确    定</string>
+    <string name="verify_register_success">注册成功，请登录！</string>
+    <string name="verify_modify_password">请输入新密码</string>
+    <string name="verify_modify_password_confirm">再输入新密码</string>
+    <string name="verify_modify_success">修改成功，请用新密码登录！</string>
+
+    <string name="tip_please_input_phone">请输入手机号</string>
+    <string name="tip_please_input_verify">请输入手机验证码</string>
+    <string name="progress_send">正在发送…</string>
+    <string name="tip_illegal_phone">请输入正确的手机号</string>
+    <string name="tip_please_input_password">请设置登入密码</string>
+    <string name="tip_please_input_password_comfirm">请确认密码</string>
+    <string name="tip_no_user_info">用户信息为空</string>
+
+    <string name="btn_link_to_login">已有账号？请登录</string>
+    <string name="welcome">欢迎</string>
+    <string name="name">全名</string>
+    <string name="car_brand_many">车牌多选</string>
+    <string name="unlogin">未登录，请先登录</string>
+    <string name="unlogin_tip">您还未登录\r\n或网络延迟</string>
+    <string name="my_information_unlogin_tips">点击头像登录</string>
+
+    <string name="tip_please_input_username">请输入用户名</string>
+    <string name="tip_illegal_email">请输入正确的email地址</string>
+    <string name="progress_login">正在登录…</string>
+    <string name="tip_login_error_for_network">对不起,无法登录</string>
+    <string name="tip_no_internet">当前没有可用的网络链接</string>
+
+    <string name="actionbar_title_news">资讯详情</string>
+    <string name="actionbar_title_blog">博客详情</string>
+    <string name="actionbar_title_software">软件详情</string>
+    <string name="actionbar_title_question">帖子详情</string>
+    <string name="actionbar_title_tweet">动弹详情</string>
+    <string name="actionbar_title_event_detail">活动详情</string>
+    <string name="actionbar_title_event_location">活动地址</string>
+    <string name="actionbar_title_detail">详情</string>
+    <string name="actionbar_title_active">好友圈</string>
+    <string name="actionbar_title_mes">消息中心</string>
+    <string name="actionbar_title_message_detail">对话</string>
+
+    <string name="friend_home">查看对方资料</string>
+    <string name="share_to">分享到</string>
+    <string name="platform_qq">QQ</string>
+    <string name="platform_copy_link">复制链接</string>
+    <string name="platform_more_option">更多</string>
+    <string name="platform_sina">微博</string>
+    <string name="platform_weichat">微信</string>
+    <string name="platform_weichat_circle">朋友圈</string>
+    <string name="share_title">开源中国分享</string>
+    <string name="share_title_news">开源中国资讯分享</string>
+    <string name="share_title_blog">开源中国博客分享</string>
+    <string name="share_title_soft">开源中国软件分享</string>
+    <string name="share_title_post">开源中国帖子分享</string>
+    <string name="tip_start_share">开始分享…</string>
+    <string name="tip_share_done">分享完成</string>
+
+    <string name="detail_menu_unfavorite">取消收藏</string>
+    <string name="detail_menu_favorite">收藏</string>
+    <string name="detail_menu_for_share">分享</string>
+    <string name="detail_menu_for_report">举报</string>
+
+    <string name="add_favorite_success">收藏成功</string>
+    <string name="add_favorite_faile">收藏失败</string>
+    <string name="del_favorite_success">已取消收藏</string>
+    <string name="del_favorite_faile">取消收藏失败</string>
+
+    <string name="actionbar_title_question_tag">%s相关</string>
+    <string name="comment_count">评论(%s)</string>
+    <string name="comment_empty">暂无评论</string>
+    <string name="answer_count">回复(%s)</string>
+    <string name="post_answer">回复</string>
+    <string name="comment_reply_count">---共有%s条回复---</string>
+    <string name="comment_refer_author">引用来自%s的评论</string>
+    <string name="tip_comment_content_empty">评论内容不能为空</string>
+
+    <!-- notification messages -->
+    <string name="comment_blog">发布评论</string>
+    <string name="comment_publishing">正在发布你的评论…</string>
+    <string name="comment_publish_success">评论成功</string>
+    <string name="comment_publish_faile">评论失败</string>
+
+    <string name="progress_submit">正在提交…</string>
+
+    <string name="tweet_public">发布动弹</string>
+    <string name="tweet_hint">今天你动弹了吗？</string>
+    <string name="tweet_publishing">正在发布你的动弹…</string>
+    <string name="tweet_publish_success">动弹发布成功</string>
+    <string name="tweet_publish_faile">发布动弹失败</string>
+    <string name="tweet_play_faile">动弹播放失败</string>
+    <string name="tweet_audio_faile">语音动弹发布失败</string>
+    <string name="cancle_record">取消录音</string>
+    <string name="record_sound_notfound">找不到录音</string>
+    <string name="record_sound_short">时间太短了</string>
+
+    <string name="clean_cache_mes">是否清空缓存?</string>
+    <string name="draft_tweet_message">是否保存为草稿?</string>
+    <string name="clearwords">是否清空内容?</string>
+    <string name="choose_picture">选择图片</string>
+    <string name="tip_content_empty">内容不能为空</string>
+    <string name="tip_content_too_long">内容太长</string>
+
+    <string name="actionbar_title_softwarelist">开源软件</string>
+    <string name="actionbar_title_comment">评论列表</string>
+    <string name="actionbar_title_questions">技术问答</string>
+    <string name="actionbar_title_tweetpub">弹一弹</string>
+    <string name="actionbar_title_softtweet">软件动弹列表</string>
+    <string name="actionbar_title_user_center">用户中心</string>
+    <string name="actionbar_title_user_blog">用户博客列表</string>
+    <string name="actionbar_title_user_favorite">用户收藏</string>
+    <string name="actionbar_title_my_information">我的资料</string>
+    <string name="actionbar_title_my_friends">关注/粉丝</string>
+    <string name="actionbar_title_setting">设置</string>
+    <string name="actionbar_title_setting_notification">新消息提醒</string>
+    <string name="actionbar_title_note">便签</string>
+    <string name="actionbar_title_noteedit">编辑便签</string>
+    <string name="actionbar_title_shake">摇一摇</string>
+    <string name="actionbar_title_search">搜索</string>
+    <string name="actionbar_title_city">合肥</string>
+    <string name="actionbar_title_models">车型</string>
+
+    <!-- 找人不显示标题 -->
+    <string name="actionbar_title_event">我的活动</string>
+    <string name="actionbar_title_my_event">我的活动</string>
+    <string name="actionbar_title_event_apply">活动出席人员</string>
+    <string name="actionbar_title_same_city">同城</string>
+
+    <!-- 博客区 -->
+    <string name="blog_list_title_heat">最热</string>
+    <string name="blog_list_title_normal">最近</string>
+
+    <string name="actionbar_title_blog_area">博客区</string>
+
+    <string name="private_message">私信</string>
+    <string name="follow_user">关注</string>
+    <string name="unfollow_user">取消关注</string>
+    <string name="follow_each_other">取消互粉</string>
+    <string name="latest_login_time">最近登录  %s</string>
+
+    <string name="actionbar_title_profile">个人中心</string>
+    <string name="favorite">收藏</string>
+    <string name="following">关注</string>
+    <string name="follower">粉丝</string>
+    <string name="join_time">加入时间:</string>
+    <string name="location">所在地区:</string>
+    <string name="development_platform">开发平台:</string>
+    <string name="academic_focus">专长领域:</string>
+
+    <string name="from_web">网页</string>
+    <string name="from_mobile">手机</string>
+    <string name="from_android">Android</string>
+    <string name="from_iphone">iPhone</string>
+    <string name="from_windows_phone">Windows Phone</string>
+    <string name="from_wechat">微信</string>
+
+    <string name="qr_scan_tips">将二维码/条码放入框内，即可自动扫描</string>
+    <string name="actionbar_title_qr_scan">二维码/条码</string>
+
+    <string name="send_message_to">发送私信给:</string>
+    <string name="hint_user_name">对方昵称</string>
+    <string name="hint_message">私信内容</string>
+    <string name="tip_message_public_success">发送成功</string>
+    <string name="tip_message_public_faile">发送失败</string>
+    <string name="send_to">发给</string>
+    <string name="message_count">%s条私信</string>
+
+    <string name="confirm_delete_message">确定要删除和\"%s\"的所有私信吗?</string>
+    <string name="confirm_delete_one_message">确定要删除这条私信吗?</string>
+    <string name="tip_delete_success">删除成功</string>
+    <string name="tip_delete_faile">无法删除</string>
+
+    <string name="copy">复制</string>
+    <string name="repost">转发</string>
+    <string name="delete">删除</string>
+    <string name="deleting">正在删除…</string>
+    <string name="delete_success">删除成功</string>
+    <string name="delete_faile">删除失败</string>
+
+    <string name="message_delete_tweet">是否删除该动弹?</string>
+
+    <!-- software detail -->
+    <string name="software_author">软件作者 :</string>
+    <string name="software_license">开源协议 :</string>
+    <string name="software_language">开发语言 :</string>
+    <string name="software_os">操作系统 :</string>
+    <string name="software_recordtime">收录时间 :</string>
+    <string name="software_index">软件首页</string>
+    <string name="software_download">软件下载</string>
+    <string name="software_document">软件文档</string>
+
+    <string name="footer_type_loading">正在加载中…</string>
+    <string name="footer_type_error">加载失败</string>
+    <string name="footer_type_net_error">网络错误</string>
+    <string name="footer_type_not_more">没有更多数据</string>
+
+    <string name="atme_count">\@我(%s) </string>
+    <string name="msg_count">私信(%s) </string>
+    <string name="review_count">评论(%s) </string>
+    <string name="fans_count">新粉丝(%s) </string>
+    <string name="like_count">收到赞(%s) </string>
+
+    <string name="blog">我的博客</string>
+    <string name="information">资料</string>
+    <string name="qrcode">二维码</string>
+    <string name="message">我的消息</string>
+    <string name="team">我的团队</string>
+    <string name="note">便签</string>
+    <string name="my_note">我的便签</string>
+    <string name="str_feedback">反馈</string>
+    <string name="bookmarks">收藏夹</string>
+    <string name="user_score">积分</string>
+
+    <string name="active">好友圈</string>
+    <string name="activities">活动</string>
+    <string name="scan">扫一扫</string>
+    <string name="friends">同城</string>
+    <string name="find_oscer">找人</string>
+    <string name="shake">摇一摇</string>
+
+    <string name="add_notebook">新建便签</string>
+    <string name="submit_notebook">保存便签</string>
+
+
+    <string name="oscsite">官网</string>
+    <string name="knowmore">了解更多</string>
+    <string name="gitapp">Git客户端</string>
+    <string name="copyright">Copyright © 2017 四创电子 All rights reserved.</string>
+    <string name="tip_save_image_faile">无法保存图片</string>
+    <string name="tip_load_image_faile">加载图片失败</string>
+
+    <string name="qr_code_tip">扫一扫上面的二维码，加我为好友</string>
+    <string name="qr_code_tip2">(长按保存到本地)</string>
+
+    <string name="event_start_time">开始：%s</string>
+    <string name="event_end_time">结束：%s</string>
+    <string name="event_location">位置：%s</string>
+
+    <string name="report">举报</string>
+    <string name="report_link">链接地址</string>
+    <string name="report_reson">举报原因</string>
+    <string name="hint_report_desc">其他原因</string>
+    <string name="tip_report_success">举报成功</string>
+    <string name="tip_report_faile">举报失败</string>
+
+    <string name="tip_double_click_exit">再次点击退出系统</string>
+
+
+    <string name="team_dynamic">团队动态</string>
+    <string name="actionbar_dynamic_detail">动态内容</string>
+
+    <!-- 反馈 -->
+    <string name="str_feedback_submit">提交</string>
+    <string name="str_feedback_et_hint">我们将为您不断改进</string>
+    <string name="str_feedback_contact">截图描述：（可选）</string>
+    <string name="str_feedback_contact_hint">方便我们给您答复</string>
+    <string name="str_feedback_succeed">谢谢您的反馈，我们会仔细阅读并及时处理</string>
+    <string name="str_feedback_tip">我们会仔细阅读您的反馈，并尽早给您回复。感谢您的理解与支持。</string>
+    <string name="str_feedback_title">用户反馈</string>
+
+    <string name="str_team_userinfo">用户主页</string>
+    <string name="str_team_select_team">选择团队</string>
+
+    <string name="str_team_my_issue">我的任务</string>
+
+    <!-- 选择好友 -->
+    <string name="actionbar_title_select_friends">选择&#064;好友</string>
+    <string name="select_friends_search">搜索</string>
+    <string name="select_friends_noresult">无结果</string>
+    <string name="select_friends_empty">暂无好友</string>
+    <string name="select_friends_max_tips">最多只能选%1$d个好友哦</string>
+    <string name="str_feedback_error">程序错误</string>
+    <string name="str_feedback_function">功能建议</string>
+    <string name="str_request_camera_message">请求获取相机权限</string>
+    <string name="str_action_submic">确定</string>
+    <string name="str_action_cancle">取消</string>
+
+
+    <string name="pub_tweet_required_camera_tip">在设置-应用-开源中国权限中允许拍摄照片，以正常使用发动弹功能</string>
+    <string name="pub_tweet_required_album_tip">在设置-应用-开源中国权限中允许访问你设备上的照片，以正常使用发动弹功能</string>
+
+    <string name="permissions_camera_error">相机无法完成初始化,请正确授权。</string>
+
+
+    <string name="str_owner">车主</string>
+    <string name="str_technician">找技师</string>
+    <string name="str_accessories">买配件</string>
+    <string name="str_repair">租工位</string>
+    <string name="str_repairshop">找快修站</string>
+    <string name="str_maintain">保养</string>
+    <string name="str_beauty">美容</string>
+
+    <string name="str_parking">停车</string>
+    <string name="str_detection">快修站</string>
+    <string name="str_report">考驾照</string>
+    <string name="str_report_desc">在线轻松报名</string>
+    <string name="str_place">订车位</string>
+    <string name="str_place_desc">订位无忧有保障</string>
+    <string name="str_insurance">买保险</string>
+    <string name="str_insurance_desc">购买无忧有保障</string>
+
+    <string name="actionbar_title_technician">技师</string>
+    <string name="str_tech_year">%1$s年</string>
+    <string name="str_distance_meter">%1$.0fm</string>
+    <string name="str_distance_kilometer">%1$.1fkm</string>
+    <string name="str_distance_meter_with_dist">距离：%1$.0fm</string>
+    <string name="str_tech_distance_kilometer_with_dist">距离：%1$skm</string>
+    <string name="str_distance_empty">"距离：--km"</string>
+    <string name="str_text_distance_adapter">%1$.2fkm</string>
+    <string name="str_tech_order_count">接单%1$s次</string>
+    <string name="str_tech_order_price">参考费用:%1$s元/小时</string>
+    <string name="str_tech_working">工作时间：%1$s</string>
+
+
+    <string name="actionbar_title_technician_home">技师主页</string>
+    <string name="actionbar_title_technician_ensure">在悟空车服网平台完成服务交易，由悟空车服网与保险公司联合提供承保。</string>
+    <string name="actionbar_title_technician_explain">说明：点击确认预约，技师或快修站即可收到您的预约单，具体费用待现场诊断确认后提供明细报价。</string>
+    <string name="actionbar_title_goods_explain">说明：在悟空车服网购买配件，需向悟空车服网平台支付配件购买服务费，金额为配件价格*3%，配件购买服务内容详见会员协议。</string>
+
+    <string name="actionbar_appointment_gps">导航></string>
+    <string name="actionbar_appointment_qualifica">技师认证</string>
+    <string name="actionbar_appointment_identity1">身份认证</string>
+    <string name="actionbar_appointment_identity2">资格认证</string>
+    <string name="actionbar_appointment_intr">技师简介</string>
+    <string name="actionbar_appointment_brand">专修品牌</string>
+    <string name="actionbar_appointment_service">特长服务项目</string>
+    <string name="actionbar_appointment_ensure">服务保障</string>
+    <string name="actionbar_appointment_immediately">立即预约</string>
+
+
+    <string name="actionbar_appointment_type">预约服务类别</string>
+    <string name="actionbar_appointment_car">预约车型</string>
+    <string name="actionbar_appointment_time">预约时间</string>
+    <string name="actionbar_appointment_shoppingtime">营业时间：</string>
+    <string name="actionbar_appointment_confirm">确认预约</string>
+    <string name="actionbar_appointment">确认预约</string>
+
+    <string name="actionbar_title_garage">快修站</string>
+    <string name="actionbar_title_garage_home">快修站主页</string>
+    <string name="actionbar_title_store_settings">店铺设置主页</string>
+    <string name="actionbar_title_tell_settings">技师设置主页</string>
+    <string name="actionbar_title_store_certification">店铺认证</string>
+    <string name="actionbar_title_garage_tec">店内技师</string>
+    <string name="actionbar_title_store_field_settings">快修站店铺设置主页</string>
+
+    <string name="actionbar_title_repair">工位</string>
+    <string name="repair_nums">工位数：</string>
+    <string name="actionbar_title_repair_home">工位主页</string>
+    <string name="actionbar_title_field_ensure">在悟空车服网平台完成服务交易，由悟空车服网与保险公司联合承保。</string>
+    <string name="actionbar_title_field_explain">说明：点击确认预约，工位商家即可收到您的预约单，具体费用请与商家沟通确定，在服务完成后结算。</string>
+    <string name="actionbar_title_field_confirm">您已成功预约服务工位，具体使用时间请与工位提供商联系确定。</string>
+    <string name="actionbar_title_accessories">配件</string>
+    <string name="actionbar_title_goods_details">配件详情</string>
+
+    <string name="write_goods_search">填写配件名称或者OE号</string>
+    <string name="actionbar_title_class">类别:</string>
+    <string name="actionbar_title_brand">品牌:</string>
+    <string name="actionbar_title_prodmode">型号:</string>
+    <string name="actionbar_title_spec">规格:</string>
+    <string name="actionbar_title_oe">OE号:</string>
+    <string name="actionbar_title_carmodel">适用车型:</string>
+    <string name="actionbar_title_unit">单位:</string>
+    <string name="actionbar_shoppingcar">加入购物车</string>
+    <string name="actionbar_buy_count">购买数量</string>
+    <string name="actionbar_buy">立即购买</string>
+    <string name="actionbar_fill">填写订单</string>
+    <string name="actionbar_submit">提交订单</string>
+    <string name="actionbar_invoices">发票信息</string>
+    <string name="actionbar_no_invoices">不要发票</string>
+    <string name="actionbar_need_invoices">需要发票</string>
+    <string name="actionbar_invoices_head">发票抬头</string>
+    <string name="actionbar_invoices_head_hint">请在此输入发票抬头</string>
+    <string name="actionbar_goods_price">商品金额</string>
+    <string name="actionbar_goods_amount">配件费用</string>
+    <string name="actionbar_field_price">工位费用</string>
+    <string name="actionbar_work_price">工时费用</string>
+    <string name="actionbar_ingre_price">辅料费用</string>
+    <string name="actionbar_service_price">平台服务费</string>
+    <string name="actionbar_tran_price">运费</string>
+    <string name="actionbar_pay">实付款</string>
+    <string name="actionbar_custon">联系客服</string>
+
+    <string name="actionbar_title_detection">车辆检测</string>
+
+    <string name="txt_account">账户中心</string>
+    <string name="txt_financial">财务中心</string>
+    <string name="txt_financial_recharge">充值</string>
+    <string name="txt_financial_recharge_detail">充值</string>
+    <string name="txt_financial_withdraw">提现</string>
+    <string name="txt_vehicle_manage">车辆管理</string>
+    <string name="txt_vehicle_manage_add">添加车辆</string>
+    <string name="txt_vehicle_manage_edit">编辑车辆</string>
+    <string name="edit">编辑</string>
+    <string name="txt_shopping_cart">购物车</string>
+    <string name="txt_shipping_address">收货地址</string>
+    <string name="txt_shipping_address_edit">编辑收货地址</string>
+    <string name="txt_shipping_address_add">新增收货地址</string>
+    <string name="txt_shipping_address_save">保存收货地址</string>
+    <string name="txt_shipping_address_select">请选择收货地址</string>
+    <string name="txt_shipping_address_save_use">保存并使用</string>
+    <string name="txt_shoppingcar_pay">去结算</string>
+    <string name="txt_complain_manage">投诉管理</string>
+    <string name="txt_more">更多...</string>
+
+    <string name="str_service_models">服务车型:%1$s</string>
+
+    <string name="register_tobe_carOwner">车主注册</string>
+    <string name="register_tobe_technician">技师注册</string>
+    <string name="register_tobe_repairShop">快修站注册</string>
+    <string name="reg_areaSelect_text">区域选择：</string>
+    <string name="reg_detailAddress_text">详细地址：</string>
+    <string name="reg_chooseAddress">点击选择区域</string>
+    <string name="reg_detailAddress_input">请填写详细地址</string>
+    <string name="reg_loginUsername_text">用&#160;&#160;户&#160;&#160;名： </string>
+    <string name="reg_loginUsername_input">填写用户名</string>
+    <string name="reg_password">设置密码：</string>
+    <string name="reg_password_confirm">确认密码：</string>
+    <string name="reg_tech_truename">技师姓名：</string>
+    <string name="reg_trueName">请填写真实姓名</string>
+    <string name="reg_garage_name">快修站名称：</string>
+    <string name="reg_garage_name_hint">请填写快修站名称</string>
+    <string name="reg_user_protocol">注册视为同意《会员注册协议》</string>
+    <string name="reg_technician_protocol">注册视为同意《技师入驻协议》</string>
+    <string name="reg_garage_protocol">注册视为同意《快修站入驻协议》</string>
+    <string name="car_owner_protocol_title">会员注册协议</string>
+    <string name="tech_protocol_title">技师入驻协议</string>
+    <string name="garage_protocol_title">快修站入驻协议</string>
+
+    <string name="msg_operate_failure">操作失败</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tech_information">我的技师主页</string>
+    <string name="me_my_orders">我的订单</string>
+    <string name="goods_orders">配件订单</string>
+    <string name="service_orders">服务订单</string>
+    <string name="place_orders">工位订单</string>
+    <string name="school_orders">驾校订单</string>
+    <string name="order_detail">订单详情</string>
+    <string name="order_comment">评价订单</string>
+    <string name="requirement_detail">需求详情</string>
+    <string name="service_requirement_detail">服务需求详情</string>
+    <string name="accessory_requirement_detail">配件需求详情</string>
+    <string name="requirement_publish">需求发布</string>
+    <string name="requirement_accessory_info">配件需求发布</string>
+    <string name="requirement_publish_immediate">立即发布</string>
+    <string name="requirement_publish_choose_business">选择配件</string>
+    <string name="requirement_publish_choose_supplier">选择配件商</string>
+    <string name="financial_center_payment_details">收支明细</string>
+
+    <string name="contact_customer_service">电话联系</string>
+    <string name="contact_online_service">在线沟通</string>
+    <string name="call_someone">打电话给%1$s</string>
+    <string name="permission_read_storage_rationale">选择图片时需要读取权限</string>
+    <string name="permission_write_storage_rationale">拍照时需要存储权限</string>
+
+    <string name="car_brand_choose">选择品牌</string>
+    <string name="car_model_choose">选择车型</string>
+    <string name="car_series_choose">选择车系</string>
+    <string name="car_displacement_choose">选择排量</string>
+    <string name="car_year_choose">选择年款</string>
+    <string name="change_role">角色切换</string>
+    <string name="change_role_car">车主</string>
+    <string name="change_role_technician">技师</string>
+    <string name="change_role_repair">快修站</string>
+
+    <string name="customer_server_1">客服1</string>
+    <string name="customer_server_2">客服2</string>
+    <string name="customer_server_3">客服3</string>
+    <string name="customer_server_4">客服4</string>
+
+    <string name="choose_accessory_provider">选择供应商</string>
+    <string name="goods_supplier_shop">店铺主页</string>
+    <string name="goods_supplier_shop_detail">店铺详情</string>
+
+    <string name="statement">声明</string>
+    <string name="select_city">请选择站点</string>
+
+    <string name="txt_shipping_shop">店铺设置</string>
+    <string name="txt_shipping_auth">店铺认证</string>
+    <string name="txt_shipping_evaluate">店铺评价</string>
+    <string name="txt_shipping_service">客服中心</string>
+    <string name="actionbar_title_servers">服务需求</string>
+
+    <string name="gallery_save_file_success">保存成功!</string>
+    <string name="gallery_save_file_failed">存储失败!</string>
+    <string name="image_select_opt_preview">预览</string>
+    <string name="image_select_opt_done">完成</string>
+    <string name="gallery_save_file_not_have_external_storage">没有外部存储!</string>
+    <string name="state_network_error">网络错误</string>
+    <string name="state_loading">正在加载…</string>
+    <string name="state_not_more">没有更多数据</string>
+    <string name="state_load_error">加载失败</string>
+    <string name="state_refreshing">正在刷新</string>
+
+
+    <string name="service_order_appointment">预约时间：%s</string>
+    <string name="service_order_total_price">服务订单总价：￥%1$.2f</string>
+    <string name="service_order_detail_id">订单号：%s</string>
+    <string name="service_order_detail_quotation">%s 技师已报价, 点击查看</string>
+    <string name="service_order_type">服务类别：%s</string>
+    <string name="service_order_model">服务车型：%s</string>
+    <string name="service_order_time">预约时间：%s</string>
+    <string name="service_order_desc">需求描述：%s</string>
+    <string name="report_order_total_price">%1$.2f元</string>
+
+    <string name="take_photo_before_service">服务前拍照</string>
+    <string name="take_photo_after_service">服务后拍照</string>
+    <string name="goods_order_time">下单时间：%s</string>
+    <string name="goods_order_invoices">发票抬头：%s</string>
+    <string name="goods_order_id">订单号：%s</string>
+
+    <string name="service_order_quotation_view">查看报价单</string>
+    <string name="service_order_photo_before_view">服务前照片</string>
+    <string name="service_order_photo_after_view">服务后照片</string>
+    <string name="service_order_settle_view">查看结算单</string>
+
+    <string name="service_order_quotation_action">填写报价单</string>
+    <string name="service_order_photo_before_action">服务前拍照</string>
+    <string name="service_order_photo_after_action">服务后拍照</string>
+    <string name="service_order_settle_action">填写结算单</string>
+    <string name="service_tech">技师搜索</string>
+    <string name="service_field">修理厂搜索</string>
+    <string name="car_brand_much">多选车品牌</string>
+    <string name="format_price_str">¥%1$s</string>
+    <string name="format_price_double">¥%1$.2f</string>
+
+    <string name="btn_submit">提&#160;&#160;&#160;&#160;&#160;&#160;交</string>
+    <string name="hint_amount_field">输入金额</string>
+    <string name="str_take_photo">拍照</string>
+
+    <string name="default_love_car">设为默认车辆</string>
+
+    <string name="str_settle_desc_1" formatted="false">说明：\n1、根据合作协议，悟空车服网将收取工时费、辅料费的15%作为平台服务费用；\n2、配件费、工位费为悟空车服网平台代收费用，按第三方支付（目前为支付宝或微信支付）收费标准由本平台代收取0.6%的收款手续费，如果第三方支付收取标准调整，本平台将同步进行调整。</string>
+    <string name="str_settle_desc_2" formatted="false">说明：\n工位费为悟空车服网平台代收费用，按第三方支付（目前为支付宝或微信支付）收费标准由本平台代收取0.6%的收款手续费，如果第三方支付收取标准调整，本平台将同步进行调整。</string>
+
+    <string name="str_primary">初级</string>
+    <string name="str_middle">中级</string>
+    <string name="str_high">高级</string>
+
+    <string name="str_community">社区快修站</string>
+    <string name="str_region">区域服务站</string>
+
+    <string name="str_title_photo_quote">纸质报价单</string>
+    <string name="str_title_amount_quote">手动填写报价单 单位(:元)</string>
+    <string name="str_title_photo_settle">纸质结算单</string>
+    <string name="str_title_amount_settle">手动填写结算单 单位(:元)</string>
+    <string name="contact_server">400&#8211;805&#8211;5110</string>
+
+    <string name="msg_paying">支付中...</string>
+
+    <string name="common_data_maintain_tip">数据正在维护中...</string>
+    <string name="freezeBalance"><u>冻结余额</u></string>
+    <string name="freezeBalanceOrderList">冻结金额列表</string>
+    <string name="bank_card_manager">银行卡管理</string>
+    <string name="bank_card_manager_add">添加银行卡</string>
+
+    <string name="str_goods_type">选择配件类别</string>
+    <string name="txt_goods_type">配件类别:%1$s</string>
+    <string name="tip_input_car_frame_num">请填写17位车架号</string>
+
+    <string name="str_store_goods_count">%1$d件</string>
+
+    <string name="str_supplier_goods_list">询价商品列表</string>
+    <string name="txt_price_rmb">￥%1$.2f</string>
+
+    <string name="str_tech_name">注意：店铺未审核前，技师用户可在店铺设置里设置店铺名称；店铺审核通过后，店铺设置里将无法设置名称。技师用户姓名为店铺名称！</string>
+    <string name="str_gar_name">注意：店铺未审核前，快修站用户可在店铺设置里设置店铺名称；店铺审核通过后，店铺设置里将无法设置名称。快修站用户姓名为店铺名称！</string>
+
+    <string name="str_title_tips">提示</string>
 
 </resources>
