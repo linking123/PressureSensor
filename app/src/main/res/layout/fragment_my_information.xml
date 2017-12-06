@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/layout_item_bg">
+
+    <com.suncreate.fireiot.ui.empty.EmptyLayout
+        android:id="@+id/error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/rootview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/fragment_my_information_head" />
+            <LinearLayout
+                android:id="@+id/ll_role_change"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/me_role_change"
+                    style="@style/option_item_rl"
+                    android:background="@drawable/selector_item_list">
+
+                    <ImageView
+                        style="@style/option_item_img"
+                        android:background="@drawable/change"
+                        android:contentDescription="@null" />
+
+                    <TextView
+                        style="@style/option_item_text"
+                        android:text="@string/change_role" />
+
+                </LinearLayout>
+
+                <View
+                    style="@style/h_line"
+                    android:layout_height="1px"
+                    android:layout_marginBottom="1px"
+                    android:layout_marginLeft="14dp"
+                    android:background="@color/list_divider_color" />
+            </LinearLayout>
+
+            <!-- 我的订单 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/me_my_orders"
+                    style="@style/option_item_rl"
+                    android:background="@drawable/selector_item_list">
+
+                    <ImageView
+                        style="@style/option_item_img"
+                        android:background="@drawable/order"
+                        android:contentDescription="@null" />
+
+                    <TextView
+                        style="@style/option_item_text"
+                        android:text="@string/me_my_orders" />
+                </LinearLayout>
+
+                <View
+                    style="@style/h_line"
+                    android:layout_height="1px"
+                    android:layout_marginBottom="1px"
+                    android:layout_marginLeft="14dp"
+                    android:background="@color/list_divider_color" />
+            </LinearLayout>
+
+            <!-- 财务中心 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/me_financial_center"
+                    style="@style/option_item_rl"
+                    android:background="@drawable/selector_item_list">
+
+                    <ImageView
+                        style="@style/option_item_img"
+                        android:background="@drawable/finance"
+                        android:contentDescription="@null" />
+
+                    <TextView
+                        style="@style/option_item_text"
+                        android:text="@string/txt_financial" />
+                </LinearLayout>
+
+                <View
+                    style="@style/h_line"
+                    android:layout_height="1px"
+                    android:layout_marginBottom="1px"
+                    android:layout_marginLeft="14dp"
+                    android:background="@color/list_divider_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_me_shoppingcar"
+                style="@style/option_item_rl"
+                android:background="@drawable/selector_item_list">
+
+                <ImageView
+                    style="@style/option_item_img"
+                    android:background="@drawable/ic_my_event"
+                    android:contentDescription="@null" />
+
+                <TextView
+                    style="@style/option_item_text"
+                    android:text="@string/txt_shopping_cart" />
+
+            </LinearLayout>
+
+            <View
+                style="@style/h_line"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="1px"
+                android:layout_marginLeft="14dp"
+                android:background="@color/list_divider_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/rl_car_manager_box"
+                    style="@style/option_item_rl"
+                    android:background="@drawable/selector_item_list">
+
+                    <ImageView
+                        style="@style/option_item_img"
+                        android:background="@drawable/icon_my_car"
+                        android:contentDescription="@null" />
+
+                    <TextView
+                        android:id="@+id/tv_car_manager"
+                        style="@style/option_item_text"
+                        android:text="@string/txt_vehicle_manage" />
+                </LinearLayout>
+
+                <View
+                    style="@style/h_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginBottom="1px"
+                    android:layout_marginLeft="14dp"
+                    android:background="@color/list_divider_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_me_address"
+                style="@style/option_item_rl"
+                android:background="@drawable/selector_item_list">
+
+                <ImageView
+                    style="@style/option_item_img"
+                    android:background="@drawable/icon_my_note"
+                    android:contentDescription="@null" />
+
+                <TextView
+                    style="@style/option_item_text"
+                    android:text="@string/txt_shipping_address" />
+
+            </LinearLayout>
+
+            <View
+                style="@style/h_line"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="1px"
+                android:layout_marginLeft="14dp"
+                android:background="@color/list_divider_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_setting"
+                style="@style/option_item_rl"
+                android:background="@drawable/selector_item_list">
+
+                <ImageView
+                    style="@style/option_item_img"
+                    android:background="@drawable/setting"
+                    android:contentDescription="@null" />
+
+                <TextView
+                    style="@style/option_item_text"
+                    android:text="@string/system_setting" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <View
+                    style="@style/h_line"
+                    android:layout_height="1px"
+                    android:layout_marginBottom="1px"
+                    android:layout_marginLeft="14dp"
+                    android:background="@color/list_divider_color" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

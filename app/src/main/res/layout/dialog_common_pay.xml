@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="horizontal"
+    android:padding="@dimen/space_16">
+
+    <RelativeLayout
+        android:id="@+id/rl_order_amount_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_str_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单金额：" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_str_price"
+            android:textColor="@color/label_red"
+            tools:text="630.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/tv_balance"
+            android:text="账户余额：" />
+
+        <TextView
+            android:id="@+id/tv_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            tools:text="630.00元" />
+
+        <View
+            style="@style/h_line_master"
+            android:layout_below="@id/tv_price"
+            android:layout_marginTop="10dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_item_alipay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_order_amount_info"
+        android:background="@drawable/selector_item_list">
+
+        <ImageView
+            android:id="@+id/iv_alipay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/alipay" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_arrow_right" />
+
+        <View
+            style="@style/h_line_master"
+            android:layout_below="@id/iv_alipay"
+            android:layout_marginTop="10dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_item_wechatpay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_item_alipay">
+
+        <ImageView
+            android:id="@+id/iv_wechatpay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/wechatpay" />
+
+        <ImageView
+            android:id="@+id/tv_arrow_right3"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_arrow_right" />
+
+        <View
+            android:id="@+id/v_line4"
+            style="@style/h_line_master"
+            android:layout_below="@id/iv_wechatpay"
+            android:layout_marginTop="10dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_item_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_item_wechatpay"
+        android:background="@drawable/selector_item_list">
+
+        <ImageView
+            android:id="@+id/iv_balance_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/balancepay" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_arrow_right" />
+
+        <View
+            style="@style/h_line_master"
+            android:layout_below="@id/iv_balance_pay"
+            android:layout_marginTop="10dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

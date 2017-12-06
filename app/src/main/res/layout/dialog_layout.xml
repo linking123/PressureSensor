@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/background"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
+    <TextView
+        android:id="@+id/takePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="@dimen/text_size_16"
+        android:text="@string/actionbar_buy_count"
+         />
+
+    <Button
+        android:id="@+id/selector_del"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/selector_image_del"
+        android:layout_toLeftOf="@+id/normal"
+        android:layout_marginTop="15dp"
+        />
+    <EditText
+        android:id="@+id/normal"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_normal"
+        android:layout_toLeftOf="@+id/selector_add"
+        android:inputType="number"
+        android:textCursorDrawable="@null"
+        android:digits="1234567890"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        />
+    <Button
+        android:id="@+id/selector_add"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/selector_image_add"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        />
+
+    <Button
+        android:id="@+id/btn_goodscar_sure"
+        style="@style/button_common_red"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/takePhoto"
+        android:text="加入购物车"
+        android:layout_weight="1"
+        />
+    <Button
+        android:id="@+id/btn_buy_sure"
+        style="@style/button_common_red"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/takePhoto"
+        android:text="确 定"
+        android:layout_weight="1"
+        />
+</RelativeLayout>

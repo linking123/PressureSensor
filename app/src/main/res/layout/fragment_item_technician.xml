@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_item_list"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingTop="8dp"
+    android:visibility="visible"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_tech_item_icon"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:src="@drawable/widget_dface" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="16dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp">
+
+                <TextView
+                    android:id="@+id/tv_field_item_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:maxLines="1"
+                    tools:text="技师姓名"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/btn_tech_item_level"
+                    style="@style/level_btn_style"
+                    android:layout_marginRight="@dimen/space_10"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/btn_tech_item_year"
+                    tools:text="@string/str_primary" />
+
+                <TextView
+                    android:id="@+id/btn_tech_item_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignTop="@id/btn_tech_item_level"
+                    android:textSize="@dimen/text_size_14"
+                    tools:text="10年" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <RatingBar
+                    android:id="@+id/rb_tech_item_rating"
+                    style="@style/rating_bar_small_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="0"
+                    android:stepSize="0.5" />
+
+                <TextView
+                    android:id="@+id/btn_tech_item_score"
+                    style="@style/score_btn_styles"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="@dimen/text_size_12"
+                    tools:text="4.4" />
+
+                <TextView
+                    android:id="@+id/tv_tech_item_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:gravity="right|bottom"
+                    android:text="--"
+                    android:textColor="@color/red_a400"
+                    android:textSize="@dimen/text_size_11" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_tech_item_brand1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="专修品牌："
+                    android:textSize="@dimen/text_size_16" />
+
+                <GridView
+                    android:id="@+id/tech_brand_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:columnWidth="20dp"
+                    android:numColumns="auto_fit"
+                    android:horizontalSpacing="@dimen/space_4"
+                    android:focusable="false"
+                    android:clickable="false"
+                    android:scrollbars="none"
+                    android:stretchMode="columnWidth" />
+
+                <TextView
+                    android:id="@+id/tv_carbrand_invisiable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="所有车型"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginBottom="1px"
+        android:background="@color/list_divider_color" />
+
+</LinearLayout>

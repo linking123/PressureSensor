@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/teamlist_item_background_normal"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:id="@+id/rl_master_technician"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/icon_master_field"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_margin="10dp"
+                tools:src="@drawable/garage" />
+
+            <TextView
+                android:id="@+id/tv_master_field_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/icon_master_field"
+                android:layout_margin="10dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:maxWidth="250dp"
+                android:textSize="18sp"
+                tools:text="车风驰汽车养护修理服务中心车风驰汽车养护修理服汽车养护修理服汽车养护修理服汽车养护修理服务中心车风驰汽车养护修理服务中心车风驰汽车养护修理服务中心" />
+
+            <TextView
+                android:id="@+id/tv_master_repair_level"
+                style="@style/level_btn_style"
+                android:layout_alignBottom="@+id/tv_master_technician_name"
+                android:layout_below="@+id/icon_master_field"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/tv_master_field_name"
+                tools:text="@string/str_community" />
+
+            <TextView
+                android:id="@+id/tv_master_field_orders"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tv_master_field_name"
+                android:layout_marginLeft="10dp"
+                android:layout_toLeftOf="@+id/tv_master_field_serviceTime"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:textSize="@dimen/space_14"
+                tools:text="接单数：20" />
+
+            <TextView
+                android:id="@+id/tv_master_field_serviceTime"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_master_field_name"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:textSize="@dimen/space_14"
+                tools:text="服务时间：08:30-19:30（节假日不休）" />
+
+            <LinearLayout
+                android:id="@+id/ll_navigate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_master_field_serviceTime">
+
+                <include layout="@layout/layout_navigate" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/icon_master_field_line51"
+                style="@style/h_line_master"
+                android:layout_below="@+id/ll_navigate" />
+
+            <View
+                android:id="@+id/tv_master_field_line4"
+                style="@style/v_line"
+                android:layout_width="4dp"
+                android:layout_height="26dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/icon_master_field_line51"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/green" />
+
+            <TextView
+                android:id="@+id/tv_master_field_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/icon_master_field_line51"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/tv_master_field_line4"
+                android:text="适合车型"
+                android:textSize="18sp" />
+
+            <GridView
+                android:id="@+id/garage_brand_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_master_field_service"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:columnWidth="40dp"
+                android:numColumns="auto_fit"
+                android:scrollbars="none"
+                android:stretchMode="columnWidth" />
+
+            <TextView
+                android:id="@+id/tv_tech_brand_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_master_field_service"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:text="所有车型"
+                android:visibility="invisible" />
+
+            <View
+                android:id="@+id/icon_master_field_line5"
+                style="@style/h_line_master"
+                android:layout_below="@+id/garage_brand_name"
+                android:layout_marginTop="40dp" />
+
+            <View
+                android:id="@+id/tv_master_field_line6"
+                style="@style/v_line"
+                android:layout_width="4dp"
+                android:layout_height="26dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/icon_master_field_line5"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/green" />
+
+            <TextView
+                android:id="@+id/tv_master_field_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/icon_master_field_line5"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/tv_master_field_line6"
+                android:text="工位数"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_master_field_work"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_master_field_"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                tools:text="20" />
+
+            <View
+                android:id="@+id/icon_master_field_line6"
+                style="@style/h_line_master"
+                android:layout_below="@+id/tv_master_field_work"
+                android:layout_marginTop="10dp" />
+
+            <View
+                android:id="@+id/tv_master_field_line7"
+                style="@style/v_line"
+                android:layout_width="4dp"
+                android:layout_height="26dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/icon_master_field_line6"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/green" />
+
+            <TextView
+                android:id="@+id/tv_master_field_tools"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/icon_master_field_line6"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/tv_master_field_line6"
+                android:text="工位说明"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_master_field_tools_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_master_field_tools"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                tools:text="场地说明文本" />
+
+            <View
+                android:id="@+id/icon_master_technician_line6"
+                style="@style/h_line_master"
+                android:layout_below="@+id/tv_master_field_tools_text"
+                android:layout_marginTop="10dp" />
+
+            <View
+                android:id="@+id/tv_master_technician_line6"
+                style="@style/v_line"
+                android:layout_width="4dp"
+                android:layout_height="26dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/icon_master_technician_line6"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/green" />
+
+            <TextView
+                android:id="@+id/tv_master_technician_ensure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/icon_master_technician_line6"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/tv_master_technician_line6"
+                android:text="@string/actionbar_appointment_ensure"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_master_technician_ensure1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tv_master_technician_ensure"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/actionbar_title_technician_ensure"
+                android:textColor="@color/red" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <include layout="@layout/layout_common_contact" />
+
+        <Button
+            android:id="@+id/btn_appointment_now"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F23030"
+            android:text="@string/actionbar_appointment_immediately"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_20" />
+
+    </LinearLayout>
+
+</LinearLayout>

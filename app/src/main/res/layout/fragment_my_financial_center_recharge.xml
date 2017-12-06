@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_25"
+        android:layout_marginTop="@dimen/space_50"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_financial_center_recharge_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="充值方式"
+            android:textSize="@dimen/font_18" />
+
+        <TextView
+            android:id="@+id/tv_financial_center_recharge_type_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="24dp"
+            android:drawableRight="@drawable/ic_diary_down"
+            android:drawablePadding="@dimen/space_9"
+            android:layout_marginStart="24dp"
+            android:layout_toEndOf="@+id/tv_financial_center_recharge_type"
+            android:layout_toRightOf="@+id/tv_financial_center_recharge_type"
+            android:text="支付宝"
+            android:textColor="@color/teal_600"
+            android:textSize="@dimen/font_20" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_margin="@dimen/space_15"
+        android:background="@color/count_text_color_light" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_25"
+        android:layout_marginTop="@dimen/font_4">
+
+        <TextView
+            android:id="@+id/tv_financial_center_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="金额 (￥)"
+            android:textSize="@dimen/font_18" />
+
+        <EditText
+            android:id="@+id/et_recharge_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_20"
+            android:background="@null"
+            android:hint="请填写充值金额"
+            android:digits="0123456789."
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:inputType="number"
+            android:textColorHint="@color/line_background"
+            android:textSize="@dimen/font_16" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_financial_center_nextstep"
+        style="@style/score_btn_styles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:paddingBottom="@dimen/font_10"
+        android:paddingTop="@dimen/font_10"
+        android:text="确认支付"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_18" />
+</LinearLayout>

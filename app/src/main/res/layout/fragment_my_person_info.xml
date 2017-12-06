@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_my_info_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <!--&lt;!&ndash; 我的头像 &ndash;&gt;-->
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/rl_my_avatar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="75dp"-->
+    <!--android:layout_marginTop="@dimen/font_10" >-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_my_avatar_text"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:layout_marginLeft="@dimen/space_20"-->
+    <!--android:text="我的头像"-->
+    <!--android:textSize="@dimen/space_16"/>-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/iv_my_avatar_img"-->
+    <!--android:layout_width="75dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginRight="@dimen/space_50"-->
+    <!--android:src="@drawable/man"/>-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/iv_my_avatar_edit"-->
+    <!--android:layout_width="20dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginRight="@dimen/space_10"-->
+    <!--android:src="@drawable/ic_diary_forward"/>-->
+
+    <!--</RelativeLayout>-->
+    <!--<View-->
+    <!--style="@style/h_line"-->
+    <!--android:id="@+id/line1"-->
+    <!--android:layout_height="8dp"-->
+    <!--android:layout_marginTop="@dimen/font_10"-->
+    <!--android:background="@color/list_divider_color"-->
+    <!--android:layout_below="@+id/rl_my_avatar"/>-->
+
+    <!-- 我的名称 -->
+    <RelativeLayout
+        android:id="@+id/rl_my_name_box"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/font_10">
+
+        <TextView
+            android:id="@+id/tv_my_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/space_20"
+            android:gravity="center_vertical"
+            android:text="姓名"
+            android:textSize="@dimen/space_16" />
+
+        <TextView
+            android:id="@+id/tv_my_name_who"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/space_50"
+            android:gravity="center_vertical"
+            android:text="李四" />
+
+        <ImageView
+            android:id="@+id/iv_my_name_edit"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/space_10"
+            android:src="@drawable/ic_diary_forward" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line2"
+        style="@style/h_line"
+        android:layout_height="1dp"
+        android:layout_below="@+id/rl_my_name_box"
+        android:layout_marginTop="@dimen/font_10"
+        android:background="@color/list_divider_color" />
+
+    <!-- 所在地区 -->
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/rl_my_area_box"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_below="@+id/line2"-->
+        <!--android:layout_marginTop="@dimen/font_10">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_my_address_text"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginLeft="@dimen/space_20"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:text="所在地区"-->
+            <!--android:textSize="@dimen/space_16" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_my_address_where"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="@dimen/space_50"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:text="安徽省 合肥市 蜀山区" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_my_address_edit"-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="@dimen/space_10"-->
+            <!--android:src="@drawable/ic_diary_forward" />-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<View-->
+        <!--android:id="@+id/line3"-->
+        <!--style="@style/h_line"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:layout_below="@+id/rl_my_area_box"-->
+        <!--android:layout_marginTop="@dimen/font_10"-->
+        <!--android:background="@color/list_divider_color" />-->
+
+    <!-- 联系电话 -->
+    <RelativeLayout
+        android:id="@+id/rl_phone_area"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/line2"
+        android:layout_marginTop="@dimen/font_10">
+
+        <TextView
+            android:id="@+id/tv_my_phone_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/space_20"
+            android:gravity="center_vertical"
+            android:text="联系电话"
+            android:textSize="@dimen/space_16" />
+
+        <TextView
+            android:id="@+id/tv_my_phone_num"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/space_50"
+            android:gravity="center_vertical"
+            android:text="15566563254" />
+
+        <ImageView
+            android:id="@+id/iv_my_phone_edit"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/space_10"
+            android:src="@drawable/ic_diary_forward" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line4"
+        style="@style/h_line"
+        android:layout_height="1dp"
+        android:layout_below="@+id/rl_phone_area"
+        android:layout_marginTop="@dimen/font_10"
+        android:background="@color/list_divider_color" />
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/rl_qq_box"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:layout_alignTop="@+id/line4"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_alignParentStart="true">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_my_QQ_text"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignBaseline="@+id/tv_my_QQ_num"-->
+    <!--android:layout_alignBottom="@+id/tv_my_QQ_num"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_marginLeft="18dp"-->
+    <!--android:layout_marginStart="18dp"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:text="QQ号"-->
+    <!--android:textSize="@dimen/space_16" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_my_QQ_num"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginRight="@dimen/space_50"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:text="895655482" />-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/iv_my_QQ_edit"-->
+    <!--android:layout_width="20dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginRight="@dimen/space_10"-->
+    <!--android:src="@drawable/ic_diary_forward" />-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<View-->
+    <!--android:id="@+id/line5"-->
+    <!--style="@style/h_line"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:layout_below="@+id/line4"-->
+    <!--android:layout_marginTop="@dimen/font_10"-->
+    <!--android:background="@color/list_divider_color" />-->
+
+    <!-- 联系email -->
+    <RelativeLayout
+        android:id="@+id/rl_email_box"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/line4"
+        android:layout_marginTop="@dimen/space_10">
+
+        <TextView
+            android:id="@+id/tv_my_email_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"
+            android:gravity="center_vertical"
+            android:text="邮箱号"
+            android:textSize="@dimen/space_16" />
+
+        <TextView
+            android:id="@+id/tv_my_email_num"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/space_50"
+            android:gravity="center_vertical"
+            android:text="895655482@qq.com" />
+
+        <ImageView
+            android:id="@+id/iv_my_email_edit"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/space_10"
+            android:src="@drawable/ic_diary_forward" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line6"
+        style="@style/h_line"
+        android:layout_height="1dp"
+        android:layout_below="@+id/rl_email_box"
+        android:layout_marginTop="@dimen/font_10"
+        android:background="@color/list_divider_color" />
+
+</RelativeLayout>

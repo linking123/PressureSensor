@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ListView
+        android:id="@+id/listView_for_brand"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.suncreate.fireiot.bean.carBrand.SideBar
+        android:id="@+id/side_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:paddingRight="10dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="15sp" />
+
+</RelativeLayout>

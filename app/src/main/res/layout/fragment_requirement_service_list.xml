@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/selector_item_list"
+    android:orientation="vertical">
+
+    <!--<include layout="@layout/fragment_car_model" />-->
+    <!--<include layout="@layout/fragment_spinners_field_header" />-->
+
+    <!--&lt;!&ndash; 发布服务需求 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--android:id="@+id/tv_service_requirement_publish"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="center"-->
+        <!--android:padding="@dimen/space_10"-->
+        <!--android:layout_margin="@dimen/space_5"-->
+        <!--android:background="@drawable/btn_publish"-->
+        <!--android:text="发布服务需求"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="@dimen/font_18"/>-->
+
+    <FrameLayout
+        android:id="@+id/requirement_service_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.suncreate.fireiot.widget.SuperRefreshLayout
+            android:id="@+id/superRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/transparent"
+                android:dividerHeight="0dp" />
+        </com.suncreate.fireiot.widget.SuperRefreshLayout>
+
+        <com.suncreate.fireiot.ui.empty.EmptyLayout
+            android:id="@+id/error_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+    </FrameLayout>
+</LinearLayout>
+

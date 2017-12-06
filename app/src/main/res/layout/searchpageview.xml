@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_actionbar"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/day_colorPrimary">
+
+    <TextView
+        android:id="@+id/tv_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/space_16"
+        android:text="请填写搜索条件"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textColor="#FFF"
+        android:textSize="@dimen/font_16" />
+
+
+    <ImageView
+        android:id="@+id/iv_search"
+        android:layout_width="32dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/space_16"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/search_icon_copy"
+        android:visibility="invisible" />
+</RelativeLayout>

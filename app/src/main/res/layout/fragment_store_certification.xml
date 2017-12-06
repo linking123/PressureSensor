@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/layout_item_bg">
+
+    <com.suncreate.fireiot.ui.empty.EmptyLayout
+        android:id="@+id/error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/rootview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <!-- 个人信息 -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/me_my_orders"
+                        style="@style/option_item_rl"
+                        android:background="@drawable/selector_item_list">
+
+
+                        <TextView
+                            android:id="@+id/certificianAlready"
+                            style="@style/option_item_text"
+                            android:text="审核状态：已认证" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/h_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginBottom="1px"
+                    android:layout_marginLeft="14dp"
+                    android:background="@color/list_divider_color" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    android:orientation="horizontal">
+
+                    <!--  -->
+                    <RelativeLayout
+                        android:id="@+id/ID"
+                        style="@style/option_item_rl"
+                        android:background="@drawable/selector_item_list"
+                        android:orientation="horizontal"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/ID_first"
+
+                            android:layout_width="320dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:text="身份证正面" />
+
+
+                        <ImageButton
+                            android:id="@+id/upload_img1"
+                            android:layout_below="@+id/ID_first"
+                            android:layout_width="50dp"
+                            android:layout_height="45dp"
+                            android:background="@null"
+                            android:layout_marginLeft="100dp"
+                            android:src="@drawable/camera_35_35" />
+                        <TextView
+                            android:id="@+id/ID_first11"
+                            android:layout_toRightOf="@+id/upload_img1"
+                            android:layout_width="320dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:layout_below="@+id/ID_first"
+                            android:text="上传身份证正面所在面" />
+
+                    </RelativeLayout>
+
+
+                    <View
+                        style="@style/h_line"
+                        android:layout_height="1px"
+                        android:layout_marginBottom="1px"
+                        android:layout_marginLeft="14dp"
+                        android:background="@color/list_divider_color" />
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/ID_First"
+                    android:layout_width="400dp"
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/h_line"
+                    android:layout_gravity="center" />
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    android:orientation="horizontal">
+
+                    <!-- 财务中心 -->
+                    <RelativeLayout
+                        android:id="@+id/ID1"
+                        style="@style/option_item_rl"
+                        android:background="@drawable/selector_item_list"
+                        android:orientation="horizontal"
+                       >
+
+
+                        <TextView
+                            android:id="@+id/ID_second"
+                            android:layout_width="320dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:gravity="left"
+                            android:text="身份证反面" />
+
+                        <ImageButton
+                            android:id="@+id/upload_img2"
+                            android:layout_below="@+id/ID_second"
+                            android:layout_width="50dp"
+                            android:layout_height="45dp"
+                            android:layout_marginLeft="100dp"
+                            android:background="@null"
+                            android:src="@drawable/camera_35_35" />
+                        <TextView
+                            android:id="@+id/ID_first12"
+                            android:layout_toRightOf="@+id/upload_img2"
+                            android:layout_width="320dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:layout_below="@+id/ID_second"
+                            android:text="上传身份证反面所在面" />
+                    </RelativeLayout>
+
+
+                    <View
+                        style="@style/h_line"
+                        android:layout_height="1px"
+                        android:layout_marginBottom="1px"
+                        android:layout_marginLeft="14dp"
+                        android:background="@color/list_divider_color" />
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/ID_Second"
+                    android:layout_below="@id/h_line"
+                    android:layout_width="400dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    android:orientation="horizontal">
+
+                    <!-- 财务中心 -->
+                    <RelativeLayout
+                        android:id="@+id/ID3"
+                        style="@style/option_item_rl"
+                        android:background="@drawable/selector_item_list"
+                        android:orientation="horizontal"
+                     >
+                        <TextView
+                            android:id="@+id/ID_third"
+                            android:layout_width="320dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:text="职业资格证" />
+                        <ImageButton
+                            android:id="@+id/upload_img3"
+                            android:layout_below="@+id/ID_third"
+                            android:layout_width="50dp"
+                            android:layout_marginLeft="100dp"
+                            android:layout_height="45dp"
+                            android:background="@null"
+                            android:src="@drawable/camera_35_35" />
+                        <TextView
+                            android:id="@+id/ID_first13"
+                            android:layout_toRightOf="@+id/upload_img3"
+                            android:layout_width="320dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:layout_below="@+id/ID_third"
+                            android:text="上传职业资格证" />
+                    </RelativeLayout>
+                    <View
+                        style="@style/h_line"
+                        android:layout_height="1px"
+                        android:layout_marginBottom="1px"
+                        android:layout_marginLeft="14dp"
+                        android:background="@color/list_divider_color" />
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/ID_Third"
+                    android:layout_width="400dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center" />
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/ID_fourth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="职业资格证书，技师资格证，工作证等可以证明您身份的证件，最多上传3张。"/>
+
+                <TextView
+                    android:id="@+id/ID_fourth1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ID_fourth"
+                    android:text="请勿上传他人的证件或不相干的内容，认证通过后无法修改。"/>
+                <TextView
+                    android:id="@+id/ID_fourth2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ID_fourth1"
+                    android:text="职业资格证书，技师资格证，工作证等可以证明您身份的
+                证件，最多上传3张。"/>
+
+                <TextView
+                    android:id="@+id/ID_five"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/ID_fourth2"
+                    android:layout_height="wrap_content"
+                    android:text="如有疑问请联系客服："/>
+
+                <TextView
+                    android:id="@+id/ID_six"
+                    android:layout_toRightOf="@+id/ID_five"
+                    android:layout_below="@+id/ID_fourth2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blue"
+                    android:text="400-805-5110"/>
+
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</FrameLayout>

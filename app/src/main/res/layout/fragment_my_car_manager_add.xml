@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/teamlist_item_background_normal"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:id="@+id/car_brand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingLeft="@dimen/space_15"
+            android:text="车型："
+            android:textSize="@dimen/font_18" />
+
+        <include layout="@layout/fragment_car_model" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_car_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/car_brand"
+        android:layout_marginTop="@dimen/space_20"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/space_15"
+            android:text="车牌号："
+            android:textSize="@dimen/font_18" />
+
+        <LinearLayout
+            android:id="@+id/ll_car_num_box"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_10"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_inputbox1"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/car_license_inputbox"
+                android:gravity="center"
+                android:textColor="@color/green" />
+
+            <EditText
+                android:id="@+id/et_inputbox2"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/car_license_inputbox"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="@color/green" />
+
+
+            <EditText
+                android:id="@+id/et_inputbox3"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/car_license_inputbox"
+                android:gravity="center_horizontal|center_vertical" />
+
+            <EditText
+                android:id="@+id/et_inputbox4"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/car_license_inputbox"
+                android:gravity="center_horizontal|center_vertical" />
+
+            <EditText
+                android:id="@+id/et_inputbox5"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/car_license_inputbox"
+                android:gravity="center_horizontal|center_vertical" />
+
+            <EditText
+                android:id="@+id/et_inputbox6"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/car_license_inputbox"
+                android:gravity="center_horizontal|center_vertical" />
+
+            <EditText
+                android:id="@+id/et_inputbox7"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/car_license_inputbox"
+                android:gravity="center_horizontal|center_vertical" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_engine_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_car_num"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/space_15"
+            android:text="发动机号："
+            android:textSize="@dimen/font_18" />
+
+        <EditText
+            android:id="@+id/et_engine_num_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_10"
+            android:layout_marginRight="@dimen/space_10"
+            android:hint="请填写发动机号"
+            android:inputType="textAutoComplete"
+            android:textSize="@dimen/font_14" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_car_frame_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_engine_num"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/space_15"
+            android:text="车架号(VIN码)："
+            android:textSize="@dimen/font_18" />
+
+        <EditText
+            android:id="@+id/et_car_frame_num_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_10"
+            android:layout_marginRight="@dimen/space_10"
+            android:hint="@string/tip_input_car_frame_num"
+            android:inputType="textAutoComplete"
+            android:textSize="@dimen/font_14" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_car_kms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_car_frame_num"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/space_15"
+            android:text="公里数："
+            android:textSize="@dimen/font_18" />
+
+        <EditText
+            android:id="@+id/et_car_kms_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_10"
+            android:layout_marginRight="@dimen/space_10"
+            android:inputType="textAutoComplete"
+            android:hint="请填写汽车行驶公里数"
+            android:textSize="@dimen/font_14" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_car_onroad_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_car_kms"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/space_15"
+            android:text="新车上路时间："
+            android:textSize="@dimen/font_18" />
+
+        <TextView
+            android:id="@+id/tv_date_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_20"
+            android:drawableLeft="@drawable/finger_click"
+            android:drawablePadding="@dimen/space_3"
+            android:text="请选择上路时间" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_loading_more"
+        style="@style/option_item_rl"
+        android:layout_marginTop="@dimen/space_5"
+        android:layout_below="@id/ll_car_onroad_time" >
+
+        <TextView
+            style="@style/option_item_text_parent"
+            android:text="@string/default_love_car"
+            android:textColor="@color/green"
+            android:textSize="@dimen/text_size_16" />
+
+        <com.suncreate.fireiot.widget.togglebutton.ToggleButton
+            android:id="@+id/tb_default_love_car"
+            style="@style/option_item_toggleButton"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <android.inputmethodservice.KeyboardView
+            android:id="@+id/keyboard_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#F0EFF4"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:keyBackground="@android:color/white"
+            android:keyTextColor="#5E5E5E"
+            android:keyTextSize="18sp"
+            android:labelTextSize="18sp"
+            android:paddingTop="5dp"
+            android:shadowColor="#ffffff"
+            android:shadowRadius="0.0"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_finish"
+            style="@style/button_common_red"
+            android:layout_width="match_parent"
+            android:text="确认添加" />
+    </LinearLayout>
+
+
+</RelativeLayout>

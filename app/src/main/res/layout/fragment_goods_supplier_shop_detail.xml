@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_store_img"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:adjustViewBounds="true"
+            android:padding="@dimen/space_3" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_line_1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/masterLineColor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_20"
+        android:layout_marginTop="@dimen/space_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="店铺名称："
+            android:textColor="@color/black_alpha_224"
+            android:textSize="@dimen/font_16" />
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="安徽天马汽配"
+            android:textColor="@color/black_alpha_224"
+            android:textSize="@dimen/font_16" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_line_3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/space_10"
+        android:background="?attr/masterLineColor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_20"
+        android:layout_marginTop="@dimen/space_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="店铺地址："
+            android:textColor="@color/black_alpha_224"
+            android:textSize="@dimen/font_16" />
+
+        <TextView
+            android:id="@+id/tv_store_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="安徽省合肥市蜀山区黄岳路口"
+            android:textColor="@color/black_alpha_224"
+            android:textSize="@dimen/font_16" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_line_4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/space_10"
+        android:background="?attr/masterLineColor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_20"
+        android:layout_marginTop="@dimen/space_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="联系人："
+            android:textColor="@color/black_alpha_224"
+            android:textSize="@dimen/font_16" />
+
+        <TextView
+            android:id="@+id/tv_store_owner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="程小雨"
+            android:textColor="@color/black_alpha_224"
+            android:textSize="@dimen/font_16" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_line_5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/space_10"
+        android:background="?attr/masterLineColor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_20"
+        android:layout_marginTop="@dimen/space_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="服务电话："
+            android:textColor="@color/black_alpha_224"
+            android:textSize="@dimen/font_16" />
+
+        <TextView
+            android:id="@+id/tv_telephone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0551-6754235 | 15455658456 "
+            android:textColor="@color/black_alpha_224"
+            android:textSize="@dimen/font_16" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_line_7"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/space_10"
+        android:background="?attr/masterLineColor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_20"
+        android:layout_marginTop="@dimen/space_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商家简介："
+            android:textColor="@color/black_alpha_224"
+            android:textSize="@dimen/font_16" />
+
+        <TextView
+            android:id="@+id/tv_store_brief_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="安徽合肥地区，专业从事汽车配件批发。专业值得信赖。"
+            android:textColor="@color/black_alpha_224"
+            android:textSize="@dimen/font_16" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_line_8"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/space_10"
+        android:background="?attr/masterLineColor" />
+
+</LinearLayout>

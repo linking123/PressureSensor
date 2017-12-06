@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/teamlist_item_background_normal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_engine_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/space_15"
+            android:text="发动机号："
+            android:textSize="@dimen/font_18" />
+
+        <EditText
+            android:id="@+id/et_engine_num_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_10"
+            android:layout_marginRight="@dimen/space_10"
+            android:background="@null"
+            android:inputType="textAutoComplete"
+            android:textSize="@dimen/font_16"
+            tools:text="943F001796" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_car_frame_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_engine_num"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/space_15"
+            android:text="车架号："
+            android:textSize="@dimen/font_18" />
+
+        <EditText
+            android:id="@+id/et_car_frame_num_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_10"
+            android:background="@null"
+            android:inputType="textAutoComplete"
+            android:textSize="@dimen/font_16"
+            tools:text="LSVAM4187C2184847" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_car_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_car_frame_num"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/space_15"
+            android:text="车牌号："
+            android:textSize="@dimen/font_18" />
+
+        <EditText
+            android:id="@+id/et_car_num_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_10"
+            android:background="@null"
+            android:inputType="textAutoComplete"
+            android:textSize="@dimen/font_16"
+            tools:text="皖A XY123" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_car_model_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_car_num"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingLeft="@dimen/space_15"
+            android:text="车型："
+            android:textSize="@dimen/font_18" />
+
+        <include layout="@layout/fragment_car_model" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_car_kms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_car_model_box"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/space_15"
+            android:text="公里数："
+            android:textSize="@dimen/font_18" />
+
+        <EditText
+            android:id="@+id/et_car_kms_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_10"
+            android:layout_marginRight="@dimen/space_10"
+            android:background="@null"
+            android:inputType="textAutoComplete"
+            android:textSize="@dimen/font_14"
+            tools:text="10000公里" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_car_onroad_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_car_kms"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/space_15"
+            android:text="新车上路时间："
+            android:textSize="@dimen/font_18" />
+
+        <TextView
+            android:id="@+id/tv_date_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_20"
+            android:drawableLeft="@drawable/finger_click"
+            android:drawablePadding="@dimen/space_3"
+            tools:text="201612" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_finish"
+        style="@style/button_common_red"
+        android:layout_width="match_parent"
+        android:text="完  成"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

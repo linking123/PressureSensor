@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_item_list"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical"
+    android:paddingTop="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_15">
+
+        <TextView
+            android:id="@+id/tv_order_freeze_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="冻结到期时间"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_order_freeze_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/space_20"
+            android:textColor="@color/com_facebook_blue"
+            android:textSize="@dimen/text_size_16"
+            tools:text="2016-12-30 12:00:05" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_15"
+        android:layout_marginTop="@dimen/space_10">
+
+        <TextView
+            android:id="@+id/tv_order_freeze_fee_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单冻结金额"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_order_freeze_fee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/space_20"
+            android:textColor="@color/action_btn_text_color_light"
+            android:textSize="@dimen/text_size_16"
+            tools:text="￥ 100元" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_10"
+        android:layout_marginLeft="@dimen/space_15"
+        android:layout_marginTop="@dimen/space_10">
+
+        <TextView
+            android:id="@+id/tv_order_type_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单类型"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_order_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/space_20"
+            android:textColor="@color/amber_900"
+            android:textSize="@dimen/text_size_16"
+            tools:text="服务订单" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="10px"
+        android:layout_marginBottom="1px"
+        android:background="@color/list_divider_color" />
+
+</LinearLayout>

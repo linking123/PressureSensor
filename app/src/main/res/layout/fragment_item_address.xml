@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_item_list"
+    android:descendantFocusability="blocksDescendants">
+
+    <TextView
+        android:id="@+id/address_trueName1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="16dp"
+        android:text="李女士"
+        android:textSize="@dimen/font_18"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/address_mobile1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_toRightOf="@+id/address_trueName1"
+        android:text="13966667777"
+        android:textSize="@dimen/font_18"
+        android:textStyle="bold" />
+
+    <ImageView
+
+        android:id="@+id/address_check"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/address_mobile1"
+        android:src="@drawable/icon_role_choose" />
+
+    <TextView
+        android:id="@+id/address_info1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address_trueName1"
+        android:layout_marginTop="8dp"
+        android:layout_alignLeft="@id/address_trueName1"
+        android:layout_marginRight="80dp"
+        android:layout_toRightOf="@+id/icon_gps"
+        android:text="安徽省合肥市政务区祁门路与翡翠路交口新华出版集团"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_arrow_right2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bg_edit_selector" />
+
+    <View
+        android:id="@+id/icon_master_technician_line1"
+        style="@style/h_line_master"
+        android:layout_below="@id/address_info1"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true" />
+
+
+</RelativeLayout>
+
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/brand_logo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/bmw"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="宝马X5 4.0L 2016款"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/brand_logo"
+            android:textSize="@dimen/text_size_16"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更换>"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/text_size_16"
+            android:textColor="@color/actionbar_background"
+            />
+        <View style="@style/h_line_master"
+            android:id="@+id/icon_master_technician_line3"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/brand_logo"
+            />
+    </RelativeLayout>
+</LinearLayout>

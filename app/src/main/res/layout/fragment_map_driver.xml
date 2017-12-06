@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <LinearLayout android:orientation="vertical" android:layout_height="fill_parent" android:layout_width="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout android:orientation="horizontal" android:layout_height="61dp" android:layout_width="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:weightSum="1" android:layout_marginTop="5dip" android:layout_marginBottom="5dip">
+
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="跨城交通" android:onClick="searchButtonProcess" android:layout_marginRight="2dip" android:layout_marginLeft="2dip" android:id="@+id/mass"/>
+
+    <Button android:layout_height="wrap_content" android:layout_width="61dp" android:text="驾车" android:onClick="searchButtonProcess" android:layout_marginRight="2dip" android:layout_marginLeft="2dip" android:id="@+id/drive"/>
+
+    <Button android:layout_height="wrap_content" android:layout_width="61dp" android:text="公交" android:onClick="searchButtonProcess" android:layout_marginRight="2dip" android:layout_marginLeft="2dip" android:id="@+id/transit"/>
+
+    <Button android:layout_height="wrap_content" android:layout_width="61dp" android:text="步行" android:onClick="searchButtonProcess" android:layout_marginRight="2dip" android:layout_marginLeft="2dip" android:id="@+id/walk"/>
+
+    <Button android:layout_height="wrap_content" android:layout_width="61dp" android:text="骑行" android:onClick="searchButtonProcess" android:layout_marginRight="2dip" android:layout_marginLeft="2dip" android:id="@+id/bike"/>
+
+</LinearLayout>
+
+
+    -<RelativeLayout android:layout_height="match_parent" android:layout_width="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.baidu.mapapi.map.MapView android:layout_height="fill_parent" android:layout_width="fill_parent" android:id="@+id/map" android:clickable="true"/>
+
+
+    -<LinearLayout android:orientation="vertical" android:layout_height="wrap_content" android:layout_width="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android" android:layout_marginTop="10dip" android:layout_marginRight="10dp" android:layout_alignWithParentIfMissing="false" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+
+    <Button android:layout_height="fill_parent" android:layout_width="fill_parent" android:layout_marginTop="10dip" android:text="自定义起终点图标" android:onClick="changeRouteIcon" android:id="@+id/customicon" android:layout_weight="1.0"/>
+
+</LinearLayout>
+
+
+    -<LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android" android:layout_marginBottom="10dip" android:layout_alignWithParentIfMissing="false" android:layout_centerVertical="false" android:layout_centerHorizontal="true" android:layout_alignParentBottom="true">
+
+    <Button android:layout_height="fill_parent" android:layout_width="fill_parent" android:onClick="nodeClick" android:layout_marginRight="2dip" android:layout_marginLeft="2dip" android:id="@+id/pre" android:layout_weight="1.0" android:background="@drawable/pre_"/>
+
+    <Button android:layout_height="fill_parent" android:layout_width="fill_parent" android:onClick="nodeClick" android:layout_marginRight="2dip" android:layout_marginLeft="2dip" android:id="@+id/next" android:layout_weight="1.0" android:background="@drawable/next_"/>
+
+</LinearLayout>
+
+</RelativeLayout>
+
+</LinearLayout>

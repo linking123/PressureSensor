@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <GridView
+        android:id="@+id/gv_ques"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:choiceMode="singleChoice"
+        android:focusable="true"
+        android:numColumns="auto_fit" />
+
+    <TextView
+        android:id="@+id/tv_requirement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/btn_publish"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="发布服务需求"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_18" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.suncreate.fireiot.widget.SuperRefreshLayout
+            android:id="@+id/superRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout1"
+            android:visibility="gone">
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/transparent"
+                android:dividerHeight="0dp" />
+        </com.suncreate.fireiot.widget.SuperRefreshLayout>
+
+        <com.suncreate.fireiot.ui.empty.EmptyLayout
+            android:id="@+id/error_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </FrameLayout>
+</LinearLayout>

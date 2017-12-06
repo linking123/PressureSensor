@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/selector_item_list">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="48dp">
+
+        <com.suncreate.fireiot.widget.SuperRefreshLayout
+            android:id="@+id/superRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/transparent"
+                android:dividerHeight="0dp" />
+        </com.suncreate.fireiot.widget.SuperRefreshLayout>
+
+        <com.suncreate.fireiot.ui.empty.EmptyLayout
+            android:id="@+id/error_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_choose_supplier_all"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/white"
+            android:button="@null"
+            android:drawableLeft="@drawable/btn_check"
+            android:drawablePadding="@dimen/space_5"
+            android:paddingLeft="@dimen/space_20"
+            android:paddingRight="@dimen/space_20"
+            android:text="全选" />
+
+        <Button
+            android:id="@+id/btn_publish"
+            style="@style/button_common_red"
+            android:layout_alignParentBottom="true"
+            android:text="@string/requirement_publish_immediate" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+

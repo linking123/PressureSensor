@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teamlist_item_background_normal"
+    android:orientation="vertical">
+
+    <include layout="@layout/fragment_car_model" />
+
+    <!--<include layout="@layout/fragment_spinners_garage_header" />-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/tv_word_stations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon_master_technician_line3"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="工位数"
+            android:textColor="@color/gray" />
+
+        <ImageView
+            android:id="@+id/arrow2"
+            android:layout_width="10dp"
+            android:layout_height="7dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_diary_down" />
+
+        <TextView
+            android:id="@+id/user_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon_master_technician_line3"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="区域"
+            android:textColor="@color/gray" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="7dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_diary_down" />
+
+        <TextView
+            android:id="@+id/btn_dimensions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon_master_technician_line3"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="离我最近"
+            android:textColor="@color/gray" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="7dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_diary_down" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.suncreate.fireiot.widget.SuperRefreshLayout
+            android:id="@+id/superRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/transparent"
+                android:dividerHeight="0dp" />
+        </com.suncreate.fireiot.widget.SuperRefreshLayout>
+
+
+        <com.suncreate.fireiot.ui.empty.EmptyLayout
+            android:id="@+id/error_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+    </FrameLayout>
+</LinearLayout>

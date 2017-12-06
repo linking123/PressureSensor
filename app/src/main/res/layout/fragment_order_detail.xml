@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/teamlist_item_background_normal"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:id="@+id/rl_master_technician2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/layout6"
+                style="@style/arrow_rl_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/orderid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    tools:text="订单号：order20152621123112312311"
+                    android:textSize="@dimen/font_18" />
+
+                <View
+                    android:id="@+id/icon_master_technician_line8"
+                    style="@style/h_line_master"
+                    android:layout_below="@+id/orderid" />
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/icon_gps1"-->
+                    <!--android:layout_width="25dp"-->
+                    <!--android:layout_height="25dp"-->
+                    <!--android:layout_below="@+id/"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_marginTop="6dp"-->
+                    <!--app:srcCompat="@drawable/service_orders" />-->
+                <ImageView
+                    android:id="@+id/icon_order"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_below="@id/icon_master_technician_line8"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="6dp"
+                    app:srcCompat="@drawable/service_orders" />
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/icon_order"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@id/icon_order"
+                    android:text="状态："
+                    android:textSize="@dimen/text_size_16" />
+
+                <TextView
+                    android:id="@+id/tv_service_order_stat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/tv1"
+                    android:layout_toRightOf="@id/tv1"
+                    android:textColor="@color/orange_700"
+                    android:textSize="@dimen/text_size_16"
+                    tools:text="待报价" />
+
+                <View
+                    android:id="@+id/icon_master_technician_line9"
+                    style="@style/h_line_master"
+                    android:layout_height="10dp"
+                    android:layout_below="@+id/icon_order"
+                    android:layout_marginTop="10dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout7"
+                style="@style/arrow_rl_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout6">
+
+                <ImageView
+                    android:id="@+id/icon_gps"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="11dp"
+                    android:src="@drawable/gps" />
+
+                <TextView
+                    android:id="@+id/order_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_toRightOf="@+id/icon_gps"
+                    android:text="收货信息"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout1"
+                style="@style/arrow_rl_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout7"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/order_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="30dp"
+                    android:text=""
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/icon_master_technician_line3"
+                style="@style/h_line_master"
+                android:layout_height="10dp"
+                android:layout_below="@+id/layout1" />
+
+            <RelativeLayout
+                android:id="@+id/layout9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/icon_master_technician_line3"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp">
+
+                <ImageView
+                    android:id="@+id/tv_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/storeicon" />
+
+                <TextView
+                    android:id="@+id/store_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_toRightOf="@+id/tv_icon"
+                    android:text="" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/space_20"
+                    android:background="@color/transparent"
+                    android:src="@drawable/ic_item_goto_right_tip" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/icon_master_technician_line10"
+                style="@style/h_line_master"
+                android:layout_below="@+id/layout9" />
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/ui_dialog_list_text"
+                android:layout_below="@id/icon_master_technician_line10"
+                android:dividerHeight="0.3dp"/>
+
+            <RelativeLayout
+                android:id="@+id/layout3"
+                style="@style/arrow_rl_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/listView"
+                android:layout_marginBottom="10dp">
+
+                <View
+                    android:id="@+id/icon_master_technician_line4"
+                    style="@style/h_line_master" />
+
+                <TextView
+                    android:id="@+id/tv_master_technician_service"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/icon_master_technician_line4"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/actionbar_invoices"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/tv_invoice_choose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_master_technician_service"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="发票抬头："
+                    android:textSize="@dimen/font_14" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/icon_master_technician_line5"
+                style="@style/h_line_master"
+                android:layout_below="@id/layout3" />
+
+            <RelativeLayout
+                android:id="@+id/layout5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/order_goods_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/actionbar_goods_price"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/order_goods_price_show"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="￥69.00"
+                    android:textColor="@color/red" />
+
+                <TextView
+                    android:id="@+id/order_service_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/order_goods_price"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/actionbar_service_price"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/order_service_price_show"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/order_goods_price"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="+￥2.07"
+                    android:textColor="@color/red" />
+
+                <TextView
+                    android:id="@+id/order_trans_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/order_service_price"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/actionbar_tran_price"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/order_trans_price_show"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/order_service_price"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="+￥10.00"
+                    android:textColor="@color/red" />
+
+                <TextView
+                    android:id="@+id/order_amount_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/order_trans_price"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toLeftOf="@+id/order_amount_price_show"
+                    android:text="@string/actionbar_pay"
+                    android:textSize="@dimen/font_18" />
+
+                <TextView
+                    android:id="@+id/order_amount_price_show"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/order_trans_price"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="￥81.07"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/font_20" />
+
+                <TextView
+                    android:id="@+id/order_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/order_amount_price_show"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="下单时间："
+                    android:textSize="@dimen/font_14" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/icon_master_technician_line7"
+                style="@style/h_line_master"
+                android:layout_height="10dp"
+                android:layout_below="@+id/layout5"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/tv_master_technician_ensure1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/icon_master_technician_line7"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/actionbar_title_goods_explain"
+                android:textColor="@color/red" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <View
+        style="@style/h_line_master"
+        android:layout_marginTop="@dimen/space_15" />
+
+    <LinearLayout
+        android:id="@+id/layout8"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <include layout="@layout/layout_common_contact" />
+
+        <Button
+            android:id="@+id/btn_appointment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F23030"
+            android:text="@string/txt_shoppingcar_pay"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_20" />
+
+    </LinearLayout>
+</LinearLayout>

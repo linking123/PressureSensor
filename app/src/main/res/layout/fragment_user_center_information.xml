@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1px"
+        android:background="@color/list_divider_color"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/rl_my_name_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/layout_item_bg"
+        android:clickable="true"
+        android:padding="@dimen/space_16" >
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/space_4"
+            android:text="我的名称:"
+            android:textColor="?attr/infoTextColor"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_my_name_who"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/text"
+            android:text="李四"
+            android:textColor="?attr/textColor"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <View
+        style="@style/h_line" />
+
+    <RelativeLayout
+        android:id="@+id/rl_my_area_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/layout_item_bg"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/space_16" >
+
+        <TextView
+            android:id="@id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/space_4"
+            android:text="@string/location"
+            android:textColor="?attr/infoTextColor"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_my_address_where"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/text"
+            android:textColor="?attr/textColor"
+            android:textSize="@dimen/text_size_16"
+            android:text="安徽省 合肥市 蜀山区" />
+    </RelativeLayout>
+
+    <View
+        style="@style/h_line" />
+
+    <RelativeLayout
+        android:id="@+id/rl_phone_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?layout_item_bg"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/space_16" >
+
+        <TextView
+            android:id="@id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/space_4"
+            android:text="联系电话:"
+            android:textColor="?attr/infoTextColor"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_my_phone_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/text"
+            android:textColor="?attr/textColor"
+            android:textSize="@dimen/text_size_16"
+            android:text="1556656325444"/>
+    </RelativeLayout>
+
+    <View style="@style/h_line" />
+
+    <RelativeLayout
+        android:id="@+id/rl_qq_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/layout_item_bg"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/space_16" >
+
+        <TextView
+            android:id="@id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/space_4"
+            android:text="QQ号:"
+            android:textColor="?attr/infoTextColor"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_my_QQ_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/text"
+            android:textColor="?attr/textColor"
+            android:textSize="@dimen/text_size_16"
+            android:text="895655482"/>
+    </RelativeLayout>
+
+    <View style="@style/h_line" />
+
+    <RelativeLayout
+        android:id="@+id/rl_Email_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/layout_item_bg"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/space_16" >
+
+        <TextView
+            android:id="@id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/space_4"
+            android:text="Email:"
+            android:textColor="?attr/infoTextColor"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_my_Email_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/text"
+            android:textColor="?attr/textColor"
+            android:textSize="@dimen/text_size_16"
+            android:text="895655482@qq.com"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/h_line" />
+
+</LinearLayout>

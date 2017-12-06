@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teamlist_item_background_normal"
+    >
+    <RelativeLayout
+        android:id="@+id/layout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout4"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/goods_id"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="6dp"
+             />
+
+        <TextView
+            android:id="@+id/goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/goods_id"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/goods_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/goods_name"
+            android:paddingTop="@dimen/space_10"
+            android:layout_toRightOf="@+id/goods_id"
+            android:text=""
+            android:textColor="@color/red" />
+
+        <TextView
+            android:id="@+id/goods_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingTop="@dimen/space_10"
+            android:layout_below="@+id/goods_name"
+            android:layout_marginRight="10dp"
+            android:text="x1" />
+    </RelativeLayout>
+
+
+</LinearLayout>

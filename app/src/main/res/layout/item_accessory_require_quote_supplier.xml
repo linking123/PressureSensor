@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/space_4"
+    android:layout_marginTop="@dimen/space_4"
+    android:background="@drawable/selector_item_list"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_item_store_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="300dp"
+        android:singleLine="true"
+        android:textSize="@dimen/font_20"
+        tools:text="合肥奥奇商贸有限公司" />
+
+    <ImageView
+        android:id="@+id/iv_arrow_right"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_arrow_right" />
+
+    <TextView
+        android:id="@+id/tv_item_store_quote_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/space_6"
+        android:layout_toLeftOf="@id/iv_arrow_right"
+        tools:text="已报价" />
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_item_store_name"
+        android:layout_marginBottom="@dimen/space_4"
+        android:layout_marginTop="@dimen/space_6"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="报价时间：" />
+
+        <TextView
+            android:id="@+id/tv_item_store_quote_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            tools:text="2016-01-09 22:00" />
+    </LinearLayout>
+
+</RelativeLayout>

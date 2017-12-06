@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teamlist_item_background_normal"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_submit_report"
+        style="@style/button_common_blue"
+        android:layout_alignParentBottom="true"
+        android:text="@string/btn_submit" />
+
+    <ScrollView
+        android:layout_above="@+id/btn_submit_report"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/com_facebook_blue"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/space_10"
+                android:paddingLeft="@dimen/space_20"
+                android:paddingTop="@dimen/space_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="订单号："
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/tv_order_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    tools:text="201611291546486" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_title_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/space_10"
+                android:paddingLeft="@dimen/space_16"
+                android:paddingTop="@dimen/space_10">
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="服务后拍照时间：2017-12-12 10:12"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/light_gray"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/space_10"
+                android:paddingLeft="@dimen/space_20"
+                android:paddingTop="@dimen/space_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:text="旧件与车牌的合照" />
+
+                <TextView
+                    android:id="@+id/tv_take_photo_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/space_20"
+                    android:layout_weight="0.1"
+                    android:background="@color/label_red"
+                    android:padding="@dimen/space_5"
+                    android:text="拍照"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_report_photo_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/lay_12"
+                android:scaleType="center"
+                android:visibility="gone" />
+
+            <com.suncreate.fireiot.meidia.TweetPicturesPreviewer
+                android:id="@+id/recycler_images_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/lay_12"
+                app:imageCount="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/light_gray"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/space_10"
+                android:paddingLeft="@dimen/space_20"
+                android:paddingTop="@dimen/space_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:text="维修中工作照" />
+
+
+                <TextView
+                    android:id="@+id/tv_take_photo_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/space_20"
+                    android:layout_weight="0.1"
+                    android:background="@color/label_red"
+                    android:padding="@dimen/space_5"
+                    android:text="拍照"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_report_photo_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/lay_12"
+                android:scaleType="center"
+                android:visibility="gone" />
+
+            <com.suncreate.fireiot.meidia.TweetPicturesPreviewer
+                android:id="@+id/recycler_images_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/lay_12"
+                app:imageCount="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/light_gray"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/space_10"
+                android:paddingLeft="@dimen/space_20"
+                android:paddingTop="@dimen/space_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:text="报修竣工单(车主确认)" />
+
+
+                <TextView
+                    android:id="@+id/tv_take_photo_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/space_20"
+                    android:layout_weight="0.1"
+                    android:background="@color/label_red"
+                    android:padding="@dimen/space_5"
+                    android:text="拍照"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_report_photo_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/lay_12"
+                android:scaleType="center"
+                android:visibility="gone" />
+
+            <com.suncreate.fireiot.meidia.TweetPicturesPreviewer
+                android:id="@+id/recycler_images_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/lay_12"
+                app:imageCount="1" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

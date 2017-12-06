@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/layout_item_bg"
+            android:orientation="vertical"
+            android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/retrieve_verifyPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:hint="@string/tip_please_input_phone"
+            android:inputType="phone" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
+
+            <AutoCompleteTextView
+                android:id="@+id/retrieve_verifyCode"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/space_4"
+                android:layout_marginEnd="@dimen/space_4"
+                android:gravity="center_vertical"
+                android:hint="@string/tip_please_input_verify"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/retrieve_btn_getVerifyCode"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/retrieve_verifyCode"
+                android:layout_toEndOf="@id/retrieve_verifyCode"
+                android:background="@drawable/btn_send_selector"
+                android:text="@string/register_getVerifyCode"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/retrieve_nextStep"
+            style="@style/button_common_blue"
+            android:layout_marginTop="10dp"
+            android:text="@string/register_next"/>
+
+
+    </LinearLayout>
+
+</ScrollView>

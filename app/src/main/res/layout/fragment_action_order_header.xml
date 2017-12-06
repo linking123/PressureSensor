@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <com.suncreate.fireiot.widget.ActionHorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="horizontal">
+
+            <GridView
+                android:id="@+id/gv_ques"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:choiceMode="singleChoice"
+                android:focusable="true"
+                android:numColumns="auto_fit"
+                android:scrollbars="none" />
+
+            <View style="@style/v_line" />
+        </LinearLayout>
+    </com.suncreate.fireiot.widget.ActionHorizontalScrollView>
+
+    <View
+        android:id="@+id/order_header_view"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="1px"
+        android:background="@color/list_divider_color" />
+
+</LinearLayout>

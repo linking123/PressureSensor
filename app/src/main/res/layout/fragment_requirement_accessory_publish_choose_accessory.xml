@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/selector_item_list"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:id="@+id/ll_goods_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/space_10">
+
+        <TextView
+            android:id="@+id/tv_accessory_kind_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_5"
+            android:text="配件类别"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_18" />
+
+        <TextView
+            android:id="@+id/tv_accessory_kind_input"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="@dimen/space_10"
+            android:background="@null"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:hint="请点击选择配件类别"
+            android:padding="@dimen/space_5"
+            android:textSize="@dimen/font_16" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_line1"
+        style="@style/v_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/ll_goods_type"
+        android:layout_marginLeft="@dimen/space_10"
+        android:layout_marginStart="@dimen/space_10"
+        android:background="@color/list_divider_color" />
+
+    <LinearLayout
+        android:id="@+id/ll_goods_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v_line1"
+        android:orientation="horizontal"
+        android:padding="@dimen/space_10">
+
+        <TextView
+            android:id="@+id/tv_accessory_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_5"
+            android:text="配件名称"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_18" />
+
+        <EditText
+            android:id="@+id/et_accessory_name"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="@dimen/space_10"
+            android:layout_marginStart="@dimen/space_10"
+            android:background="@null"
+            android:hint="请输入配件名称"
+            android:padding="@dimen/space_5"
+            android:singleLine="true"
+            android:textSize="@dimen/font_14" />
+
+        <Button
+            android:id="@+id/btn_goods_add"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_10"
+            android:background="@drawable/btn_blue_selector"
+            android:padding="@dimen/space_5"
+            android:text="添加"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/v_line2"
+        style="@style/v_line"
+        android:layout_width="match_parent"
+        android:layout_height="13px"
+        android:layout_below="@+id/ll_goods_name"
+        android:background="@color/list_divider_color" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_require_accessory_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v_line2"
+        android:layout_marginTop="@dimen/space_5"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="配件分类"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="配件名称"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="数量"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_publish_require_accessory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:layout_marginLeft="@dimen/space_10"
+        android:layout_marginRight="@dimen/space_10"
+        android:layout_marginBottom="52dp"
+        android:scrollbars="none"
+        android:layout_below="@id/ll_require_accessory_title" />
+
+
+    <!--<TableLayout-->
+    <!--android:id="@+id/tl_title"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/space_5"-->
+    <!--android:layout_marginRight="@dimen/space_5"-->
+    <!--android:layout_marginTop="@dimen/space_5"-->
+    <!--android:stretchColumns="1,2,3">-->
+
+    <!--<TableRow>-->
+
+    <!--<TextView-->
+    <!--android:text=""-->
+    <!--android:textColor="@color/black"-->
+    <!--android:textSize="@dimen/font_16" />-->
+
+    <!--<TextView-->
+    <!--android:gravity="center"-->
+    <!--android:text="配件分类"-->
+    <!--android:textColor="@color/black"-->
+    <!--android:textSize="@dimen/font_16" />-->
+
+    <!--<TextView-->
+    <!--android:gravity="center"-->
+    <!--android:text="配件名称"-->
+    <!--android:textColor="@color/black"-->
+    <!--android:textSize="@dimen/font_16" />-->
+
+    <!--<TextView-->
+    <!--android:gravity="center"-->
+    <!--android:text="数量"-->
+    <!--android:textColor="@color/black"-->
+    <!--android:textSize="@dimen/font_16" />-->
+
+    <!--</TableRow>-->
+
+    <!--<TableRow-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="@dimen/space_5">-->
+
+    <!--<CheckBox-->
+    <!--android:id="@+id/cb_item_goods"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:checked="true" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_item_goods_type"-->
+    <!--android:gravity="center"-->
+    <!--android:text="雨刷条" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_item_goods_name"-->
+    <!--android:gravity="center"-->
+    <!--android:text="无骨雨刷条" />-->
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/ll_item_count"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/iv_item_count_minus"-->
+    <!--android:layout_width="20dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@drawable/selector_item_list"-->
+    <!--android:clickable="true"-->
+    <!--android:src="@drawable/minus" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView2"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="21"-->
+    <!--android:gravity="center"-->
+    <!--android:text="1" />-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/iv_item_count_add"-->
+    <!--android:layout_width="20dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@drawable/selector_item_list"-->
+    <!--android:clickable="true"-->
+    <!--android:src="@drawable/add" />-->
+    <!--</LinearLayout>-->
+
+    <!--</TableRow>-->
+
+    <!--</TableLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1">-->
+
+        <!--<CheckBox-->
+        <!--android:id="@+id/checkbox_choose_all"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="38dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginLeft="@dimen/space_20"-->
+        <!--android:layout_marginRight="@dimen/space_20"-->
+        <!--android:button="@null"-->
+        <!--android:checked="false"-->
+        <!--android:drawableLeft="@drawable/btn_check"-->
+        <!--android:drawablePadding="@dimen/space_5"-->
+        <!--android:text="全选" />-->
+
+        <!--<ImageButton-->
+        <!--android:id="@+id/btn_goods_del"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="38dp"-->
+        <!--android:background="@drawable/selector_item_list"-->
+        <!--android:src="@drawable/del_25" />-->
+
+        <!--</LinearLayout>-->
+
+        <Button
+            android:id="@+id/btn_choose_supplier"
+            style="@style/button_common_red"
+            android:layout_alignParentBottom="true"
+            android:text="@string/choose_accessory_provider" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+

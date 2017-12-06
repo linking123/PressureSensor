@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/teamlist_item_background_normal"
+    >
+
+    <RelativeLayout
+        android:id="@+id/layout1"
+        style="@style/arrow_rl_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/order_phone"
+        android:paddingBottom="10dp"
+        >
+        <CheckBox
+            android:id="@+id/storeid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:button="@drawable/checkbox_style"
+            android:layout_margin="10dp"
+            />
+        <TextView
+            android:id="@+id/storename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/storeid"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            tools:text="合肥汽宝车配"/>
+    </RelativeLayout>
+    <View style="@style/h_line_master"
+        android:id="@+id/icon_master_technician_line3"
+        android:layout_below="@+id/layout1"
+        />
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/ui_dialog_list_text"
+                android:dividerHeight="0.3dp"/>
+</LinearLayout>

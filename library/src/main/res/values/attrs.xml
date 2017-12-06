@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BannerHolder">
+        <attr name="viewHeight" format="dimension"/>
+        <attr name="indexStyle" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="HolderAttr">
+        <attr name="indicatorResId" format="reference"/>
+        <attr name="switchDuration" format="float"/>
+        <attr name="looperTime" format="float"/>
+        <attr name="isAutoLooper" format="boolean"/>
+        <attr name="isBackgroup" format="boolean"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/teamlist_item_background_normal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout1"
+        style="@style/arrow_rl_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/order_phone"
+        android:background="@drawable/btn_send_selector"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/tv_car_model_supplier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="奥迪进口" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/icon_master_technician_line3"
+        style="@style/h_line_master"
+        android:layout_below="@+id/layout1" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/ui_dialog_list_text"
+        android:dividerHeight="0.3dp" />
+
+</LinearLayout>

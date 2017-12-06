@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/selector_item_list"
+    android:orientation="vertical">
+
+    <include layout="@layout/fragment_car_model" />
+
+    <LinearLayout
+        android:id="@+id/layout_loop"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@drawable/selector_item_list"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/selector_item_list"
+        android:orientation="vertical">
+
+        <View style="@style/h_line_master" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:background="@drawable/selector_item_list"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/rl_master_technician"
+                style="@style/master_rl_style"
+                android:background="@drawable/selector_item_list">
+
+                <RelativeLayout style="@style/master_rl2_style">
+
+                    <ImageView
+                        android:id="@+id/icon_master_technician"
+                        style="@style/master_icon_style"
+                        android:src="@drawable/technician" />
+
+                    <TextView
+                        android:id="@+id/txt_master_technician"
+                        style="@style/master_txt_style"
+                        android:layout_below="@id/icon_master_technician"
+                        android:text="@string/str_technician" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <View style="@style/v_line_master" />
+
+            <RelativeLayout
+                android:id="@+id/rl_master_accessories"
+                style="@style/master_rl_style"
+                android:background="@drawable/selector_item_list">
+
+                <RelativeLayout style="@style/master_rl2_style">
+
+                    <ImageView
+                        android:id="@+id/icon_master_accessories"
+                        style="@style/master_icon_style"
+                        android:src="@drawable/accessories" />
+
+                    <TextView
+                        android:id="@+id/txt_master_accessories"
+                        style="@style/master_txt_style"
+                        android:layout_below="@id/icon_master_accessories"
+                        android:text="@string/str_accessories" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View style="@style/h_line_master" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/rl_master_repair"
+                style="@style/master_rl_style"
+                android:background="@drawable/selector_item_list">
+
+                <RelativeLayout style="@style/master_rl2_style">
+
+                    <ImageView
+                        android:id="@+id/icon_master_repair"
+                        style="@style/master_icon_style"
+                        android:src="@drawable/repair" />
+
+                    <TextView
+                        android:id="@+id/txt_master_repair"
+                        style="@style/master_txt_style"
+                        android:layout_below="@id/icon_master_repair"
+                        android:text="@string/str_repair" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <View style="@style/v_line_master" />
+
+            <RelativeLayout
+                android:id="@+id/rl_master_detection"
+                style="@style/master_rl_style"
+                android:background="@drawable/selector_item_list">
+
+                <RelativeLayout style="@style/master_rl2_style">
+
+                    <ImageView
+                        android:id="@+id/icon_master_detection"
+                        style="@style/master_icon_style"
+                        android:src="@drawable/detection" />
+
+                    <TextView
+                        android:id="@+id/txt_master_detection"
+                        style="@style/master_txt_style"
+                        android:layout_below="@id/icon_master_detection"
+                        android:text="@string/str_repairshop" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View style="@style/h_line_master" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/rl_master_insurance"
+                style="@style/master_rl_style"
+                android:background="@drawable/selector_item_list"
+                >
+
+                <RelativeLayout style="@style/master_rl2_style">
+
+                    <ImageView
+                        android:id="@+id/icon_master_insurance"
+                        style="@style/master_icon_style2"
+                        android:src="@drawable/insurance" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_toRightOf="@id/icon_master_insurance"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txt_master_insurance"
+                            style="@style/master_txt_style2"
+                            android:text="@string/str_insurance" />
+
+                        <TextView
+                            android:id="@+id/txt_master_insurance_desc"
+                            style="@style/master_txt2_style2"
+                            android:text="@string/str_insurance_desc" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+            <View style="@style/v_line_master" />
+
+            <RelativeLayout
+                android:id="@+id/rl_master_place"
+                style="@style/master_rl_style"
+                android:background="@drawable/selector_item_list">
+
+                <RelativeLayout
+                    style="@style/master_rl2_style">
+
+                    <ImageView
+                        android:id="@+id/icon_master_place"
+                        style="@style/master_icon_style2"
+                        android:src="@drawable/parking" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_toRightOf="@id/icon_master_place"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txt_master_place"
+                            style="@style/master_txt_style2"
+                            android:text="@string/str_place" />
+
+                        <TextView
+                            android:id="@+id/txt_master_place_desc"
+                            style="@style/master_txt2_style2"
+                            android:text="@string/str_place_desc" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <View style="@style/v_line_master" />
+
+            <RelativeLayout
+                android:id="@+id/rl_master_report"
+                style="@style/master_rl_style"
+                android:background="@drawable/selector_item_list">
+
+                <RelativeLayout
+                    android:id="@+id/rl_book_parkinglot"
+                    style="@style/master_rl2_style">
+
+                    <ImageView
+                        android:id="@+id/icon_master_report"
+                        style="@style/master_icon_style2"
+                        android:src="@drawable/report" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_toRightOf="@id/icon_master_report"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txt_master_report"
+                            style="@style/master_txt_style2"
+                            android:text="@string/str_report" />
+
+                        <TextView
+                            android:id="@+id/txt_master_report_desc"
+                            style="@style/master_txt2_style2"
+                            android:text="@string/str_report_desc" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

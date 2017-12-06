@@ -1,0 +1,29 @@
+<fireiot>
+	<update>
+		<!--<wp7>1.0</wp7>-->
+		<ios>
+			<versionCode>1000</versionCode>
+			<versionName>V 2.0.0</versionName>
+		</ios>
+		<android>
+			<versionCode>1000</versionCode>
+			<versionName>V 2.0.0</versionName>
+			<downloadUrl>
+				http://127.0.0.1:8080/wkcarapi/common/fireiot.apk
+			</downloadUrl>
+			<updateLog>
+			<![CDATA[悟空车服网for Android V2.0.0<br/>
+			<br/> 更新日志：
+			<br/> * Android客户端全新改版
+			<br/> * 优化用户体验
+			<br/>
+			<br/> 安装包大小：0.0MB
+			]]>
+			</updateLog>
+			<coverUpdate>false</coverUpdate>
+			<coverStartDate>2016-12-15</coverStartDate>
+			<coverEndDate>2016-12-15</coverEndDate>
+			<coverURL/>
+		</android>
+	</update>
+</fireiot>

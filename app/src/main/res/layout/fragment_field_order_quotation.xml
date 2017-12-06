@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teamlist_item_background_normal">
+
+
+        <LinearLayout
+            android:id="@+id/ll_order_quotation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/com_facebook_blue"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/space_10"
+                android:paddingLeft="@dimen/space_16"
+                android:paddingTop="@dimen/space_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="订单号："
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/tv_order_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="201611291546486"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_title_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/space_10"
+            android:paddingLeft="@dimen/space_16"
+            android:paddingTop="@dimen/space_10">
+        <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="填写报价单时间：2017-12-12 10:12"
+            />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_title_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_green_50"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/space_10"
+                android:paddingLeft="@dimen/space_16"
+                android:paddingTop="@dimen/space_10">
+                <TextView
+                    android:id="@+id/tv_title_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:text="纸质报价单(1张)"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/tv_take_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/space_16"
+                    android:layout_weight="0.1"
+                    android:background="@drawable/btn_red_selector"
+                    android:padding="@dimen/space_5"
+                    android:text="@string/str_take_photo"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_report_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/lay_12"
+                android:scaleType="center"/>
+
+            <com.suncreate.fireiot.meidia.TweetPicturesPreviewer
+                android:id="@+id/recycler_images"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/lay_12"
+                app:imageCount="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_green_50"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/space_10"
+                android:paddingLeft="@dimen/space_16"
+                android:paddingTop="@dimen/space_10">
+
+                <TextView
+                    android:id="@+id/tv_title_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:text="手动填写报价单 单位(:元)"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_16" />
+
+                <!--总计-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="总计："
+                    android:textColor="@color/label_red" />
+
+                <TextView
+                    android:id="@+id/tv_total_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/space_16"
+                    android:background="@color/label_red"
+                    android:padding="@dimen/space_5"
+                    android:text="0元"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <!--以下为简单列出四大类报价单项目，在一期先用着-->
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_20"
+                android:layout_marginLeft="@dimen/space_5"
+                android:layout_marginRight="@dimen/space_5"
+                android:layout_marginTop="@dimen/space_5">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_25"
+                    android:padding="@dimen/space_3">
+
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="工位费"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16" />
+                    <EditText
+                        android:id="@+id/et_place_amount"
+                        style="@style/et_amount_style"
+                        android:imeOptions="actionNext" />
+                    <TextView
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="辅料费"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16"
+                        android:visibility="gone"
+                        />
+                    <TextView
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="配件费"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16"
+                        android:visibility="invisible"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_6"
+                    android:visibility="gone"
+                    >
+
+                    <EditText
+                        android:id="@+id/et_parts_amount"
+                        style="@style/et_amount_style"
+                        android:imeOptions="actionNext"
+                        android:visibility="gone"
+                        />
+
+                    <EditText
+                        android:id="@+id/et_working_amount"
+                        style="@style/et_amount_style"
+                        android:imeOptions="actionNext"
+                        android:visibility="invisible"
+                        />
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/et_place_amount"-->
+                        <!--style="@style/et_amount_style"-->
+                        <!--android:imeOptions="actionNext" />-->
+
+                    <EditText
+                        android:id="@+id/et_accessory_amount"
+                        style="@style/et_amount_style"
+                        android:imeOptions="actionDone"
+                        android:visibility="invisible"
+                        />
+
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_upload_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_order_quotation"
+            android:text="注：若重新提交报价单，请重新上传纸质报价单照片"
+            android:textSize="@dimen/font_12"
+            android:layout_marginLeft="@dimen/space_12"
+            android:textColor="@color/label_red"
+            android:visibility="gone"
+            tools:visibility="visible"
+            />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/tv_upload_tip"
+            android:gravity="bottom">
+            <Button
+                android:id="@+id/btn_submit_report"
+                style="@style/button_common_blue"
+                android:text="@string/btn_submit" />
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

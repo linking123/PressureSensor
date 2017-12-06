@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/teamlist_item_background_normal"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rl_master_technician"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/layout1"
+                style="@style/arrow_rl_style"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <ImageView
+                    android:id="@+id/tv_icon1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:background="@drawable/goods_orders" />
+
+                <TextView
+                    android:id="@+id/order_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/tv_icon1"
+                    android:text="@string/goods_orders"
+                    android:textSize="@dimen/font_18"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/tv_arrow_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/ic_arrow_right" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/line1"
+                style="@style/h_line_master"
+                android:layout_below="@+id/layout1" />
+
+            <RelativeLayout
+                android:id="@+id/layout2"
+                style="@style/arrow_rl_style"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/line1">
+
+                <ImageView
+                    android:id="@+id/tv_icon2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/service_orders" />
+
+                <TextView
+                    android:id="@+id/order_name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/tv_icon2"
+                    android:text="@string/service_orders"
+                    android:textSize="@dimen/font_18"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/tv_arrow_right2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/ic_arrow_right" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/line2"
+                style="@style/h_line_master"
+                android:layout_below="@+id/layout2" />
+
+            <RelativeLayout
+                android:id="@+id/layout3"
+                style="@style/arrow_rl_style"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/line2">
+
+                <ImageView
+                    android:id="@+id/tv_icon3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/place_orders" />
+
+                <TextView
+                    android:id="@+id/order_name3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/tv_icon3"
+                    android:text="@string/place_orders"
+                    android:textSize="@dimen/font_18"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/tv_arrow_right3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/ic_arrow_right" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/line3"
+                style="@style/h_line_master"
+                android:layout_below="@+id/layout3" />
+
+            <RelativeLayout
+                android:id="@+id/layout4"
+                style="@style/arrow_rl_style"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/line3">
+
+                <ImageView
+                    android:id="@+id/tv_icon4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/school_orders" />
+
+                <TextView
+                    android:id="@+id/order_name4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/tv_icon4"
+                    android:text="@string/school_orders"
+                    android:textSize="@dimen/font_18"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/tv_arrow_right4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/ic_arrow_right" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/line4"
+                style="@style/h_line_master"
+                android:layout_below="@+id/layout4" />
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

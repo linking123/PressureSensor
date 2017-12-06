@@ -1,0 +1,367 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.suncreate.fireiot.fragment.LoginRegister.RegisterFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical">
+
+        <!-- 选择注册角色，横行样式 -->
+        <RadioGroup
+            android:id="@+id/reg_radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:orientation="horizontal">
+
+            <!-- 车主，选择后需要隐藏部分模块 -->
+            <RadioButton
+                android:id="@+id/reg_carOwner"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="@drawable/selector_role_choose_bg"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="@string/register_tobe_carOwner"
+                android:textColor="@color/color_radiobutton"
+                android:textSize="16sp" />
+
+            <!--<View style="@style/v_line"-->
+            <!--android:layout_width="0.1dp"-->
+            <!--android:background="@color/gray" />-->
+
+            <RadioButton
+                android:id="@+id/reg_technician"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="@drawable/selector_role_choose_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/register_tobe_technician"
+                android:textColor="@color/color_radiobutton"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/reg_repairShop"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="@drawable/selector_role_choose_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/register_tobe_repairShop"
+                android:textColor="@color/color_radiobutton"
+                android:textSize="16sp" />
+
+        </RadioGroup>
+
+        <view
+            style="@style/h_line"
+            class="com.suncreate.fireiot.widget.FloorView"
+            android:layout_height="@dimen/space_1" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:background="?attr/layout_item_bg"
+        android:orientation="vertical"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_20"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/space_6"
+                android:paddingBottom="@dimen/space_6"
+                android:paddingLeft="@dimen/space_15"
+                android:paddingRight="@dimen/space_15">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/space_10">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/register_verifyPhone"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/space_4"
+                        android:layout_marginRight="@dimen/space_4"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="@string/tip_please_input_phone"
+                        android:inputType="number"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/register_getVerifyCode"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/btn_send_verifycode_selector"
+                        android:enabled="false"
+                        android:padding="@dimen/space_5"
+                        android:text="@string/register_getVerifyCode"
+                        tools:text="重新获取(99秒)" />
+
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="bottom"
+                    android:background="?attr/lineColor" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/register_verifyCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/tip_please_input_verify"
+                    android:inputType="phone"
+                    android:padding="@dimen/space_10"
+                    android:textSize="16sp" />
+
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="bottom"
+                    android:background="?attr/lineColor" />
+
+                <LinearLayout
+                    android:id="@+id/reg_addressBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <!-- 选择三级行政区 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="1">
+
+                        <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="@string/reg_areaSelect_text"-->
+                        <!--android:textSize="16sp" />-->
+
+                        <TextView
+                            android:id="@+id/reg_user_area"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:drawableEnd="@drawable/ic_arrow_right"
+                            android:drawableRight="@drawable/ic_arrow_right"
+                            android:hint="请选择区域"
+                            android:paddingEnd="5dp"
+                            android:paddingLeft="@dimen/space_10"
+                            android:paddingRight="5dp"
+                            android:paddingStart="@dimen/space_10"
+                            android:textSize="@dimen/font_16" />
+
+                    </LinearLayout>
+
+                    <!-- 详细地址 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:weightSum="1">
+
+                        <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="@string/reg_detailAddress_text"-->
+                        <!--android:textSize="16sp" />-->
+
+                        <AutoCompleteTextView
+                            android:id="@+id/reg_detailAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@null"
+                            android:gravity="center_vertical"
+                            android:hint="@string/reg_detailAddress_input"
+                            android:padding="@dimen/space_10"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/line3"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_gravity="bottom"
+                        android:background="?attr/lineColor" />
+
+                </LinearLayout>
+
+
+                <!-- 技师姓名 -->
+                <LinearLayout
+                    android:id="@+id/reg_tech_name_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:gravity="left|center"-->
+                    <!--android:text="@string/reg_tech_truename"-->
+                    <!--android:textSize="16sp" />-->
+
+                    <AutoCompleteTextView
+                        android:id="@+id/reg_tech_true_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="@string/reg_trueName"
+                        android:padding="@dimen/space_10"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:id="@+id/line4"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_gravity="bottom"
+                        android:background="?attr/lineColor" />
+
+                </LinearLayout>
+
+                <!-- 快修站名称 -->
+                <LinearLayout
+                    android:id="@+id/reg_garage_name_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:gravity="left|center"-->
+                    <!--android:text="@string/reg_garage_name"-->
+                    <!--android:textSize="16sp" />-->
+
+                    <!--<AutoCompleteTextView
+                        android:id="@+id/reg_garage_true_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="@string/reg_garage_name_hint"
+                        android:padding="@dimen/space_10"
+                        android:textSize="16sp" />-->
+
+                    <View
+                        android:id="@+id/line5"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_gravity="bottom"
+                        android:background="?attr/lineColor" />
+
+                </LinearLayout>
+
+                <!-- 输入密码 -->
+
+
+                <LinearLayout
+                    android:layout_width="321dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="@string/reg_password"-->
+                    <!--android:textSize="16sp" />-->
+
+                    <AutoCompleteTextView
+                        android:id="@+id/reg_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:hint="@string/tip_please_input_password"
+                        android:inputType="textPassword"
+                        android:padding="@dimen/space_10"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/btn_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/password_select" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_30"
+                    android:layout_marginRight="@dimen/space_30"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btn_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="38dp"
+                        android:background="@drawable/btn_send_verifycode_selector"
+                        android:enabled="false"
+                        android:padding="@dimen/space_5"
+                        android:text="@string/btn_register_Submit"
+                        android:textSize="@dimen/space_20"/>
+
+                    <CheckBox
+                        android:id="@+id/reg_protocol"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="-7dp"
+                        android:layout_marginStart="-7dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/count_text_color_light"
+                        android:checked="false" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_item_list"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingTop="8dp"
+    android:visibility="visible"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/space_10">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="4dp">
+
+            <com.suncreate.fireiot.widget.CircleImageView
+                android:id="@+id/civ_icon_avatar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/widget_dface" />
+
+            <TextView
+                android:id="@+id/tv_carowner_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/civ_icon_avatar"
+                android:maxLines="1"
+                android:text="悟空1号（车主姓名）"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/iv_icon_qiang"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/buy" />
+
+            <TextView
+                android:id="@+id/tv_car_model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rb_tech_item_rating"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@+id/civ_icon_avatar"
+                android:drawableLeft="@drawable/car"
+                android:text="别克昂科拉(车型)"
+                android:textSize="14.0dip" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_publish_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/time"
+            android:drawablePadding="@dimen/space_5"
+            android:text="今天08:20（时间）" />
+
+        <TextView
+            android:id="@+id/tv_server_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/start"
+            android:drawablePadding="@dimen/space_5"
+            android:text="保利.香槟国际（地址）" />
+
+        <TextView
+            android:id="@+id/tv_server_project"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/end"
+            android:drawablePadding="@dimen/space_5"
+            android:text="车胎爆了，汽车电动车窗突然自动下降（描述）" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teamlist_item_background_normal"
+    android:orientation="vertical">
+
+    <include layout="@layout/fragment_car_model" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/btn_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon_master_technician_line3"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="所有类别"
+            android:textColor="@color/gray" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="7dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_diary_down" />
+
+        <TextView
+            android:id="@+id/btn_brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon_master_technician_line3"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="品牌"
+            android:textColor="@color/gray" />
+
+        <ImageView
+            android:id="@+id/arrow2"
+            android:layout_width="10dp"
+            android:layout_height="7dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_diary_down" />
+
+        <TextView
+            android:id="@+id/user_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon_master_technician_line3"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="区域"
+            android:textColor="@color/gray" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="7dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_diary_down" />
+
+        <TextView
+            android:id="@+id/btn_dimensions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon_master_technician_line3"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="评价最高"
+            android:textColor="@color/gray" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="7dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_diary_down" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/icon_line_1"
+        style="@style/h_line_master"
+        android:layout_below="@+id/iv_search" />
+
+    <LinearLayout
+        android:id="@+id/goods_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/space_2"
+        android:layout_marginTop="@dimen/space_2"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_normal_radius"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:id="@+id/search_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/search_icon" />
+
+            <com.suncreate.fireiot.util.EditTextWithDel
+                android:id="@+id/et_search"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/search_icon"
+                android:background="@null"
+                android:hint="@string/write_goods_search"
+                android:imeOptions="actionGo"
+                android:paddingLeft="5dp"
+                android:textColorHint="@color/edittext_hint_color"
+                android:textSize="@dimen/text_size_14"
+                tools:text="afdfdafasfasdfsadfdafasfasdfsadfd" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/bt_search"
+            style="@style/button_common_blue"
+            android:layout_width="50dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/et_search"
+            android:text="@string/actionbar_title_search" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/icon_line_2"
+        style="@style/h_line_master"
+        android:layout_below="@+id/iv_search" />
+
+    <FrameLayout
+        android:id="@+id/goods_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.suncreate.fireiot.widget.SuperRefreshLayout
+            android:id="@+id/superRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/ui_dialog_list_text"
+                android:dividerHeight="0.3dp" />
+        </com.suncreate.fireiot.widget.SuperRefreshLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_goods_type"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></FrameLayout>
+
+        <com.suncreate.fireiot.ui.empty.EmptyLayout
+            android:id="@+id/error_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+    </FrameLayout>
+</LinearLayout>

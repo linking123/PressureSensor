@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/teamlist_item_background_normal"
+    >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <com.suncreate.fireiot.widget.SuperRefreshLayout
+            android:id="@+id/superRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/ui_dialog_list_text"
+                android:dividerHeight="0.3dp" />
+        </com.suncreate.fireiot.widget.SuperRefreshLayout>
+
+
+        <com.suncreate.fireiot.ui.empty.EmptyLayout
+            android:id="@+id/error_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+    </FrameLayout>
+    <RelativeLayout
+        android:id="@+id/layout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout1"
+        >
+    <CheckBox
+        android:id="@+id/cb4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:button="@drawable/checkbox_style"
+        android:layout_marginLeft="10dp"
+        android:gravity="bottom"
+        android:text="全选"
+        />
+        <TextView
+            android:id="@+id/tvids"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+    <TextView
+        android:id="@+id/sum_goods_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:text="合计：￥0.0"
+        android:gravity="bottom"
+        android:textSize="@dimen/font_20"
+        android:textColor="@color/red"
+        android:layout_alignParentRight="true"
+        />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/btn_del"
+            style="@style/button_common_blue"
+            android:layout_marginTop="10dp"
+            android:text="@string/delete"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/btn_save"
+            style="@style/button_common_red"
+            android:layout_marginTop="10dp"
+            android:text="@string/txt_shoppingcar_pay"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+</LinearLayout>

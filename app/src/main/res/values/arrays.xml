@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string-array name="news_viewpage_arrays">
+        <item>资讯</item>
+        <item>热点</item>
+        <item>博客</item>
+        <item>推荐</item>
+    </string-array>
+    <string-array name="general_viewpage_arrays">
+        <item>资讯</item>
+        <item>博客</item>
+        <item>问答</item>
+        <item>活动</item>
+    </string-array>
+    <string-array name="order_viewpager_arrays">
+        <item>配件订单</item>
+        <item>服务订单</item>
+        <item>场地订单</item>
+    </string-array>
+    <string-array name="requirement_viewpager_arrays">
+        <item>服务需求</item>
+        <item>配件需求</item>
+    </string-array>
+    <string-array name="tech_home_viewpager_arrays">
+        <item>附近服务需求</item>
+        <item>买配件</item>
+        <item>租工位</item>
+    </string-array>
+    <string-array name="garage_home_viewpager_arrays">
+        <item>附近服务需求</item>
+        <item>买配件</item>
+        <item>找技师</item>
+    </string-array>
+    <string-array name="tech_requirement_viewpager_arrays">
+        <item>服务订单</item>
+        <item>配件订单</item>
+        <item>场地订单</item>
+    </string-array>
+    <string-array name="main_titles_arrays">
+        <item>@string/app_name</item>
+        <item>@string/main_tab_name_tweet</item>
+        <item>@string/main_tab_name_explore</item>
+        <item>@string/main_tab_name_my</item>
+    </string-array>
+    <string-array name="tech_main_titles_arrays">
+        <item>@string/app_name</item>
+        <item>@string/main_tab_name_tweet</item>
+        <item>@string/main_tab_name_explore</item>
+        <item>@string/main_tab_name_my</item>
+    </string-array>
+    <string-array name="tweets_viewpage_arrays">
+        <item>最新动弹</item>
+        <item>热门动弹</item>
+        <item>我的动弹</item>
+    </string-array>
+    <string-array name="quests_viewpage_arrays">
+        <item>提问</item>
+        <item>分享</item>
+        <item>综合</item>
+        <item>职业</item>
+        <item>站务</item>
+    </string-array>
+    <string-array name="blogs_viewpage_arrays">
+        <item>最新博客</item>
+        <item>推荐阅读</item>
+    </string-array>
+    <string-array name="mymes_viewpage_arrays">
+        <item>\@我</item>
+        <item>评论</item>
+        <item>私信</item>
+        <item>粉丝</item>
+        <item>赞过我</item>
+    </string-array>
+
+    <string-array name="choose_picture">
+        <item>相册</item>
+        <item>相机</item>
+    </string-array>
+
+    <string-array name="opensourcesoftware">
+        <item>分类</item>
+        <item>推荐</item>
+        <item>最新</item>
+        <item>热门</item>
+        <item>国产</item>
+    </string-array>
+
+    <string-array name="userfavorite">
+        <item>软件</item>
+        <item>话题</item>
+        <item>代码</item>
+        <item>博客</item>
+        <item>资讯</item>
+    </string-array>
+
+    <string-array name="search">
+        <item>配件</item>
+        <item>配件商</item>
+        <item>技师</item>
+        <item>快修站</item>
+    </string-array>
+
+    <string-array name="search_tech">
+        <item>配件</item>
+        <item>配件商</item>
+        <item>快修站</item>
+    </string-array>
+
+    <string-array name="search_field">
+        <item>配件</item>
+        <item>配件商</item>
+        <item>技师</item>
+    </string-array>
+    <string-array name="friends_viewpage_arrays">
+        <item>关注</item>
+        <item>粉丝</item>
+    </string-array>
+
+    <string-array name="message_list_options">
+        <item>复制</item>
+        <item>删除</item>
+    </string-array>
+
+    <string-array name="report_reason">
+        <item>广告</item>
+        <item>色情</item>
+        <item>翻墙</item>
+        <item>非IT话题</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+
+    <string-array name="events">
+        <item>近期活动</item>
+        <item>我的活动</item>
+    </string-array>
+
+    <string-array name="avatar_option">
+        <item>更换头像</item>
+        <item>查看大头像</item>
+    </string-array>
+
+    <string-array name="font_size">
+        <item>特大号字</item>
+        <item>大号字</item>
+        <item>中号字</item>
+        <item>小号字</item>
+    </string-array>
+
+    <!--created by fei 20160524-->
+    <array name="technician_order_item">
+        <item>全部服务</item>
+        <!--<item>新发布</item>-->
+        <!--<item>已接单</item>-->
+        <item>待服务</item>
+        <item>服务中</item>
+        <item>待结算</item>
+        <!--<item>待评价</item>-->
+        <item>已完成</item>
+        <item>已取消</item>
+    </array>
+
+    <array name="ques_item">
+        <item>提问</item>
+        <item>分享</item>
+        <item>综合</item>
+        <item>职业</item>
+        <item>站务</item>
+    </array>
+
+    <array name="service_order_item">
+        <item>全部</item>
+        <item>待报价</item>
+        <item>待确认</item>
+        <!--<item>服务中</item>-->
+        <item>待结算</item>
+        <item>待评价</item>
+        <!--<item>已评价</item>-->
+        <!--<item>已取消</item>-->
+    </array>
+
+    <array name="field_order_item">
+        <item>全部</item>
+        <item>已预约</item>
+        <item>待结算</item>
+        <item>待评价</item>
+        <!--<item>已取消</item>-->
+    </array>
+
+    <array name="accessory_order_item">
+        <item>全部</item>
+        <item>待付款</item>
+        <item>待发货</item>
+        <item>待收货</item>
+        <item>待评价</item>
+        <!--<item>已完成</item>-->
+        <!--<item>已取消</item>-->
+        <!--<item>退货退款</item>-->
+        <!--<item>投诉</item>-->
+    </array>
+
+    <array name="service_requirement_item">
+        <item>全  部</item>
+        <item>新发布</item>
+        <item>已接单</item>
+    </array>
+
+    <array name="site_order_item">
+        <item>待结算</item>
+        <item>已结算</item>
+    </array>
+
+    <!--<array name="accessory_requirement_item">-->
+    <!--<item>询价单</item>-->
+    <!--<item>报价单</item>-->
+    <!--</array>-->
+
+    <array name="accessory_requirement_item">
+        <item>全  部</item>
+        <item>新发布</item>
+        <item>已报价</item>
+        <!--<item>已确认</item>-->
+        <!--<item>已确认</item>-->
+        <!--<item>已拒绝</item>-->
+        <!--<item>已失效</item>-->
+    </array>
+
+    <array name="garage_level_item">
+        <item>快修站类别</item>
+        <item>社区快修站</item>
+        <item>区域服务站</item>
+    </array>
+    <array name="field_level_item">
+        <item>工位数</item>
+        <item>1-3个</item>
+        <item>4-6个</item>
+        <item>7个以上</item>
+    </array>
+
+    <array name="service_item">
+        <item>服务分类</item>
+        <item>汽车维修</item>
+        <item>保养维护</item>
+        <item>美容装饰</item>
+        <item>安装改装</item>
+    </array>
+
+    <array name="technician_level_item">
+        <item>级别</item>
+        <item>初级</item>
+        <item>中级</item>
+        <item>高级</item>
+    </array>
+
+    <array name="technician_category_item">
+        <item>技师类别</item>
+        <item>机修</item>
+        <item>钣金喷漆</item>
+        <item>电器</item>
+        <item>美容改装</item>
+    </array>
+
+    <array name="technician_dimensions_item">
+        <item>离我最近</item>
+        <item>评价最高</item>
+        <item>接单最多</item>
+    </array>
+
+    <array name="field_area">
+        <item>全城</item>
+        <item>庐阳区</item>
+        <item>瑶海区</item>
+        <item>蜀山区</item>
+        <item>包河区</item>
+    </array>
+
+    <array name="field_category_item">
+        <item>全部服务</item>
+        <item>汽车维修</item>
+        <item>保养维护</item>
+        <item>美容装饰</item>
+        <item>安装改装</item>
+    </array>
+
+    <array name="field_dimensions_item">
+        <item>离我最近</item>
+        <item>价格由高到低</item>
+        <item>价格由低到高</item>
+        <item>工位数由多到少</item>
+        <item>工位数由少到多</item>
+    </array>
+
+    <string-array name="hot_city">
+        <item>合肥</item>
+    </string-array>
+
+    <string-array name="city_stations">
+        <item>安庆站</item>
+        <item>北京站</item>
+        <item>蚌埠站</item>
+        <item>亳州站</item>
+        <item>滁州站</item>
+        <item>巢湖站</item>
+        <item>池州站</item>
+        <item>阜阳站</item>
+        <item>杭州站</item>
+        <item>合肥站</item>
+        <item>淮南站</item>
+        <item>淮北站</item>
+        <item>黄山站</item>
+        <item>六安站</item>
+        <item>马鞍山站</item>
+        <item>石家庄站</item>
+        <item>宿州站</item>
+        <item>天津站</item>
+        <item>唐山站</item>
+        <item>铜陵站</item>
+        <item>芜湖站</item>
+        <item>宣城站</item>
+        <item>云浮站</item>
+        <item>贺州站</item>
+        <item>河池站</item>
+        <item>来宾站</item>
+    </string-array>
+
+    <array name="car_brands">
+        <item>宝马</item>
+        <item>奥迪</item>
+        <item>奔驰</item>
+        <item>别克</item>
+        <item>标致</item>
+        <item>大众</item>
+        <item>丰田</item>
+        <item>福特</item>
+        <item>奇瑞</item>
+        <item>雷克萨斯</item>
+    </array>
+    
+    <array name="hot_car_brand">
+        <item>大众</item>
+        <item>奥迪</item>
+        <item>别克</item>
+        <item>标致</item>
+    </array>
+
+    <array name="financial_states">
+        <item>全部</item>
+        <item>收入</item>
+        <item>支出</item>
+        <!--<item>充值</item>-->
+        <!--<item>管理员充值</item>-->
+        <!--<item>提现</item>-->
+        <!--<item>消费</item>-->
+        <!--<item>服务</item>-->
+        <!--<item>退款</item>-->
+        <!--<item>手动修改</item>-->
+    </array>
+
+    <array name="msg">
+        <item>客服热线</item>
+        <item>在线消息</item>
+    </array>
+
+    <array name="area_short">
+        <item>皖</item>
+        <item>苏</item>
+        <item>沪</item>
+        <item>浙</item>
+    </array>
+
+    <array name="area_code">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </array>
+</resources>

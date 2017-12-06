@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingTop="8dp"
+    android:visibility="visible"
+    android:background="@color/teamlist_item_background_normal"
+    android:weightSum="1">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp">
+                <TextView
+                    android:id="@+id/address_trueName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:textSize="@dimen/font_18"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    tools:text="李女士"
+                   />
+
+                <TextView
+                    android:id="@+id/address_mobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/address_trueName"
+                    android:textSize="@dimen/font_18"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    tools:text="13966667777"
+                    />
+                <ImageView
+
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/icon_role_choose"
+                    android:layout_toRightOf="@id/address_mobile"
+                    android:id="@+id/address_check" />
+                <TextView
+                    android:id="@+id/address_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/icon_gps"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="80dp"
+                    android:layout_below="@+id/address_trueName"
+                    android:textSize="16sp"
+                    tools:text="安徽省合肥市政务区祁门路与翡翠路交口新华出版集团"/>
+                <TextView
+                    android:id="@+id/area_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/address_info"
+                    android:visibility="gone"
+                    />
+                <View style="@style/h_line_master"
+                    android:id="@+id/icon_master_technician_line1"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/address_info"
+                    />
+            </RelativeLayout>
+
+
+
+</LinearLayout>

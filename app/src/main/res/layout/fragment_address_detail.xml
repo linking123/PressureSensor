@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/teamlist_item_background_normal"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:id="@+id/rl_master_technician"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <TextView
+                android:id="@+id/address_name1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="收货人："
+                android:textSize="@dimen/font_16" />
+
+            <EditText
+                android:id="@+id/user_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@+id/address_name1"
+                android:background="@null"
+                android:text="王先生"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font_16" />
+
+            <View
+                android:id="@+id/line1"
+                style="@style/h_line_master"
+                android:layout_below="@+id/user_name"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:id="@+id/address_name2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/line1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="联系方式："
+                android:textSize="@dimen/font_16" />
+
+            <EditText
+                android:id="@+id/user_phone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/line1"
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@+id/address_name2"
+                android:background="@null"
+                android:text="13966666666"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font_16" />
+
+            <View
+                android:id="@+id/line2"
+                style="@style/h_line_master"
+                android:layout_below="@+id/user_phone"
+                android:layout_marginTop="5dp" />
+
+            <RelativeLayout
+                android:id="@+id/layout1"
+                style="@style/arrow_rl_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line2">
+
+                <TextView
+                    android:id="@+id/address_name3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="所在地区："
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/user_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_toRightOf="@+id/address_name3"
+                    android:background="@null"
+                    android:paddingTop="10dp"
+                    android:text="安徽省 合肥市 包河区"
+                    android:textSize="@dimen/font_16" />
+
+                <ImageView
+                    android:id="@+id/tv_arrow_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_arrow_right" />
+
+                <View
+                    android:id="@+id/line3"
+                    style="@style/h_line_master"
+                    android:layout_below="@+id/user_area"
+                    android:layout_marginTop="5dp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/address_name4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/layout1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="详细地址："
+                android:textSize="@dimen/font_16" />
+
+            <EditText
+                android:id="@+id/user_address"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/layout1"
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@+id/address_name2"
+                android:background="@null"
+                android:text="滨湖医院外科16楼"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font_16" />
+
+            <View
+                android:id="@+id/line4"
+                style="@style/h_line_master"
+                android:layout_below="@+id/user_address"
+                android:layout_marginTop="5dp" />
+
+            <com.suncreate.fireiot.widget.togglebutton.ToggleButton
+                android:id="@+id/default_address_set"
+                style="@style/option_item_toggleButton"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/line4"
+                android:layout_margin="@dimen/space_15" />
+
+            <TextView
+                android:id="@+id/address_name6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/address_name5"
+                android:layout_marginLeft="10dp"
+                android:text="注：每次下单时会使用该地址"
+                android:textColor="@color/red" />
+
+            <View
+                android:id="@+id/line5"
+                style="@style/h_line_master"
+                android:layout_below="@+id/address_name6"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:id="@+id/address_name5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/default_address_set"
+                android:layout_alignLeft="@+id/address_name6"
+                android:layout_alignStart="@+id/address_name6"
+                android:text="设为默认地址"
+                android:textSize="@dimen/font_16" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_del"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_blue_selector"
+            android:text="@string/delete"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_16" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_red_selector"
+            android:text="@string/txt_shipping_address_save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_16" />
+    </LinearLayout>
+</LinearLayout>

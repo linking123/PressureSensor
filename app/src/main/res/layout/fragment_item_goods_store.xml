@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_item_list"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingTop="8dp"
+    android:visibility="visible"
+    android:weightSum="1">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp">
+                <ImageView
+                    android:id="@+id/iv_store_item_icon"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/widget_dface" />
+                <TextView
+                    android:id="@+id/tv_store_item_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="发动机配件"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_store_item_icon"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="16sp" />
+
+                <RatingBar
+                    android:id="@+id/rb_tech_item_rating"
+                    style="@style/rating_bar_small_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/iv_store_item_icon"
+                    android:layout_below="@+id/tv_store_item_name"
+                    android:layout_marginLeft="10dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="4.1"
+                    android:stepSize="0.5"
+                    />
+
+                <TextView
+                    android:id="@+id/btn_tech_item_score"
+                    style="@style/score_btn_styles"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@+id/rb_tech_item_rating"
+                    android:layout_below="@+id/tv_store_item_name"
+                    android:text="4.1"
+                    android:textSize="@dimen/text_size_12" />
+
+
+                <TextView
+                    android:id="@+id/tv_tech_item_brand1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="地址："
+                    android:layout_toRightOf="@id/iv_store_item_icon"
+                    android:layout_below="@+id/rb_tech_item_rating"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/text_size_14"
+                    />
+                <TextView
+                    android:id="@+id/tv_goods_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rb_tech_item_rating"
+                    android:layout_toRightOf="@+id/tv_tech_item_brand1"
+                    android:layout_marginLeft="5dp"
+                    android:text="安徽省合肥市高新区中国科学技术大学"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/text_size_14"
+                    />
+                <TextView
+                    android:id="@+id/tv_goods_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15395139683"
+                    android:layout_toRightOf="@id/iv_store_item_icon"
+                    android:layout_below="@+id/tv_goods_area"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/text_size_14"
+                    />
+
+
+
+            </RelativeLayout>
+</LinearLayout>

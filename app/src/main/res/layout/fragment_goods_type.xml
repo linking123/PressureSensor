@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    >
+    <!--<View style="@style/h_line_master"-->
+        <!--android:id="@+id/line4"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--/>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/white"-->
+        <!--android:paddingBottom="10dp"-->
+        <!--&gt;-->
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorFirstItemBackground"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="#d1d1d1"
+        android:dividerHeight="1.2px"
+        android:scrollbars="none"
+         />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+        <ListView
+            android:id="@+id/listView2"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorSecondItemBackground"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="#e7e7e7"
+            android:dividerHeight="1.2px"
+            android:scrollbars="none"
+            />
+        <ImageView
+            android:layout_width="1.2px"
+            android:layout_height="match_parent"
+            android:background="#d1d1d1" />
+
+        <ListView
+            android:id="@+id/listView3"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorThirdItemBackground"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="#e7e7e7"
+            android:dividerHeight="1.2px"
+            android:scrollbars="none"
+            android:visibility="visible"
+            />
+    </LinearLayout>
+    <!--<View style="@style/h_line_master"-->
+        <!--android:id="@+id/line3"-->
+        <!--android:layout_below="@+id/icon_master_technician_phone"-->
+        <!--/>-->
+
+</LinearLayout>

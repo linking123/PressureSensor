@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/teamlist_item_background_normal"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:id="@+id/rl_master_technician"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/layout_loop"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@drawable/selector_item_list"
+                android:orientation="vertical">
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/imgerror"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/error"
+                android:visibility="gone"
+                android:layout_below="@id/layout_loop"
+                />
+            <TextView
+                android:id="@+id/tv_master_technician_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgerror"
+                android:layout_marginLeft="10dp"
+                tools:text="发动机配件"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_master_technician_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_master_technician_year"
+                android:layout_margin="10dp"
+                tools:text="￥100元1111"
+                android:textColor="@color/red" />
+
+            <TextView
+                android:id="@+id/tv_master_good_inventory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_master_technician_year"
+                android:layout_toLeftOf="@+id/tv_master_good_count"
+                android:layout_margin="10dp"
+                tools:text="库存20" />
+            <TextView
+                android:id="@+id/tv_master_good_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_master_technician_year"
+                android:layout_margin="10dp"
+                tools:text="已售291111" />
+
+            <View
+                android:id="@+id/icon_master_goods_line2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_10"
+                android:layout_below="@+id/tv_master_good_count"
+                android:layout_marginTop="5dp"
+                android:background="?attr/masterLineColor" />
+
+            <RelativeLayout
+                android:id="@+id/tv_googs_supplier_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/icon_master_goods_line2"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/tv_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="@dimen/space_10"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/storeicon" />
+                <TextView
+                    android:id="@+id/tvstore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_icon"
+                    android:layout_marginLeft="@dimen/space_10"
+                    android:layout_marginRight="@dimen/space_10"
+                    tools:text="店铺名称1111"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/space_20"
+                    android:background="@color/transparent"
+                    android:src="@drawable/ic_item_goto_right_tip" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/tv_master_technician_gps"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@id/tv_googs_supplier_name"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="9dp"
+                android:src="@drawable/icon_gcoding" />
+
+            <TextView
+                android:id="@+id/tv_master_technician_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_googs_supplier_name"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/tv_master_technician_gps"
+                tools:text="店铺地址"
+                android:textSize="16sp" />
+
+            <View
+                android:id="@+id/icon_master_technician_line3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_10"
+                android:layout_below="@+id/tv_master_technician_location"
+                android:layout_marginTop="10dp"
+                android:background="?attr/masterLineColor" />
+
+            <View
+                android:id="@+id/tv_master_technician_line3"
+                style="@style/v_line"
+                android:layout_width="4dp"
+                android:layout_height="26dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/icon_master_technician_line3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/green" />
+
+            <TextView
+                android:id="@+id/tv_master_technician_brand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/icon_master_technician_line3"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/tv_master_technician_line3"
+                android:text="@string/actionbar_title_goods_details"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/actionbar_title_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_master_technician_brand"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@+id/icon_master_technician_get5"
+                android:text="@string/actionbar_title_class" />
+
+            <TextView
+                android:id="@+id/goods_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_master_technician_brand"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@+id/actionbar_title_class"
+                tools:text="@string/actionbar_title_class" />
+
+            <TextView
+                android:id="@+id/actionbar_title_brand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_title_class"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/actionbar_title_brand" />
+
+            <TextView
+                android:id="@+id/goods_brand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_title_class"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/actionbar_title_brand"
+                tools:text="@string/actionbar_title_brand" />
+
+            <TextView
+                android:id="@+id/actionbar_title_prodmode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_title_brand"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/actionbar_title_prodmode" />
+
+            <TextView
+                android:id="@+id/goods_prodmode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_title_brand"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/actionbar_title_prodmode"
+                tools:text="@string/actionbar_title_prodmode" />
+
+            <TextView
+                android:id="@+id/actionbar_title_spec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_title_prodmode"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/actionbar_title_spec" />
+
+            <TextView
+                android:id="@+id/goods_spec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_title_prodmode"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/actionbar_title_spec"
+                tools:text="@string/actionbar_title_spec" />
+
+            <TextView
+                android:id="@+id/actionbar_title_oe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_title_spec"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/actionbar_title_oe" />
+
+            <TextView
+                android:id="@+id/goods_oe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_title_spec"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/actionbar_title_oe"
+                tools:text="OE号" />
+
+            <TextView
+                android:id="@+id/actionbar_title_carmodel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_title_oe"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/actionbar_title_carmodel" />
+
+            <TextView
+                android:id="@+id/goods_carmodel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_title_oe"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/actionbar_title_carmodel"
+                tools:text="@string/actionbar_title_carmodel" />
+
+            <TextView
+                android:id="@+id/actionbar_title_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/goods_carmodel"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/actionbar_title_unit" />
+
+            <TextView
+                android:id="@+id/goods_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/goods_carmodel"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/actionbar_title_unit"
+                tools:text="@string/actionbar_title_unit" />
+
+            <View
+                android:id="@+id/icon_master_technician_line5"
+                style="@style/h_line_master"
+                android:layout_below="@+id/goods_unit"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/tv_master_technician_ensure1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/icon_master_technician_line5"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/actionbar_title_goods_explain"
+                android:textColor="@color/red" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <View
+        style="@style/h_line_master"
+        android:layout_marginTop="@dimen/space_5" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <include layout="@layout/layout_common_contact" />
+
+        <Button
+            android:id="@+id/btn_shoppingcar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:background="@color/lightblue"
+            android:text="@string/actionbar_shoppingcar"
+
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_16" />
+
+        <Button
+            android:id="@+id/btn_buy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:background="#F23030"
+            android:text="@string/actionbar_buy"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_18" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

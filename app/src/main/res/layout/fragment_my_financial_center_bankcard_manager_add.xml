@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/teamlist_item_background_normal"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_10"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/space_15">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="持卡人姓名"
+            android:textColor="@color/amber_900"
+            android:textSize="@dimen/font_16" />
+
+        <EditText
+            android:id="@+id/et_true_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_10"
+            android:background="@null"
+            android:hint="如 张三"
+            android:textSize="@dimen/text_size_15" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/ll1"
+        android:background="@color/list_divider_color" />
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v1"
+        android:layout_marginBottom="@dimen/space_10"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/space_15">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="银行卡号"
+            android:textColor="@color/amber_900"
+            android:textSize="@dimen/font_16" />
+
+        <EditText
+            android:id="@+id/et_bank_account_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_10"
+            android:background="@null"
+            android:hint="如 6228526458945665"
+            android:textSize="@dimen/text_size_15" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/ll2"
+        android:background="@color/list_divider_color" />
+
+    <LinearLayout
+        android:id="@+id/ll3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v2"
+        android:layout_marginBottom="@dimen/space_10"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/space_15">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开户行名称"
+            android:textColor="@color/amber_900"
+            android:textSize="@dimen/font_16" />
+
+        <EditText
+            android:id="@+id/et_bank_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_10"
+            android:background="@null"
+            android:hint="如 中国光大银行"
+            android:textSize="@dimen/text_size_15" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/ll3"
+        android:background="@color/list_divider_color" />
+
+    <LinearLayout
+        android:id="@+id/ll4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v3"
+        android:layout_marginBottom="@dimen/space_10"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/space_15">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="身份证编号"
+            android:textColor="@color/amber_900"
+            android:textSize="@dimen/font_16" />
+
+        <EditText
+            android:id="@+id/et_user_card_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_10"
+            android:background="@null"
+            android:hint="如 340123456789123654"
+            android:textSize="@dimen/text_size_15" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v4"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/ll4"
+        android:background="@color/list_divider_color" />
+
+    <LinearLayout
+        android:id="@+id/ll5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v4"
+        android:layout_marginBottom="@dimen/space_10"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/space_15">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电话号码"
+            android:textColor="@color/amber_900"
+            android:textSize="@dimen/font_16" />
+
+        <EditText
+            android:id="@+id/et_user_phone_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_10"
+            android:background="@null"
+            android:hint="如 15255641987"
+            android:inputType="phone"
+            android:textSize="@dimen/text_size_15" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v5"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/ll5"
+        android:background="@color/list_divider_color" />
+
+    <Button
+        android:id="@+id/btn_finish"
+        style="@style/button_common_red"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:text="确认添加" />
+
+</RelativeLayout>
