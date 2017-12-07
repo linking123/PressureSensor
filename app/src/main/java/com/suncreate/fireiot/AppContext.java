@@ -111,7 +111,7 @@ public class AppContext extends BaseApplication {
         //蓝牙配置
         BluetoothConfig config = new BluetoothConfig.Builder()
                 .enableQueueInterval(true)
-                .setQueueIntervalTime(BluetoothConfig.AUTO)//设置队列间隔时间为自动
+                .setQueueIntervalTime(BluetoothConfig.AUTO)//发送时间间隔将根据蓝牙硬件自动得出
                 .build();
         BluetoothLe.getDefault().init(this, config);
 

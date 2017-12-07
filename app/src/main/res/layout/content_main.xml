@@ -21,73 +21,11 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
-        <LinearLayout
-            android:id="@+id/ll_text_box"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/scan_notice_1"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_30" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/scan_notice_2"
-                android:textColor="@color/btn_origin_disable"
-                android:textSize="@dimen/text_size_30" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/scan_notice_3"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_30" />
-        </LinearLayout>
-
-
-        <TextView
-            android:id="@+id/tv_scan_ttext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ll_text_box"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/space_5"
-            android:text="@string/scan_notice_small"
-            android:textColor="@color/btn_origin_disable"
-            android:textSize="@dimen/text_size_20" />
-
-        <!--<ImageView-->
-        <!--android:id="@+id/index_scan_logo"-->
-        <!--android:layout_width="150dp"-->
-        <!--android:layout_height="150dp"-->
-        <!--android:layout_below="@+id/tv_scan_ttext"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginTop="@dimen/space_30"-->
-        <!--android:contentDescription="@string/index_scan_logo"-->
-        <!--android:src="@drawable/fire_rfid_scan" />-->
-
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/index_scan_logo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_below="@+id/tv_scan_ttext"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/space_30"
-            android:contentDescription="@string/index_scan_logo"
-            android:src="@drawable/fire_rfid_scan" /> <!--scanning_gif_0_2s-->
 
         <info.hoang8f.widget.FButton
             android:id="@+id/index_scan_start"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/index_scan_logo"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="19dp"
             android:background="@drawable/fire_button_border"
@@ -99,6 +37,29 @@
             fbutton:shadowColor="@color/btn_origin_disable"
             fbutton:shadowEnabled="false"
             fbutton:shadowHeight="3dp" />
+
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_text"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </ScrollView>
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
