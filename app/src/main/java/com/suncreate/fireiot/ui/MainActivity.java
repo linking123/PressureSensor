@@ -50,10 +50,12 @@ import com.suncreate.fireiot.bean.Notice;
 import com.suncreate.fireiot.bean.SimpleBackPage;
 import com.suncreate.fireiot.bean.scan.User;
 import com.suncreate.fireiot.interf.BaseViewInterface;
+import com.suncreate.fireiot.interf.BluetoothUUID;
 import com.suncreate.fireiot.service.NoticeUtils;
 import com.suncreate.fireiot.util.LocationUtils;
 import com.suncreate.fireiot.util.UIHelper;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -89,6 +91,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
     //蓝牙对象
     private BluetoothLe mBluetoothLe;
     private BluetoothDevice mBluetoothDevice;
+    private List<BluetoothDevice> bluetoothDeviceList = new ArrayList<BluetoothDevice>();
 
     private StringBuilder mStringBuilder;
 
@@ -128,15 +131,26 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
             }
         }
 
-
         //监听蓝牙回调
         //监听扫描
         mBluetoothLe.setOnScanListener(TAG, new OnLeScanListener() {
             @Override
             public void onScanResult(BluetoothDevice bluetoothDevice, int rssi, ScanRecord scanRecord) {
                 mBluetoothDevice = bluetoothDevice;
+                //不存在，则添加进蓝牙设备列表
+                if (bluetoothDeviceList.size() == 0) {
+                    bluetoothDeviceList.add(bluetoothDevice);
+                } else if(isNotInBluetoothDeviceList(bluetoothDevice)) {
+                    bluetoothDeviceList.add(bluetoothDevice);
+                    showText("扫描到：" + bluetoothDeviceList.size() + " 个设备");
+                }
                 Log.i(TAG, "扫描到设备：" + mBluetoothDevice.getName());
                 showText("扫描到设备：" + mBluetoothDevice.getName());
+
+                if ("BT05".equals(mBluetoothDevice.getName())){
+                    mBluetoothLe.startConnect(true, mBluetoothDevice);
+                }
+
             }
 
             @Override
@@ -157,6 +171,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 showText("扫描错误：" + e.toString());
             }
         });
+
         //监听连接
         mBluetoothLe.setOnConnectListener(TAG, new OnLeConnectListener() {
             @Override
@@ -181,6 +196,12 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
             public void onServicesDiscovered(BluetoothGatt gatt) {
                 Log.i(TAG, "发现服务");
                 showText("发现服务");
+
+                //发送数据等必须在发现服务后做
+                String writeStr = "0xA5F1010097";
+                mBluetoothLe.writeDataToCharacteristic(writeStr.getBytes(),
+                        BluetoothUUID.psServiceUUID, BluetoothUUID.psWriteUUID);
+
             }
 
             @Override
@@ -189,6 +210,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 showText("连接异常：" + e.toString());
             }
         });
+
         //监听通知，类型notification
         mBluetoothLe.setOnNotificationListener(TAG, new OnLeNotificationListener() {
             @Override
@@ -203,6 +225,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 showText("notification通知错误：" + e.toString());
             }
         });
+
         //监听通知，类型indicate
         mBluetoothLe.setOnIndicationListener(TAG, new OnLeIndicationListener() {
             @Override
@@ -217,6 +240,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 showText("indication通知错误：" + e.toString());
             }
         });
+
         //监听写
         mBluetoothLe.setOnWriteCharacteristicListener(TAG, new OnLeWriteCharacteristicListener() {
             @Override
@@ -231,6 +255,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 showText("写错误：" + e.toString());
             }
         });
+
         //监听读
         mBluetoothLe.setOnReadCharacteristicListener(TAG, new OnLeReadCharacteristicListener() {
             @Override
@@ -245,6 +270,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 showText("读错误：" + e.toString());
             }
         });
+
         //监听信号强度
         mBluetoothLe.setReadRssiInterval(10000)
                 .setOnReadRssiListener(TAG, new OnLeReadRssiListener() {
@@ -257,6 +283,17 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
 
     }
 
+    //判断扫描到的蓝牙是否已经存在列表中
+    private boolean isNotInBluetoothDeviceList(BluetoothDevice mBluetoothDevice) {
+        for (BluetoothDevice btd : bluetoothDeviceList) {
+            if (mBluetoothDevice.equals(btd)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //需要开始扫描按钮case R.id.btn_scan:
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
