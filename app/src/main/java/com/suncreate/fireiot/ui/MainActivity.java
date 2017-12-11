@@ -58,6 +58,7 @@ import com.suncreate.fireiot.util.UIHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -142,10 +143,10 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                     bluetoothDeviceList.add(bluetoothDevice);
                 } else if(isNotInBluetoothDeviceList(bluetoothDevice)) {
                     bluetoothDeviceList.add(bluetoothDevice);
-                    showText("扫描到：" + bluetoothDeviceList.size() + " 个设备");
+//                    showText("扫描到：" + bluetoothDeviceList.size() + " 个设备");
                 }
                 Log.i(TAG, "扫描到设备：" + mBluetoothDevice.getName());
-                showText("扫描到设备：" + mBluetoothDevice.getName());
+//                showText("扫描到设备：" + mBluetoothDevice.getName());
 
                 if ("BT05".equals(mBluetoothDevice.getName())){
                     mBluetoothLe.startConnect(true, mBluetoothDevice);
@@ -156,13 +157,13 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
             @Override
             public void onBatchScanResults(List<ScanResult> results) {
                 Log.i(TAG, "扫描到设备：" + results.toString());
-                showText("扫描到设备：" + results.toString());
+//                showText("扫描到设备：" + results.toString());
             }
 
             @Override
             public void onScanCompleted() {
                 Log.i(TAG, "停止扫描");
-                showText("停止扫描");
+//                showText("停止扫描");
             }
 
             @Override
@@ -177,19 +178,19 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
             @Override
             public void onDeviceConnecting() {
                 Log.i(TAG, "正在连接--->：" + mBluetoothDevice.getAddress());
-                showText("正在连接--->：" + mBluetoothDevice.getAddress());
+//                showText("正在连接--->：" + mBluetoothDevice.getAddress());
             }
 
             @Override
             public void onDeviceConnected() {
                 Log.i(TAG, "成功连接！");
-                showText("成功连接！");
+//                showText("成功连接！");
             }
 
             @Override
             public void onDeviceDisconnected() {
                 Log.i(TAG, "连接断开！");
-                showText("连接断开！");
+//                showText("连接断开！");
             }
 
             @Override
@@ -197,11 +198,17 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 Log.i(TAG, "发现服务");
                 showText("发现服务");
 
+                //写之前打开通知，以监听通知
+                mBluetoothLe.enableNotification(true, BluetoothUUID.psServiceUUID,
+                        new UUID[]{BluetoothUUID.PS_HR_NOTIFICATION, BluetoothUUID.PS_STEP_NOTIFICATION});
+
                 //发送数据等必须在发现服务后做
                 String writeStr = "0xA5F1010097";
                 mBluetoothLe.writeDataToCharacteristic(writeStr.getBytes(),
                         BluetoothUUID.psServiceUUID, BluetoothUUID.psWriteUUID);
 
+                //读数据
+                mBluetoothLe.readCharacteristic(BluetoothUUID.psServiceUUID, BluetoothUUID.psReadUUID);
             }
 
             @Override
@@ -216,7 +223,8 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
             @Override
             public void onSuccess(BluetoothGattCharacteristic characteristic) {
                 Log.i(TAG, "收到notification : " + Arrays.toString(characteristic.getValue()));
-                showText("收到notification : " + Arrays.toString(characteristic.getValue()));
+//                showText("收到notification : " + Arrays.toString(characteristic.getValue()));
+                showText("收到notification : " + bytesToHex(characteristic.getValue()));
             }
 
             @Override
@@ -262,6 +270,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
             public void onSuccess(BluetoothGattCharacteristic characteristic) {
                 Log.i(TAG, "读取特征数据：" + Arrays.toString(characteristic.getValue()));
                 showText("读取特征数据：" + Arrays.toString(characteristic.getValue()));
+                String returnstr = bytesToHex(characteristic.getValue());
             }
 
             @Override
@@ -277,10 +286,21 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                     @Override
                     public void onSuccess(int rssi, int cm) {
                         Log.i(TAG, "信号强度：" + rssi + "   距离：" + cm + "cm");
-                        showText("信号强度：" + rssi + "   距离：" + cm + "cm");
+//                        showText("信号强度：" + rssi + "   距离：" + cm + "cm");
                     }
                 });
 
+    }
+
+    final protected static char[] hexArray = "0123456789ABCDEF".toCharArray();
+    public static String bytesToHex(byte[] bytes) {
+        char[] hexChars = new char[bytes.length * 2];
+        for ( int j = 0; j < bytes.length; j++ ) {
+            int v = bytes[j] & 0xFF;
+            hexChars[j * 2] = hexArray[v >>> 4];
+            hexChars[j * 2 + 1] = hexArray[v & 0x0F];
+        }
+        return new String(hexChars);
     }
 
     //判断扫描到的蓝牙是否已经存在列表中
