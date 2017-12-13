@@ -38,7 +38,8 @@
     <string name="equipment_person_incharge">负责人</string>
     <string name="check_than_submit">检查确认无误后，请提交</string>
     <string name="confirm_submit">确认提交</string>
-    <string name="scan_record">巡检记录</string>
+    <string name="action_blutooth">蓝牙状态</string>
+    <string name="scan_record">锻炼记录</string>
     <string name="scan_record_detail">巡检记录详情</string>
     <string name="scan_record_last_time">上次巡检时间</string>
     <string name="scan_record_next_time">下次巡检时间段</string>
