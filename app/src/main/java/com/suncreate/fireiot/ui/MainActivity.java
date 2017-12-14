@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,6 +59,7 @@ import com.suncreate.fireiot.util.UIHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import butterknife.Bind;
@@ -85,8 +87,9 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
     NavigationView navigationView;
     @Bind(R.id.index_scan_start)
     FButton btStartScan;
-    @Bind(R.id.tv_text)
-    TextView mTvText;
+    @Bind(R.id.v_pressure)
+    View mPressure;
+
 
     public static Notice mNotice;
     //蓝牙对象
@@ -118,9 +121,62 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
         IntentFilter filter = new IntentFilter(Constants.INTENT_ACTION_USER_CHANGE);
         registerReceiver(mReceiver, filter);
 
-        mStringBuilder = new StringBuilder();
-
         mBluetoothLe = BluetoothLe.getDefault();
+
+        checkSupport();
+
+        initData();
+    }
+
+    @Override
+    public void initView() {
+
+        //初始化用户名
+        initUserName();
+
+        IntentFilter filter = new IntentFilter(Constants.INTENT_ACTION_NOTICE);
+        filter.addAction(Constants.INTENT_ACTION_LOGOUT);
+        NoticeUtils.bindToService(this);
+
+        btStartScan.setOnClickListener(this);
+    }
+
+    @Override
+    public void initData() {
+        registerListener();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        NoticeUtils.unbindFromService(this);
+        NoticeUtils.tryToShutDown(this);
+        AppManager.getAppManager().removeActivity(this);
+        //注销广播接收
+        unregisterReceiver(mReceiver);
+
+        //根据TAG注销监听，避免内存泄露
+        mBluetoothLe.destroy(TAG);
+        //关闭GATT
+        mBluetoothLe.close();
+    }
+
+    public void checkSupport() {
         //初始检测设备是否支持蓝牙
         if (!mBluetoothLe.isSupportBluetooth()) {
             //设备不支持蓝牙
@@ -131,171 +187,14 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 mBluetoothLe.enableBluetooth(this, 666);
             }
         }
-
-        //监听蓝牙回调
-        //监听扫描
-        mBluetoothLe.setOnScanListener(TAG, new OnLeScanListener() {
-            @Override
-            public void onScanResult(BluetoothDevice bluetoothDevice, int rssi, ScanRecord scanRecord) {
-                mBluetoothDevice = bluetoothDevice;
-                //不存在，则添加进蓝牙设备列表
-                if (bluetoothDeviceList.size() == 0) {
-                    bluetoothDeviceList.add(bluetoothDevice);
-                } else if(isNotInBluetoothDeviceList(bluetoothDevice)) {
-                    bluetoothDeviceList.add(bluetoothDevice);
-//                    showText("扫描到：" + bluetoothDeviceList.size() + " 个设备");
-                }
-                Log.i(TAG, "扫描到设备：" + mBluetoothDevice.getName());
-//                showText("扫描到设备：" + mBluetoothDevice.getName());
-
-                if ("BT05".equals(mBluetoothDevice.getName())){
-                    mBluetoothLe.startConnect(true, mBluetoothDevice);
-                }
-
-            }
-
-            @Override
-            public void onBatchScanResults(List<ScanResult> results) {
-                Log.i(TAG, "扫描到设备：" + results.toString());
-//                showText("扫描到设备：" + results.toString());
-            }
-
-            @Override
-            public void onScanCompleted() {
-                Log.i(TAG, "停止扫描");
-//                showText("停止扫描");
-            }
-
-            @Override
-            public void onScanFailed(ScanBleException e) {
-                Log.e(TAG, "扫描错误：" + e.toString());
-                showText("扫描错误：" + e.toString());
-            }
-        });
-
-        //监听连接
-        mBluetoothLe.setOnConnectListener(TAG, new OnLeConnectListener() {
-            @Override
-            public void onDeviceConnecting() {
-                Log.i(TAG, "正在连接--->：" + mBluetoothDevice.getAddress());
-//                showText("正在连接--->：" + mBluetoothDevice.getAddress());
-            }
-
-            @Override
-            public void onDeviceConnected() {
-                Log.i(TAG, "成功连接！");
-//                showText("成功连接！");
-            }
-
-            @Override
-            public void onDeviceDisconnected() {
-                Log.i(TAG, "连接断开！");
-//                showText("连接断开！");
-            }
-
-            @Override
-            public void onServicesDiscovered(BluetoothGatt gatt) {
-                Log.i(TAG, "发现服务");
-                showText("发现服务");
-
-                //写之前打开通知，以监听通知
-                mBluetoothLe.enableNotification(true, BluetoothUUID.psServiceUUID,
-                        new UUID[]{BluetoothUUID.PS_HR_NOTIFICATION, BluetoothUUID.PS_STEP_NOTIFICATION});
-
-                //发送数据等必须在发现服务后做
-                String writeStr = "0xA5F1010097";
-                mBluetoothLe.writeDataToCharacteristic(writeStr.getBytes(),
-                        BluetoothUUID.psServiceUUID, BluetoothUUID.psWriteUUID);
-
-                //读数据
-                mBluetoothLe.readCharacteristic(BluetoothUUID.psServiceUUID, BluetoothUUID.psReadUUID);
-            }
-
-            @Override
-            public void onDeviceConnectFail(ConnBleException e) {
-                Log.e(TAG, "连接异常：" + e.toString());
-                showText("连接异常：" + e.toString());
-            }
-        });
-
-        //监听通知，类型notification
-        mBluetoothLe.setOnNotificationListener(TAG, new OnLeNotificationListener() {
-            @Override
-            public void onSuccess(BluetoothGattCharacteristic characteristic) {
-                Log.i(TAG, "收到notification : " + Arrays.toString(characteristic.getValue()));
-//                showText("收到notification : " + Arrays.toString(characteristic.getValue()));
-                showText("收到notification : " + bytesToHex(characteristic.getValue()));
-            }
-
-            @Override
-            public void onFailed(BleException e) {
-                Log.e(TAG, "notification通知错误：" + e.toString());
-                showText("notification通知错误：" + e.toString());
-            }
-        });
-
-        //监听通知，类型indicate
-        mBluetoothLe.setOnIndicationListener(TAG, new OnLeIndicationListener() {
-            @Override
-            public void onSuccess(BluetoothGattCharacteristic characteristic) {
-                Log.i(TAG, "收到indication: " + Arrays.toString(characteristic.getValue()));
-                showText("收到indication: " + Arrays.toString(characteristic.getValue()));
-            }
-
-            @Override
-            public void onFailed(BleException e) {
-                Log.e(TAG, "indication通知错误：" + e.toString());
-                showText("indication通知错误：" + e.toString());
-            }
-        });
-
-        //监听写
-        mBluetoothLe.setOnWriteCharacteristicListener(TAG, new OnLeWriteCharacteristicListener() {
-            @Override
-            public void onSuccess(BluetoothGattCharacteristic characteristic) {
-                Log.i(TAG, "写数据到特征：" + Arrays.toString(characteristic.getValue()));
-                showText("写数据到特征：" + Arrays.toString(characteristic.getValue()));
-            }
-
-            @Override
-            public void onFailed(WriteBleException e) {
-                Log.e(TAG, "写错误：" + e.toString());
-                showText("写错误：" + e.toString());
-            }
-        });
-
-        //监听读
-        mBluetoothLe.setOnReadCharacteristicListener(TAG, new OnLeReadCharacteristicListener() {
-            @Override
-            public void onSuccess(BluetoothGattCharacteristic characteristic) {
-                Log.i(TAG, "读取特征数据：" + Arrays.toString(characteristic.getValue()));
-                showText("读取特征数据：" + Arrays.toString(characteristic.getValue()));
-                String returnstr = bytesToHex(characteristic.getValue());
-            }
-
-            @Override
-            public void onFailure(ReadBleException e) {
-                Log.e(TAG, "读错误：" + e.toString());
-                showText("读错误：" + e.toString());
-            }
-        });
-
-        //监听信号强度
-        mBluetoothLe.setReadRssiInterval(10000)
-                .setOnReadRssiListener(TAG, new OnLeReadRssiListener() {
-                    @Override
-                    public void onSuccess(int rssi, int cm) {
-                        Log.i(TAG, "信号强度：" + rssi + "   距离：" + cm + "cm");
-//                        showText("信号强度：" + rssi + "   距离：" + cm + "cm");
-                    }
-                });
-
     }
 
+    //byte数组转化为16进制hex
     final protected static char[] hexArray = "0123456789ABCDEF".toCharArray();
+
     public static String bytesToHex(byte[] bytes) {
         char[] hexChars = new char[bytes.length * 2];
-        for ( int j = 0; j < bytes.length; j++ ) {
+        for (int j = 0; j < bytes.length; j++) {
             int v = bytes[j] & 0xFF;
             hexChars[j * 2] = hexArray[v >>> 4];
             hexChars[j * 2 + 1] = hexArray[v & 0x0F];
@@ -350,56 +249,149 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 .startScan(this);
     }
 
-    private void showText(String text) {
-        mStringBuilder.append(text).append("\n");
-        mTvText.setText(mStringBuilder.toString());
-    }
+    private void registerListener() {
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
+        //监听蓝牙回调
+        //监听扫描
+        mBluetoothLe.setOnScanListener(TAG, new OnLeScanListener() {
+            @Override
+            public void onScanResult(BluetoothDevice bluetoothDevice, int rssi, ScanRecord scanRecord) {
+                mBluetoothDevice = bluetoothDevice;
+                //不存在，则添加进蓝牙设备列表
+                if (bluetoothDeviceList.size() == 0) {
+                    bluetoothDeviceList.add(bluetoothDevice);
+                } else if (isNotInBluetoothDeviceList(bluetoothDevice)) {
+                    bluetoothDeviceList.add(bluetoothDevice);
+                }
+                Log.i(TAG, "扫描到设备：" + mBluetoothDevice.getName());
 
-    @Override
-    public void initView() {
+                if ("BT05".equals(mBluetoothDevice.getName())) {
+                    mBluetoothLe.startConnect(true, mBluetoothDevice);
+                }
+            }
 
-        //初始化用户名
-        initUserName();
+            @Override
+            public void onBatchScanResults(List<ScanResult> results) {
+                Log.i(TAG, "扫描到设备：" + results.toString());
+            }
 
-        IntentFilter filter = new IntentFilter(Constants.INTENT_ACTION_NOTICE);
-        filter.addAction(Constants.INTENT_ACTION_LOGOUT);
-        NoticeUtils.bindToService(this);
+            @Override
+            public void onScanCompleted() {
+                Log.i(TAG, "停止扫描");
+            }
 
-        btStartScan.setOnClickListener(this);
-    }
+            @Override
+            public void onScanFailed(ScanBleException e) {
+                Log.e(TAG, "扫描错误：" + e.toString());
+            }
+        });
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
+        //监听连接
+        mBluetoothLe.setOnConnectListener(TAG, new OnLeConnectListener() {
+            @Override
+            public void onDeviceConnecting() {
+                Log.i(TAG, "正在连接--->：" + mBluetoothDevice.getAddress());
+            }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
+            @Override
+            public void onDeviceConnected() {
+                Log.i(TAG, "成功连接！");
+            }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        NoticeUtils.unbindFromService(this);
-        NoticeUtils.tryToShutDown(this);
-        AppManager.getAppManager().removeActivity(this);
-        //注销广播接收
-        unregisterReceiver(mReceiver);
+            @Override
+            public void onDeviceDisconnected() {
+                Log.i(TAG, "连接断开！");
+            }
 
-        //根据TAG注销监听，避免内存泄露
-        mBluetoothLe.destroy(TAG);
-        //关闭GATT
-        mBluetoothLe.close();
-    }
+            @Override
+            public void onServicesDiscovered(BluetoothGatt gatt) {
+                Log.i(TAG, "发现服务");
 
-    @Override
-    public void initData() {
+                //写之前打开通知，以监听通知
+                mBluetoothLe.enableNotification(true, BluetoothUUID.psServiceUUID,
+                        new UUID[]{BluetoothUUID.PS_HR_NOTIFICATION, BluetoothUUID.PS_STEP_NOTIFICATION});
+
+                //发送数据等必须在发现服务后做
+                String writeStr = "0xA5F1010097";
+                mBluetoothLe.writeDataToCharacteristic(writeStr.getBytes(),
+                        BluetoothUUID.psServiceUUID, BluetoothUUID.psWriteUUID);
+
+                //读数据
+                mBluetoothLe.readCharacteristic(BluetoothUUID.psServiceUUID, BluetoothUUID.psReadUUID);
+            }
+
+            @Override
+            public void onDeviceConnectFail(ConnBleException e) {
+                Log.e(TAG, "连接异常：" + e.toString());
+            }
+        });
+
+        //监听通知，类型notification
+        mBluetoothLe.setOnNotificationListener(TAG, new OnLeNotificationListener() {
+            @Override
+            public void onSuccess(BluetoothGattCharacteristic characteristic) {
+//                Log.i(TAG, "收到notification : " + Arrays.toString(characteristic.getValue()));
+                Log.i(TAG, "收到notification : " + bytesToHex(characteristic.getValue()));
+
+                //改变图形的高度
+                changeHeight();
+            }
+
+            @Override
+            public void onFailed(BleException e) {
+                Log.e(TAG, "notification通知错误：" + e.toString());
+            }
+        });
+
+        //监听通知，类型indicate
+        mBluetoothLe.setOnIndicationListener(TAG, new OnLeIndicationListener() {
+            @Override
+            public void onSuccess(BluetoothGattCharacteristic characteristic) {
+                Log.i(TAG, "收到indication: " + Arrays.toString(characteristic.getValue()));
+            }
+
+            @Override
+            public void onFailed(BleException e) {
+                Log.e(TAG, "indication通知错误：" + e.toString());
+            }
+        });
+
+        //监听写
+        mBluetoothLe.setOnWriteCharacteristicListener(TAG, new OnLeWriteCharacteristicListener() {
+            @Override
+            public void onSuccess(BluetoothGattCharacteristic characteristic) {
+                Log.i(TAG, "写数据到特征：" + Arrays.toString(characteristic.getValue()));
+            }
+
+            @Override
+            public void onFailed(WriteBleException e) {
+                Log.e(TAG, "写错误：" + e.toString());
+            }
+        });
+
+        //监听读
+        mBluetoothLe.setOnReadCharacteristicListener(TAG, new OnLeReadCharacteristicListener() {
+            @Override
+            public void onSuccess(BluetoothGattCharacteristic characteristic) {
+                Log.i(TAG, "读取特征数据：" + Arrays.toString(characteristic.getValue()));
+                String returnstr = bytesToHex(characteristic.getValue());
+                Log.i(TAG, "读取特征数据：" + returnstr);
+            }
+
+            @Override
+            public void onFailure(ReadBleException e) {
+                Log.e(TAG, "读错误：" + e.toString());
+            }
+        });
+
+        //监听信号强度
+        mBluetoothLe.setReadRssiInterval(10000)
+                .setOnReadRssiListener(TAG, new OnLeReadRssiListener() {
+                    @Override
+                    public void onSuccess(int rssi, int cm) {
+                        Log.i(TAG, "信号强度：" + rssi + "   距离：" + cm + "cm");
+                    }
+                });
     }
 
     @Override
@@ -433,10 +425,19 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
         }
     }
 
+    private void changeHeight(){
+        Random rand = new Random();
+        int height = rand.nextInt(400);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mPressure.getLayoutParams();
+        params.height = height;
+        mPressure.setLayoutParams(params);
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.index_scan_start:
+                scan();
                 break;
             default:
                 break;
