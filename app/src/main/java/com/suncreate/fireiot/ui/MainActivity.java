@@ -23,6 +23,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +60,7 @@ import com.suncreate.fireiot.util.UIHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import butterknife.Bind;
@@ -86,8 +88,9 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
     NavigationView navigationView;
     @Bind(R.id.index_scan_start)
     FButton btStartScan;
-    @Bind(R.id.tv_text)
-    TextView mTvText;
+    @Bind(R.id.v_pressure)
+    View mPressure;
+
 
     public static Notice mNotice;
     //蓝牙对象
@@ -119,13 +122,69 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
         IntentFilter filter = new IntentFilter(Constants.INTENT_ACTION_USER_CHANGE);
         registerReceiver(mReceiver, filter);
 
-
         mStringBuilder = new StringBuilder();
 
         mBluetoothLe = BluetoothLe.getDefault();
         //监听蓝牙状态广播
         registerReceiver(blueStateBroadcastReceiver, new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED));
 
+        mBluetoothLe = BluetoothLe.getDefault();
+
+        checkSupport();
+
+        initData();
+    }
+
+    @Override
+    public void initView() {
+
+        //初始化用户名
+        initUserName();
+
+        IntentFilter filter = new IntentFilter(Constants.INTENT_ACTION_NOTICE);
+        filter.addAction(Constants.INTENT_ACTION_LOGOUT);
+        NoticeUtils.bindToService(this);
+
+        btStartScan.setOnClickListener(this);
+    }
+
+    @Override
+    public void initData() {
+        registerListener();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        NoticeUtils.unbindFromService(this);
+        NoticeUtils.tryToShutDown(this);
+        AppManager.getAppManager().removeActivity(this);
+        //注销广播接收
+        unregisterReceiver(mReceiver);
+        unregisterReceiver(blueStateBroadcastReceiver);
+
+        //根据TAG注销监听，避免内存泄露
+        mBluetoothLe.destroy(TAG);
+        //关闭GATT
+        mBluetoothLe.close();
+    }
+
+    public void checkSupport() {
         //初始检测设备是否支持蓝牙
         if (!mBluetoothLe.isSupportBluetooth()) {
             //设备不支持蓝牙
@@ -136,6 +195,37 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 mBluetoothLe.enableBluetooth(this, 666);
             }
         }
+    }
+
+    private void scan() {
+        //对于Android 6.0以上的版本，申请地理位置动态权限
+        if (!checkLocationPermission()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("权限需求")
+                    .setMessage("Android 6.0 以上的系统版本，扫描蓝牙需要地理位置权限。请允许。")
+                    .setNeutralButton("取消", null)
+                    .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            requestLocationPermission();
+                        }
+                    })
+                    .show();
+            return;
+        }
+        //如果系统版本是7.0以上，则请求打开位置信息
+        if (!LocationUtils.isOpenLocService(this) && ApiLevelHelper.isAtLeast(Build.VERSION_CODES.N)) {
+            Toast.makeText(this, "您的Android版本在7.0以上，扫描需要打开位置信息。", Toast.LENGTH_LONG).show();
+            LocationUtils.gotoLocServiceSettings(this);
+            return;
+        }
+        mBluetoothLe.setScanPeriod(200000)
+                //   .setScanWithServiceUUID(BluetoothUUID.SERVICE)
+                .setReportDelay(0)
+                .startScan(this);
+    }
+
+    private void registerListener() {
 
         //监听蓝牙回调
         //监听扫描
@@ -148,35 +238,29 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                     bluetoothDeviceList.add(bluetoothDevice);
                 } else if (isNotInBluetoothDeviceList(bluetoothDevice)) {
                     bluetoothDeviceList.add(bluetoothDevice);
-//                    AppContext.showToastShort("扫描到：" + bluetoothDeviceList.size() + " 个设备");
                 }
                 Log.i(TAG, "扫描到设备：" + mBluetoothDevice.getName());
-//                AppContext.showToastShort("扫描到设备：" + mBluetoothDevice.getName());
 
-                if ("BT05".equals(mBluetoothDevice.getName())) {
+                if ("BT05".equals(mBluetoothDevice.getName())) {  //用名称了连接
                     //连接设备之前最好先停止扫描（小米手机可能会出现不能发现服务的情况)
 //                    mBluetoothLe.stopScan();
                     mBluetoothLe.startConnect(true, mBluetoothDevice);
                 }
-
             }
 
             @Override
             public void onBatchScanResults(List<ScanResult> results) {
                 Log.i(TAG, "扫描到设备：" + results.toString());
-//                AppContext.showToastShort("扫描到设备：" + results.toString());
             }
 
             @Override
             public void onScanCompleted() {
                 Log.i(TAG, "停止扫描");
-//                AppContext.showToastShort("停止扫描");
             }
 
             @Override
             public void onScanFailed(ScanBleException e) {
                 Log.e(TAG, "扫描错误：" + e.toString());
-                AppContext.showToastShort("扫描错误：" + e.toString());
             }
         });
 
@@ -185,28 +269,21 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
             @Override
             public void onDeviceConnecting() {
                 Log.i(TAG, "正在连接--->：" + mBluetoothDevice.getAddress());
-//                AppContext.showToastShort("正在连接--->：" + mBluetoothDevice.getAddress());
             }
 
             @Override
             public void onDeviceConnected() {
                 Log.i(TAG, "成功连接！");
-//                AppContext.showToastShort("成功连接！");
             }
 
             @Override
             public void onDeviceDisconnected() {
                 Log.i(TAG, "连接断开！");
-//                AppContext.showToastShort("连接断开！");
             }
 
             @Override
             public void onServicesDiscovered(BluetoothGatt gatt) {
                 Log.i(TAG, "发现服务");
-//                AppContext.showToastShort("发现服务");
-
-                //发送数据、开启通知、读取特征等操作，需要在onServicesDiscovered()发现服务之后才能进行。
-
                 //写之前打开通知，以监听通知
                 mBluetoothLe.enableNotification(true, BluetoothUUID.psServiceUUID,
                         new UUID[]{BluetoothUUID.PS_HR_NOTIFICATION, BluetoothUUID.PS_STEP_NOTIFICATION});
@@ -223,7 +300,6 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
             @Override
             public void onDeviceConnectFail(ConnBleException e) {
                 Log.e(TAG, "连接异常：" + e.toString());
-                //AppContext.showToastShort("连接异常：" + e.toString());
             }
         });
 
@@ -231,19 +307,29 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
         mBluetoothLe.setOnNotificationListener(TAG, new OnLeNotificationListener() {
             @Override
             public void onSuccess(BluetoothGattCharacteristic characteristic) {
-                Log.i(TAG, "收到notification : " + Arrays.toString(characteristic.getValue()));
-//                AppContext.showToastShort("收到notification : " + Arrays.toString(characteristic.getValue()));
-                AppContext.showToastShort("收到notification : " + bytesToHex(characteristic.getValue()));
+//                Log.i(TAG, "收到notification : " + Arrays.toString(characteristic.getValue()));
+                //16进制数
+                String backInfo = bytesToHex(characteristic.getValue());
+                Log.i(TAG, "收到notification : " + backInfo);
 
-                //接收到数据，可以做下一步的数据接入游戏
+                if (backInfo.length()<8){
+                    return;
+                }
 
+                // 十六进制转化为十进制
+                //根据测试说明：机器周期性发送压力值数据指令（A5 F1 03 00 00 00），
+                // 目前只需要用到第4位数据即蓝色那位。 其值的大小，会根据按压气囊的值而相应改变。
+                // 所以需要得到第四部分，转化为10进制，然后在改变高度
+                String the4Num = bytesToHex(characteristic.getValue()).substring(6,8);
 
+                int pressureNum = Integer.parseInt(the4Num, 16);  //转化为10进制的压力值,最大值120左右
+                //改变图形的高度
+                changeHeight(pressureNum);
             }
 
             @Override
             public void onFailed(BleException e) {
                 Log.e(TAG, "notification通知错误：" + e.toString());
-                AppContext.showToastShort("notification通知错误：" + e.toString());
             }
         });
 
@@ -252,13 +338,11 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
             @Override
             public void onSuccess(BluetoothGattCharacteristic characteristic) {
                 Log.i(TAG, "收到indication: " + Arrays.toString(characteristic.getValue()));
-                AppContext.showToastShort("收到indication: " + Arrays.toString(characteristic.getValue()));
             }
 
             @Override
             public void onFailed(BleException e) {
                 Log.e(TAG, "indication通知错误：" + e.toString());
-                AppContext.showToastShort("indication通知错误：" + e.toString());
             }
         });
 
@@ -267,13 +351,11 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
             @Override
             public void onSuccess(BluetoothGattCharacteristic characteristic) {
                 Log.i(TAG, "写数据到特征：" + Arrays.toString(characteristic.getValue()));
-                //AppContext.showToastShort("写数据到特征：" + Arrays.toString(characteristic.getValue()));
             }
 
             @Override
             public void onFailed(WriteBleException e) {
                 Log.e(TAG, "写错误：" + e.toString());
-                AppContext.showToastShort("写错误：" + e.toString());
             }
         });
 
@@ -282,15 +364,13 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
             @Override
             public void onSuccess(BluetoothGattCharacteristic characteristic) {
                 Log.i(TAG, "读取特征数据：" + Arrays.toString(characteristic.getValue()));
-//                AppContext.showToastShort("读取特征数据：" + Arrays.toString(characteristic.getValue()));
                 String returnstr = bytesToHex(characteristic.getValue());
-                AppContext.showToastShort("读取特征数据：" + returnstr);
+                Log.i(TAG, "读取特征数据：" + returnstr);
             }
 
             @Override
             public void onFailure(ReadBleException e) {
                 Log.e(TAG, "读错误：" + e.toString());
-                AppContext.showToastShort("读错误：" + e.toString());
             }
         });
 
@@ -341,83 +421,6 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
         }
     }
 
-    private void scan() {
-        //对于Android 6.0以上的版本，申请地理位置动态权限
-        if (!checkLocationPermission()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("权限需求")
-                    .setMessage("Android 6.0 以上的系统版本，扫描蓝牙需要地理位置权限。请允许。")
-                    .setNeutralButton("取消", null)
-                    .setPositiveButton("确认", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            requestLocationPermission();
-                        }
-                    })
-                    .show();
-            return;
-        }
-        //如果系统版本是7.0以上，则请求打开位置信息
-        if (!LocationUtils.isOpenLocService(this) && ApiLevelHelper.isAtLeast(Build.VERSION_CODES.N)) {
-            Toast.makeText(this, "您的Android版本在7.0以上，扫描需要打开位置信息。", Toast.LENGTH_LONG).show();
-            LocationUtils.gotoLocServiceSettings(this);
-            return;
-        }
-        mBluetoothLe.setScanPeriod(20000)
-//                .setScanWithServiceUUID(BluetoothUUID.psServiceUUID)//设置根据服务uuid过滤扫描
-//                .setScanWithDeviceAddress("00:20:ff:34:aa:b3")//根据硬件地址过滤扫描
-//                .setScanWithDeviceName("ZG1616")//设置根据设备名称过滤扫描
-                .setReportDelay(0)//如果为0，则回调onScanResult()方法，如果大于0, 则每隔你设置的时长回调onBatchScanResults()方法，不能小于0
-                .startScan(this);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    public void initView() {
-
-        //初始化用户名
-        initUserName();
-
-        IntentFilter filter = new IntentFilter(Constants.INTENT_ACTION_NOTICE);
-        filter.addAction(Constants.INTENT_ACTION_LOGOUT);
-        NoticeUtils.bindToService(this);
-
-        btStartScan.setOnClickListener(this);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        NoticeUtils.unbindFromService(this);
-        NoticeUtils.tryToShutDown(this);
-        AppManager.getAppManager().removeActivity(this);
-        //注销广播接收
-        unregisterReceiver(mReceiver);
-        unregisterReceiver(blueStateBroadcastReceiver);
-
-        //根据TAG注销监听，避免内存泄露
-        mBluetoothLe.destroy(TAG);
-        //关闭GATT
-        mBluetoothLe.close();
-    }
-
-    @Override
-    public void initData() {
-    }
 
     @Override
     public void setTitle(CharSequence title) {
@@ -489,6 +492,14 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
         }
     }
 
+    private void changeHeight(int pressureNum) {
+//        Random rand = new Random();
+//        int height = rand.nextInt(400);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mPressure.getLayoutParams();
+        params.height = 3*pressureNum;
+        mPressure.setLayoutParams(params);
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -497,6 +508,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
 //                        .setScanWithServiceUUID(BluetoothUUID.psServiceUUID)//设置根据服务uuid过滤扫描
                         .setReportDelay(0)//如果为0，则回调onScanResult()方法，如果大于0, 则每隔你设置的时长回调onBatchScanResults()方法，不能小于0
                         .startScan(this);
+                scan();
                 break;
             default:
                 break;
