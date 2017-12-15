@@ -243,7 +243,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
             LocationUtils.gotoLocServiceSettings(this);
             return;
         }
-        mBluetoothLe.setScanPeriod(20000)
+        mBluetoothLe.setScanPeriod(200000)
                 //   .setScanWithServiceUUID(BluetoothUUID.SERVICE)
                 .setReportDelay(0)
                 .startScan(this);
