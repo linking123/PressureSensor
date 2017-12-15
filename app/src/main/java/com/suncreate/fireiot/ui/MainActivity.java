@@ -331,10 +331,23 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
             @Override
             public void onSuccess(BluetoothGattCharacteristic characteristic) {
 //                Log.i(TAG, "收到notification : " + Arrays.toString(characteristic.getValue()));
-                Log.i(TAG, "收到notification : " + bytesToHex(characteristic.getValue()));
+                //16进制数
+                String backInfo = bytesToHex(characteristic.getValue());
+                Log.i(TAG, "收到notification : " + backInfo);
 
+                if (backInfo.length()<8){
+                    return;
+                }
+
+                // 十六进制转化为十进制
+                //根据测试说明：机器周期性发送压力值数据指令（A5 F1 03 00 00 00），
+                // 目前只需要用到第4位数据即蓝色那位。 其值的大小，会根据按压气囊的值而相应改变。
+                // 所以需要得到第四部分，转化为10进制，然后在改变高度
+                String the4Num = bytesToHex(characteristic.getValue()).substring(6,8);
+
+                int pressureNum = Integer.parseInt(the4Num, 16);  //转化为10进制的压力值,最大值120左右
                 //改变图形的高度
-                changeHeight();
+                changeHeight(pressureNum);
             }
 
             @Override
@@ -425,11 +438,11 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
         }
     }
 
-    private void changeHeight(){
-        Random rand = new Random();
-        int height = rand.nextInt(400);
+    private void changeHeight(int pressureNum) {
+//        Random rand = new Random();
+//        int height = rand.nextInt(400);
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mPressure.getLayoutParams();
-        params.height = height;
+        params.height = 3*pressureNum;
         mPressure.setLayoutParams(params);
     }
 

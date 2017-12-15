@@ -38,7 +38,6 @@
             fbutton:shadowEnabled="false"
             fbutton:shadowHeight="3dp" />
 
-
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
