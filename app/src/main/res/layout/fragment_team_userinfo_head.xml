@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:padding="10dp">
 
-    <com.suncreate.fireiot.widget.AvatarView
+    <com.suncreate.pressuresensor.widget.AvatarView
         android:id="@+id/fragment_team_head"
         android:layout_width="50dp"
         android:layout_height="50dp"

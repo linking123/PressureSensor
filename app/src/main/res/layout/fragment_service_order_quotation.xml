@@ -94,7 +94,7 @@
                 android:padding="@dimen/lay_12"
                 android:scaleType="center"/>
 
-            <com.suncreate.fireiot.meidia.TweetPicturesPreviewer
+            <com.suncreate.pressuresensor.meidia.TweetPicturesPreviewer
                 android:id="@+id/recycler_images"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

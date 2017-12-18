@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.suncreate.fireiot.widget.CustomerScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.suncreate.pressuresensor.widget.CustomerScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -27,7 +27,7 @@
                 android:textColor="@color/main_black"
                 android:textSize="@dimen/text_size_16" />
 
-            <com.suncreate.fireiot.widget.togglebutton.ToggleButton
+            <com.suncreate.pressuresensor.widget.togglebutton.ToggleButton
                 android:id="@+id/tb_accept"
                 android:layout_width="45dp"
                 android:layout_height="20dp"
@@ -51,7 +51,7 @@
                 android:textColor="@color/main_black"
                 android:textSize="@dimen/text_size_16" />
 
-            <com.suncreate.fireiot.widget.togglebutton.ToggleButton
+            <com.suncreate.pressuresensor.widget.togglebutton.ToggleButton
                 android:id="@+id/tb_voice"
                 android:layout_width="45dp"
                 android:layout_height="20dp"
@@ -71,7 +71,7 @@
                 android:textColor="@color/main_black"
                 android:textSize="@dimen/text_size_16" />
 
-            <com.suncreate.fireiot.widget.togglebutton.ToggleButton
+            <com.suncreate.pressuresensor.widget.togglebutton.ToggleButton
                 android:id="@+id/tb_vibration"
                 android:layout_width="45dp"
                 android:layout_height="20dp"
@@ -95,7 +95,7 @@
                 android:textColor="@color/main_black"
                 android:textSize="@dimen/text_size_16" />
 
-            <com.suncreate.fireiot.widget.togglebutton.ToggleButton
+            <com.suncreate.pressuresensor.widget.togglebutton.ToggleButton
                 android:id="@+id/tb_app_exit"
                 android:layout_width="45dp"
                 android:layout_height="20dp"
@@ -106,4 +106,4 @@
             style="@style/h_line"/>
     </LinearLayout>
 
-</com.suncreate.fireiot.widget.CustomerScrollView>
+</com.suncreate.pressuresensor.widget.CustomerScrollView>

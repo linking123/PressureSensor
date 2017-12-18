@@ -5,7 +5,7 @@
     android:background="?attr/layout_item_bg"
     android:padding="@dimen/space_10" >
 
-    <com.suncreate.fireiot.widget.AvatarView
+    <com.suncreate.pressuresensor.widget.AvatarView
         android:id="@+id/iv_avatar"
         style="@style/comment_user_face_image"
         android:layout_marginRight="@dimen/space_10" />
@@ -27,7 +27,7 @@
         android:textColor="?attr/infoTextColor"
         android:textSize="@dimen/text_size_10" />
 
-    <com.suncreate.fireiot.widget.TweetTextView
+    <com.suncreate.pressuresensor.widget.TweetTextView
         android:id="@+id/tv_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

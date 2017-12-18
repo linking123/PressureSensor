@@ -198,7 +198,7 @@
 
             </RelativeLayout>
 
-            <com.suncreate.fireiot.meidia.TweetPicturesPreviewer
+            <com.suncreate.pressuresensor.meidia.TweetPicturesPreviewer
                 android:id="@+id/recycler_images"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

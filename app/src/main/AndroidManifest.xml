@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.suncreate.fireiot">
+    package="com.suncreate.pressuresensor">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -36,7 +36,7 @@
     <!-- 适配Android N系统必需的ContentProvider写权限声明，写权限包含应用包名-->
     <uses-permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.suncreate.fireiot" />
     <permission
-        android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.suncreate.fireiot"
+        android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.suncreate.pressuresensor"
         android:protectionLevel="normal" />
 
     <!--蓝牙权限-->
@@ -64,14 +64,14 @@
         android:xlargeScreens="true" />
 
     <application
-        android:name="com.suncreate.fireiot.AppContext"
+        android:name="com.suncreate.pressuresensor.AppContext"
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher_fireiot_fire"
         android:label="@string/app_name"
         android:theme="@style/AppBaseTheme_Light"
         tools:replace="android:allowBackup">
         <activity
-            android:name="com.suncreate.fireiot.AppStart"
+            android:name="com.suncreate.pressuresensor.AppStart"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppStartLoad">
@@ -82,12 +82,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.suncreate.fireiot.GuideActivity"
+            android:name="com.suncreate.pressuresensor.GuideActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppStartLoad" />
         <activity
-            android:name="com.suncreate.fireiot.ui.MainActivity"
+            android:name="com.suncreate.pressuresensor.ui.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -134,41 +134,41 @@
         </activity>
 
         <activity
-            android:name="com.suncreate.fireiot.ui.LoginActivity"
+            android:name="com.suncreate.pressuresensor.ui.LoginActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.suncreate.fireiot.ui.LoginBindActivityChooseActivity"
+            android:name="com.suncreate.pressuresensor.ui.LoginBindActivityChooseActivity"
             android:label="登录"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.suncreate.fireiot.ui.LoginAccountBindOpenIdActivity"
+            android:name="com.suncreate.pressuresensor.ui.LoginAccountBindOpenIdActivity"
             android:label="账号绑定"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.suncreate.fireiot.ui.SimpleBackActivity"
+            android:name="com.suncreate.pressuresensor.ui.SimpleBackActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.suncreate.fireiot.ui.OSCPhotosActivity"
+            android:name="com.suncreate.pressuresensor.ui.OSCPhotosActivity"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/ThemePhotoBrowse" />
         <activity
-            android:name=".meidia.SelectImageActivity"
+            android:name="com.suncreate.pressuresensor.meidia.SelectImageActivity"
             android:label=""
             android:screenOrientation="portrait" />
         <activity
-            android:name=".meidia.ImageGalleryActivity"
+            android:name="com.suncreate.pressuresensor.meidia.ImageGalleryActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="图片预览"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Dialog.NoTitle.Translucent" />
 
-        <service android:name="com.suncreate.fireiot.LogUploadService" />
-        <service android:name="com.suncreate.fireiot.service.ServerTaskService">
+        <service android:name="com.suncreate.pressuresensor.LogUploadService" />
+        <service android:name="com.suncreate.pressuresensor.service.ServerTaskService">
             <intent-filter>
                 <action android:name="com.suncreate.fireiot.ACTION_PUB_BLOG_COMMENT" />
             </intent-filter>
@@ -186,12 +186,12 @@
             </intent-filter>
         </service>
 
-        <receiver android:name="com.suncreate.fireiot.broadcast.AlarmReceiver" />
+        <receiver android:name="com.suncreate.pressuresensor.broadcast.AlarmReceiver" />
 
         <service
-            android:name="com.suncreate.fireiot.service.NoticeService"
+            android:name="com.suncreate.pressuresensor.service.NoticeService"
             android:process=":notice" />
-        <service android:name="com.suncreate.fireiot.service.DownloadService" />
+        <service android:name="com.suncreate.pressuresensor.service.DownloadService" />
 
         //[百度LBS定位，ak,已配置发布版SHA1-PointInfo-Android](http://lbsyun.baidu.com/apiconsole/key)
         <meta-data
@@ -217,7 +217,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name="com.suncreate.fireiot.wxapi.WXEntryActivity"
+            android:name="com.suncreate.pressuresensor.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"

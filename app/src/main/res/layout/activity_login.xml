@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:padding="15dp">
 
-        <com.suncreate.fireiot.util.EditTextWithDel
+        <com.suncreate.pressuresensor.util.EditTextWithDel
             android:id="@+id/login_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
             android:inputType="number" />
 
 
-        <com.suncreate.fireiot.util.EditTextWithDel
+        <com.suncreate.pressuresensor.util.EditTextWithDel
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

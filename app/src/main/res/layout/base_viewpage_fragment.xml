@@ -6,14 +6,14 @@
     android:orientation="vertical" >
 
     <!-- 导航标题栏 -->
-    <com.suncreate.fireiot.widget.PagerSlidingTabStrip
+    <com.suncreate.pressuresensor.widget.PagerSlidingTabStrip
         android:id="@+id/pager_tabstrip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/windows_bg"
         app:allowWidthFull="true"
         app:slidingBlock="?attr/sliding_block_bg" >
-    </com.suncreate.fireiot.widget.PagerSlidingTabStrip>
+    </com.suncreate.pressuresensor.widget.PagerSlidingTabStrip>
 
     <View
         android:id="@+id/view_pager_line"
@@ -28,7 +28,7 @@
         android:layout_below="@id/view_pager_line">
     </android.support.v4.view.ViewPager>
 
-    <com.suncreate.fireiot.ui.empty.EmptyLayout
+    <com.suncreate.pressuresensor.ui.empty.EmptyLayout
         android:id="@+id/error_layout"
         style="@style/fill_fill"
         android:visibility="gone" />

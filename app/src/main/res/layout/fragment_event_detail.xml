@@ -6,7 +6,7 @@
     android:background="?attr/windows_bg"
     android:orientation="vertical">
 
-    <com.suncreate.fireiot.widget.CustomerScrollView
+    <com.suncreate.pressuresensor.widget.CustomerScrollView
         android:id="@+id/sv_news_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -109,9 +109,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-    </com.suncreate.fireiot.widget.CustomerScrollView>
+    </com.suncreate.pressuresensor.widget.CustomerScrollView>
 
-    <com.suncreate.fireiot.ui.empty.EmptyLayout
+    <com.suncreate.pressuresensor.ui.empty.EmptyLayout
         android:id="@+id/error_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

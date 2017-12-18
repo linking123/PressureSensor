@@ -147,7 +147,7 @@
                 android:layout_below="@+id/user_address"
                 android:layout_marginTop="5dp" />
 
-            <com.suncreate.fireiot.widget.togglebutton.ToggleButton
+            <com.suncreate.pressuresensor.widget.togglebutton.ToggleButton
                 android:id="@+id/default_address_set"
                 style="@style/option_item_toggleButton"
                 android:layout_alignParentRight="true"

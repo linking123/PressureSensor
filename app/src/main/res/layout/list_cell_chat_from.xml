@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/space_10">
 
-        <com.suncreate.fireiot.widget.AvatarView
+        <com.suncreate.pressuresensor.widget.AvatarView
             android:id="@+id/iv_avatar"
             style="@style/user_face_image"
             android:layout_alignParentLeft="true"
@@ -67,7 +67,7 @@
                     app:riv_oval="false"
                     android:visibility="gone"/>
 
-                <com.suncreate.fireiot.widget.TweetTextView
+                <com.suncreate.pressuresensor.widget.TweetTextView
                     android:id="@+id/tv_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

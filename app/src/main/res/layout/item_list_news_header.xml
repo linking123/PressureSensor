@@ -31,7 +31,7 @@
             <!--tools:text="新闻轮播"-->
             <!--android:textColor="@color/white" />-->
 
-        <com.suncreate.fireiot.widget.indicator.CirclePagerIndicator
+        <com.suncreate.pressuresensor.widget.indicator.CirclePagerIndicator
             android:id="@+id/indicator"
             android:layout_width="45dp"
             android:layout_height="wrap_content"

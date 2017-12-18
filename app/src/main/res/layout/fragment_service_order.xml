@@ -5,7 +5,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <!--<fireiot.ActionHorizontalScrollView-->
+    <!--<pressuresensor.ActionHorizontalScrollView-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:scrollbars="none">-->
@@ -29,7 +29,7 @@
 
             <!--<View style="@style/v_line" />-->
         <!--</LinearLayout>-->
-    <!--</fireiot.ActionHorizontalScrollView>-->
+    <!--</pressuresensor.ActionHorizontalScrollView>-->
 
     <View
         android:id="@+id/order_header_view"
@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.suncreate.fireiot.widget.SuperRefreshLayout
+        <com.suncreate.pressuresensor.widget.SuperRefreshLayout
             android:id="@+id/superRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,9 +56,9 @@
                 android:layout_height="match_parent"
                 android:divider="@color/transparent"
                 android:dividerHeight="0dp" />
-        </com.suncreate.fireiot.widget.SuperRefreshLayout>
+        </com.suncreate.pressuresensor.widget.SuperRefreshLayout>
 
-        <com.suncreate.fireiot.ui.empty.EmptyLayout
+        <com.suncreate.pressuresensor.ui.empty.EmptyLayout
             android:id="@+id/error_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

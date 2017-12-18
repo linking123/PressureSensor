@@ -24,7 +24,7 @@
             android:textSize="@dimen/text_size_32"
             android:textStyle="bold" />
 
-        <com.suncreate.fireiot.util.EditTextWithDel
+        <com.suncreate.pressuresensor.util.EditTextWithDel
             android:id="@+id/login_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
             android:textColor="#90959A"
             android:textColorHint="#90959A" />
 
-        <com.suncreate.fireiot.util.EditTextWithDel
+        <com.suncreate.pressuresensor.util.EditTextWithDel
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_marginLeft="@dimen/space_40"

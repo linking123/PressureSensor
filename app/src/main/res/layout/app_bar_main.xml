@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#232a34"
-    tools:context="com.suncreate.fireiot.ui.MainActivity">
+    tools:context="com.suncreate.pressuresensor.ui.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

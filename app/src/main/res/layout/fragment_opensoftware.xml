@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <com.suncreate.fireiot.widget.ScrollLayout
+    <com.suncreate.pressuresensor.widget.ScrollLayout
         android:id="@+id/scrolllayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -34,9 +34,9 @@
             android:layout_height="fill_parent"
             android:divider="?attr/lineColor"
             android:scrollingCache="true" />
-    </com.suncreate.fireiot.widget.ScrollLayout>
+    </com.suncreate.pressuresensor.widget.ScrollLayout>
 
-    <com.suncreate.fireiot.ui.empty.EmptyLayout
+    <com.suncreate.pressuresensor.ui.empty.EmptyLayout
         android:id="@+id/error_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

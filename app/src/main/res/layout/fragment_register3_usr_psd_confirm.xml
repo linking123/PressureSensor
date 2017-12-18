@@ -5,7 +5,7 @@
     android:background="?attr/layout_item_bg"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context="com.suncreate.fireiot.fragment.LoginRegister.RegisterFragment">
+    tools:context="com.suncreate.pressuresensor.fragment.LoginRegister.RegisterFragment">
 
     <!-- 用户名 -->
     <LinearLayout

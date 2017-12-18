@@ -97,7 +97,7 @@
                 android:scaleType="center"
                 android:visibility="gone" />
 
-            <com.suncreate.fireiot.meidia.TweetPicturesPreviewer
+            <com.suncreate.pressuresensor.meidia.TweetPicturesPreviewer
                 android:id="@+id/recycler_images_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
                 android:scaleType="center"
                 android:visibility="gone" />
 
-            <com.suncreate.fireiot.meidia.TweetPicturesPreviewer
+            <com.suncreate.pressuresensor.meidia.TweetPicturesPreviewer
                 android:id="@+id/recycler_images_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
                 android:scaleType="center"
                 android:visibility="gone" />
 
-            <com.suncreate.fireiot.meidia.TweetPicturesPreviewer
+            <com.suncreate.pressuresensor.meidia.TweetPicturesPreviewer
                 android:id="@+id/recycler_images_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

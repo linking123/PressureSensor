@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.suncreate.fireiot.bean.carBrand.SideBar
+    <com.suncreate.pressuresensor.bean.carBrand.SideBar
         android:id="@+id/side_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
