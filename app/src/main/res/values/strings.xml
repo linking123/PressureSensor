@@ -32,7 +32,7 @@
     <string name="exception_info">请输入备注信息</string>
     <string name="exception_img">请上传周边环境照片</string>
     <string name="exception_info_type_in">请输入异常信息</string>
-    <string name="equipment_inspect_sys">消防设施巡检系统</string>
+    <string name="equipment_inspect_sys">产后康复锻炼系统</string>
     <string name="equipment_productor">设备厂商</string>
     <string name="equipment_install_position">安装位置</string>
     <string name="equipment_person_incharge">负责人</string>
@@ -47,9 +47,9 @@
     <string name="clear_cache">清除缓存</string>
     <string name="check_update_info">检查更新</string>
     <string name="btn_logout">退出</string>
-    <string name="actionbar_title_about_fireiot">关于消防巡检系统</string>
+    <string name="actionbar_title_about_fireiot">关于产后康复锻炼系统</string>
     <string name="about_fireiot">关于系统</string>
-    <string name="brief_introduction">消防巡检系统简介</string>
+    <string name="brief_introduction">产后康复锻炼系统简介</string>
     <string name="user_protocal">用户协议</string>
     <string name="txt_user_name_edit">修改用户名</string>
     <string name="txt_user_password_edit">修改密码</string>

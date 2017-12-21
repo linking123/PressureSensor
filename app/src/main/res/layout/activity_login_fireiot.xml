@@ -2,15 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_background"
+    android:background="@drawable/login_background_ps"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="-30dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="73dp">
 
         <TextView
             android:id="@+id/tv_project_name"
@@ -31,14 +32,14 @@
             android:layout_marginLeft="@dimen/space_40"
             android:layout_marginRight="@dimen/space_40"
             android:layout_marginTop="@dimen/space_50"
-            android:background="#2F3741"
+            android:background="#deb8b1"
             android:gravity="center_vertical"
             android:hint="@string/login_username"
             android:imeOptions="actionNext"
             android:inputType="text"
             android:padding="@dimen/space_10"
-            android:textColor="#90959A"
-            android:textColorHint="#90959A" />
+            android:textColor="#656769"
+            android:textColorHint="#414243" />
 
         <com.suncreate.pressuresensor.util.EditTextWithDel
             android:id="@+id/login_password"
@@ -47,14 +48,14 @@
             android:layout_marginRight="@dimen/space_40"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="#2F3741"
+            android:background="#deb8b1"
             android:gravity="center_vertical"
             android:hint="@string/login_pwd"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
             android:padding="@dimen/space_10"
-            android:textColor="#90959A"
-            android:textColorHint="#90959A" />
+            android:textColor="#656769"
+            android:textColorHint="#414243" />
 
         <Button
             android:id="@+id/btn_login"
