@@ -31,6 +31,30 @@
 
     </LinearLayout>
 
+    <!-- 电话 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/hint_phone"
+            android:textSize="16sp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/act_user_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:hint="@string/tip_please_input_userphone"
+            android:inputType="textPassword"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
     <!-- 输入密码 -->
     <LinearLayout
         android:layout_width="match_parent"

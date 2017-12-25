@@ -32,6 +32,7 @@ import com.suncreate.pressuresensor.bean.base.PageBean;
 import com.suncreate.pressuresensor.bean.base.ResultBean;
 import com.suncreate.pressuresensor.bean.scan.User;
 import com.suncreate.pressuresensor.interf.BaseViewInterface;
+import com.suncreate.pressuresensor.util.CyptoUtils;
 import com.suncreate.pressuresensor.util.DialogHelp;
 import com.suncreate.pressuresensor.util.TDevice;
 import com.suncreate.pressuresensor.util.TLog;
@@ -44,8 +45,6 @@ import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.listener.SocializeListeners;
 import com.umeng.socialize.exception.SocializeException;
-import com.umeng.socialize.sso.SinaSsoHandler;
-import com.umeng.socialize.sso.UMSsoHandler;
 
 import org.kymjs.kjframe.http.HttpConfig;
 
@@ -79,16 +78,14 @@ public class LoginActivity extends AppCompatActivity implements BaseViewInterfac
     EditText loginPassword;
     @Bind(R.id.btn_login)
     Button btnLogin;
+    @Bind(R.id.btn_register)
+    Button btnRegister;
+    @Bind(R.id.btn_reset_pwd)
+    Button btnPwd;
 
     private final int requestCode = REQUEST_CODE_INIT;
     private String mUserName = "";
     private String mPassword = "";
-
-    private static final int LOGIN_TYPE_SINA = 1;
-    private static final int LOGIN_TYPE_QQ = 2;
-    private static final int LOGIN_TYPE_WX = 3;
-
-    private int loginType;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -121,6 +118,9 @@ public class LoginActivity extends AppCompatActivity implements BaseViewInterfac
             case R.id.btn_login:
                 handleLogin();
                 break;
+            case R.id.btn_register:
+                handleRegister();
+                break;
             default:
                 break;
         }
@@ -138,6 +138,13 @@ public class LoginActivity extends AppCompatActivity implements BaseViewInterfac
 
 //        handleLoginSuccess();  //免登录，直接主页
         FireiotApi.login(mUserName, mPassword, mHandler);
+    }
+
+    /**
+     * 处理注册按钮点击事件
+     */
+    private void handleRegister() {
+
     }
 
     TextHttpResponseHandler mHandler = new TextHttpResponseHandler() {
@@ -204,8 +211,6 @@ public class LoginActivity extends AppCompatActivity implements BaseViewInterfac
         return false;
     }
 
-    Type getType;
-
     @Override
     public void initData() {
 
@@ -215,215 +220,9 @@ public class LoginActivity extends AppCompatActivity implements BaseViewInterfac
             loginPassword.requestFocus();
         }
 //        loginPassword.setText(CyptoUtils.decode("oschinaApp", AppContext.getInstance().getProperty("user.pwd")));
-
-        TextHttpResponseHandler mHandler = new TextHttpResponseHandler() {
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                //mRefreshLayout.onLoadComplete();
-            }
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                try {
-                    ResultBean<PageBean<User>> resultBean = AppContext.createGson().fromJson(responseString, getType);
-                    if (resultBean != null && resultBean.isSuccess() && resultBean.getResult().getItems() != null) {
-                    } else {
-                        //mRefreshLayout.setNoMoreData();
-                    }
-                    //mRefreshLayout.onLoadComplete();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    onFailure(statusCode, headers, responseString, e);
-                }
-            }
-        };
-    }
-
-    /**
-     * QQ登陆
-     */
-    private void qqLogin() {
-        loginType = LOGIN_TYPE_QQ;
-        Tencent mTencent = Tencent.createInstance(AppConfig.APP_QQ_KEY,
-                this);
-//        mTencent.login(this, "all", this);
     }
 
     BroadcastReceiver receiver;
-
-    /**
-     * 微信登陆
-     */
-    private void wxLogin() {
-        loginType = LOGIN_TYPE_WX;
-        IWXAPI api = WXAPIFactory.createWXAPI(this, Constants.WEICHAT_APPID, false);
-        api.registerApp(Constants.WEICHAT_APPID);
-
-        if (!api.isWXAppInstalled()) {
-            AppContext.showToast("手机中没有安装微信客户端");
-            return;
-        }
-        // 唤起微信登录授权
-        final SendAuth.Req req = new SendAuth.Req();
-        req.scope = "snsapi_userinfo";
-        req.state = "wechat_login";
-        api.sendReq(req);
-        // 注册一个广播，监听微信的获取openid返回（类：WXEntryActivity中）
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(OpenIdCatalog.WECHAT);
-        receiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (intent != null) {
-                    String openid_info = intent.getStringExtra(LoginBindActivityChooseActivity.BUNDLE_KEY_OPENIDINFO);
-                    openIdLogin(OpenIdCatalog.WECHAT, openid_info);
-                    // 注销这个监听广播
-                    if (receiver != null) {
-                        unregisterReceiver(receiver);
-                    }
-                }
-            }
-        };
-
-        registerReceiver(receiver, intentFilter);
-    }
-
-    /**
-     * 新浪登录
-     */
-    private void sinaLogin() {
-        if (mController == null)
-            mController = UMServiceFactory.getUMSocialService("com.umeng.login");
-        loginType = LOGIN_TYPE_SINA;
-        SinaSsoHandler sinaSsoHandler = new SinaSsoHandler();
-        mController.getConfig().setSsoHandler(sinaSsoHandler);
-        mController.doOauthVerify(this, SHARE_MEDIA.SINA,
-                new SocializeListeners.UMAuthListener() {
-
-                    @Override
-                    public void onStart(SHARE_MEDIA arg0) {
-                    }
-
-                    @Override
-                    public void onError(SocializeException arg0,
-                                        SHARE_MEDIA arg1) {
-                        AppContext.showToast("新浪授权失败");
-                    }
-
-                    @Override
-                    public void onComplete(Bundle value, SHARE_MEDIA arg1) {
-                        if (value != null && !TextUtils.isEmpty(value.getString("uid"))) {
-                            // 获取平台信息
-                            mController.getPlatformInfo(LoginActivity.this, SHARE_MEDIA.SINA, new SocializeListeners.UMDataListener() {
-                                @Override
-                                public void onStart() {
-
-                                }
-
-                                @Override
-                                public void onComplete(int i, Map<String, Object> map) {
-                                    if (i == 200 && map != null) {
-                                        StringBuilder sb = new StringBuilder("{");
-                                        Set<String> keys = map.keySet();
-                                        int index = 0;
-                                        for (String key : keys) {
-                                            index++;
-                                            String jsonKey = key;
-                                            if (jsonKey.equals("uid")) {
-                                                jsonKey = "openid";
-                                            }
-                                            sb.append(String.format("\"%s\":\"%s\"", jsonKey, map.get(key).toString()));
-                                            if (index != map.size()) {
-                                                sb.append(",");
-                                            }
-                                        }
-                                        sb.append("}");
-                                        openIdLogin(OpenIdCatalog.WEIBO, sb.toString());
-                                    } else {
-                                        AppContext.showToast("发生错误：" + i);
-                                    }
-                                }
-                            });
-                        } else {
-                            AppContext.showToast("授权失败");
-                        }
-                    }
-
-                    @Override
-                    public void onCancel(SHARE_MEDIA arg0) {
-                        AppContext.showToast("已取消新浪登陆");
-                    }
-                });
-    }
-
-    /***
-     * @param catalog    第三方登录的类别
-     * @param openIdInfo 第三方的信息
-     */
-    private void openIdLogin(final String catalog, final String openIdInfo) {
-        final ProgressDialog waitDialog = DialogHelp.getWaitDialog(this, "登陆中...");
-//        WukongApi.open_login(catalog, openIdInfo, new AsyncHttpResponseHandler() {
-//            @Override
-//            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-//                LoginUserBean loginUserBean = XmlUtils.toBean(LoginUserBean.class, responseBody);
-//                if (loginUserBean.getResult().OK()) {
-//                    // handleLoginBean(loginUserBean, headers);
-//                } else {
-//                    // 前往绑定或者注册操作
-//                    Intent intent = new Intent(LoginActivity.this, LoginBindActivityChooseActivity.class);
-//                    intent.putExtra(LoginBindActivityChooseActivity.BUNDLE_KEY_CATALOG, catalog);
-//                    intent.putExtra(LoginBindActivityChooseActivity.BUNDLE_KEY_OPENIDINFO, openIdInfo);
-//                    startActivityForResult(intent, REQUEST_CODE_OPENID);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-//                AppContext.showToast("网络出错" + statusCode);
-//            }
-//
-//            @Override
-//            public void onStart() {
-//                super.onStart();
-//                waitDialog.show();
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//                super.onFinish();
-//                waitDialog.dismiss();
-//            }
-//        });
-    }
-
-    public static final int REQUEST_CODE_OPENID = 1000;
-    // 登陆实体类
-    public static final String BUNDLE_KEY_LOGINBEAN = "bundle_key_loginbean";
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (loginType == LOGIN_TYPE_SINA) {
-            UMSsoHandler ssoHandler = mController.getConfig().getSsoHandler(requestCode);
-            if (ssoHandler != null) {
-                ssoHandler.authorizeCallBack(requestCode, resultCode, data);
-            }
-        } else {
-            switch (requestCode) {
-                case REQUEST_CODE_OPENID:
-                    if (data == null) {
-                        return;
-                    }
-                    LoginUserBean loginUserBean = (LoginUserBean) data.getSerializableExtra(BUNDLE_KEY_LOGINBEAN);
-                    if (loginUserBean != null) {
-                        //handleLoginBean(loginUserBean, null);
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
 
     // 处理loginBean
     private void handleLoginBean(ResultBean<User> loginUserBean, Header[] headers) {

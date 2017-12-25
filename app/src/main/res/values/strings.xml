@@ -144,7 +144,7 @@
     <string name="tip_network_error">没有可用的网络</string>
 
     <!-- 注册登录 -->
-    <string name="hint_phone">手机号</string>
+    <string name="hint_phone">手机号码：</string>
     <string name="hint_register_usrname">用户名</string>
     <string name="hint_psw">密码</string>
     <string name="login_username">用户名</string>
@@ -163,7 +163,7 @@
     <string name="register_verifyCode_send_failure">验证失败</string>
     <string name="register_submit_send_failure">注册失败</string>
     <string name="register_send_wait">重新获取(%1$s)</string>
-    <string name="register_tip_username">用&#160;&#160;户&#160;&#160;名：</string>
+    <string name="register_tip_username">用户名：</string>
     <string name="register_submit">提    交</string>
 
     <string name="verify_register">注册</string>
@@ -180,7 +180,7 @@
     <string name="tip_please_input_verify">请输入手机验证码</string>
     <string name="progress_send">正在发送…</string>
     <string name="tip_illegal_phone">请输入正确的手机号</string>
-    <string name="tip_please_input_password">请设置登入密码</string>
+    <string name="tip_please_input_password">请设置密码</string>
     <string name="tip_please_input_password_comfirm">请确认密码</string>
     <string name="tip_no_user_info">用户信息为空</string>
 
@@ -193,6 +193,7 @@
     <string name="my_information_unlogin_tips">点击头像登录</string>
 
     <string name="tip_please_input_username">请输入用户名</string>
+    <string name="tip_please_input_userphone">请输入手机号码</string>
     <string name="tip_illegal_email">请输入正确的email地址</string>
     <string name="progress_login">正在登录…</string>
     <string name="tip_login_error_for_network">对不起,无法登录</string>
