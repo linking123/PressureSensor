@@ -52,9 +52,18 @@
                 android:layout_gravity="bottom"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/tv_value"
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="213"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content" />
+
                 <View
                     android:id="@+id/v_pressure"
                     android:layout_width="match_parent"
+                    android:layout_below="@id/tv_value"
                     android:layout_height="400dp"
                     android:layout_marginLeft="@dimen/space_20"
                     android:layout_marginRight="@dimen/space_20"

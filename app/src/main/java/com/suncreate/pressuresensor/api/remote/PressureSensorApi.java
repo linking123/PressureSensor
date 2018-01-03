@@ -20,7 +20,26 @@ import java.util.Map;
  *         date: 2017/10/24.
  *         description: description
  */
-public class FireiotApi {
+public class PressureSensorApi {
+
+
+    /**
+     * 用户注册
+     *
+     * @param userLoginName  必填，用户名
+     * @param telephone 必填，手机号码
+     * @param password  必填，登录密码(MD5加密后)
+     * @param handler   回调
+     */
+    public static void register(String userLoginName, String telephone, String password, AsyncHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("telephone", telephone);
+        params.put("userLoginName", userLoginName);
+        params.put("password", PressureSensorApi.md5(password));
+        String sysKey = CyptoUtils.encode("Pressure_Sensor_Register_Code", telephone);
+        params.put("sysKey", sysKey);
+        ApiHttpClient.post("userModule/register", params, handler);
+    }
 
     /**
      * 用户登录
@@ -33,7 +52,7 @@ public class FireiotApi {
         RequestParams params = new RequestParams();
         params.put("userLogin", username);
         params.put("userPassword", md5(password));
-        String sysKey = CyptoUtils.encode("SC_fireIot_Code", username);
+        String sysKey = CyptoUtils.encode("Pressure_Sensor_login_Code", username);
         params.put("loginKey", sysKey);
         ApiHttpClient.post("userModule/login", params, handler);
     }

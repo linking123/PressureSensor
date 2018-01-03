@@ -86,6 +86,8 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
     FButton btStartScan;
     @Bind(R.id.v_pressure)
     View mPressure;
+    @Bind(R.id.tv_value)
+    TextView mNumText;
 
 
     public static Notice mNotice;
@@ -332,7 +334,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 String backInfo = bytesToHex(characteristic.getValue());
                 Log.i(TAG, "收到notification : " + backInfo);
 
-                if (backInfo.length()<8){
+                if (backInfo.length() < 8) {
                     return;
                 }
 
@@ -340,7 +342,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 //根据测试说明：机器周期性发送压力值数据指令（A5 F1 03 00 00 00），
                 // 目前只需要用到第4位数据即蓝色那位。 其值的大小，会根据按压气囊的值而相应改变。
                 // 所以需要得到第四部分，转化为10进制，然后在改变高度
-                String the4Num = bytesToHex(characteristic.getValue()).substring(6,8);
+                String the4Num = bytesToHex(characteristic.getValue()).substring(6, 8);
 
                 int pressureNum = Integer.parseInt(the4Num, 16);  //转化为10进制的压力值,最大值120左右
                 //改变图形的高度
@@ -431,7 +433,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
             View headerView = navigationView.getHeaderView(0);
             TextView mUserName = headerView.findViewById(R.id.tv_user_name);
             User user = AppContext.getInstance().getLoginUser();
-            mUserName.setText(user != null ? user.getUserName() : "欢迎您，巡检员");
+            mUserName.setText(user != null ? user.getUserName() : "未登录");
         }
     }
 
@@ -439,8 +441,9 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
 //        Random rand = new Random();
 //        int height = rand.nextInt(400);
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mPressure.getLayoutParams();
-        params.height = 3*pressureNum;
+        params.height = 3 * pressureNum;
         mPressure.setLayoutParams(params);
+        mNumText.setText(String.valueOf(params));
     }
 
     @Override

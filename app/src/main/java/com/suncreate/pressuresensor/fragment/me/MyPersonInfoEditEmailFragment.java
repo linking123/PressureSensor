@@ -12,7 +12,7 @@ import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.suncreate.pressuresensor.AppContext;
 import com.suncreate.pressuresensor.R;
-import com.suncreate.pressuresensor.api.remote.FireiotApi;
+import com.suncreate.pressuresensor.api.remote.PressureSensorApi;
 import com.suncreate.pressuresensor.bean.Constants;
 import com.suncreate.pressuresensor.bean.base.ResultBean;
 import com.suncreate.pressuresensor.bean.scan.User;
@@ -89,7 +89,7 @@ public class MyPersonInfoEditEmailFragment extends BaseFragment {
                 } else if ("email".equals(type)) {
                     userEmail = mEditText.getText().toString();
                 }
-                FireiotApi.updateUser(String.valueOf(user.getUserId()), userName, userPhone, userEmail, new TextHttpResponseHandler() {
+                PressureSensorApi.updateUser(String.valueOf(user.getUserId()), userName, userPhone, userEmail, new TextHttpResponseHandler() {
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                         AppContext.showToast("更新失败");

@@ -18,7 +18,7 @@ import com.google.gson.reflect.TypeToken;
 import com.qindachang.bluetoothle.BluetoothConfig;
 import com.qindachang.bluetoothle.BluetoothLe;
 import com.suncreate.pressuresensor.api.ApiHttpClient;
-import com.suncreate.pressuresensor.api.remote.FireiotApi;
+import com.suncreate.pressuresensor.api.remote.PressureSensorApi;
 import com.suncreate.pressuresensor.base.BaseApplication;
 import com.suncreate.pressuresensor.bean.Constants;
 import com.suncreate.pressuresensor.bean.base.ResultBean;
@@ -331,7 +331,7 @@ public class AppContext extends BaseApplication {
      * 用户注销
      */
     public void Logout() {
-        FireiotApi.logout(mLogoutHandler);
+        PressureSensorApi.logout(mLogoutHandler);
     }
 
     TextHttpResponseHandler mLogoutHandler = new TextHttpResponseHandler() {

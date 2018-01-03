@@ -3,7 +3,6 @@ package com.suncreate.pressuresensor.api.remote;
 import android.text.TextUtils;
 
 import com.suncreate.pressuresensor.api.ApiHttpClient;
-import com.suncreate.pressuresensor.api.WkApi;
 import com.suncreate.pressuresensor.util.CyptoUtils;
 import com.suncreate.pressuresensor.util.StringUtils;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -63,7 +62,7 @@ public class MonkeyApi {
         params.put("telephone", telephone);
         params.put("regType", regType);
         params.put("realName", realName);
-        params.put("password", WkApi.md5(password));
+        params.put("password", PressureSensorApi.md5(password));
         params.put("region", region);
         params.put("address", address);
         ApiHttpClient.post("v1/user/register", params, handler);
@@ -79,7 +78,7 @@ public class MonkeyApi {
     public static void login(String username, String password, AsyncHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("userName", username);
-        params.put("password", WkApi.md5(password));
+        params.put("password", PressureSensorApi.md5(password));
         String sysKey = CyptoUtils.encode("SC_Monkey_Code", username);
         params.put("loginKey", sysKey);
         ApiHttpClient.post("v1/sso/login", params, handler);
@@ -151,7 +150,7 @@ public class MonkeyApi {
     public static void resetPassword(String telephone, String newpwd, String verifykey, AsyncHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("telephone", telephone);
-        params.put("resetpwd", WkApi.md5(newpwd));
+        params.put("resetpwd", PressureSensorApi.md5(newpwd));
         params.put("sysKey", verifykey);
         ApiHttpClient.post("v1/user/resetPassword", params, handler);
     }
@@ -163,7 +162,7 @@ public class MonkeyApi {
      */
     public static void password(String newpwd, AsyncHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
-        params.put("newpwd", WkApi.md5(newpwd));
+        params.put("newpwd", PressureSensorApi.md5(newpwd));
         ApiHttpClient.post("v1/user/password", params, handler);
     }
 

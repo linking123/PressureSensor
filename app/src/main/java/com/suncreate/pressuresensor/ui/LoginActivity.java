@@ -1,10 +1,7 @@
 package com.suncreate.pressuresensor.ui;
 
-import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,33 +21,18 @@ import com.suncreate.pressuresensor.AppContext;
 import com.suncreate.pressuresensor.AppManager;
 import com.suncreate.pressuresensor.R;
 import com.suncreate.pressuresensor.api.ApiHttpClient;
-import com.suncreate.pressuresensor.api.remote.FireiotApi;
+import com.suncreate.pressuresensor.api.remote.PressureSensorApi;
 import com.suncreate.pressuresensor.bean.Constants;
-import com.suncreate.pressuresensor.bean.LoginUserBean;
-import com.suncreate.pressuresensor.bean.OpenIdCatalog;
-import com.suncreate.pressuresensor.bean.base.PageBean;
+import com.suncreate.pressuresensor.bean.SimpleBackPage;
 import com.suncreate.pressuresensor.bean.base.ResultBean;
 import com.suncreate.pressuresensor.bean.scan.User;
 import com.suncreate.pressuresensor.interf.BaseViewInterface;
-import com.suncreate.pressuresensor.util.CyptoUtils;
-import com.suncreate.pressuresensor.util.DialogHelp;
 import com.suncreate.pressuresensor.util.TDevice;
 import com.suncreate.pressuresensor.util.TLog;
-import com.tencent.mm.sdk.modelmsg.SendAuth;
-import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.WXAPIFactory;
-import com.tencent.tauth.Tencent;
-import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.controller.UMServiceFactory;
+import com.suncreate.pressuresensor.util.UIHelper;
 import com.umeng.socialize.controller.UMSocialService;
-import com.umeng.socialize.controller.listener.SocializeListeners;
-import com.umeng.socialize.exception.SocializeException;
 
 import org.kymjs.kjframe.http.HttpConfig;
-
-import java.lang.reflect.Type;
-import java.util.Map;
-import java.util.Set;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -81,7 +63,7 @@ public class LoginActivity extends AppCompatActivity implements BaseViewInterfac
     @Bind(R.id.btn_register)
     Button btnRegister;
     @Bind(R.id.btn_reset_pwd)
-    Button btnPwd;
+    Button btnResetPwd;
 
     private final int requestCode = REQUEST_CODE_INIT;
     private String mUserName = "";
@@ -101,7 +83,7 @@ public class LoginActivity extends AppCompatActivity implements BaseViewInterfac
         // 隐藏状态栏
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_login_fireiot);
+        setContentView(R.layout.activity_login_pressuresensor);
         ButterKnife.bind(this);
         initView();
     }
@@ -110,6 +92,8 @@ public class LoginActivity extends AppCompatActivity implements BaseViewInterfac
     public void initView() {
 
         btnLogin.setOnClickListener(this);
+        btnRegister.setOnClickListener(this);
+        btnResetPwd.setOnClickListener(this);
     }
 
     @Override
@@ -120,6 +104,9 @@ public class LoginActivity extends AppCompatActivity implements BaseViewInterfac
                 break;
             case R.id.btn_register:
                 handleRegister();
+                break;
+            case R.id.btn_reset_pwd:
+                handleRetPwd();
                 break;
             default:
                 break;
@@ -137,13 +124,20 @@ public class LoginActivity extends AppCompatActivity implements BaseViewInterfac
         mPassword = loginPassword.getText().toString();
 
 //        handleLoginSuccess();  //免登录，直接主页
-        FireiotApi.login(mUserName, mPassword, mHandler);
+        PressureSensorApi.login(mUserName, mPassword, mHandler);
     }
 
     /**
      * 处理注册按钮点击事件
      */
     private void handleRegister() {
+        UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.REGISTER);
+    }
+
+    /**
+     * 处理找回密码按钮点击事件
+     */
+    private void handleRetPwd() {
 
     }
 
@@ -263,4 +257,9 @@ public class LoginActivity extends AppCompatActivity implements BaseViewInterfac
         AppContext.getInstance().saveUserInfo(loginUserBean.getResult());
         handleLoginSuccess();
     }
+
+
+    public static final int REQUEST_CODE_OPENID = 1000;
+    // 登陆实体类
+    public static final String BUNDLE_KEY_LOGINBEAN = "bundle_key_loginbean";
 }

@@ -9,7 +9,7 @@ import android.text.TextUtils;
 
 import com.google.gson.reflect.TypeToken;
 import com.suncreate.pressuresensor.api.ApiHttpClient;
-import com.suncreate.pressuresensor.api.remote.FireiotApi;
+import com.suncreate.pressuresensor.api.remote.PressureSensorApi;
 import com.suncreate.pressuresensor.bean.base.ResultBean;
 import com.suncreate.pressuresensor.bean.scan.User;
 import com.suncreate.pressuresensor.ui.LoginActivity;
@@ -147,7 +147,7 @@ public class AppStart extends Activity {
     public void goHome() {
         String regToken = AppContext.getInstance().getProperty("user.token");
         if (!StringUtils.isEmpty(regToken)) {
-            FireiotApi.autoLogin(regToken, new TextHttpResponseHandler() {
+            PressureSensorApi.autoLogin(regToken, new TextHttpResponseHandler() {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                     //自动登录失败

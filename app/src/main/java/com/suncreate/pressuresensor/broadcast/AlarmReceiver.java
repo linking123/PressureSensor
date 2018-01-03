@@ -7,7 +7,7 @@ import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 import com.suncreate.pressuresensor.AppContext;
-import com.suncreate.pressuresensor.api.remote.FireiotApi;
+import com.suncreate.pressuresensor.api.remote.PressureSensorApi;
 import com.suncreate.pressuresensor.api.remote.MonkeyApi;
 import com.suncreate.pressuresensor.bean.base.ResultBean;
 import com.loopj.android.http.TextHttpResponseHandler;
@@ -24,7 +24,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         Log.i(TAG, "<-----Keep alive interface------>");
         if (AppContext.getInstance().isLogin()) {
             //保持会话
-            FireiotApi.keepalived(new TextHttpResponseHandler() {
+            PressureSensorApi.keepalived(new TextHttpResponseHandler() {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                     AppContext.getInstance().cleanCookie();

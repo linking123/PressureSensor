@@ -163,7 +163,7 @@
     <color name="colorItemTextBlack">#303030</color>
     <color name="colorItemTextRed">#e95454</color>
     <color name="btn_origin_activity">#ED6942</color>
-    <color name="btn_origin_disable">#ea876a</color>
+    <color name="btn_origin_disable">#eda28b</color>
 
 
     <color name="index_scan_start_bg">#ED6942</color>

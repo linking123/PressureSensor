@@ -1,46 +1,21 @@
 package com.suncreate.pressuresensor.fragment.LoginRegister;
 
 import android.app.Activity;
-import android.graphics.Color;
-import android.os.CountDownTimer;
-import android.text.Editable;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.LinkMovementMethod;
-import android.text.method.PasswordTransformationMethod;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 
-import com.bigkoo.pickerview.OptionsPickerView;
 import com.google.gson.reflect.TypeToken;
 import com.suncreate.pressuresensor.AppContext;
 import com.suncreate.pressuresensor.AppManager;
 import com.suncreate.pressuresensor.R;
 import com.suncreate.pressuresensor.api.remote.MonkeyApi;
-import com.suncreate.pressuresensor.bean.Constants;
+import com.suncreate.pressuresensor.api.remote.PressureSensorApi;
 import com.suncreate.pressuresensor.bean.base.ResultBean;
-import com.suncreate.pressuresensor.bean.user.PhoneCheck;
 import com.suncreate.pressuresensor.fragment.base.BaseFragment;
 import com.suncreate.pressuresensor.ui.LoginActivity;
-import com.suncreate.pressuresensor.util.AreaHelper;
-import com.suncreate.pressuresensor.util.CyptoUtils;
-import com.suncreate.pressuresensor.util.StringUtils;
-import com.suncreate.pressuresensor.util.TDevice;
-import com.suncreate.pressuresensor.util.TypeChk;
 import com.loopj.android.http.TextHttpResponseHandler;
+import com.suncreate.pressuresensor.util.StringUtils;
 
 import butterknife.Bind;
 import cz.msebera.android.httpclient.Header;
@@ -57,25 +32,26 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
     public static final String REGISTER_PAGE = "REGISTER_PAGE";
 
     @Bind(R.id.reg_user_name)
-    AutoCompleteTextView mUserName;
+    AutoCompleteTextView tvUserName;
     @Bind(R.id.act_user_phone)
-    AutoCompleteTextView mUserPhone;
+    AutoCompleteTextView tvUserPhone;
     @Bind(R.id.reg_password)
-    AutoCompleteTextView mUserPwd1;
+    AutoCompleteTextView tvUserPwd1;
     @Bind(R.id.reg_password_confirm)
-    AutoCompleteTextView mUserPwd2;
+    AutoCompleteTextView tvUserPwd2;
     //提交注册按钮
     @Bind(R.id.btn_register)
     Button btn_register;
 
     private String mUsername;
     private String mPhoneNum;
-    private String regPassword;
+    private String regPassword1;
+    private String regPassword2;
     private int num = 2;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_register3_usr_psd_confirm;
+        return R.layout.fragment_register_pressuresensor;
     }
 
     @Override
@@ -83,7 +59,6 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
         super.initWidget(view);
 
         btn_register.setOnClickListener(this);
-
     }
 
     @Override
@@ -129,8 +104,32 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
 //        hideWaitDialog();
 //        AppContext.showToast("正在提交请求");
         //注册
-        mPhoneNum = mUserPhone.getText().toString().trim();
-        MonkeyApi.register("",mPhoneNum, 1, mUsername, regPassword, "", "", mSubmitHandler);
+        mUsername = tvUserName.getText().toString().trim();
+        mPhoneNum = tvUserPhone.getText().toString().trim();
+        regPassword1 = tvUserPwd1.getText().toString().trim();
+        regPassword2 = tvUserPwd2.getText().toString().trim();
+        if (StringUtils.isEmpty(mUsername)){
+            AppContext.showToastShort("用户名不能为空");
+            return;
+        }
+        if (StringUtils.isEmpty(mPhoneNum)){
+            AppContext.showToastShort("用户名不能为空");
+            return;
+        }
+        if (StringUtils.isEmpty(regPassword1)) {
+            AppContext.showToastShort("用户名不能为空");
+            return;
+        }
+        if (StringUtils.isEmpty(regPassword2)) {
+            AppContext.showToastShort("用户名不能为空");
+            return;
+        }
+        if (!regPassword1.equals(regPassword2)) {
+            AppContext.showToastShort("两次输入的密码不一致");
+            return;
+        }
+
+        PressureSensorApi.register(mUsername, mPhoneNum, regPassword1, mSubmitHandler);
     }
 
     TextHttpResponseHandler mSubmitHandler = new TextHttpResponseHandler() {

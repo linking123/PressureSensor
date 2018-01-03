@@ -7,7 +7,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 
 import com.suncreate.pressuresensor.AppContext;
-import com.suncreate.pressuresensor.api.remote.FireiotApi;
+import com.suncreate.pressuresensor.api.remote.PressureSensorApi;
 import com.suncreate.pressuresensor.bean.Update;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -73,7 +73,7 @@ public class UpdateManager {
         if (isShow) {
             showCheckDialog();
         }
-        FireiotApi.checkUpdate(mCheckUpdateHandler);
+        PressureSensorApi.checkUpdate(mCheckUpdateHandler);
     }
 
     private void onFinshCheck() {

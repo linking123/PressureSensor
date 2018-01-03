@@ -13,7 +13,7 @@ import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.suncreate.pressuresensor.AppContext;
 import com.suncreate.pressuresensor.R;
-import com.suncreate.pressuresensor.api.remote.FireiotApi;
+import com.suncreate.pressuresensor.api.remote.PressureSensorApi;
 import com.suncreate.pressuresensor.base.BaseDetailFragment;
 import com.suncreate.pressuresensor.bean.Constants;
 import com.suncreate.pressuresensor.bean.SimpleBackPage;
@@ -134,7 +134,7 @@ public class MyPersonInfoFragment extends BaseDetailFragment<com.suncreate.press
             return;
         }
 
-        FireiotApi.getUserInfo(String.valueOf(AppContext.getInstance().getLoginUser().getUserId()), mUserInfoHandler);
+        PressureSensorApi.getUserInfo(String.valueOf(AppContext.getInstance().getLoginUser().getUserId()), mUserInfoHandler);
     }
 
     private TextHttpResponseHandler mUserInfoHandler = new TextHttpResponseHandler() {
