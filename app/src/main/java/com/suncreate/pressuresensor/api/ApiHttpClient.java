@@ -22,7 +22,8 @@ public class ApiHttpClient {
 
     //    private static String API_URL = "https://api.wukongcar.com/api/%s";
 //    private static String API_URL = "http://192.168.99.116:8090/%s";
-    private static String API_URL = "http://localhost:8096/%s";
+    private static String API_URL = "http://222.175.139.219:8093/PostpartumRecoveryApi/%s";
+//    private static String API_URL = "http://127.0.0.1:8096/%s";
 
     public static final String DELETE = "DELETE";
     public static final String GET = "GET";

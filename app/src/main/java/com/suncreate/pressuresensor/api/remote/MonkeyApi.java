@@ -147,7 +147,7 @@ public class MonkeyApi {
      * @param newpwd    必填，新密码
      * @param verifykey 必填，验证码校验串
      */
-    public static void resetPassword(String telephone, String newpwd, String verifykey, AsyncHttpResponseHandler handler) {
+    public static void resetPassword(String telephone, String newpwd,  String verifykey, AsyncHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("telephone", telephone);
         params.put("resetpwd", PressureSensorApi.md5(newpwd));
@@ -369,7 +369,7 @@ public class MonkeyApi {
      * @param pageSize             选填，每页记录数（必须1~100之间，默认10条每页）
      * @param handler              TextHttpResponseHandler
      */
-    public static void getGarageList(String areaCode, String orderNum,String storeCarmodel, String storeSerivceType, String storeTechnicianLevel,
+    public static void getGarageList(String areaCode, String orderNum, String storeCarmodel, String storeSerivceType, String storeTechnicianLevel,
                                      String openPlace, String storeName, String stationNum, String sortType, String sortName,
                                      Double longitude, Double latitude, int pageNum, int pageSize, TextHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
@@ -515,7 +515,7 @@ public class MonkeyApi {
     }
 
     /**
-     *  person_info
+     * person_info
      *
      * @param handler AsyncHttpResponseHandler
      */
@@ -1401,7 +1401,7 @@ public class MonkeyApi {
     /**
      * 冻结订单列表
      */
-    public static void getFreezeOrderList(int pageNum, int pageSize,AsyncHttpResponseHandler handler) {
+    public static void getFreezeOrderList(int pageNum, int pageSize, AsyncHttpResponseHandler handler) {
         RequestParams params = new RequestParams();
         params.put("pageNum", pageNum);
         params.put("pageSize", pageSize);
@@ -1646,6 +1646,7 @@ public class MonkeyApi {
 
     /**
      * 更新百度云推送用户通道表示
+     *
      * @param userChannelId
      * @param handler
      */

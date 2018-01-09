@@ -10,6 +10,7 @@ import com.suncreate.pressuresensor.fragment.Field.FieldListFragment;
 import com.suncreate.pressuresensor.fragment.LoginRegister.CarOwnerProtocalTextFragment;
 import com.suncreate.pressuresensor.fragment.LoginRegister.GarageProtocalTextFragment;
 import com.suncreate.pressuresensor.fragment.LoginRegister.RegisterFragment;
+import com.suncreate.pressuresensor.fragment.LoginRegister.RegisterRegetPwdFragment;
 import com.suncreate.pressuresensor.fragment.LoginRegister.RegisterRetrieveFragment;
 import com.suncreate.pressuresensor.fragment.LoginRegister.TechProtocalTextFragment;
 import com.suncreate.pressuresensor.fragment.LoginRegister.VerifyFragment;
@@ -272,6 +273,7 @@ public enum SimpleBackPage {
     MY_PERSON_INFO_EDIT_NAME(307, R.string.txt_user_name_edit, MyPersonInfoEditEmailFragment.class),
     MY_PERSON_INFO_EDIT_PHONE(308, R.string.txt_user_phone_edit, MyPersonInfoEditEmailFragment.class),
     MY_PERSON_INFO_EDIT_EMAIL(309, R.string.txt_user_email_edit, MyPersonInfoEditEmailFragment.class),
+    GET_BACK_PWD(310, R.string.login_retrieve_password, RegisterRegetPwdFragment.class),
 
     ;
 

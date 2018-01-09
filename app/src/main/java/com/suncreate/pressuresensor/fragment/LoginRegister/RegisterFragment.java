@@ -1,6 +1,7 @@
 package com.suncreate.pressuresensor.fragment.LoginRegister;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -108,11 +109,11 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
         mPhoneNum = tvUserPhone.getText().toString().trim();
         regPassword1 = tvUserPwd1.getText().toString().trim();
         regPassword2 = tvUserPwd2.getText().toString().trim();
-        if (StringUtils.isEmpty(mUsername)){
+        if (StringUtils.isEmpty(mUsername)) {
             AppContext.showToastShort("用户名不能为空");
             return;
         }
-        if (StringUtils.isEmpty(mPhoneNum)){
+        if (StringUtils.isEmpty(mPhoneNum)) {
             AppContext.showToastShort("用户名不能为空");
             return;
         }
@@ -135,6 +136,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
     TextHttpResponseHandler mSubmitHandler = new TextHttpResponseHandler() {
         @Override
         public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+            Log.e("registerFailure: ", responseString);
             AppContext.showToast(R.string.register_submit_send_failure);
         }
 

@@ -58,6 +58,30 @@ public class PressureSensorApi {
     }
 
     /**
+     * 找回密码
+     *
+     * @param telephone 必填，手机号
+     * @param newpwd    必填，新密码
+     */
+    public static void resetPassword(String telephone, String newpwd, AsyncHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("telephone", telephone);
+        params.put("resetpwd", PressureSensorApi.md5(newpwd));
+        ApiHttpClient.post("v1/user/resetPassword", params, handler);
+    }
+
+    /**
+     * 修改密码
+     *
+     * @param newpwd 必填，新密码（MD5加密）
+     */
+    public static void password(String newpwd, AsyncHttpResponseHandler handler) {
+        RequestParams params = new RequestParams();
+        params.put("newpwd", PressureSensorApi.md5(newpwd));
+        ApiHttpClient.post("v1/user/password", params, handler);
+    }
+
+    /**
      * 用户退出
      *
      * @param handler 必填，登录校验码(客户端服务端约定一种加密

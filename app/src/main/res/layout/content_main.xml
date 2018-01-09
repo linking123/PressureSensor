@@ -21,7 +21,6 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
-
         <info.hoang8f.widget.FButton
             android:id="@+id/index_scan_start"
             android:layout_width="200dp"

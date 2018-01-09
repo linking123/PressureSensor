@@ -26,6 +26,8 @@ import com.suncreate.pressuresensor.bean.Constants;
 import com.suncreate.pressuresensor.bean.SimpleBackPage;
 import com.suncreate.pressuresensor.bean.base.ResultBean;
 import com.suncreate.pressuresensor.bean.scan.User;
+import com.suncreate.pressuresensor.fragment.LoginRegister.RegisterRetrieveFragment;
+import com.suncreate.pressuresensor.fragment.LoginRegister.VerifyFragment;
 import com.suncreate.pressuresensor.interf.BaseViewInterface;
 import com.suncreate.pressuresensor.util.TDevice;
 import com.suncreate.pressuresensor.util.TLog;
@@ -138,7 +140,13 @@ public class LoginActivity extends AppCompatActivity implements BaseViewInterfac
      * 处理找回密码按钮点击事件
      */
     private void handleRetPwd() {
+        mUserName = loginUserName.getText().toString();
+        mPassword = loginPassword.getText().toString();
+        Bundle args = new Bundle();
+        args.putString(RegisterRetrieveFragment.VERIFY_USER_NAME, mUserName);
+        args.putInt(RegisterRetrieveFragment.PWD_TYPE, 1);
 
+        UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.GET_BACK_PWD);
     }
 
     TextHttpResponseHandler mHandler = new TextHttpResponseHandler() {

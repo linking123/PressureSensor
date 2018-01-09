@@ -48,6 +48,7 @@ import com.suncreate.pressuresensor.service.DownloadService;
 import com.suncreate.pressuresensor.service.DownloadService.DownloadBinder;
 import com.suncreate.pressuresensor.service.NoticeService;
 import com.suncreate.pressuresensor.ui.LoginActivity;
+import com.suncreate.pressuresensor.ui.MainActivity;
 import com.suncreate.pressuresensor.ui.OSCPhotosActivity;
 import com.suncreate.pressuresensor.ui.SimpleBackActivity;
 import com.suncreate.pressuresensor.widget.AvatarView;
@@ -728,5 +729,15 @@ public class UIHelper {
         bundle.putString(GoodsDetailFragment.NAME, "呵呵");
         bundle.putLong(GoodsDetailFragment.ID, id);
         UIHelper.showSimpleBack(context, SimpleBackPage.GOODS_DETAIL, bundle);
+    }
+
+    /**
+     * 回到首页
+     * @param context
+     */
+    public static void returnHome(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(intent);
     }
 }

@@ -14,6 +14,15 @@
         android:padding="15dp">
 
         <AutoCompleteTextView
+            android:id="@+id/et_phone_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:hint="@string/tip_please_input_phone"
+            android:inputType="textPassword" />
+
+        <AutoCompleteTextView
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

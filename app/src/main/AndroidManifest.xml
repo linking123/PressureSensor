@@ -139,10 +139,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
+            android:name="com.suncreate.pressuresensor.ui.AdapterTraningActivity"
+            android:label="适应性训练"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.suncreate.pressuresensor.ui.LoginBindActivityChooseActivity"
             android:label="登录"
             android:screenOrientation="portrait" />
-        <activity
             android:name="com.suncreate.pressuresensor.ui.LoginAccountBindOpenIdActivity"
             android:label="账号绑定"
             android:screenOrientation="portrait" />
