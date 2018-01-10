@@ -45,6 +45,7 @@ import com.suncreate.pressuresensor.interf.BluetoothUUID;
 import com.suncreate.pressuresensor.service.NoticeUtils;
 import com.suncreate.pressuresensor.util.LocationUtils;
 import com.suncreate.pressuresensor.util.UIHelper;
+import com.suncreate.pressuresensor.widget.ps.GaugeChart01View;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -67,16 +68,18 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
 
-    @Bind(R.id.drawer_layout)
-    DrawerLayout drawer;
+    //    @Bind(R.id.drawer_layout)
+//    DrawerLayout drawer;
     @Bind(R.id.index_scan_start)
     FButton btStartScan;
-    @Bind(R.id.v_pressure)
-    View mPressure;
+    //    @Bind(R.id.v_pressure)
+//    View mPressure;
     @Bind(R.id.tv_value)
     TextView mNumText;
+    @Bind(R.id.chart_view)
+    GaugeChart01View chart01View;
 
-    //蓝牙对象
+    //蓝牙对象,..
     private BluetoothLe mBluetoothLe;
     private BluetoothDevice mBluetoothDevice;
     private List<BluetoothDevice> bluetoothDeviceList = new ArrayList<BluetoothDevice>();
@@ -84,7 +87,7 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_fire);
+        setContentView(R.layout.ps_adapter_training);
 
         ButterKnife.bind(this);
         initView();
@@ -314,7 +317,9 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
                 // 所以需要得到第四部分，转化为10进制，然后在改变高度
                 String the4Num = bytesToHex(characteristic.getValue()).substring(6, 8);
 
+                Log.i("the4num is", the4Num);
                 int pressureNum = Integer.parseInt(the4Num, 16);  //转化为10进制的压力值,最大值120左右
+                Log.i("pressureNum", String.valueOf(pressureNum));
                 //改变图形的高度
                 changeHeight(pressureNum);
             }
@@ -384,10 +389,18 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
     private void changeHeight(int pressureNum) {
 //        Random rand = new Random();
 //        int height = rand.nextInt(400);
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mPressure.getLayoutParams();
-        params.height = 3 * pressureNum;
-        mPressure.setLayoutParams(params);
-        mNumText.setText(String.valueOf(params));
+//        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mPressure.getLayoutParams();
+//        params.height = 3 * pressureNum;
+//        mPressure.setLayoutParams(params);
+//        mNumText.setText(String.valueOf(params));
+
+        if (pressureNum > 0) {
+            Log.i("has", "success");
+        }
+        chart01View.setAngle(pressureNum / 180);
+        chart01View.chartRender();
+        chart01View.invalidate();
+
     }
 
     @Override
@@ -437,11 +450,11 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+        super.onBackPressed();
+//        }
     }
 
     @Override
@@ -460,7 +473,7 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
         switch (id) {
             case android.R.id.home:
                 UIHelper.returnHome(this);
-            break;
+                break;
             case R.id.action_scan_record:
 //            UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.SCAN_RECORD);
                 break;
