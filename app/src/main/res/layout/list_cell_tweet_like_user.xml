@@ -7,7 +7,7 @@
     android:orientation="horizontal"
     android:padding="@dimen/space_15">
 
-    <com.suncreate.fireiot.widget.AvatarView
+    <com.suncreate.pressuresensor.widget.AvatarView
         android:id="@+id/iv_avatar"
         style="@style/user_face_image"
         android:layout_marginRight="10dp"/>

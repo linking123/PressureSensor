@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Locale;
 
-import com.suncreate.fireiot.R;
+import com.suncreate.pressuresensor.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.SystemClock;

@@ -11,7 +11,7 @@
         android:descendantFocusability="blocksDescendants"
         android:orientation="horizontal" >
 
-        <com.suncreate.fireiot.widget.AvatarView
+        <com.suncreate.pressuresensor.widget.AvatarView
             android:id="@+id/event_listitem_userface"
             style="@style/UserFaceImageStyle"
             android:layout_margin="10dp" />

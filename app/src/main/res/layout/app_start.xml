@@ -3,7 +3,7 @@
     android:id="@+id/app_start_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcome_fire"
+    android:background="@drawable/welcome_ps"
     android:clickable="false"
     android:gravity="bottom"
     android:orientation="vertical">

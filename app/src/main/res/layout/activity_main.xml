@@ -4,7 +4,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.suncreate.fireiot.ui.MainActivity">
+    tools:context="com.suncreate.pressuresensor.ui.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                 android:layout_height="1px"
                 android:background="?attr/masterLineColor" />
 
-            <com.suncreate.fireiot.widget.MyFragmentTabHost
+            <com.suncreate.pressuresensor.widget.MyFragmentTabHost
                 android:id="@android:id/tabhost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -6,7 +6,7 @@
     android:background="#F0F0F0"
     android:orientation="vertical">
 
-    <com.suncreate.fireiot.util.EditTextWithDel
+    <com.suncreate.pressuresensor.util.EditTextWithDel
         android:id="@+id/et_search"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -54,7 +54,7 @@
         <!--android:textColor="@color/colorAccent"-->
         <!--android:textSize="15sp" />-->
 
-        <com.suncreate.fireiot.bean.citypicker.SideBarForCityPicker
+        <com.suncreate.pressuresensor.bean.citypicker.SideBarForCityPicker
             android:id="@+id/sidebar"
             android:layout_width="24dp"
             android:layout_height="match_parent"

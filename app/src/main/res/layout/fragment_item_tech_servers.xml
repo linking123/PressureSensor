@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="4dp">
 
-            <com.suncreate.fireiot.widget.CircleImageView
+            <com.suncreate.pressuresensor.widget.CircleImageView
                 android:id="@+id/civ_icon_avatar"
                 android:layout_width="60dp"
                 android:layout_height="60dp"

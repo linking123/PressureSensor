@@ -6,7 +6,7 @@
     android:background="?attr/layout_item_bg"
     android:padding="@dimen/space_8">
 
-    <com.suncreate.fireiot.widget.AvatarView
+    <com.suncreate.pressuresensor.widget.AvatarView
         android:id="@+id/iv_avatar"
         style="@style/user_face_image"
         android:layout_marginRight="@dimen/space_8"
@@ -55,7 +55,7 @@
             android:textSize="@dimen/text_size_12" />
     </LinearLayout>
 
-    <com.suncreate.fireiot.widget.TweetTextView
+    <com.suncreate.pressuresensor.widget.TweetTextView
         android:id="@+id/tv_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
         android:background="?attr/comment_reply_container_bg"
         android:visibility="visible" >
 
-        <com.suncreate.fireiot.widget.TweetTextView
+        <com.suncreate.pressuresensor.widget.TweetTextView
             android:id="@+id/tv_reply"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

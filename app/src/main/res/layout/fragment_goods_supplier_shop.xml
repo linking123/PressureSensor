@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="5">
 
-        <com.suncreate.fireiot.widget.SuperRefreshLayout
+        <com.suncreate.pressuresensor.widget.SuperRefreshLayout
             android:id="@+id/superRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,9 +28,9 @@
                 android:numColumns="2"
                 android:stretchMode="columnWidth"
                 android:verticalSpacing="@dimen/space_3" />
-        </com.suncreate.fireiot.widget.SuperRefreshLayout>
+        </com.suncreate.pressuresensor.widget.SuperRefreshLayout>
 
-        <com.suncreate.fireiot.ui.empty.EmptyLayout
+        <com.suncreate.pressuresensor.ui.empty.EmptyLayout
             android:id="@+id/error_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

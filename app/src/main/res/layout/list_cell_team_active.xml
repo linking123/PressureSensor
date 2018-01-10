@@ -41,7 +41,7 @@
         android:paddingRight="6dip"
         android:paddingTop="8dip">
 
-        <com.suncreate.fireiot.widget.AvatarView
+        <com.suncreate.pressuresensor.widget.AvatarView
             android:id="@+id/event_listitem_userface"
             style="@style/UserFaceImageStyle" />
 
@@ -58,7 +58,7 @@
                 android:textColor="?android:textColorLink"
                 android:textSize="14sp" />
 
-            <com.suncreate.fireiot.widget.TweetTextView
+            <com.suncreate.pressuresensor.widget.TweetTextView
                 android:id="@+id/event_listitem_content"
                 style="@style/events_list_content"
                 android:text="hello" />

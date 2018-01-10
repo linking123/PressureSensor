@@ -5,7 +5,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.suncreate.fireiot.util.EditTextWithDel
+    <com.suncreate.pressuresensor.util.EditTextWithDel
         android:id="@+id/tv_requirement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.suncreate.fireiot.widget.SuperRefreshLayout
+        <com.suncreate.pressuresensor.widget.SuperRefreshLayout
             android:id="@+id/superRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,9 +37,9 @@
                 android:layout_height="match_parent"
                 android:divider="@color/transparent"
                 android:dividerHeight="0dp" />
-        </com.suncreate.fireiot.widget.SuperRefreshLayout>
+        </com.suncreate.pressuresensor.widget.SuperRefreshLayout>
 
-        <com.suncreate.fireiot.ui.empty.EmptyLayout
+        <com.suncreate.pressuresensor.ui.empty.EmptyLayout
             android:id="@+id/error_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

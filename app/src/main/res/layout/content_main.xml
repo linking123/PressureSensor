@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.suncreate.fireiot.ui.MainActivity"
+    tools:context="com.suncreate.pressuresensor.ui.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
     <RelativeLayout
@@ -20,7 +20,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
-
 
         <info.hoang8f.widget.FButton
             android:id="@+id/index_scan_start"
@@ -52,9 +51,18 @@
                 android:layout_gravity="bottom"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/tv_value"
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="213"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content" />
+
                 <View
                     android:id="@+id/v_pressure"
                     android:layout_width="match_parent"
+                    android:layout_below="@id/tv_value"
                     android:layout_height="400dp"
                     android:layout_marginLeft="@dimen/space_20"
                     android:layout_marginRight="@dimen/space_20"

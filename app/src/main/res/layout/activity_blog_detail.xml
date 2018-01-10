@@ -4,9 +4,9 @@
     android:id="@+id/activity_blog_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.suncreate.fireiot.ui.blog.BlogDetailActivity">
+    tools:context="com.suncreate.pressuresensor.ui.blog.BlogDetailActivity">
 
-    <com.suncreate.fireiot.ui.empty.EmptyLayout
+    <com.suncreate.pressuresensor.ui.empty.EmptyLayout
         android:id="@+id/lay_error"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

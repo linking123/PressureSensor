@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background_ps"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/space_50"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_project_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:text="@string/equipment_inspect_sys"
+            android:textColor="#ec6941"
+            android:textSize="@dimen/text_size_32"
+            android:textStyle="bold" />
+
+        <com.suncreate.pressuresensor.util.EditTextWithDel
+            android:id="@+id/login_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_40"
+            android:layout_marginRight="@dimen/space_40"
+            android:layout_marginTop="@dimen/space_30"
+            android:background="#deb8b1"
+            android:gravity="center_vertical"
+            android:hint="@string/login_username"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:padding="@dimen/space_10"
+            android:textColor="#656769"
+            android:textColorHint="#414243" />
+
+        <com.suncreate.pressuresensor.util.EditTextWithDel
+            android:id="@+id/login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_40"
+            android:layout_marginRight="@dimen/space_40"
+            android:layout_marginTop="10dp"
+            android:background="#deb8b1"
+            android:gravity="center_vertical"
+            android:hint="@string/login_pwd"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:padding="@dimen/space_10"
+            android:textColor="#656769"
+            android:textColorHint="#414243" />
+
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/button_common_origin"
+            android:layout_marginLeft="@dimen/space_40"
+            android:layout_marginRight="@dimen/space_40"
+            android:layout_marginTop="20dp"
+            android:text="@string/btn_login" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_40"
+                android:layout_marginRight="@dimen/space_40"
+                android:background="@color/transparent"
+                android:padding="@dimen/space_4"
+                android:text="@string/login_register_fast"
+                android:textColor="@color/main_blue"
+                android:textSize="@dimen/text_size_16" />
+
+            <Button
+                android:id="@+id/btn_reset_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/space_40"
+                android:background="@color/transparent"
+                android:padding="@dimen/space_4"
+                android:text="@string/login_retrieve_password"
+                android:textColor="@color/main_blue"
+                android:textSize="@dimen/text_size_16" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

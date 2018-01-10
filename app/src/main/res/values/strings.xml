@@ -32,7 +32,7 @@
     <string name="exception_info">请输入备注信息</string>
     <string name="exception_img">请上传周边环境照片</string>
     <string name="exception_info_type_in">请输入异常信息</string>
-    <string name="equipment_inspect_sys">消防设施巡检系统</string>
+    <string name="equipment_inspect_sys">产后康复锻炼系统</string>
     <string name="equipment_productor">设备厂商</string>
     <string name="equipment_install_position">安装位置</string>
     <string name="equipment_person_incharge">负责人</string>
@@ -48,9 +48,9 @@
     <string name="clear_cache">清除缓存</string>
     <string name="check_update_info">检查更新</string>
     <string name="btn_logout">退出</string>
-    <string name="actionbar_title_about_fireiot">关于消防巡检系统</string>
+    <string name="actionbar_title_about_fireiot">关于产后康复锻炼系统</string>
     <string name="about_fireiot">关于系统</string>
-    <string name="brief_introduction">消防巡检系统简介</string>
+    <string name="brief_introduction">产后康复锻炼系统简介</string>
     <string name="user_protocal">用户协议</string>
     <string name="txt_user_name_edit">修改用户名</string>
     <string name="txt_user_password_edit">修改密码</string>
@@ -145,7 +145,7 @@
     <string name="tip_network_error">没有可用的网络</string>
 
     <!-- 注册登录 -->
-    <string name="hint_phone">手机号</string>
+    <string name="hint_phone">手机号码：</string>
     <string name="hint_register_usrname">用户名</string>
     <string name="hint_psw">密码</string>
     <string name="login_username">用户名</string>
@@ -164,15 +164,17 @@
     <string name="register_verifyCode_send_failure">验证失败</string>
     <string name="register_submit_send_failure">注册失败</string>
     <string name="register_send_wait">重新获取(%1$s)</string>
-    <string name="register_tip_username">用&#160;&#160;户&#160;&#160;名：</string>
+    <string name="register_tip_username">用户名：</string>
     <string name="register_submit">提    交</string>
 
     <string name="verify_register">注册</string>
     <string name="verify_reget_psw">找回密码</string>
+    <string name="old_password_nonull">旧密码不能为空</string>
     <string name="verify_password_short">密码长度不小于6位</string>
     <string name="verify_password_diff">您两次输入的密码不一致</string>
     <string name="verify_confirm">确    定</string>
     <string name="verify_register_success">注册成功，请登录！</string>
+    <string name="old_password">请输入旧密码</string>
     <string name="verify_modify_password">请输入新密码</string>
     <string name="verify_modify_password_confirm">再输入新密码</string>
     <string name="verify_modify_success">修改成功，请用新密码登录！</string>
@@ -181,7 +183,7 @@
     <string name="tip_please_input_verify">请输入手机验证码</string>
     <string name="progress_send">正在发送…</string>
     <string name="tip_illegal_phone">请输入正确的手机号</string>
-    <string name="tip_please_input_password">请设置登入密码</string>
+    <string name="tip_please_input_password">请设置密码</string>
     <string name="tip_please_input_password_comfirm">请确认密码</string>
     <string name="tip_no_user_info">用户信息为空</string>
 
@@ -194,6 +196,7 @@
     <string name="my_information_unlogin_tips">点击头像登录</string>
 
     <string name="tip_please_input_username">请输入用户名</string>
+    <string name="tip_please_input_userphone">请输入手机号码</string>
     <string name="tip_illegal_email">请输入正确的email地址</string>
     <string name="progress_login">正在登录…</string>
     <string name="tip_login_error_for_network">对不起,无法登录</string>

@@ -130,7 +130,7 @@
                 android:layout_toRightOf="@+id/tv_master_technician_time_select_final"
                 android:text="周末是否营业:" />
 
-            <com.suncreate.fireiot.widget.togglebutton.ToggleButton
+            <com.suncreate.pressuresensor.widget.togglebutton.ToggleButton
                 android:id="@+id/default_workTime_set"
                 style="@style/option_item_toggleButton"
                 android:layout_below="@+id/tv_master_technician_year"

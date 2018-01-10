@@ -16,13 +16,13 @@
         android:scrollbars="none"
         android:scrollingCache="true" />
 
-    <com.suncreate.fireiot.ui.empty.EmptyLayout
+    <com.suncreate.pressuresensor.ui.empty.EmptyLayout
         android:id="@+id/error_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible" />
 
-    <com.suncreate.fireiot.widget.IndexView
+    <com.suncreate.pressuresensor.widget.IndexView
         android:id="@+id/indexview"
         android:layout_width="25dp"
         android:layout_height="match_parent"

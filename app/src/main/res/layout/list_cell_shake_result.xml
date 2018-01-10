@@ -11,7 +11,7 @@
     android:paddingRight="6dip"
     android:paddingTop="8dip">
 
-    <com.suncreate.fireiot.widget.CircleImageView
+    <com.suncreate.pressuresensor.widget.CircleImageView
         android:id="@+id/iv_face"
         style="@style/UserFaceImageStyle" />
 

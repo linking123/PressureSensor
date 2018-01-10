@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 
-import com.suncreate.fireiot.R;
+import com.suncreate.pressuresensor.R;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;

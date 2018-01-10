@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:clickable="true">
 
-            <com.suncreate.fireiot.widget.AvatarView
+            <com.suncreate.pressuresensor.widget.AvatarView
                 android:id="@+id/iv_avatar_login"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
@@ -136,7 +136,7 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <com.suncreate.fireiot.widget.CircleImageView
+        <com.suncreate.pressuresensor.widget.CircleImageView
             android:id="@+id/iv_avatar_unlogin"
             android:layout_width="48dp"
             android:layout_height="48dp"
