@@ -1,5 +1,6 @@
 package com.suncreate.pressuresensor.base;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
@@ -17,6 +18,7 @@ import com.suncreate.pressuresensor.AppContext;
 import com.suncreate.pressuresensor.R;
 import com.suncreate.pressuresensor.bean.base.ResultBean;
 import com.suncreate.pressuresensor.cache.CacheManager;
+import com.suncreate.pressuresensor.interf.Permission;
 import com.suncreate.pressuresensor.ui.ShareDialog;
 import com.suncreate.pressuresensor.util.DialogHelp;
 import com.suncreate.pressuresensor.util.FontSizeUtils;
@@ -31,6 +33,7 @@ import java.lang.reflect.Type;
 
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
+import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * 通用的详情fragment
@@ -50,6 +53,16 @@ public abstract class BaseDetailFragment<T extends Serializable> extends BaseFra
     private AsyncTask<String, Void, T> mCacheTask;
 
     private ShareDialog mDialog;
+
+    String[] locations = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+
+    protected boolean checkLocationPermission() {
+        return EasyPermissions.hasPermissions(getActivity(), locations);
+    }
+
+    protected void requestLocationPermission() {
+        EasyPermissions.requestPermissions(this, "Android 6.0以上扫描蓝牙需要该权限", Permission.LOCATION, locations);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

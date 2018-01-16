@@ -12,8 +12,10 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.qindachang.bluetoothle.BluetoothLe;
@@ -94,7 +96,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
 
         mBluetoothLe = BluetoothLe.getDefault();
 
-        checkSupport();
+            checkSupport();
 
         initData();
     }
@@ -122,7 +124,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fb_mode_introduce:
-                UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.MY_PERSON_INFO);
+                UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.TRADE_MODE_INTRODUCE);
                 break;
             case R.id.fb_adapt_training:
                 Intent intent = new Intent(MainActivity.this, AdapterTraningActivity.class);
@@ -283,14 +285,18 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_scan_record) {
-//            UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.SCAN_RECORD);
-            return true;
+        switch (id) {
+            case R.id.action_scan_record:
+                UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.SCAN_RECORD);
+                break;
+            case R.id.action_select_ble:
+                UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.CONNECT_BLE_LIST);
+                break;
+            default:
+                break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

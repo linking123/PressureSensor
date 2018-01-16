@@ -7,7 +7,7 @@
 
     <!-- contentDescription start -->
     <string name="index_scan_logo">首页扫描图Logo</string>
-    <string name="index_scan_start">开始扫描</string>
+    <string name="index_scan_start">开始训练</string>
     <string name="index_scan_ing">扫描</string>
     <string name="index_scan_ed">（已扫描）</string>
     <string name="type_in_info">信息录入</string>
@@ -38,8 +38,9 @@
     <string name="equipment_person_incharge">负责人</string>
     <string name="check_than_submit">检查确认无误后，请提交</string>
     <string name="confirm_submit">确认提交</string>
-    <string name="scan_record">巡检记录</string>
+    <string name="scan_record">锻炼记录</string>
     <string name="scan_record_detail">巡检记录详情</string>
+    <string name="connect_ble_list">蓝牙列表</string>
     <string name="scan_record_last_time">上次巡检时间</string>
     <string name="scan_record_next_time">下次巡检时间段</string>
     <string name="scan_record_other_info">描述</string>
@@ -59,6 +60,7 @@
     <string name="progress_logout">正在注销…</string>
     <string name="tip_logout_success">注销成功</string>
     <string name="logout">注销</string>
+    <string name="trade_mode_introduce">训练模式介绍</string>
 
     <string name="loading_img">加载图片</string>
     <string name="mes_notice">消息通知</string>
@@ -289,7 +291,7 @@
     <string name="actionbar_title_note">便签</string>
     <string name="actionbar_title_noteedit">编辑便签</string>
     <string name="actionbar_title_shake">摇一摇</string>
-    <string name="actionbar_title_search">搜索</string>
+    <string name="actionbar_title_search">搜索蓝牙</string>
     <string name="actionbar_title_city">合肥</string>
     <string name="actionbar_title_models">车型</string>
 
@@ -398,7 +400,7 @@
     <string name="oscsite">官网</string>
     <string name="knowmore">了解更多</string>
     <string name="gitapp">Git客户端</string>
-    <string name="copyright">Copyright © 2017 四创电子 All rights reserved.</string>
+    <string name="copyright">Copyright © 2018 xx公司 All rights reserved.</string>
     <string name="tip_save_image_faile">无法保存图片</string>
     <string name="tip_load_image_faile">加载图片失败</string>
 

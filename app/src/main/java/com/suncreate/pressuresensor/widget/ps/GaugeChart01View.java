@@ -131,11 +131,11 @@ public class GaugeChart01View extends GraphicalView {
 
     private void chartLabels() {
         //标签
-        mLabels.add("起始");
-        mLabels.add("安全");
-        mLabels.add("警惕");
-        mLabels.add("危险");
-        mLabels.add("终止");
+        mLabels.add("开始");
+        mLabels.add("加油");
+        mLabels.add("可以");
+        mLabels.add("厉害");
+        mLabels.add("无敌");
     }
 
     @Override

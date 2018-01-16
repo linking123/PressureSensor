@@ -19,6 +19,9 @@ import com.suncreate.pressuresensor.fragment.MyInformationFragmentDetail;
 import com.suncreate.pressuresensor.fragment.SettingsFragment;
 import com.suncreate.pressuresensor.fragment.SettingsNotificationFragment;
 import com.suncreate.pressuresensor.fragment.UserCenterFragment;
+import com.suncreate.pressuresensor.fragment.bleBlutooth.ConnectBleListFragment;
+import com.suncreate.pressuresensor.fragment.bleBlutooth.TradeModeIntroduce;
+import com.suncreate.pressuresensor.fragment.bleBlutooth.TradeRecords;
 import com.suncreate.pressuresensor.fragment.carBrand.CarBrandFragment;
 import com.suncreate.pressuresensor.fragment.carBrand.CarDisplacementFragment;
 import com.suncreate.pressuresensor.fragment.carBrand.CarModelFragment;
@@ -266,14 +269,16 @@ public enum SimpleBackPage {
     /* fire start */
 //    SCANNING(301, R.string.index_scan_ing, ScanningFragment.class),
 //    TYPE_IN_INFO(302, R.string.type_in_info, ScanInfoSettingFragment.class),
-//    SCAN_RECORD(303, R.string.scan_record, ScanRecordListFragment.class),
+    SCAN_RECORD(303, R.string.scan_record, TradeRecords.class),
 //    SCAN_RECORD_DETAIL(304, R.string.scan_record_detail, ScanRecordDetailFragment.class),
+    CONNECT_BLE_LIST(304, R.string.connect_ble_list, ConnectBleListFragment.class),
     ABOUT_FIRE_IOT(305, R.string.actionbar_title_about_fireiot, AboutFireIotFragment.class),
     MY_PERSON_INFO(306, R.string.txt_user, MyPersonInfoFragment.class),
     MY_PERSON_INFO_EDIT_NAME(307, R.string.txt_user_name_edit, MyPersonInfoEditEmailFragment.class),
     MY_PERSON_INFO_EDIT_PHONE(308, R.string.txt_user_phone_edit, MyPersonInfoEditEmailFragment.class),
     MY_PERSON_INFO_EDIT_EMAIL(309, R.string.txt_user_email_edit, MyPersonInfoEditEmailFragment.class),
     GET_BACK_PWD(310, R.string.login_retrieve_password, RegisterRegetPwdFragment.class),
+    TRADE_MODE_INTRODUCE(311, R.string.trade_mode_introduce, TradeModeIntroduce.class),
 
     ;
 

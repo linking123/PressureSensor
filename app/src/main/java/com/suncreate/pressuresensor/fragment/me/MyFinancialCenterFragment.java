@@ -171,9 +171,6 @@ public class MyFinancialCenterFragment extends BaseFragment implements View.OnCl
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.main_activity_menu, menu);
-        menu.findItem(R.id.action_financian_center_payment_details).setVisible(true);
-        menu.findItem(R.id.action_publish_serviceRequirement).setVisible(false);
-        menu.findItem(R.id.action_city).setVisible(false);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -182,9 +179,6 @@ public class MyFinancialCenterFragment extends BaseFragment implements View.OnCl
         int id = item.getItemId();
         switch (id) {
             //收支明细menu
-            case R.id.action_financian_center_payment_details:
-                UIHelper.showSimpleBack(getContext(), SimpleBackPage.FINANCIAL_IN_OUT_DETAIL);
-                break;
             default:
                 break;
         }

@@ -1,22 +1,25 @@
-package com.suncreate.pressuresensor.ui;
+package com.suncreate.pressuresensor.fragment.bleBlutooth;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.gson.reflect.TypeToken;
 import com.qindachang.bluetoothle.BluetoothLe;
 import com.qindachang.bluetoothle.OnLeConnectListener;
 import com.qindachang.bluetoothle.OnLeIndicationListener;
@@ -33,48 +36,41 @@ import com.qindachang.bluetoothle.exception.WriteBleException;
 import com.qindachang.bluetoothle.scanner.ScanRecord;
 import com.qindachang.bluetoothle.scanner.ScanResult;
 import com.suncreate.pressuresensor.AppContext;
-import com.suncreate.pressuresensor.AppManager;
 import com.suncreate.pressuresensor.R;
-import com.suncreate.pressuresensor.base.BaseActivityBlueToothLE;
-import com.suncreate.pressuresensor.bean.Constants;
+import com.suncreate.pressuresensor.adapter.general.ConnectBleListAdapter;
+import com.suncreate.pressuresensor.base.BaseDetailFragment;
+import com.suncreate.pressuresensor.bean.Ble.Ble;
 import com.suncreate.pressuresensor.bean.SimpleBackPage;
-import com.suncreate.pressuresensor.interf.BaseViewInterface;
+import com.suncreate.pressuresensor.bean.base.PageBean;
+import com.suncreate.pressuresensor.bean.base.ResultBean;
 import com.suncreate.pressuresensor.interf.BluetoothUUID;
-import com.suncreate.pressuresensor.service.NoticeUtils;
+import com.suncreate.pressuresensor.ui.ApiLevelHelper;
 import com.suncreate.pressuresensor.util.LocationUtils;
 import com.suncreate.pressuresensor.util.UIHelper;
-import com.suncreate.pressuresensor.widget.ps.GaugeChart01View;
+import com.suncreate.pressuresensor.widget.SuperRefreshLayout;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
-import info.hoang8f.widget.FButton;
 
 /**
- * 适应性训练
+ * 蓝牙连接列表
  */
-public class AdapterTraningActivity extends BaseActivityBlueToothLE implements BaseViewInterface, View.OnClickListener {
+public class ConnectBleListFragment extends BaseDetailFragment<Ble> implements
+        SwipeRefreshLayout.OnRefreshListener {
 
-    public static final String TAG = "MainActivity";
+    public static final String TAG = "ConnectBle";
 
-    /**
-     * Sets whether vector drawables on older platforms (< API 21) can be used within DrawableContainer resources.
-     * https://developer.android.com/reference/android/support/v7/app/AppCompatDelegate.html#setCompatVectorFromResourcesEnabled(boolean)
-     */
-    static {
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-    }
+    @Bind(R.id.superRefreshLayout)
+    SuperRefreshLayout mRefreshLayout;
+    @Bind(R.id.listView)
+    ListView listView;
 
-    @Bind(R.id.tv_ps_num)
-    TextView tv_ps_num;
-    @Bind(R.id.index_scan_start)
-    FButton btStartScan;
-    @Bind(R.id.chart_view)
-    GaugeChart01View chart01View;
+    ConnectBleListAdapter adapter;
 
     //蓝牙对象,..
     private BluetoothLe mBluetoothLe;
@@ -82,34 +78,28 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
     private List<BluetoothDevice> bluetoothDeviceList = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ps_adapter_training);
-
-        ButterKnife.bind(this);
-        initView();
-        AppManager.getAppManager().addActivity(this);
-        handleIntent(getIntent());
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-
+        setHasOptionsMenu(true);
         mBluetoothLe = BluetoothLe.getDefault();
 
         checkSupport();
-
         initData();
     }
 
     @Override
-    public void initView() {
+    public void onDestroy() {
+        super.onDestroy();
+    }
 
-        IntentFilter filter = new IntentFilter(Constants.INTENT_ACTION_NOTICE);
-        filter.addAction(Constants.INTENT_ACTION_LOGOUT);
-        NoticeUtils.bindToService(this);
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
 
-        btStartScan.setOnClickListener(this);
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -118,31 +108,32 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void sendRequestDataForNet() {
+
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected int getLayoutId() {
+        return R.layout.fragment_technician_list;
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    public void initView(View view) {
+
+        mRefreshLayout.setOnRefreshListener(this);
+        mRefreshLayout.setColorSchemeResources(R.color.swiperefresh_color1, R.color.swiperefresh_color2,
+                R.color.swiperefresh_color3, R.color.swiperefresh_color4);
+
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        NoticeUtils.unbindFromService(this);
-        NoticeUtils.tryToShutDown(this);
-        AppManager.getAppManager().removeActivity(this);
-
-        //根据TAG注销监听，避免内存泄露
-        mBluetoothLe.destroy(TAG);
-        //关闭GATT
-        mBluetoothLe.close();
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+//            case R.id.car_brand_model_series_box:
+//                    UIHelper.showSimpleBack(getContext(), SimpleBackPage.MY_CAR_MANAGER);
+//                break;
+        }
     }
 
     public void checkSupport() {
@@ -153,7 +144,7 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
         } else {
             if (!mBluetoothLe.isBluetoothOpen()) {
                 //没有打开蓝牙，请求打开手机蓝牙
-                mBluetoothLe.enableBluetooth(this, 666);
+                mBluetoothLe.enableBluetooth(getActivity(), 666);
             }
         }
     }
@@ -171,29 +162,10 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
         return new String(hexChars);
     }
 
-    //判断扫描到的蓝牙是否已经存在列表中
-    private boolean isNotInBluetoothDeviceList(BluetoothDevice mBluetoothDevice) {
-        for (BluetoothDevice btd : bluetoothDeviceList) {
-            if (mBluetoothDevice.equals(btd)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    //需要开始扫描按钮case R.id.btn_scan:
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 666 && resultCode == RESULT_OK) {
-            scan();
-        }
-    }
-
     private void scan() {
         //对于Android 6.0以上的版本，申请地理位置动态权限
         if (!checkLocationPermission()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("权限需求")
                     .setMessage("Android 6.0 以上的系统版本，扫描蓝牙需要地理位置权限。请允许。")
                     .setNeutralButton("取消", null)
@@ -207,15 +179,16 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
             return;
         }
         //如果系统版本是7.0以上，则请求打开位置信息
-        if (!LocationUtils.isOpenLocService(this) && ApiLevelHelper.isAtLeast(Build.VERSION_CODES.N)) {
-            Toast.makeText(this, "您的Android版本在7.0以上，扫描需要打开位置信息。", Toast.LENGTH_LONG).show();
-            LocationUtils.gotoLocServiceSettings(this);
+        if (!LocationUtils.isOpenLocService(getActivity()) && ApiLevelHelper.isAtLeast(Build.VERSION_CODES.N)) {
+            Toast.makeText(getActivity(), "您的Android版本在7.0以上，扫描需要打开位置信息。", Toast.LENGTH_LONG).show();
+            LocationUtils.gotoLocServiceSettings(getActivity());
             return;
         }
-        mBluetoothLe.setScanPeriod(200000)
+        mBluetoothLe.setScanPeriod(2000)
                 //   .setScanWithServiceUUID(BluetoothUUID.SERVICE)
+//                .setScanWithDeviceName("BT05")
                 .setReportDelay(0)
-                .startScan(this);
+                .startScan(getActivity());
     }
 
     private void registerListener() {
@@ -226,17 +199,7 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
             @Override
             public void onScanResult(BluetoothDevice bluetoothDevice, int rssi, ScanRecord scanRecord) {
                 mBluetoothDevice = bluetoothDevice;
-                //不存在，则添加进蓝牙设备列表
-                if (bluetoothDeviceList.size() == 0) {
-                    bluetoothDeviceList.add(bluetoothDevice);
-                } else if (isNotInBluetoothDeviceList(bluetoothDevice)) {
-                    bluetoothDeviceList.add(bluetoothDevice);
-                }
-                Log.i(TAG, "扫描到设备：" + mBluetoothDevice.getName());
-
-                if ("BT05".equals(mBluetoothDevice.getName())) {
-                    mBluetoothLe.startConnect(true, mBluetoothDevice);
-                }
+                onRefresh(); //扫描到设备，不重复则加入设备列表
             }
 
             @Override
@@ -265,6 +228,7 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
             @Override
             public void onDeviceConnected() {
                 Log.i(TAG, "成功连接！");
+                getActivity().finish(); //连接成功，返回主页
             }
 
             @Override
@@ -279,12 +243,6 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
                 //写之前打开通知，以监听通知
                 mBluetoothLe.enableNotification(true, BluetoothUUID.psServiceUUID,
                         new UUID[]{BluetoothUUID.PS_HR_NOTIFICATION, BluetoothUUID.PS_STEP_NOTIFICATION});
-
-                //发送数据等必须在发现服务后做
-                String writeStr = "0xA5F1010097";
-                mBluetoothLe.writeDataToCharacteristic(writeStr.getBytes(),
-                        BluetoothUUID.psServiceUUID, BluetoothUUID.psWriteUUID);
-
                 //读数据
                 mBluetoothLe.readCharacteristic(BluetoothUUID.psServiceUUID, BluetoothUUID.psReadUUID);
             }
@@ -304,21 +262,6 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
                 String backInfo = bytesToHex(characteristic.getValue());
                 Log.i(TAG, "收到notification : " + backInfo);
 
-                if (backInfo.length() < 8) {
-                    return;
-                }
-
-                // 十六进制转化为十进制
-                //根据测试说明：机器周期性发送压力值数据指令（A5 F1 03 00 00 00），
-                // 目前只需要用到第4位数据即蓝色那位。 其值的大小，会根据按压气囊的值而相应改变。
-                // 所以需要得到第四部分，转化为10进制，然后在改变高度
-                String the4Num = bytesToHex(characteristic.getValue()).substring(6, 8);
-
-                Log.i("the4num is", the4Num);
-                int pressureNum = Integer.parseInt(the4Num, 16);  //转化为10进制的压力值,最大值120左右
-                Log.i("pressureNum", String.valueOf(pressureNum));
-                //改变图形的高度
-                changeHeight(pressureNum);
             }
 
             @Override
@@ -379,105 +322,80 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
     }
 
     @Override
-    public void setTitle(CharSequence title) {
-        super.setTitle("");
-    }
-
-    private void changeHeight(int pressureNum) {
-//        Random rand = new Random();
-//        int height = rand.nextInt(400);
-//        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mPressure.getLayoutParams();
-//        params.height = 3 * pressureNum;
-//        mPressure.setLayoutParams(params);
-//        mNumText.setText(String.valueOf(params));
-
-        if (pressureNum > 0) {
-            Log.i("has", "success");
-        }
-        chart01View.setAngle(pressureNum * 180 / 120);
-        tv_ps_num.setText("压力值：" + pressureNum + " 毫米汞柱(mmHg)");
-        chart01View.chartRender();
-        chart01View.invalidate();
-
+    protected String getCacheKey() {
+        return TAG;
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.index_scan_start:
+    protected Type getType() {
+        return new TypeToken<ResultBean<PageBean<Ble>>>() {
+        }.getType();
+    }
+
+    @Override
+    public void onRefresh() {
+        setSwipeRefreshLoadingState();
+        //不存在，则添加进蓝牙设备列表
+        if (bluetoothDeviceList.size() == 0) {
+            bluetoothDeviceList.add(mBluetoothDevice);
+        } else if (isNotInBluetoothDeviceList(mBluetoothDevice)) {
+            bluetoothDeviceList.add(mBluetoothDevice);
+        }
+        Log.i(TAG, "扫描到设备：" + mBluetoothDevice.getName());
+        adapter = new ConnectBleListAdapter(bluetoothDeviceList, getContext());
+        listView.setAdapter(adapter);
+
+        executeOnloadFinish();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.main_activity_menu, menu);
+        menu.findItem(R.id.search_ble).setVisible(true);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.search_ble:
                 scan();
                 break;
             default:
                 break;
         }
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        handleIntent(intent);
-    }
-
-    /**
-     * 处理传进来的intent
-     */
-    public void handleIntent(Intent intent) {
-        if (intent == null) {
-            return;
-        }
-        String action = intent.getAction();
-        if (action != null && action.equals(Intent.ACTION_VIEW)) {
-            UIHelper.showUrlRedirect(this, intent.getDataString());
-        } else if (intent.getBooleanExtra("NOTICE", false)) {
-            notifitcationBarClick(intent);
-        }
-    }
-
-    /**
-     * 从通知栏点击的时候相应
-     */
-    private void notifitcationBarClick(Intent fromWhich) {
-        if (fromWhich != null) {
-            boolean fromNoticeBar = fromWhich.getBooleanExtra("NOTICE", false);
-            if (fromNoticeBar) {
-                Intent toMyInfor = new Intent(this, SimpleBackActivity.class);
-                startActivity(toMyInfor);
-            }
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        switch (id) {
-            case android.R.id.home:
-                UIHelper.returnHome(this);
-                break;
-            case R.id.action_select_ble:
-                UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.CONNECT_BLE_LIST);
-                break;
-            case R.id.action_scan_record:
-                UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.SCAN_RECORD);
-                break;
-
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
+    //判断扫描到的蓝牙是否已经存在列表中
+    private boolean isNotInBluetoothDeviceList(BluetoothDevice mBluetoothDevice) {
+        for (BluetoothDevice btd : bluetoothDeviceList) {
+            if (mBluetoothDevice.equals(btd)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void executeOnloadFinish() {
+        setSwipeRefreshLoadedState();
+        mState = STATE_NONE;
+    }
+
+    protected void setSwipeRefreshLoadingState() {
+        if (mRefreshLayout != null) {
+            mRefreshLayout.setRefreshing(true);
+        } else {
+            mRefreshLayout.setEnabled(false);
+        }
+    }
+
+    protected void setSwipeRefreshLoadedState() {
+        if (mRefreshLayout != null) {
+            mRefreshLayout.setRefreshing(false);
+        } else {
+            mRefreshLayout.setEnabled(true);
+        }
+    }
 }
