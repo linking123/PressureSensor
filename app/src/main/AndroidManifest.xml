@@ -139,8 +139,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.suncreate.pressuresensor.ui.AdapterTraningActivity"
+            android:name="com.suncreate.pressuresensor.ui.AdapterTrainingActivity"
             android:label="适应性训练"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.suncreate.pressuresensor.fragment.bleBlutooth.BluetoothActivity"
+            android:label="连接列表"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.suncreate.pressuresensor.ui.LoginBindActivityChooseActivity"

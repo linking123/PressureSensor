@@ -12,10 +12,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.qindachang.bluetoothle.BluetoothLe;
@@ -27,6 +25,7 @@ import com.suncreate.pressuresensor.bean.Constants;
 import com.suncreate.pressuresensor.bean.Notice;
 import com.suncreate.pressuresensor.bean.SimpleBackPage;
 import com.suncreate.pressuresensor.bean.scan.User;
+import com.suncreate.pressuresensor.fragment.bleBlutooth.BluetoothActivity;
 import com.suncreate.pressuresensor.interf.BaseViewInterface;
 import com.suncreate.pressuresensor.service.NoticeUtils;
 import com.suncreate.pressuresensor.util.UIHelper;
@@ -96,7 +95,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
 
         mBluetoothLe = BluetoothLe.getDefault();
 
-            checkSupport();
+        checkSupport();
 
         initData();
     }
@@ -127,23 +126,23 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.TRADE_MODE_INTRODUCE);
                 break;
             case R.id.fb_adapt_training:
-                Intent intent = new Intent(MainActivity.this, AdapterTraningActivity.class);
+                Intent intent = new Intent(MainActivity.this, AdapterTrainingActivity.class);
                 startActivity(intent);
                 break;
             case R.id.fb_combined_training:
-                Intent intent1 = new Intent(MainActivity.this, AdapterTraningActivity.class);
+                Intent intent1 = new Intent(MainActivity.this, AdapterTrainingActivity.class);
                 startActivity(intent1);
                 break;
             case R.id.fb_constipine_training:
-                Intent inten2t = new Intent(MainActivity.this, AdapterTraningActivity.class);
+                Intent inten2t = new Intent(MainActivity.this, AdapterTrainingActivity.class);
                 startActivity(inten2t);
                 break;
             case R.id.fb_fast_muscle_training:
-                Intent intent3 = new Intent(MainActivity.this, AdapterTraningActivity.class);
+                Intent intent3 = new Intent(MainActivity.this, AdapterTrainingActivity.class);
                 startActivity(intent3);
                 break;
             case R.id.fb_slow_muscle_training:
-                Intent intent5 = new Intent(MainActivity.this, AdapterTraningActivity.class);
+                Intent intent5 = new Intent(MainActivity.this, AdapterTrainingActivity.class);
                 startActivity(intent5);
                 break;
             default:
@@ -182,7 +181,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
 
         //根据TAG注销监听，避免内存泄露
         mBluetoothLe.destroy(TAG);
-        //关闭GATT
+//        //关闭GATT，只在activity中
         mBluetoothLe.close();
     }
 
@@ -293,6 +292,9 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 break;
             case R.id.action_select_ble:
                 UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.CONNECT_BLE_LIST);
+//                Intent intent;
+//                intent = new Intent(MainActivity.this, BluetoothActivity.class);
+//                startActivity(intent);
                 break;
             default:
                 break;

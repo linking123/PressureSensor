@@ -62,10 +62,9 @@
     </RelativeLayout>
 
     <View
-        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_marginBottom="1px"
+        android:layout_marginTop="@dimen/space_6"
         android:background="@color/list_divider_color" />
 
 </LinearLayout>

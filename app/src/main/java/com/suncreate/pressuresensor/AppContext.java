@@ -99,8 +99,8 @@ public class AppContext extends BaseApplication {
                 .getAppExceptionHandler(this));
                 */
         UIHelper.sendBroadcastForNotice(this);
-        areaJson = getFromAssets(Constants.AREA_JSON_NAME);
-        areaList = JSON.parseArray(areaJson, AreaJson.class);
+//        areaJson = getFromAssets(Constants.AREA_JSON_NAME);
+//        areaList = JSON.parseArray(areaJson, AreaJson.class);
 
         //蓝牙配置
         BluetoothConfig config = new BluetoothConfig.Builder()

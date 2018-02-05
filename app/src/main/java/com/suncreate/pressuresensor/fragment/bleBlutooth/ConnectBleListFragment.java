@@ -82,14 +82,16 @@ public class ConnectBleListFragment extends BaseDetailFragment<Ble> implements
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         mBluetoothLe = BluetoothLe.getDefault();
-
         checkSupport();
-        initData();
+//        initData();
+
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        //根据TAG注销监听，避免内存泄露
+        mBluetoothLe.destroy(TAG);
     }
 
     @Override
@@ -136,15 +138,19 @@ public class ConnectBleListFragment extends BaseDetailFragment<Ble> implements
         }
     }
 
-    public void checkSupport() {
+    public boolean checkSupport() {
         //初始检测设备是否支持蓝牙
         if (!mBluetoothLe.isSupportBluetooth()) {
             //设备不支持蓝牙
             AppContext.showToastShort("很遗憾，您的手机不支持蓝牙，请更换手机后重试");
+            return false;
         } else {
             if (!mBluetoothLe.isBluetoothOpen()) {
                 //没有打开蓝牙，请求打开手机蓝牙
-                mBluetoothLe.enableBluetooth(getActivity(), 666);
+                mBluetoothLe.enableBluetooth(getActivity());
+                return false;
+            } else {
+                return true;
             }
         }
     }
@@ -163,6 +169,9 @@ public class ConnectBleListFragment extends BaseDetailFragment<Ble> implements
     }
 
     private void scan() {
+        if (!checkSupport()) {
+            return;
+        }
         //对于Android 6.0以上的版本，申请地理位置动态权限
         if (!checkLocationPermission()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -179,14 +188,13 @@ public class ConnectBleListFragment extends BaseDetailFragment<Ble> implements
             return;
         }
         //如果系统版本是7.0以上，则请求打开位置信息
-        if (!LocationUtils.isOpenLocService(getActivity()) && ApiLevelHelper.isAtLeast(Build.VERSION_CODES.N)) {
-            Toast.makeText(getActivity(), "您的Android版本在7.0以上，扫描需要打开位置信息。", Toast.LENGTH_LONG).show();
+        if (!LocationUtils.isOpenLocService(getContext()) && ApiLevelHelper.isAtLeast(Build.VERSION_CODES.N)) {
+            Toast.makeText(getContext(), "您的Android版本在7.0以上，扫描需要打开位置信息。", Toast.LENGTH_LONG).show();
             LocationUtils.gotoLocServiceSettings(getActivity());
             return;
         }
-        mBluetoothLe.setScanPeriod(2000)
-                //   .setScanWithServiceUUID(BluetoothUUID.SERVICE)
-//                .setScanWithDeviceName("BT05")
+        mBluetoothLe.setScanPeriod(20000)
+//                   .setScanWithServiceUUID(BluetoothUUID.psServiceUUID)
                 .setReportDelay(0)
                 .startScan(getActivity());
     }
@@ -199,7 +207,18 @@ public class ConnectBleListFragment extends BaseDetailFragment<Ble> implements
             @Override
             public void onScanResult(BluetoothDevice bluetoothDevice, int rssi, ScanRecord scanRecord) {
                 mBluetoothDevice = bluetoothDevice;
-                onRefresh(); //扫描到设备，不重复则加入设备列表
+                //不存在，则添加进蓝牙设备列表
+                boolean flag = false;
+                if (bluetoothDeviceList.size() == 0) {
+                    bluetoothDeviceList.add(mBluetoothDevice);
+                    flag = true;
+                } else if (isNotInBluetoothDeviceList(mBluetoothDevice)) {
+                    bluetoothDeviceList.add(mBluetoothDevice);
+                    flag = true;
+                }
+                if (flag) {
+                    onRefresh(); //扫描到设备，不重复则加入设备列表
+                }
             }
 
             @Override
@@ -228,6 +247,7 @@ public class ConnectBleListFragment extends BaseDetailFragment<Ble> implements
             @Override
             public void onDeviceConnected() {
                 Log.i(TAG, "成功连接！");
+                AppContext.showToastShort("连接成功");
                 getActivity().finish(); //连接成功，返回主页
             }
 
@@ -335,14 +355,8 @@ public class ConnectBleListFragment extends BaseDetailFragment<Ble> implements
     @Override
     public void onRefresh() {
         setSwipeRefreshLoadingState();
-        //不存在，则添加进蓝牙设备列表
-        if (bluetoothDeviceList.size() == 0) {
-            bluetoothDeviceList.add(mBluetoothDevice);
-        } else if (isNotInBluetoothDeviceList(mBluetoothDevice)) {
-            bluetoothDeviceList.add(mBluetoothDevice);
-        }
         Log.i(TAG, "扫描到设备：" + mBluetoothDevice.getName());
-        adapter = new ConnectBleListAdapter(bluetoothDeviceList, getContext());
+        adapter = new ConnectBleListAdapter(bluetoothDeviceList, getContext(), mBluetoothLe);
         listView.setAdapter(adapter);
 
         executeOnloadFinish();

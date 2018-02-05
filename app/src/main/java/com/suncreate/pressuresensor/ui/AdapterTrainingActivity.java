@@ -57,7 +57,7 @@ import info.hoang8f.widget.FButton;
 /**
  * 适应性训练
  */
-public class AdapterTraningActivity extends BaseActivityBlueToothLE implements BaseViewInterface, View.OnClickListener {
+public class AdapterTrainingActivity extends BaseActivityBlueToothLE implements BaseViewInterface, View.OnClickListener {
 
     public static final String TAG = "MainActivity";
 
