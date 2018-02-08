@@ -91,7 +91,7 @@ public class ConnectBleListFragment extends BaseDetailFragment<Ble> implements
     public void onDestroy() {
         super.onDestroy();
         //根据TAG注销监听，避免内存泄露
-        mBluetoothLe.destroy(TAG);
+//        mBluetoothLe.destroy(TAG);
     }
 
     @Override

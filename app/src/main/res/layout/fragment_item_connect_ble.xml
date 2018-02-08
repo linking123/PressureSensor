@@ -15,14 +15,16 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:paddingBottom="4dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/civ_connect_ble_img"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/space_5"
             android:src="@drawable/widget_dface" />
 
         <TextView
@@ -53,6 +55,7 @@
         <info.hoang8f.widget.FButton
             android:id="@+id/fb_mode_introduce"
             style="@style/item_connect_ble"
+            android:layout_centerVertical="true"
             android:text="连接"
             fbutton:buttonColor="@color/index_scan_start_bg"
             fbutton:cornerRadius="5dp"

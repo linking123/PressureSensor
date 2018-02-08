@@ -874,7 +874,7 @@
     </style>
 
     <style name="item_connect_ble">
-        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_width">88dp</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:layout_margin">6dp</item>
         <item name="android:layout_alignParentRight">true</item>>
