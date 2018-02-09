@@ -1,4 +1,4 @@
-package com.suncreate.pressuresensor.ui;
+package com.suncreate.pressuresensor.ui.ble;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -41,6 +41,8 @@ import com.suncreate.pressuresensor.bean.SimpleBackPage;
 import com.suncreate.pressuresensor.interf.BaseViewInterface;
 import com.suncreate.pressuresensor.interf.BluetoothUUID;
 import com.suncreate.pressuresensor.service.NoticeUtils;
+import com.suncreate.pressuresensor.ui.ApiLevelHelper;
+import com.suncreate.pressuresensor.ui.SimpleBackActivity;
 import com.suncreate.pressuresensor.util.LocationUtils;
 import com.suncreate.pressuresensor.util.UIHelper;
 import com.suncreate.pressuresensor.widget.ps.GaugeChart01View;

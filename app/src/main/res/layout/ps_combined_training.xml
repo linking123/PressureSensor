@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <RelativeLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.suncreate.pressuresensor.widget.ps.DialChart02View
+                android:id="@+id/chart_view"
+                android:layout_width="400dp"
+                android:layout_height="200dp" />
+
+            <TextView
+                android:id="@+id/tv_ps_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chart_view"
+                android:layout_margin="@dimen/space_10"
+                android:gravity="center"
+                android:text="压力值：0 毫米汞柱(mmHg)" />
+
+            <!-- 可加入计时插件 适应性训练1分钟吧 -->
+        </RelativeLayout>
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/index_scan_start"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="19dp"
+            android:background="@drawable/fire_button_border"
+            android:padding="@dimen/space_10"
+            android:text="@string/index_scan_start"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_20"
+            fbutton:buttonColor="@color/index_scan_start_bg"
+            fbutton:cornerRadius="20dp"
+            fbutton:shadowColor="@color/btn_origin_disable"
+            fbutton:shadowEnabled="false"
+            fbutton:shadowHeight="3dp" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

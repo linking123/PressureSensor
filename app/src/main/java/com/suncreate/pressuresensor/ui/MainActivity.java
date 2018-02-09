@@ -25,9 +25,13 @@ import com.suncreate.pressuresensor.bean.Constants;
 import com.suncreate.pressuresensor.bean.Notice;
 import com.suncreate.pressuresensor.bean.SimpleBackPage;
 import com.suncreate.pressuresensor.bean.scan.User;
-import com.suncreate.pressuresensor.fragment.bleBlutooth.BluetoothActivity;
 import com.suncreate.pressuresensor.interf.BaseViewInterface;
 import com.suncreate.pressuresensor.service.NoticeUtils;
+import com.suncreate.pressuresensor.ui.ble.AdapterTrainingActivity;
+import com.suncreate.pressuresensor.ui.ble.CombinedTrainingActivity;
+import com.suncreate.pressuresensor.ui.ble.ConstipineTrainingActivity;
+import com.suncreate.pressuresensor.ui.ble.FastMuscleTrainingActivity;
+import com.suncreate.pressuresensor.ui.ble.SlowMuscleTrainingActivity;
 import com.suncreate.pressuresensor.util.UIHelper;
 
 import butterknife.Bind;
@@ -130,19 +134,19 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
                 startActivity(intent);
                 break;
             case R.id.fb_combined_training:
-                Intent intent1 = new Intent(MainActivity.this, AdapterTrainingActivity.class);
+                Intent intent1 = new Intent(MainActivity.this, CombinedTrainingActivity.class);
                 startActivity(intent1);
                 break;
             case R.id.fb_constipine_training:
-                Intent inten2t = new Intent(MainActivity.this, AdapterTrainingActivity.class);
+                Intent inten2t = new Intent(MainActivity.this, ConstipineTrainingActivity.class);
                 startActivity(inten2t);
                 break;
             case R.id.fb_fast_muscle_training:
-                Intent intent3 = new Intent(MainActivity.this, AdapterTrainingActivity.class);
+                Intent intent3 = new Intent(MainActivity.this, FastMuscleTrainingActivity.class);
                 startActivity(intent3);
                 break;
             case R.id.fb_slow_muscle_training:
-                Intent intent5 = new Intent(MainActivity.this, AdapterTrainingActivity.class);
+                Intent intent5 = new Intent(MainActivity.this, SlowMuscleTrainingActivity.class);
                 startActivity(intent5);
                 break;
             default:

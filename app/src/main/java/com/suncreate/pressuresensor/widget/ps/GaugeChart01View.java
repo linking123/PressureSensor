@@ -88,7 +88,6 @@ public class GaugeChart01View extends GraphicalView {
 
     }
 
-
     //从seekbar传入的值
     public void setAngle(float currentAngle) {
         mAngle = currentAngle;
