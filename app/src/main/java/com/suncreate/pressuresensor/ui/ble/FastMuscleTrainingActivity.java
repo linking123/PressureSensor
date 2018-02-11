@@ -45,7 +45,6 @@ import com.suncreate.pressuresensor.ui.ApiLevelHelper;
 import com.suncreate.pressuresensor.ui.SimpleBackActivity;
 import com.suncreate.pressuresensor.util.LocationUtils;
 import com.suncreate.pressuresensor.util.UIHelper;
-import com.suncreate.pressuresensor.widget.ps.DialChart02View;
 import com.suncreate.pressuresensor.widget.ps.DialChart04View;
 
 import java.util.ArrayList;
@@ -77,7 +76,7 @@ public class FastMuscleTrainingActivity extends BaseActivityBlueToothLE implemen
     @Bind(R.id.index_scan_start)
     FButton btStartScan;
     @Bind(R.id.chart_view)
-    DialChart04View chart01View;
+    DialChart04View chart04View;
 
     //蓝牙对象,..
     private BluetoothLe mBluetoothLe;
@@ -397,10 +396,10 @@ public class FastMuscleTrainingActivity extends BaseActivityBlueToothLE implemen
         if (pressureNum > 0) {
             Log.i("has", "success");
         }
-        chart01View.setCurrentStatus(pressureNum * 180 / 120f);
+        chart04View.setCurrentStatus(pressureNum / 120f);
         tv_ps_num.setText("压力值：" + pressureNum + " 毫米汞柱(mmHg)");
-        chart01View.chartRender();
-        chart01View.invalidate();
+//        chart04View.chartRender();
+        chart04View.invalidate();
 
     }
 

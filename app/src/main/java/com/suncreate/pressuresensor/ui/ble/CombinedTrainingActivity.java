@@ -46,7 +46,6 @@ import com.suncreate.pressuresensor.ui.SimpleBackActivity;
 import com.suncreate.pressuresensor.util.LocationUtils;
 import com.suncreate.pressuresensor.util.UIHelper;
 import com.suncreate.pressuresensor.widget.ps.DialChart02View;
-import com.suncreate.pressuresensor.widget.ps.GaugeChart01View;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,7 +61,7 @@ import info.hoang8f.widget.FButton;
  */
 public class CombinedTrainingActivity extends BaseActivityBlueToothLE implements BaseViewInterface, View.OnClickListener {
 
-    public static final String TAG = "CombinedTrainingActivity";
+    public static final String TAG = "CombinedTrainingAct";
 
     /**
      * Sets whether vector drawables on older platforms (< API 21) can be used within DrawableContainer resources.
@@ -77,7 +76,7 @@ public class CombinedTrainingActivity extends BaseActivityBlueToothLE implements
     @Bind(R.id.index_scan_start)
     FButton btStartScan;
     @Bind(R.id.chart_view)
-    DialChart02View chart01View;
+    DialChart02View chart02View;
 
     //蓝牙对象,..
     private BluetoothLe mBluetoothLe;
@@ -397,10 +396,10 @@ public class CombinedTrainingActivity extends BaseActivityBlueToothLE implements
         if (pressureNum > 0) {
             Log.i("has", "success");
         }
-        chart01View.setCurrentStatus(pressureNum * 180 / 120f);
+        chart02View.setCurrentStatus(pressureNum / 120f);
         tv_ps_num.setText("压力值：" + pressureNum + " 毫米汞柱(mmHg)");
-        chart01View.chartRender();
-        chart01View.invalidate();
+//        chart02View.chartRender();
+        chart02View.invalidate();
 
     }
 

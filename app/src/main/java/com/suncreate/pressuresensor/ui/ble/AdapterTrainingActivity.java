@@ -398,9 +398,8 @@ public class AdapterTrainingActivity extends BaseActivityBlueToothLE implements 
         }
         chart01View.setAngle(pressureNum * 180 / 120);
         tv_ps_num.setText("压力值：" + pressureNum + " 毫米汞柱(mmHg)");
-        chart01View.chartRender();
+//        chart01View.chartRender();
         chart01View.invalidate();
-
     }
 
     @Override

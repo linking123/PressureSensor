@@ -52,7 +52,7 @@ public class DialChart03View extends GraphicalView {
 	private String TAG = "DialChart03View";	
 	
 	private DialChart chart = new DialChart();
-	private float mPercentage = 0.9f;
+	private float mPercentage = 0.0f;
 	
 	public DialChart03View(Context context) {
 		super(context);
@@ -133,15 +133,15 @@ public class DialChart03View extends GraphicalView {
 			
 			
 			List<String> rlabels  = new ArrayList<String>();
-			rlabels.add("00M");
-			rlabels.add("10M");
-			rlabels.add("20M");
-			rlabels.add("30M");
-			rlabels.add("40M");	
-			rlabels.add("50M");
-			rlabels.add("60M");
-			rlabels.add("70M");
-			rlabels.add("80M");
+			rlabels.add("00");
+			rlabels.add("15");
+			rlabels.add("30");
+			rlabels.add("45");
+			rlabels.add("60");
+			rlabels.add("75");
+			rlabels.add("90");
+			rlabels.add("105");
+			rlabels.add("120");
 			chart.addInnerTicksAxis(0.8f, rlabels);
 			
 						
@@ -185,7 +185,7 @@ public class DialChart03View extends GraphicalView {
 			paintTB.setTextAlign(Align.CENTER);
 			paintTB.setTextSize(30);	
 			paintTB.setAntiAlias(true);	
-			plotAttrInfo.addAttributeInfo(XEnum.Location.TOP, "当前网速", 0.3f, paintTB);
+			plotAttrInfo.addAttributeInfo(XEnum.Location.TOP, "压力值", 0.3f, paintTB);
 			
 			Paint paintBT = new Paint();
 			paintBT.setColor(Color.WHITE);
@@ -202,7 +202,7 @@ public class DialChart03View extends GraphicalView {
 			paintBT2.setTextSize(30);
 			paintBT2.setFakeBoldText(true);
 			paintBT2.setAntiAlias(true);	
-			plotAttrInfo.addAttributeInfo(XEnum.Location.BOTTOM, "MB/S", 0.4f, paintBT2);				
+			plotAttrInfo.addAttributeInfo(XEnum.Location.BOTTOM, "mmHg", 0.4f, paintBT2);
 		}
 		
 		public void setCurrentStatus(float percentage)
