@@ -38,7 +38,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import info.hoang8f.widget.FButton;
 
-public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInterface, View.OnClickListener,
+public class MainActivity1 extends BaseActivityBlueToothLE implements BaseViewInterface, View.OnClickListener,
         NavigationView.OnNavigationItemSelectedListener {
 
     public static final String TAG = "MainActivity";
@@ -57,19 +57,18 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
     DrawerLayout drawer;
     @Bind(R.id.nav_view)
     NavigationView navigationView;
-    
-    @Bind(R.id.fb_floor_detection)
-    FButton fb_floor_detection;
-    @Bind(R.id.fb_floor_exerciese)
-    FButton fb_floor_exerciese;
-    @Bind(R.id.fb_childcare_knowledge)
-    FButton fb_childcare_knowledge;
-    @Bind(R.id.fb_use_manual)
-    FButton fb_use_manual;
-    @Bind(R.id.fb_game_introduce)
-    FButton fb_game_introduce;
-    @Bind(R.id.fb_server_introduce)
-    FButton fb_server_introduce;
+    @Bind(R.id.fb_mode_introduce)
+    FButton fb_mode_introduce;
+    @Bind(R.id.fb_adapt_training)
+    FButton fb_adapt_practice;
+    @Bind(R.id.fb_combined_training)
+    FButton fb_combined_training;
+    @Bind(R.id.fb_constipine_training)
+    FButton fb_constipine_training;
+    @Bind(R.id.fb_fast_muscle_training)
+    FButton fb_fast_muscle_training;
+    @Bind(R.id.fb_slow_muscle_training)
+    FButton fb_slow_muscle_training;
 
 
     public static Notice mNotice;
@@ -79,7 +78,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_ps_index);
+        setContentView(R.layout.activity_main_fire_index);
 
         ButterKnife.bind(this);
         initView();
@@ -115,39 +114,39 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
         filter.addAction(Constants.INTENT_ACTION_LOGOUT);
         NoticeUtils.bindToService(this);
 
-        fb_floor_detection.setOnClickListener(this);
-        fb_floor_exerciese.setOnClickListener(this);
-        fb_childcare_knowledge.setOnClickListener(this);
-        fb_use_manual.setOnClickListener(this);
-        fb_game_introduce.setOnClickListener(this);
-        fb_server_introduce.setOnClickListener(this);
+        fb_mode_introduce.setOnClickListener(this);
+        fb_adapt_practice.setOnClickListener(this);
+        fb_combined_training.setOnClickListener(this);
+        fb_constipine_training.setOnClickListener(this);
+        fb_fast_muscle_training.setOnClickListener(this);
+        fb_slow_muscle_training.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.fb_floor_detection:
-                UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.FLOOR_DETECTION);
+            case R.id.fb_mode_introduce:
+                UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.TRADE_MODE_INTRODUCE);
                 break;
-            case R.id.fb_floor_exerciese:
-                Intent intent = new Intent(MainActivity.this, AdapterTrainingActivity.class);
+            case R.id.fb_adapt_training:
+                Intent intent = new Intent(MainActivity1.this, AdapterTrainingActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.fb_childcare_knowledge:
-                Intent intent1 = new Intent(MainActivity.this, CombinedTrainingActivity.class);
+            case R.id.fb_combined_training:
+                Intent intent1 = new Intent(MainActivity1.this, CombinedTrainingActivity.class);
                 startActivity(intent1);
                 break;
-            case R.id.fb_use_manual:
-                Intent inten2t = new Intent(MainActivity.this, ConstipineTrainingActivity.class);
+            case R.id.fb_constipine_training:
+                Intent inten2t = new Intent(MainActivity1.this, ConstipineTrainingActivity.class);
                 startActivity(inten2t);
                 break;
-            case R.id.fb_game_introduce:
-                Intent intent3 = new Intent(MainActivity.this, FastMuscleTrainingActivity.class);
+            case R.id.fb_fast_muscle_training:
+                Intent intent3 = new Intent(MainActivity1.this, FastMuscleTrainingActivity.class);
                 startActivity(intent3);
                 break;
-            case R.id.fb_server_introduce:
-                Intent intent5 = new Intent(MainActivity.this, SlowMuscleTrainingActivity.class);
+            case R.id.fb_slow_muscle_training:
+                Intent intent5 = new Intent(MainActivity1.this, SlowMuscleTrainingActivity.class);
                 startActivity(intent5);
                 break;
             default:

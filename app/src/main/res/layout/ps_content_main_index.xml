@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.suncreate.pressuresensor.ui.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/fb_floor_detection"
+            style="@style/main_page_part"
+            android:text="盆底检测"
+            fbutton:buttonColor="@color/index_scan_start_bg"
+            fbutton:cornerRadius="15dp"
+            fbutton:shadowColor="@color/btn_origin_disable"
+            fbutton:shadowEnabled="false"
+            fbutton:shadowHeight="3dp" />
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/fb_floor_exerciese"
+            style="@style/main_page_part"
+            android:layout_below="@+id/fb_floor_detection"
+            android:text="盆底锻炼"
+            fbutton:buttonColor="@color/index_scan_start_bg"
+            fbutton:cornerRadius="15dp"
+            fbutton:shadowColor="@color/btn_origin_disable"
+            fbutton:shadowEnabled="false"
+            fbutton:shadowHeight="3dp" />
+
+        <LinearLayout
+            android:id="@+id/ll_ys"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fb_floor_exerciese"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/fb_childcare_knowledge"
+                style="@style/main_page_part"
+                android:layout_below="@+id/fb_floor_detection"
+                android:text="育儿知识"
+                fbutton:buttonColor="@color/index_scan_start_bg"
+                fbutton:cornerRadius="15dp"
+                fbutton:shadowColor="@color/btn_origin_disable"
+                fbutton:shadowEnabled="false"
+                fbutton:shadowHeight="3dp" />
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/fb_use_manual"
+                style="@style/main_page_part"
+                android:layout_below="@+id/fb_floor_detection"
+                android:text="使用指南"
+                fbutton:buttonColor="@color/index_scan_start_bg"
+                fbutton:cornerRadius="15dp"
+                fbutton:shadowColor="@color/btn_origin_disable"
+                fbutton:shadowEnabled="false"
+                fbutton:shadowHeight="3dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_ys"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/fb_game_introduce"
+                style="@style/main_page_part"
+                android:layout_below="@+id/fb_floor_detection"
+                android:text="游戏介绍"
+                fbutton:buttonColor="@color/index_scan_start_bg"
+                fbutton:cornerRadius="15dp"
+                fbutton:shadowColor="@color/btn_origin_disable"
+                fbutton:shadowEnabled="false"
+                fbutton:shadowHeight="3dp" />
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/fb_server_introduce"
+                style="@style/main_page_part"
+                android:layout_below="@+id/fb_floor_detection"
+                android:text="服务介绍"
+                fbutton:buttonColor="@color/index_scan_start_bg"
+                fbutton:cornerRadius="15dp"
+                fbutton:shadowColor="@color/btn_origin_disable"
+                fbutton:shadowEnabled="false"
+                fbutton:shadowHeight="3dp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -33,7 +33,7 @@
         </LinearLayout>
     </com.suncreate.pressuresensor.widget.ActionHorizontalScrollView>
 
-    <include layout="@layout/fragment_publish_service_requirement" />
+    <include layout="@layout/fragment_ps_floor_detection" />
 
     <!--<View-->
     <!--android:id="@+id/order_header_view"-->

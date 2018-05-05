@@ -1,19 +1,25 @@
 package com.suncreate.pressuresensor.fragment.bleBlutooth;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.suncreate.pressuresensor.R;
 import com.suncreate.pressuresensor.fragment.base.BaseFragment;
 
+import butterknife.ButterKnife;
+
 /**
- * 训练模式简介
+ * 盆底检测
  *
  * @author linking
- *         created on 2018/1/4 16:04
+ *         created on 2018/5/5 22:31
  */
-public class TradeModeIntroduce extends BaseFragment {
-    protected static final String TAG = TradeModeIntroduce.class.getSimpleName();
+public class FloorDetectionFragment extends BaseFragment {
+    protected static final String TAG = FloorDetectionFragment.class.getSimpleName();
+
 
 
     @Override
@@ -23,7 +29,7 @@ public class TradeModeIntroduce extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_ps_trade_mode_introduce;
+        return R.layout.fragment_ps_floor_detection;
     }
 
     @Override

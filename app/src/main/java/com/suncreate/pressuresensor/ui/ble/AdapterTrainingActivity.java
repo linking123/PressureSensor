@@ -61,7 +61,7 @@ import info.hoang8f.widget.FButton;
  */
 public class AdapterTrainingActivity extends BaseActivityBlueToothLE implements BaseViewInterface, View.OnClickListener {
 
-    public static final String TAG = "MainActivity";
+    public static final String TAG = "AdapterTrainingActivity";
 
     /**
      * Sets whether vector drawables on older platforms (< API 21) can be used within DrawableContainer resources.
