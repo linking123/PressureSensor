@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.qindachang.bluetoothle.BluetoothLe;
@@ -36,7 +37,6 @@ import com.suncreate.pressuresensor.util.UIHelper;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import info.hoang8f.widget.FButton;
 
 public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInterface, View.OnClickListener,
         NavigationView.OnNavigationItemSelectedListener {
@@ -57,19 +57,19 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
     DrawerLayout drawer;
     @Bind(R.id.nav_view)
     NavigationView navigationView;
-    
+
     @Bind(R.id.fb_floor_detection)
-    FButton fb_floor_detection;
+    Button fb_floor_detection;
     @Bind(R.id.fb_floor_exerciese)
-    FButton fb_floor_exerciese;
+    Button fb_floor_exerciese;
     @Bind(R.id.fb_childcare_knowledge)
-    FButton fb_childcare_knowledge;
+    Button fb_childcare_knowledge;
     @Bind(R.id.fb_use_manual)
-    FButton fb_use_manual;
+    Button fb_use_manual;
     @Bind(R.id.fb_game_introduce)
-    FButton fb_game_introduce;
+    Button fb_game_introduce;
     @Bind(R.id.fb_server_introduce)
-    FButton fb_server_introduce;
+    Button fb_server_introduce;
 
 
     public static Notice mNotice;

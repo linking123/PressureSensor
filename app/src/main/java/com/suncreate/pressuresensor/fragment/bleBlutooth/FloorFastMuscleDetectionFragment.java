@@ -1,7 +1,5 @@
 package com.suncreate.pressuresensor.fragment.bleBlutooth;
 
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 
@@ -13,13 +11,13 @@ import com.suncreate.pressuresensor.widget.PathView;
 import butterknife.Bind;
 
 /**
- * 盆底检测
+ * 盆底检测-快肌检测
  *
  * @author linking
  *         created on 2018/5/5 22:31
  */
-public class FloorDetectionFragment extends BaseFragment implements View.OnClickListener {
-    protected static final String TAG = FloorDetectionFragment.class.getSimpleName();
+public class FloorFastMuscleDetectionFragment extends BaseFragment implements View.OnClickListener {
+    protected static final String TAG = FloorFastMuscleDetectionFragment.class.getSimpleName();
 
     @Bind(R.id.cgv_card_view)
     CardiographView cardiographView;
@@ -29,7 +27,6 @@ public class FloorDetectionFragment extends BaseFragment implements View.OnClick
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -40,9 +37,7 @@ public class FloorDetectionFragment extends BaseFragment implements View.OnClick
     @Override
     protected void initWidget(View root) {
         super.initWidget(root);
-//        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-//            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//        }
+
 //        btn_moderate.setOnClickListener(this);
     }
 

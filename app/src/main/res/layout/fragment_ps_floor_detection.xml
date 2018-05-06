@@ -1,17 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+
+    android:layout_height="match_parent">
 
     <com.suncreate.pressuresensor.widget.CardiographView
+        android:id="@+id/cgv_card_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="200dp" />
 
     <com.suncreate.pressuresensor.widget.PathView
+        android:id="@+id/pv_path_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="200dp" />
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_moderate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableLeft="@drawable/selector_bg_border"
+            android:drawablePadding="@dimen/space_5"
+            android:text="前静息期"
+            android:textAlignment="center"
+            android:textSize="@dimen/font_14" />
+
+        <RadioButton
+            android:id="@+id/rb_endurance_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableLeft="@drawable/selector_car_choose_bg"
+            android:drawablePadding="@dimen/space_5"
+            android:textAlignment="center"
+            android:textSize="@dimen/font_14"
+            android:text="耐力检测" />
+
+        <RadioButton
+            android:id="@+id/rb_fast_muscle_test_A"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableLeft="@drawable/selector_default_lovecar_radio"
+            android:drawablePadding="@dimen/space_5"
+            android:textAlignment="center"
+            android:textSize="@dimen/font_14"
+            android:layout_height="wrap_content"
+            android:text="快肌检测\nIIA类肌纤维" />
+
+        <RadioButton
+            android:id="@+id/rb_fast_muscle_test_B"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableLeft="@drawable/selector_send"
+            android:drawablePadding="@dimen/space_5"
+            android:textAlignment="center"
+            android:textSize="@dimen/font_14"
+            android:text="快肌检测\nIIB类肌纤维" />
+
+        <RadioButton
+            android:id="@+id/rb_slow_muscle_test_A"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableLeft="@drawable/selector_keyboard"
+            android:drawablePadding="@dimen/space_5"
+            android:textAlignment="center"
+            android:textSize="@dimen/font_14"
+            android:layout_height="wrap_content"
+            android:text="慢肌检测\nI类肌纤维" />
+
+        <RadioButton
+            android:id="@+id/rb_slow_muscle_test_B"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableLeft="@drawable/selector_car_choose_bg"
+            android:drawablePadding="@dimen/space_5"
+            android:textAlignment="center"
+            android:textSize="@dimen/font_14"
+            android:layout_height="wrap_content"
+            android:text="慢肌检测\nI类肌纤维" />
+
+    </RadioGroup>
 </RelativeLayout>

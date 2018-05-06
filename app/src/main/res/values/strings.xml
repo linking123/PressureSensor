@@ -61,6 +61,8 @@
     <string name="tip_logout_success">注销成功</string>
     <string name="logout">注销</string>
     <string name="trade_mode_introduce">训练模式介绍</string>
+    <string name="floor_detection">盆底检测</string>
+    <string name="floor_detection_fast">快肌检测</string>
 
     <string name="loading_img">加载图片</string>
     <string name="mes_notice">消息通知</string>

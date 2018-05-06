@@ -21,6 +21,7 @@ import com.suncreate.pressuresensor.fragment.SettingsNotificationFragment;
 import com.suncreate.pressuresensor.fragment.UserCenterFragment;
 import com.suncreate.pressuresensor.fragment.bleBlutooth.ConnectBleListFragment;
 import com.suncreate.pressuresensor.fragment.bleBlutooth.FloorDetectionFragment;
+import com.suncreate.pressuresensor.fragment.bleBlutooth.FloorFastMuscleDetectionFragment;
 import com.suncreate.pressuresensor.fragment.bleBlutooth.TradeModeIntroduce;
 import com.suncreate.pressuresensor.fragment.bleBlutooth.TradeRecords;
 import com.suncreate.pressuresensor.fragment.carBrand.CarBrandFragment;
@@ -279,12 +280,13 @@ public enum SimpleBackPage {
     MY_PERSON_INFO_EDIT_EMAIL(309, R.string.txt_user_email_edit, MyPersonInfoEditEmailFragment.class),
     GET_BACK_PWD(310, R.string.login_retrieve_password, RegisterRegetPwdFragment.class),
     TRADE_MODE_INTRODUCE(311, R.string.trade_mode_introduce, TradeModeIntroduce.class),
-    FLOOR_DETECTION(312, R.string.trade_mode_introduce, FloorDetectionFragment.class),
+    FLOOR_DETECTION(312, R.string.floor_detection, FloorDetectionFragment.class),
     FLOOR_EXERCIESE(313, R.string.trade_mode_introduce, TradeModeIntroduce.class),
     CHILDCARE_KNOWLEDGE(314, R.string.trade_mode_introduce, TradeModeIntroduce.class),
     USE_MANUAL(315, R.string.trade_mode_introduce, TradeModeIntroduce.class),
     GAME_INTRODUCE(316, R.string.trade_mode_introduce, TradeModeIntroduce.class),
     SERVER_INTRODUCE(317, R.string.trade_mode_introduce, TradeModeIntroduce.class),
+    FLOOR_DETECTION_FAST(318, R.string.floor_detection_fast, FloorFastMuscleDetectionFragment.class),
 
     ;
 
