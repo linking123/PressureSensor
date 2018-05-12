@@ -19,20 +19,17 @@ public class CardiographView extends View {
     protected int mLineColor = Color.parseColor("#76f112");
     //网格颜色
     protected int mGridColor = Color.parseColor("#1b4200");
-
     //小网格颜色
     protected int mSGridColor = Color.parseColor("#092100");
     //背景颜色
     protected int mBackgroundColor = Color.BLACK;
     //自身的大小
     protected int mWidth, mHeight;
-
     //网格宽度
     protected int mGridWidth = 50;
     //小网格的宽度
     protected int mSGridWidth = 10;
-
-    //心电图折现
+    //心电图折线
     protected Path mPath;
 
     public CardiographView(Context context) {
@@ -60,7 +57,6 @@ public class CardiographView extends View {
     protected void onDraw(Canvas canvas) {
         initBackground(canvas);
     }
-
 
     //绘制背景
     private void initBackground(Canvas canvas) {
@@ -98,7 +94,5 @@ public class CardiographView extends View {
         for (int i = 0; i < hNum + 1; i++) {
             canvas.drawLine(0, i * mGridWidth, mWidth, i * mGridWidth, mPaint);
         }
-
-
     }
 }
