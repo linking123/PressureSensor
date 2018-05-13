@@ -8,13 +8,16 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.qindachang.bluetoothle.BluetoothLe;
@@ -36,8 +39,10 @@ import com.suncreate.pressuresensor.AppContext;
 import com.suncreate.pressuresensor.AppManager;
 import com.suncreate.pressuresensor.R;
 import com.suncreate.pressuresensor.base.BaseActivityBlueToothLE;
+import com.suncreate.pressuresensor.bean.Ble.CardioData;
 import com.suncreate.pressuresensor.bean.Constants;
 import com.suncreate.pressuresensor.bean.SimpleBackPage;
+import com.suncreate.pressuresensor.fragment.base.BaseFragment;
 import com.suncreate.pressuresensor.interf.BaseViewInterface;
 import com.suncreate.pressuresensor.interf.BluetoothUUID;
 import com.suncreate.pressuresensor.service.NoticeUtils;
@@ -45,51 +50,70 @@ import com.suncreate.pressuresensor.ui.ApiLevelHelper;
 import com.suncreate.pressuresensor.ui.SimpleBackActivity;
 import com.suncreate.pressuresensor.util.LocationUtils;
 import com.suncreate.pressuresensor.util.UIHelper;
-import com.suncreate.pressuresensor.widget.ps.GaugeChart01View;
+import com.suncreate.pressuresensor.widget.CardiographView;
+import com.suncreate.pressuresensor.widget.PathView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import info.hoang8f.widget.FButton;
 
 /**
- * 适应性训练
+ * 盆底检测
+ *
+ * @author linking
+ *         created on 2018/5/5 22:31
  */
-public class AdapterTrainingActivity extends BaseActivityBlueToothLE implements BaseViewInterface,
-        View.OnClickListener {
+public class FloorDetectionActivity extends BaseActivityBlueToothLE implements View.OnClickListener,
+        BaseViewInterface, RadioGroup.OnCheckedChangeListener {
 
-    public static final String TAG = "AdapterTrainingActivity";
+    protected static final String TAG = FloorDetectionActivity.class.getSimpleName();
 
-    /**
-     * Sets whether vector drawables on older platforms (< API 21) can be used within
-     * DrawableContainer resources.
-     * https://developer.android.com/reference/android/support/v7/app/AppCompatDelegate.
-     * html#setCompatVectorFromResourcesEnabled(boolean)
-     */
-    static {
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-    }
-
-    @Bind(R.id.tv_ps_num)
-    TextView tv_ps_num;
-    @Bind(R.id.index_scan_start)
-    FButton btStartScan;
-    @Bind(R.id.chart_view)
-    GaugeChart01View chart01View;
+    @Bind(R.id.cgv_card_view)
+    CardiographView cardiographView;
+    @Bind(R.id.pv_path_view)
+    PathView pathView;
+    @Bind(R.id.btn_test)
+    Button btn_test;
 
     //蓝牙对象,..
     private BluetoothLe mBluetoothLe;
     private BluetoothDevice mBluetoothDevice;
     private List<BluetoothDevice> bluetoothDeviceList = new ArrayList<>();
 
+    int detectionType; // 检测类型 0-前静息期，1-耐力检测，2-快肌检测\nIIA类肌纤维，3-快肌检测\nIIB类肌纤维，
+    // 4-慢肌检测\nI类肌纤维，5-慢肌检测\nI类肌纤维
+    private static final int dtcType0 = 0;
+    private static final int dtcType1 = 1;
+    private static final int dtcType2 = 2;
+    private static final int dtcType3 = 3;
+    private static final int dtcType4 = 4;
+
+    List<CardioData> dataList;
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    if (dataList.size() != 0) {
+                        pathView.setData(dataList);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ps_adapter_training);
+        setContentView(R.layout.fragment_ps_floor_detection);
 
         ButterKnife.bind(this);
         initView();
@@ -105,7 +129,52 @@ public class AdapterTrainingActivity extends BaseActivityBlueToothLE implements 
         checkSupport();
 
         initData();
+
     }
+
+    @Override
+    public void initData() {
+        registerListener();
+        dataList = new ArrayList<>();
+    }
+
+    private void startRun() {
+        new Thread() {
+            @Override
+            public void run() {
+                handler.sendEmptyMessage(1);
+                try {
+                    sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+
+    @Override
+    public void onClick(View v) {
+        final int id = v.getId();
+        switch (id) {
+            case R.id.btn_test:
+                scan();
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+        detectionType = checkedId;
+        switch (checkedId) {
+            case dtcType0:
+                break;
+            default:
+                break;
+        }
+    }
+
 
     @Override
     public void initView() {
@@ -114,12 +183,7 @@ public class AdapterTrainingActivity extends BaseActivityBlueToothLE implements 
         filter.addAction(Constants.INTENT_ACTION_LOGOUT);
         NoticeUtils.bindToService(this);
 
-        btStartScan.setOnClickListener(this);
-    }
-
-    @Override
-    public void initData() {
-        registerListener();
+        btn_test.setOnClickListener(this);
     }
 
     @Override
@@ -388,32 +452,29 @@ public class AdapterTrainingActivity extends BaseActivityBlueToothLE implements 
         super.setTitle("");
     }
 
+    long lastTime = 0L;
+    long now = 0L;
+
     private void changeHeight(int pressureNum) {
-//        Random rand = new Random();
-//        int height = rand.nextInt(400);
-//        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mPressure.getLayoutParams();
-//        params.height = 3 * pressureNum;
-//        mPressure.setLayoutParams(params);
-//        mNumText.setText(String.valueOf(params));
 
         if (pressureNum > 0) {
-            Log.i("has", "success");
+            Log.i("has pressureNum: ", "success");
         }
-        chart01View.setAngle(pressureNum * 180 / 120);
-        tv_ps_num.setText("压力值：" + pressureNum + " 毫米汞柱(mmHg)");
-//        chart01View.chartRender();
-        chart01View.invalidate();
-    }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.index_scan_start:
-                scan();
-                break;
-            default:
-                break;
-        }
+        /**
+         * 数据分为展示数据和存储数据。
+         * 1.展示数据可以用全部的数据，x轴根据时间，把1s细化；y轴用真实的压力值换算得来。再辅助在旁边显示压力值。
+         * 2.存储的数据，需要分粒度，目前倾向于保存1s间隔的数据。可以设计为时间过一秒就，加一个<time,data>到list。
+         */
+        long now2last = now - lastTime;
+        lastTime = System.currentTimeMillis();
+
+        CardioData data = new CardioData();
+        data.setPressureData((float) pressureNum);
+        data.setTime(100f);
+        dataList.add(data);
+        startRun();
+
     }
 
     @Override

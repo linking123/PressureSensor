@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import com.suncreate.pressuresensor.bean.Ble.CardioData;
 
@@ -66,6 +67,7 @@ public class PathView extends CardiographView {
     // 可以一次传入多条数据，则用path；
     private void drawPathTest(Canvas canvas) {
 
+        Log.i("mHight is: ", mHeight + "");
         if (lastTimeLastData != null) {
             mPath.moveTo(lastTimeLastData.getTime(), lastTimeLastData.getPressureData());
         } else {

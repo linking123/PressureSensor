@@ -48,9 +48,9 @@
 
     <!--6.0以上设备需要以下两个权限-->
     <!-- 这个权限用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 这个权限用于访问GPS定位 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 
     <uses-feature android:name="android.hardware.camera" />
@@ -161,6 +161,10 @@
         <activity
             android:name="com.suncreate.pressuresensor.fragment.bleBlutooth.BluetoothActivity"
             android:label="连接列表"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.suncreate.pressuresensor.ui.ble.FloorDetectionActivity"
+            android:label="盆底检测"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.suncreate.pressuresensor.ui.LoginBindActivityChooseActivity"
