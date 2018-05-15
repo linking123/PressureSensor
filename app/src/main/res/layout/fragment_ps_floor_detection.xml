@@ -36,7 +36,7 @@
         android:layout_below="@+id/ll_message_box"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/space_10"
-        android:text="开始检测"
+        android:text="连接设备"
         android:textColor="@color/red" />
 
     <RadioGroup

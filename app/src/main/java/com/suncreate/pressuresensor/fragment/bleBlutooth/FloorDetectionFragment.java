@@ -54,7 +54,7 @@ public class FloorDetectionFragment extends BaseFragment implements View.OnClick
             switch (msg.what) {
                 case 1:
                     if (dataList.size() != 0) {
-                        pathView.setData(dataList);
+//                        pathView.setData(dataList);
                     }
                     break;
                 default:

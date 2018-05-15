@@ -30,7 +30,7 @@ public class CardiographView extends View {
     //小网格的宽度
     protected int mSGridWidth = 10;
     //心电图折线
-    protected Path mPath;
+//    protected Path mPath;
 
     public CardiographView(Context context) {
         this(context, null);
@@ -43,7 +43,7 @@ public class CardiographView extends View {
     public CardiographView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mPaint = new Paint();
-        mPath = new Path();
+//        mPath = new Path();
     }
 
     @Override

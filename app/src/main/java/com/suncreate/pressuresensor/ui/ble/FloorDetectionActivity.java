@@ -93,15 +93,20 @@ public class FloorDetectionActivity extends BaseActivityBlueToothLE implements V
     private static final int dtcType3 = 3;
     private static final int dtcType4 = 4;
 
-    List<CardioData> dataList;
+    //    List<CardioData> dataList;
+    CardioData dataPre;
+    CardioData lastTimeLastData;
 
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 1:
-                    if (dataList.size() != 0) {
-                        pathView.setData(dataList);
+                    /*if (dataList.size() != 0) {
+//                        pathView.setData(dataList);
+                    }*/
+                    if (dataPre != null) {
+                        pathView.setData(dataPre, lastTimeLastData);
                     }
                     break;
                 default:
@@ -135,7 +140,9 @@ public class FloorDetectionActivity extends BaseActivityBlueToothLE implements V
     @Override
     public void initData() {
         registerListener();
-        dataList = new ArrayList<>();
+//        dataList = new ArrayList<>();
+        dataPre = new CardioData();
+        lastTimeLastData = new CardioData();
     }
 
     private void startRun() {
@@ -157,6 +164,7 @@ public class FloorDetectionActivity extends BaseActivityBlueToothLE implements V
         final int id = v.getId();
         switch (id) {
             case R.id.btn_test:
+                AppContext.showToastShort("开始连接设备，请稍后");
                 scan();
                 break;
             default:
@@ -281,7 +289,7 @@ public class FloorDetectionActivity extends BaseActivityBlueToothLE implements V
             LocationUtils.gotoLocServiceSettings(this);
             return;
         }
-        mBluetoothLe.setScanPeriod(200000)
+        mBluetoothLe.setScanPeriod(1000000)
                 //   .setScanWithServiceUUID(BluetoothUUID.SERVICE)
                 .setReportDelay(0)
                 .startScan(this);
@@ -334,11 +342,13 @@ public class FloorDetectionActivity extends BaseActivityBlueToothLE implements V
             @Override
             public void onDeviceConnected() {
                 Log.i(TAG, "成功连接！");
+                AppContext.showToastShort("设备连接成功，愉快的玩耍吧");
             }
 
             @Override
             public void onDeviceDisconnected() {
                 Log.i(TAG, "连接断开！");
+                AppContext.showToastShort("设备连接断开");
             }
 
             @Override
@@ -386,6 +396,14 @@ public class FloorDetectionActivity extends BaseActivityBlueToothLE implements V
                 Log.i("the4num is", the4Num);
                 int pressureNum = Integer.parseInt(the4Num, 16);  //转化为10进制的压力值,最大值120左右
                 Log.i("pressureNum", String.valueOf(pressureNum));
+
+                //1.数据大于0才传输
+                if (pressureNum == 0) {
+                    return;
+                }
+
+                //设置一层过滤器，固定时间间隔内，才传输一次数据，忽略间隔中间的数据
+
                 //改变图形的高度
                 changeHeight(pressureNum);
             }
@@ -452,8 +470,7 @@ public class FloorDetectionActivity extends BaseActivityBlueToothLE implements V
         super.setTitle("");
     }
 
-    long lastTime = 0L;
-    long now = 0L;
+    float num = 0f;
 
     private void changeHeight(int pressureNum) {
 
@@ -466,14 +483,25 @@ public class FloorDetectionActivity extends BaseActivityBlueToothLE implements V
          * 1.展示数据可以用全部的数据，x轴根据时间，把1s细化；y轴用真实的压力值换算得来。再辅助在旁边显示压力值。
          * 2.存储的数据，需要分粒度，目前倾向于保存1s间隔的数据。可以设计为时间过一秒就，加一个<time,data>到list。
          */
-        long now2last = now - lastTime;
-        lastTime = System.currentTimeMillis();
 
-        CardioData data = new CardioData();
+        //以list传输
+        /*CardioData data = new CardioData();
         data.setPressureData((float) pressureNum);
         data.setTime(100f);
         dataList.add(data);
+        startRun();*/
+
+        // 以单个数据传输
+        if (dataPre != null) {
+            lastTimeLastData = dataPre;
+        } else {
+            lastTimeLastData.setTime(0f);
+            lastTimeLastData.setPressureData(0f);
+        }
+        dataPre.setTime(num);
+        dataPre.setPressureData((float) pressureNum);
         startRun();
+        num = num + 1f;
 
     }
 
