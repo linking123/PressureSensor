@@ -172,7 +172,7 @@ public class MainActivityBackup2 extends BaseActivityBlueToothLE implements Base
         //根据TAG注销监听，避免内存泄露
         mBluetoothLe.destroy(TAG);
         //关闭GATT
-        mBluetoothLe.close();
+        //mBluetoothLe.close();
     }
 
     public void checkSupport() {

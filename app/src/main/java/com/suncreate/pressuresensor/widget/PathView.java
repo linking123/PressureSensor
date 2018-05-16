@@ -25,7 +25,7 @@ public class PathView extends CardiographView {
     private boolean isPlaying;//是否在开始游戏了
     private boolean isPause;//是否暂停了
 
-    List<CardioData> dataList;
+    //    List<CardioData> dataList;
     CardioData dataPressure;
     CardioData lastTimeLastData; //上一次最后一个数据，移动到这个位置
 
@@ -43,7 +43,9 @@ public class PathView extends CardiographView {
        /* mPath = new Path();
         // 重置path
         mPath.reset();*/
-        dataList = new ArrayList<>();
+//        dataList = new ArrayList<>();
+        dataPressure = new CardioData();
+        lastTimeLastData = new CardioData();
     }
 
     /**
@@ -58,14 +60,14 @@ public class PathView extends CardiographView {
     /**
      * @param dataPressure <time, pressureData></>
      */
-    public void setData(CardioData dataPressure, CardioData lastTimeLastData) {
+    public void setData(CardioData dataPressure) {
         this.dataPressure = dataPressure;
-        this.lastTimeLastData = lastTimeLastData;
         invalidate();
     }
 
     @Override
     public void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
 //        drawPath(canvas);
         drawLine(canvas);
 //        scrollBy(1, 0); //x轴前进一位
@@ -105,16 +107,25 @@ public class PathView extends CardiographView {
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setColor(mLineColor);
         mPaint.setStrokeWidth(5);
-        if (lastTimeLastData == null) {
-            lastTimeLastData = new CardioData();
+        if (lastTimeLastData.getTime() == null || lastTimeLastData.getPressureData() == null) {
             lastTimeLastData.setPressureData(0f);
             lastTimeLastData.setTime(0f);
-        }//为什么前后数据会变成一样呢
-        canvas.drawLine(lastTimeLastData.getTime(), lastTimeLastData.getPressureData(),
-                dataPressure == null ? 0f : dataPressure.getTime(),
-                dataPressure == null ? 0f : dataPressure.getPressureData(), mPaint);
+        }
+        if (dataPressure.getTime() == null || dataPressure.getPressureData() == null) {
+            dataPressure.setPressureData(0f);
+            dataPressure.setTime(0f);
+        }
 
-        canvas.drawLine(0f, 0f, 10f, 10f, mPaint);
+        canvas.drawLine(lastTimeLastData.getTime(), lastTimeLastData.getPressureData(),
+                dataPressure.getTime(), dataPressure.getPressureData(), mPaint);
+
+        if (dataPressure.getTime() != null) {
+            lastTimeLastData.setTime(dataPressure.getTime());
+        }
+        if (dataPressure.getPressureData() != null) {
+            lastTimeLastData.setPressureData(dataPressure.getPressureData());
+        }
+
     }
 
     public long getOverTime() {

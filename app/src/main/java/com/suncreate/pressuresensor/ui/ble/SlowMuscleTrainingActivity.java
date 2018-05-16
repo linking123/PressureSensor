@@ -144,7 +144,7 @@ public class SlowMuscleTrainingActivity extends BaseActivityBlueToothLE implemen
         //根据TAG注销监听，避免内存泄露
         mBluetoothLe.destroy(TAG);
         //关闭GATT
-        mBluetoothLe.close();
+        //mBluetoothLe.close();
     }
 
     public void checkSupport() {

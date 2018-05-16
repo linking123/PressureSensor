@@ -95,7 +95,6 @@ public class FloorDetectionActivity extends BaseActivityBlueToothLE implements V
 
     //    List<CardioData> dataList;
     CardioData dataPre;
-    CardioData lastTimeLastData;
 
     private Handler handler = new Handler() {
         @Override
@@ -106,7 +105,9 @@ public class FloorDetectionActivity extends BaseActivityBlueToothLE implements V
 //                        pathView.setData(dataList);
                     }*/
                     if (dataPre != null) {
-                        pathView.setData(dataPre, lastTimeLastData);
+                        // 以单个数据传输
+
+                        pathView.setData(dataPre);
                     }
                     break;
                 default:
@@ -142,7 +143,6 @@ public class FloorDetectionActivity extends BaseActivityBlueToothLE implements V
         registerListener();
 //        dataList = new ArrayList<>();
         dataPre = new CardioData();
-        lastTimeLastData = new CardioData();
     }
 
     private void startRun() {
@@ -219,7 +219,7 @@ public class FloorDetectionActivity extends BaseActivityBlueToothLE implements V
         //根据TAG注销监听，避免内存泄露
         mBluetoothLe.destroy(TAG);
         //关闭GATT
-        mBluetoothLe.close();
+//        //mBluetoothLe.close();
     }
 
     public void checkSupport() {
@@ -343,6 +343,7 @@ public class FloorDetectionActivity extends BaseActivityBlueToothLE implements V
             public void onDeviceConnected() {
                 Log.i(TAG, "成功连接！");
                 AppContext.showToastShort("设备连接成功，愉快的玩耍吧");
+                mBluetoothLe.stopScan();  //连接成功后停止扫描
             }
 
             @Override
@@ -491,13 +492,7 @@ public class FloorDetectionActivity extends BaseActivityBlueToothLE implements V
         dataList.add(data);
         startRun();*/
 
-        // 以单个数据传输
-        if (dataPre != null) {
-            lastTimeLastData = dataPre;
-        } else {
-            lastTimeLastData.setTime(0f);
-            lastTimeLastData.setPressureData(0f);
-        }
+
         dataPre.setTime(num);
         dataPre.setPressureData((float) pressureNum);
         startRun();

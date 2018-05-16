@@ -186,7 +186,7 @@ public class MainActivity1 extends BaseActivityBlueToothLE implements BaseViewIn
         //根据TAG注销监听，避免内存泄露
         mBluetoothLe.destroy(TAG);
 //        //关闭GATT，只在activity中
-        mBluetoothLe.close();
+        //mBluetoothLe.close();
     }
 
     public void checkSupport() {
