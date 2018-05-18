@@ -11,12 +11,11 @@ import android.widget.RadioGroup;
 import com.suncreate.pressuresensor.R;
 import com.suncreate.pressuresensor.bean.Ble.CardioData;
 import com.suncreate.pressuresensor.fragment.base.BaseFragment;
-import com.suncreate.pressuresensor.widget.CardiographView;
-import com.suncreate.pressuresensor.widget.PathView;
+import com.suncreate.pressuresensor.widget.ps.CardiographView;
+import com.suncreate.pressuresensor.widget.ps.PathView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import butterknife.Bind;
 

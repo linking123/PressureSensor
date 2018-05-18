@@ -4,12 +4,12 @@
 
     android:layout_height="match_parent">
 
-    <com.suncreate.pressuresensor.widget.CardiographView
+    <com.suncreate.pressuresensor.widget.ps.CardiographView
         android:id="@+id/cgv_card_view"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
 
-    <com.suncreate.pressuresensor.widget.PathView
+    <com.suncreate.pressuresensor.widget.ps.PathView
         android:id="@+id/pv_path_view"
         android:layout_width="match_parent"
         android:layout_height="200dp" />

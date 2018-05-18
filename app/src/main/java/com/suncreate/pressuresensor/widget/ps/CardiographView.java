@@ -1,4 +1,4 @@
-package com.suncreate.pressuresensor.widget;
+package com.suncreate.pressuresensor.widget.ps;
 
 import android.content.Context;
 import android.graphics.Canvas;

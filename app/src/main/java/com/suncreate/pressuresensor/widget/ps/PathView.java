@@ -1,16 +1,12 @@
-package com.suncreate.pressuresensor.widget;
+package com.suncreate.pressuresensor.widget.ps;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.util.AttributeSet;
 import android.util.Log;
 
 import com.suncreate.pressuresensor.bean.Ble.CardioData;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 模拟心电图
@@ -103,6 +99,7 @@ public class PathView extends CardiographView {
     }
 
     private void drawLine(Canvas canvas) {
+
         //设置画笔style
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setColor(mLineColor);

@@ -5,8 +5,8 @@ import android.view.View;
 
 import com.suncreate.pressuresensor.R;
 import com.suncreate.pressuresensor.fragment.base.BaseFragment;
-import com.suncreate.pressuresensor.widget.CardiographView;
-import com.suncreate.pressuresensor.widget.PathView;
+import com.suncreate.pressuresensor.widget.ps.CardiographView;
+import com.suncreate.pressuresensor.widget.ps.PathView;
 
 import butterknife.Bind;
 

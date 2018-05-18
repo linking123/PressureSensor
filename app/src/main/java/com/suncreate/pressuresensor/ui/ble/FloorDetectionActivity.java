@@ -42,7 +42,6 @@ import com.suncreate.pressuresensor.base.BaseActivityBlueToothLE;
 import com.suncreate.pressuresensor.bean.Ble.CardioData;
 import com.suncreate.pressuresensor.bean.Constants;
 import com.suncreate.pressuresensor.bean.SimpleBackPage;
-import com.suncreate.pressuresensor.fragment.base.BaseFragment;
 import com.suncreate.pressuresensor.interf.BaseViewInterface;
 import com.suncreate.pressuresensor.interf.BluetoothUUID;
 import com.suncreate.pressuresensor.service.NoticeUtils;
@@ -50,12 +49,11 @@ import com.suncreate.pressuresensor.ui.ApiLevelHelper;
 import com.suncreate.pressuresensor.ui.SimpleBackActivity;
 import com.suncreate.pressuresensor.util.LocationUtils;
 import com.suncreate.pressuresensor.util.UIHelper;
-import com.suncreate.pressuresensor.widget.CardiographView;
-import com.suncreate.pressuresensor.widget.PathView;
+import com.suncreate.pressuresensor.widget.ps.CardiographView;
+import com.suncreate.pressuresensor.widget.ps.PathView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
