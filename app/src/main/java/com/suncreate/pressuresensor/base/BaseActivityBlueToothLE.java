@@ -8,6 +8,8 @@ import com.suncreate.pressuresensor.interf.Permission;
 import pub.devrel.easypermissions.EasyPermissions;
 
 /**
+` * 基础蓝牙活动类
+ *
  * Created by linking on 12/7/17.
  */
 

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.ble.FloorDetectionActivity1">
+
+    <com.suncreate.pressuresensor.widget.ps.EcgView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout><!--
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.ble.FloorDetectionActivity1">
+
+    <com.suncreate.pressuresensor.widget.ps.EcgView
+        android:id="@+id/ecgview"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="21dp" />
+    &lt;!&ndash;<com.suncreate.pressuresensor.widget.ps.CardiographView
+        android:id="@+id/cgv_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />&ndash;&gt;
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/cgv_card_view">
+
+        <Button
+            android:id="@+id/btn_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_10"
+            android:text="连接设备"
+            android:textColor="@color/red" />
+
+    </LinearLayout>
+</RelativeLayout>-->

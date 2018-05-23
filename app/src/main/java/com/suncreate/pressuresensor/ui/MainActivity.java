@@ -33,6 +33,7 @@ import com.suncreate.pressuresensor.ui.ble.CombinedTrainingActivity;
 import com.suncreate.pressuresensor.ui.ble.ConstipineTrainingActivity;
 import com.suncreate.pressuresensor.ui.ble.FastMuscleTrainingActivity;
 import com.suncreate.pressuresensor.ui.ble.FloorDetectionActivity;
+import com.suncreate.pressuresensor.ui.ble.FloorDetectionActivity1;
 import com.suncreate.pressuresensor.ui.ble.SlowMuscleTrainingActivity;
 import com.suncreate.pressuresensor.util.UIHelper;
 
@@ -130,7 +131,7 @@ public class MainActivity extends BaseActivityBlueToothLE implements BaseViewInt
         switch (view.getId()) {
             case R.id.fb_floor_detection:
 //                UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.FLOOR_DETECTION);
-                Intent intent0 = new Intent(MainActivity.this, FloorDetectionActivity.class);
+                Intent intent0 = new Intent(MainActivity.this, FloorDetectionActivity1.class);
                 startActivity(intent0);
                 break;
             case R.id.fb_floor_exerciese:
