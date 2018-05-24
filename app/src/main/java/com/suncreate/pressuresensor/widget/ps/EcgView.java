@@ -9,6 +9,7 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -17,7 +18,6 @@ import com.suncreate.pressuresensor.R;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Queue;
-
 
 /**
  * 心电图视图
@@ -32,20 +32,20 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
     public static boolean isRunning;
     private Canvas mCanvas;
 
-    private float ecgMax = 4096;//心电的最大值
+    private float ecgMax = 120;//心电的最大值
     private String bgColor = "#3FB57D";
     private int wave_speed = 25;//波速: 25mm/s
     private int sleepTime = 8; //每次锁屏的时间间距，单位:ms
     private float lockWidth;//每次锁屏需要画的
-    private int ecgPerCount = 8;//每次画心电数据的个数，心电每秒有500个数据包
+    private int ecgPerCount = 10;//每次画心电数据的个数，心电每秒有500个数据包
 
-    private static Queue<Integer> ecg0Datas = new LinkedList<Integer>();
+    private static Queue<Integer> ecg0Datas = new LinkedList<>();
 
     private Paint mPaint;//画波形图的画笔
     private int mWidth;//控件宽度
     private int mHeight;//控件高度
-    private float ecgYRatio;
-    private int startY0;
+    private float ecgYRatio; //相对y轴的比例
+    private int startY0;  // y轴开始位置
     private Rect rect;
 
     private int startX;//每次画线的X坐标起点
@@ -73,7 +73,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
         soundId = soundPool.load(mContext, R.raw.heartbeat, 1);
 
         ecgXOffset = lockWidth / ecgPerCount;
-        startY0 = mHeight * (1 / 4);//波1初始Y坐标是控件高度的1/4
+        startY0 = mHeight / 2;//波1初始Y坐标是控件高度的1/2
         ecgYRatio = mHeight / 2 / ecgMax;
 
     }
@@ -181,7 +181,8 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
             if (ecg0Datas.size() > ecgPerCount) {
                 for (int i = 0; i < ecgPerCount; i++) {
                     float newX = (float) (mStartX + ecgXOffset);
-                    int newY = ecgConver(ecg0Datas.poll());
+//                    int newY = ecgConver(ecg0Datas.poll());
+                    int newY = ecg0Datas.poll();
                     mCanvas.drawLine(mStartX, startY0, newX, newY, mPaint);
                     mStartX = newX;
                     startY0 = newY;
@@ -192,7 +193,8 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
                  * 因为有数据一次画ecgPerCount个数，那么无数据时候就应该画ecgPercount倍数长度的中线
                  */
                 int newX = (int) (mStartX + ecgXOffset * ecgPerCount);
-                int newY = ecgConver((int) (ecgMax / 2));
+//                int newY = ecgConver((int) (ecgMax / 2));
+                int newY = (int) (ecgMax / 2);
                 mCanvas.drawLine(mStartX, startY0, newX, newY, mPaint);
                 startY0 = newY;
             }
@@ -204,12 +206,13 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
     /**
      * 将心电数据转换成用于显示的Y坐标
      *
-     * @param data
+     * @param data da
      * @return
      */
     private int ecgConver(int data) {
         data = (int) (ecgMax - data);
         data = (int) (data * ecgYRatio);
+        Log.d("ecgconver data ", data + "");
         return data;
     }
 
