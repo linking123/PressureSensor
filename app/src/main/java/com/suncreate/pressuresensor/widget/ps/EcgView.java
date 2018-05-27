@@ -41,12 +41,25 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
 
     private static Queue<Integer> ecg0Datas = new LinkedList<>();
 
+
+    //小网格颜色
+    protected int mSGridColor = Color.parseColor("#092100");
+    //背景颜色
+    protected int mBackgroundColor = Color.BLACK;
+    //网格宽度
+    protected int mGridWidth = 50;
+    //小网格的宽度
+    protected int mSGridWidth = 10;
+    //网格颜色
+    protected int mGridColor = Color.parseColor("#1b4200");
+
+
     private Paint mPaint;//画波形图的画笔
     private int mWidth;//控件宽度
     private int mHeight;//控件高度
-    private float ecgYRatio; //相对y轴的比例
     private int startY0;  // y轴开始位置
     private Rect rect;
+    private float ecgYRatio; //相对y轴的比例
 
     private int startX;//每次画线的X坐标起点
     private double ecgXOffset;//每次X坐标偏移的像素
@@ -172,6 +185,46 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+    private void drawbackground() {
+        try {
+            mCanvas.drawColor(mBackgroundColor);
+            //画小网格
+
+            //竖线个数
+            int vSNum = mWidth / mSGridWidth;
+
+            //横线个数
+            int hSNum = mHeight / mSGridWidth;
+            mPaint.setColor(mSGridColor);
+            mPaint.setStrokeWidth(2);
+            //画竖线
+            for (int i = 0; i < vSNum + 1; i++) {
+                mCanvas.drawLine(i * mSGridWidth, 0, i * mSGridWidth, mHeight, mPaint);
+            }
+            //画横线
+            for (int i = 0; i < hSNum + 1; i++) {
+                mCanvas.drawLine(0, i * mSGridWidth, mWidth, i * mSGridWidth, mPaint);
+            }
+
+            //竖线个数
+            int vNum = mWidth / mGridWidth;
+            //横线个数
+            int hNum = mHeight / mGridWidth;
+            mPaint.setColor(mGridColor);
+            mPaint.setStrokeWidth(2);
+            //画竖线
+            for (int i = 0; i < vNum + 1; i++) {
+                mCanvas.drawLine(i * mGridWidth, 0, i * mGridWidth, mHeight, mPaint);
+            }
+            //画横线
+            for (int i = 0; i < hNum + 1; i++) {
+                mCanvas.drawLine(0, i * mGridWidth, mWidth, i * mGridWidth, mPaint);
+            }
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * 画波
      */
@@ -193,8 +246,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
                  * 因为有数据一次画ecgPerCount个数，那么无数据时候就应该画ecgPercount倍数长度的中线
                  */
                 int newX = (int) (mStartX + ecgXOffset * ecgPerCount);
-//                int newY = ecgConver((int) (ecgMax / 2));
-                int newY = (int) (ecgMax / 2);
+                int newY = mHeight - 10;
                 mCanvas.drawLine(mStartX, startY0, newX, newY, mPaint);
                 startY0 = newY;
             }
