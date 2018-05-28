@@ -33,7 +33,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
     private Canvas mCanvas;
 
     private float ecgMax = 120;//心电的最大值
-    private String bgColor = "#3FB57D";
+    private String bgColor = "#151F28";
     private int wave_speed = 25;//波速: 25mm/s
     private int sleepTime = 8; //每次锁屏的时间间距，单位:ms
     private float lockWidth;//每次锁屏需要画的
@@ -41,11 +41,10 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
 
     private static Queue<Integer> ecg0Datas = new LinkedList<>();
 
-
     //小网格颜色
     protected int mSGridColor = Color.parseColor("#092100");
     //背景颜色
-    protected int mBackgroundColor = Color.BLACK;
+    protected int mBackgroundColor = Color.parseColor("#151F28");
     //网格宽度
     protected int mGridWidth = 50;
     //小网格的宽度
@@ -79,15 +78,15 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
 
     private void init() {
         mPaint = new Paint();
-        mPaint.setColor(Color.WHITE);
+        mPaint.setColor(Color.parseColor("#7EA52F"));
         mPaint.setStrokeWidth(6);
 
         soundPool = new SoundPool(1, AudioManager.STREAM_RING, 0);
         soundId = soundPool.load(mContext, R.raw.heartbeat, 1);
 
         ecgXOffset = lockWidth / ecgPerCount;
-        startY0 = mHeight / 2;//波1初始Y坐标是控件高度的1/2
-        ecgYRatio = mHeight / 2 / ecgMax;
+        startY0 = mHeight - 10;
+        ecgYRatio = mHeight / ecgMax;
 
     }
 
@@ -116,7 +115,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         Canvas canvas = holder.lockCanvas();
-        canvas.drawColor(Color.parseColor(bgColor));
+//        canvas.drawColor(Color.parseColor(bgColor));
         holder.unlockCanvasAndPost(canvas);
         startThread();
     }
@@ -175,7 +174,8 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
         if (mCanvas == null) return;
         mCanvas.drawColor(Color.parseColor(bgColor));
 
-        drawWave0();
+        drawBackground();
+        drawWave();
 
         surfaceHolder.unlockCanvasAndPost(mCanvas);
 
@@ -185,7 +185,10 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
-    private void drawbackground() {
+    /**
+     * 画背景
+     */
+    private void drawBackground() {
         try {
             mCanvas.drawColor(mBackgroundColor);
             //画小网格
@@ -228,14 +231,16 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
     /**
      * 画波
      */
-    private void drawWave0() {
+    private void drawWave() {
         try {
+            mPaint.setColor(Color.parseColor("#7EA52F"));
+            mPaint.setStrokeWidth(6);
             float mStartX = startX;
             if (ecg0Datas.size() > ecgPerCount) {
                 for (int i = 0; i < ecgPerCount; i++) {
                     float newX = (float) (mStartX + ecgXOffset);
-//                    int newY = ecgConver(ecg0Datas.poll());
-                    int newY = ecg0Datas.poll();
+                    int newY = ecgConver(ecg0Datas.poll());
+//                    int newY = ecg0Datas.poll();
                     mCanvas.drawLine(mStartX, startY0, newX, newY, mPaint);
                     mStartX = newX;
                     startY0 = newY;
@@ -262,7 +267,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
      * @return
      */
     private int ecgConver(int data) {
-        data = (int) (ecgMax - data);
+//        data = (int) (ecgMax - data);
         data = (int) (data * ecgYRatio);
         Log.d("ecgconver data ", data + "");
         return data;
