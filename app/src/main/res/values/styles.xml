@@ -864,6 +864,16 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="main_page_part">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:background">@drawable/fire_button_border</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="main_ll_horizontal">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -873,7 +883,15 @@
         <item name="android:padding">6dp</item>
     </style>
 
-
+    <style name="item_connect_ble">
+        <item name="android:layout_width">88dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:layout_alignParentRight">true</item>>
+        <item name="android:background">@drawable/fire_button_border</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+    </style>
 
 
 </resources>

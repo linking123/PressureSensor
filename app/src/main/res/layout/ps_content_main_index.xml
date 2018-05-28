@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.suncreate.pressuresensor.ui.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/fb_floor_detection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_5"
+            android:layout_weight="1"
+            android:background="#FF6666"
+            android:drawableLeft="@drawable/dancer"
+            android:padding="@dimen/space_35"
+            android:text="盆底检测"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/fb_floor_exerciese"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_5"
+            android:layout_weight="1"
+            android:background="#FF6666"
+            android:drawableLeft="@drawable/dancer"
+            android:padding="@dimen/space_35"
+            android:text="盆底锻炼"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_first"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/fb_childcare_knowledge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_5"
+            android:layout_weight="1"
+            android:background="#FF99CC"
+            android:drawableLeft="@drawable/dancer"
+            android:padding="@dimen/space_30"
+            android:text="育儿知识"
+            android:textColor="#993399" />
+
+        <Button
+            android:id="@+id/fb_use_manual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_5"
+            android:layout_weight="1"
+            android:background="#FF99CC"
+            android:drawableLeft="@drawable/dancer"
+            android:padding="@dimen/space_30"
+            android:text="使用指南"
+            android:textColor="#993399" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_third"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_second"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/fb_game_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_5"
+            android:layout_weight="1"
+            android:background="#FFCCCC"
+            android:drawableLeft="@drawable/dancer"
+            android:padding="@dimen/space_35"
+            android:text="游戏介绍"
+            android:textColor="#993399" />
+
+        <Button
+            android:id="@+id/fb_server_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_5"
+            android:layout_weight="1"
+            android:background="#FFCCCC"
+            android:drawableLeft="@drawable/dancer"
+            android:padding="@dimen/space_35"
+            android:text="服务介绍"
+            android:textColor="#993399" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

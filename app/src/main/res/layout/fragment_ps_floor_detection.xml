@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+    <com.suncreate.pressuresensor.widget.ps.CardiographView
+        android:id="@+id/cgv_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <com.suncreate.pressuresensor.widget.ps.PathView
+        android:id="@+id/pv_path_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <LinearLayout
+        android:id="@+id/ll_message_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pv_path_view"
+        android:orientation="vertical"
+        android:padding="@dimen/space_10">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="前静息期介绍前静息期介绍前静息期介绍前静息期介绍前静息期介绍前静息期介绍前静息期介绍前静息期介绍前静息期介绍前静息期介绍前静息期介绍前静息期介绍" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_message_box"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/space_10"
+        android:text="连接设备"
+        android:textColor="@color/red" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_moderate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawablePadding="@dimen/space_5"
+            android:drawableTop="@drawable/selector_default_lovecar_radio"
+            android:text="前静息期"
+            android:textAlignment="center"
+            android:textSize="@dimen/font_14" />
+
+        <RadioButton
+            android:id="@+id/rb_endurance_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:drawablePadding="@dimen/space_5"
+            android:drawableTop="@drawable/selector_default_lovecar_radio"
+            android:text="耐力检测"
+            android:textAlignment="center"
+            android:textSize="@dimen/font_14" />
+
+        <RadioButton
+            android:id="@+id/rb_fast_muscle_test_A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:drawablePadding="@dimen/space_5"
+            android:drawableTop="@drawable/selector_default_lovecar_radio"
+            android:text="快肌检测\nIIA类肌纤维"
+            android:textAlignment="center"
+            android:textSize="@dimen/font_14" />
+
+        <RadioButton
+            android:id="@+id/rb_fast_muscle_test_B"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:drawablePadding="@dimen/space_5"
+            android:drawableTop="@drawable/selector_default_lovecar_radio"
+            android:text="快肌检测\nIIB类肌纤维"
+            android:textAlignment="center"
+            android:textSize="@dimen/font_14" />
+
+        <RadioButton
+            android:id="@+id/rb_slow_muscle_test_A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:drawablePadding="@dimen/space_5"
+            android:drawableTop="@drawable/selector_default_lovecar_radio"
+            android:text="慢肌检测\nI类肌纤维"
+            android:textAlignment="center"
+            android:textSize="@dimen/font_14" />
+
+        <RadioButton
+            android:id="@+id/rb_slow_muscle_test_B"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:drawablePadding="@dimen/space_5"
+            android:drawableTop="@drawable/selector_default_lovecar_radio"
+            android:text="慢肌检测\nI类肌纤维"
+            android:textAlignment="center"
+            android:textSize="@dimen/font_14" />
+
+    </RadioGroup>
+</RelativeLayout>

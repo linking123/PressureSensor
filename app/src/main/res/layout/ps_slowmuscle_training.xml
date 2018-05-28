@@ -22,10 +22,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.suncreate.pressuresensor.widget.ps.GaugeChart01View
+            <com.suncreate.pressuresensor.widget.ps.DialChart05View
                 android:id="@+id/chart_view"
                 android:layout_width="400dp"
-                android:layout_height="200dp" />
+                android:layout_height="300dp" />
 
             <TextView
                 android:id="@+id/tv_ps_num"

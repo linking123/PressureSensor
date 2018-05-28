@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_moderate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_5"
+            android:layout_weight="1"
+            android:background="#FF6666"
+            android:drawableLeft="@drawable/dancer"
+            android:padding="@dimen/space_35"
+            android:text="前静息期"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_endurance_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_5"
+            android:layout_weight="1"
+            android:background="#FF6666"
+            android:drawableLeft="@drawable/dancer"
+            android:padding="@dimen/space_35"
+            android:text="耐力检测"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_first"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_fast_muscle_test_A"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_5"
+            android:layout_weight="1"
+            android:background="#FF99CC"
+            android:drawableLeft="@drawable/dancer"
+            android:padding="@dimen/space_30"
+            android:text="快肌检测\nIIA类肌纤维"
+            android:textColor="#993399" />
+
+        <Button
+            android:id="@+id/btn_fast_muscle_test_B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_5"
+            android:layout_weight="1"
+            android:background="#FF99CC"
+            android:drawableLeft="@drawable/dancer"
+            android:padding="@dimen/space_30"
+            android:text="快肌检测\nIIB类肌纤维"
+            android:textColor="#993399" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_third"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_second"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_slow_muscle_test_A"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_5"
+            android:layout_weight="1"
+            android:background="#FFCCCC"
+            android:drawableLeft="@drawable/dancer"
+            android:padding="@dimen/space_35"
+            android:text="慢肌检测\nI类肌纤维"
+            android:textColor="#993399" />
+
+        <Button
+            android:id="@+id/btn_slow_muscle_test_B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_5"
+            android:layout_weight="1"
+            android:background="#FFCCCC"
+            android:drawableLeft="@drawable/dancer"
+            android:padding="@dimen/space_35"
+            android:text="慢肌检测\nI类肌纤维"
+            android:textColor="#993399" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

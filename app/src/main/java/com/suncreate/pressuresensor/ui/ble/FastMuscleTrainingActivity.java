@@ -1,4 +1,4 @@
-package com.suncreate.pressuresensor.ui;
+package com.suncreate.pressuresensor.ui.ble;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -8,15 +8,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,12 +37,15 @@ import com.suncreate.pressuresensor.AppManager;
 import com.suncreate.pressuresensor.R;
 import com.suncreate.pressuresensor.base.BaseActivityBlueToothLE;
 import com.suncreate.pressuresensor.bean.Constants;
+import com.suncreate.pressuresensor.bean.SimpleBackPage;
 import com.suncreate.pressuresensor.interf.BaseViewInterface;
 import com.suncreate.pressuresensor.interf.BluetoothUUID;
 import com.suncreate.pressuresensor.service.NoticeUtils;
+import com.suncreate.pressuresensor.ui.ApiLevelHelper;
+import com.suncreate.pressuresensor.ui.SimpleBackActivity;
 import com.suncreate.pressuresensor.util.LocationUtils;
 import com.suncreate.pressuresensor.util.UIHelper;
-import com.suncreate.pressuresensor.widget.ps.GaugeChart01View;
+import com.suncreate.pressuresensor.widget.ps.DialChart04View;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,9 +56,12 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import info.hoang8f.widget.FButton;
 
-public class AdapterTraningActivity extends BaseActivityBlueToothLE implements BaseViewInterface, View.OnClickListener {
+/**
+ * 快肌训练
+ */
+public class FastMuscleTrainingActivity extends BaseActivityBlueToothLE implements BaseViewInterface, View.OnClickListener {
 
-    public static final String TAG = "MainActivity";
+    public static final String TAG = "FastMuscleTrainingAct";
 
     /**
      * Sets whether vector drawables on older platforms (< API 21) can be used within DrawableContainer resources.
@@ -68,26 +71,22 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
 
-    //    @Bind(R.id.drawer_layout)
-//    DrawerLayout drawer;
+    @Bind(R.id.tv_ps_num)
+    TextView tv_ps_num;
     @Bind(R.id.index_scan_start)
     FButton btStartScan;
-    //    @Bind(R.id.v_pressure)
-//    View mPressure;
-    @Bind(R.id.tv_value)
-    TextView mNumText;
     @Bind(R.id.chart_view)
-    GaugeChart01View chart01View;
+    DialChart04View chart04View;
 
     //蓝牙对象,..
     private BluetoothLe mBluetoothLe;
     private BluetoothDevice mBluetoothDevice;
-    private List<BluetoothDevice> bluetoothDeviceList = new ArrayList<BluetoothDevice>();
+    private List<BluetoothDevice> bluetoothDeviceList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ps_adapter_training);
+        setContentView(R.layout.ps_fastmuscle_training);
 
         ButterKnife.bind(this);
         initView();
@@ -145,7 +144,7 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
         //根据TAG注销监听，避免内存泄露
         mBluetoothLe.destroy(TAG);
         //关闭GATT
-        mBluetoothLe.close();
+        //mBluetoothLe.close();
     }
 
     public void checkSupport() {
@@ -397,9 +396,10 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
         if (pressureNum > 0) {
             Log.i("has", "success");
         }
-        chart01View.setAngle(pressureNum / 180);
-        chart01View.chartRender();
-        chart01View.invalidate();
+        chart04View.setCurrentStatus(pressureNum / 120f);
+        tv_ps_num.setText("压力值：" + pressureNum + " 毫米汞柱(mmHg)");
+//        chart04View.chartRender();
+        chart04View.invalidate();
 
     }
 
@@ -450,11 +450,7 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
 
     @Override
     public void onBackPressed() {
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        } else {
         super.onBackPressed();
-//        }
     }
 
     @Override
@@ -474,8 +470,11 @@ public class AdapterTraningActivity extends BaseActivityBlueToothLE implements B
             case android.R.id.home:
                 UIHelper.returnHome(this);
                 break;
+            case R.id.action_select_ble:
+                UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.CONNECT_BLE_LIST);
+                break;
             case R.id.action_scan_record:
-//            UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.SCAN_RECORD);
+                UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.SCAN_RECORD);
                 break;
 
         }

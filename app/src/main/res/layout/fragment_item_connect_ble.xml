@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_item_list"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingTop="8dp"
+    android:visibility="visible"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingBottom="4dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_connect_ble_img"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/space_5"
+            android:src="@drawable/widget_dface" />
+
+        <TextView
+            android:id="@+id/tv_connect_ble_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/civ_connect_ble_img"
+            android:layout_toRightOf="@+id/civ_connect_ble_img"
+            android:maxLines="1"
+            android:padding="@dimen/space_4"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18sp"
+            tools:text="蓝牙名称" />
+
+        <TextView
+            android:id="@+id/ble_connect_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_connect_ble_name"
+            android:layout_toEndOf="@+id/civ_connect_ble_img"
+            android:layout_toRightOf="@+id/civ_connect_ble_img"
+            android:maxLines="1"
+            android:padding="@dimen/space_4"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18sp"
+            tools:text="连接状态" />
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/fb_mode_introduce"
+            style="@style/item_connect_ble"
+            android:layout_centerVertical="true"
+            android:text="连接"
+            fbutton:buttonColor="@color/index_scan_start_bg"
+            fbutton:cornerRadius="5dp"
+            fbutton:shadowColor="@color/btn_origin_disable"
+            fbutton:shadowEnabled="false"
+            fbutton:shadowHeight="3dp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="@dimen/space_6"
+        android:background="@color/list_divider_color" />
+
+</LinearLayout>

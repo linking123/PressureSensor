@@ -2,8 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- 直接显示图标，可点击 -->
-
     <item
         android:id="@+id/action_blutooth"
         android:orderInCategory="100"
@@ -11,6 +9,13 @@
         android:icon="@drawable/blutooth_enable"
         app:showAsAction="always"
         android:visible="true" />
+    <item
+        android:id="@+id/action_select_ble"
+        android:orderInCategory="100"
+        android:icon="@drawable/technology_blutooth"
+        android:title="@string/connect_ble_list"
+        android:visible="true"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_scan_record"

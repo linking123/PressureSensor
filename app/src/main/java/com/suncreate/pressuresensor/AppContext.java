@@ -56,9 +56,7 @@ import static com.suncreate.pressuresensor.AppConfig.KEY_TWEET_DRAFT;
 /**
  * 全局应用程序类：用于保存和调用全局应用配置及访问网络数据
  *
- * @author 火蚁 (http://my.oschina.net/LittleDY)
- * @version 1.0
- * @created 2014-04-22
+ *
  */
 public class AppContext extends BaseApplication {
 
@@ -101,8 +99,8 @@ public class AppContext extends BaseApplication {
                 .getAppExceptionHandler(this));
                 */
         UIHelper.sendBroadcastForNotice(this);
-        areaJson = getFromAssets(Constants.AREA_JSON_NAME);
-        areaList = JSON.parseArray(areaJson, AreaJson.class);
+//        areaJson = getFromAssets(Constants.AREA_JSON_NAME);
+//        areaList = JSON.parseArray(areaJson, AreaJson.class);
 
         //蓝牙配置
         BluetoothConfig config = new BluetoothConfig.Builder()

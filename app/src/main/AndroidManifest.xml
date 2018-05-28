@@ -48,9 +48,9 @@
 
     <!--6.0以上设备需要以下两个权限-->
     <!-- 这个权限用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 这个权限用于访问GPS定位 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 
     <uses-feature android:name="android.hardware.camera" />
@@ -139,13 +139,42 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.suncreate.pressuresensor.ui.AdapterTraningActivity"
+            android:name="com.suncreate.pressuresensor.ui.ble.AdapterTrainingActivity"
             android:label="适应性训练"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.suncreate.pressuresensor.ui.ble.CombinedTrainingActivity"
+            android:label="综合训练"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.suncreate.pressuresensor.ui.ble.ConstipineTrainingActivity"
+            android:label="便秘训练"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.suncreate.pressuresensor.ui.ble.FastMuscleTrainingActivity"
+            android:label="快肌训练"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.suncreate.pressuresensor.ui.ble.SlowMuscleTrainingActivity"
+            android:label="慢肌训练"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.suncreate.pressuresensor.fragment.bleBlutooth.BluetoothActivity"
+            android:label="连接列表"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.suncreate.pressuresensor.ui.ble.FloorDetectionActivity"
+            android:label="盆底检测"
+                android:screenOrientation="landscape" />
+        <activity
+            android:name="com.suncreate.pressuresensor.ui.ble.FloorDetectionActivity1"
+            android:label="盆底检测"
+            android:screenOrientation="landscape" />
         <activity
             android:name="com.suncreate.pressuresensor.ui.LoginBindActivityChooseActivity"
             android:label="登录"
             android:screenOrientation="portrait" />
+        <activity
             android:name="com.suncreate.pressuresensor.ui.LoginAccountBindOpenIdActivity"
             android:label="账号绑定"
             android:screenOrientation="portrait" />

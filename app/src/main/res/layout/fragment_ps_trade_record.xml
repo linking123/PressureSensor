@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/layout_item_bg"
+    android:orientation="vertical"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_10"
+            android:text="总锻炼 1000 分钟"
+            android:textSize="@dimen/text_size_14" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_2"
+            android:background="@color/green" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_10">
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="2018-01-01" />
+
+            <ImageView
+                android:id="@+id/iv_trade_btn"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/tv_date"
+                android:paddingTop="@dimen/space_4"
+                android:src="@drawable/muscle" />
+
+            <TextView
+                android:id="@+id/tv_trade_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_date"
+                android:layout_toRightOf="@+id/iv_trade_btn"
+                android:paddingTop="@dimen/space_4"
+                android:text="适应性训练" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_date"
+                android:paddingTop="@dimen/space_4"
+                android:text="14 分钟" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/iv_trade_btn"
+                android:layout_marginTop="@dimen/space_7"
+                android:background="@color/light_gray" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_10">
+
+            <TextView
+                android:id="@+id/tv_date2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="2018-01-01" />
+
+            <ImageView
+                android:id="@+id/iv_trade_btn2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/tv_date2"
+                android:paddingTop="@dimen/space_4"
+                android:src="@drawable/muscle" />
+
+            <TextView
+                android:id="@+id/tv_trade_type2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_date2"
+                android:layout_toRightOf="@+id/iv_trade_btn2"
+                android:paddingTop="@dimen/space_4"
+                android:text="适应性训练" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_date2"
+                android:paddingTop="@dimen/space_4"
+                android:text="14 分钟" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/iv_trade_btn2"
+                android:layout_marginTop="@dimen/space_7"
+                android:background="@color/light_gray" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_10">
+
+            <TextView
+                android:id="@+id/tv_date3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="2018-01-01" />
+
+            <ImageView
+                android:id="@+id/iv_trade_btn3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/tv_date3"
+                android:paddingTop="@dimen/space_4"
+                android:src="@drawable/muscle" />
+
+            <TextView
+                android:id="@+id/tv_trade_type3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_date3"
+                android:layout_toRightOf="@+id/iv_trade_btn3"
+                android:paddingTop="@dimen/space_4"
+                android:text="适应性训练" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_date3"
+                android:paddingTop="@dimen/space_4"
+                android:text="14 分钟" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/iv_trade_btn3"
+                android:layout_marginTop="@dimen/space_7"
+                android:background="@color/light_gray" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>
