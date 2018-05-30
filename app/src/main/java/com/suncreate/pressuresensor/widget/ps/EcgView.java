@@ -34,12 +34,14 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
 
     private float ecgMax = 120;//心电的最大值
     private String bgColor = "#151F28";
-    private int wave_speed = 25;//波速: 25mm/s
-    private int sleepTime = 8; //每次锁屏的时间间距，单位:ms
+    private int wave_speed = 5;//波速: x mm/s
+    private int sleepTime = 100; //每次锁屏的时间间距，单位:ms；这个时间和后面的开始结束时间差，
+                                // 以及画波的时间之间的关系需要验证；
+                                // 之前是8，20，都不行
     private float lockWidth;//每次锁屏需要画的
-    private int ecgPerCount = 10;//每次画心电数据的个数，心电每秒有500个数据包
+    private int ecgPerCount = 1;//每次画心电数据的个数，心电每秒有500个数据包
 
-    private static Queue<Integer> ecg0Datas = new LinkedList<>();
+    private static Queue<Integer> ecgDatas = new LinkedList<>();
 
     //小网格颜色
     protected int mSGridColor = Color.parseColor("#092100");
@@ -56,7 +58,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
     private Paint mPaint;//画波形图的画笔
     private int mWidth;//控件宽度
     private int mHeight;//控件高度
-    private int startY0;  // y轴开始位置
+    private int startY;  // y轴开始位置
     private Rect rect;
     private float ecgYRatio; //相对y轴的比例
 
@@ -85,7 +87,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
         soundId = soundPool.load(mContext, R.raw.heartbeat, 1);
 
         ecgXOffset = lockWidth / ecgPerCount;
-        startY0 = mHeight - 10;
+        startY = mHeight - 10;  // 坐标轴原点在左上角（0，0），向下为y轴正向
         ecgYRatio = mHeight / ecgMax;
 
     }
@@ -236,15 +238,14 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
             mPaint.setColor(Color.parseColor("#7EA52F"));
             mPaint.setStrokeWidth(6);
             float mStartX = startX;
-            if (ecg0Datas.size() > ecgPerCount) {
-                for (int i = 0; i < ecgPerCount; i++) {
+            if (ecgDatas.size() > ecgPerCount) {
+//                for (int i = 0; i < ecgPerCount; i++) {
                     float newX = (float) (mStartX + ecgXOffset);
-                    int newY = ecgConver(ecg0Datas.poll());
-//                    int newY = ecg0Datas.poll();
-                    mCanvas.drawLine(mStartX, startY0, newX, newY, mPaint);
+                    int newY = ecgConver(ecgDatas.poll());
+                    mCanvas.drawLine(mStartX, startY, newX, newY, mPaint);
                     mStartX = newX;
-                    startY0 = newY;
-                }
+                    startY = newY;
+//                }
             } else {
                 /**
                  * 如果没有数据
@@ -252,8 +253,8 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
                  */
                 int newX = (int) (mStartX + ecgXOffset * ecgPerCount);
                 int newY = mHeight - 10;
-                mCanvas.drawLine(mStartX, startY0, newX, newY, mPaint);
-                startY0 = newY;
+                mCanvas.drawLine(mStartX, startY, newX, newY, mPaint);
+                startY = newY;
             }
         } catch (NoSuchElementException e) {
             e.printStackTrace();
@@ -267,14 +268,14 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
      * @return
      */
     private int ecgConver(int data) {
-//        data = (int) (ecgMax - data);
+        data = (int) (ecgMax - data);
         data = (int) (data * ecgYRatio);
         Log.d("ecgconver data ", data + "");
         return data;
     }
 
-    public static void addEcgData0(int data) {
-        ecg0Datas.add(data);
+    public static void addEcgData(int data) {
+        ecgDatas.add(data);
     }
 
 }

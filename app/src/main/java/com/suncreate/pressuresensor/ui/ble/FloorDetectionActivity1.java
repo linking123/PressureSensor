@@ -8,15 +8,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -39,7 +36,6 @@ import com.suncreate.pressuresensor.AppContext;
 import com.suncreate.pressuresensor.AppManager;
 import com.suncreate.pressuresensor.R;
 import com.suncreate.pressuresensor.base.BaseActivityBlueToothLE;
-import com.suncreate.pressuresensor.bean.Ble.CardioData;
 import com.suncreate.pressuresensor.bean.Constants;
 import com.suncreate.pressuresensor.bean.SimpleBackPage;
 import com.suncreate.pressuresensor.interf.BaseViewInterface;
@@ -49,9 +45,7 @@ import com.suncreate.pressuresensor.ui.ApiLevelHelper;
 import com.suncreate.pressuresensor.ui.SimpleBackActivity;
 import com.suncreate.pressuresensor.util.LocationUtils;
 import com.suncreate.pressuresensor.util.UIHelper;
-import com.suncreate.pressuresensor.widget.ps.CardiographView;
 import com.suncreate.pressuresensor.widget.ps.EcgView;
-import com.suncreate.pressuresensor.widget.ps.PathView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,7 +56,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -92,10 +85,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
     private static final int dtcType3 = 3;
     private static final int dtcType4 = 4;
 
-    private List<Integer> datas = new ArrayList<>();
-    private List<Integer> data1Datas = new ArrayList<>();
-
-    private Queue<Integer> data0Q = new LinkedList<>();
+    private Queue<Integer> dataQueue = new LinkedList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -122,15 +112,15 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
     }
 
     /**
-     * 模拟心电发送，心电数据是一秒500个包
+     * 模拟心电发送
      */
     private void simulator() {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 if (EcgView.isRunning) {
-                    if (data0Q.size() > 0) {
-                        EcgView.addEcgData0(data0Q.poll());
+                    if (dataQueue.size() > 0) {
+                        EcgView.addEcgData(dataQueue.poll());
                     }
                 }
             }
@@ -473,7 +463,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
              */
             try {
 
-                data0Q.add(pressureNum);
+                dataQueue.add(pressureNum);
             } catch (Exception e) {
                 e.printStackTrace();
                 Log.d(TAG, "changeHeight: 数据加入队列失败");
