@@ -34,10 +34,10 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
 
     private float ecgMax = 120;//心电的最大值
     private String bgColor = "#151F28";
-    private int wave_speed = 5;//波速: x mm/s
-    private int sleepTime = 100; //每次锁屏的时间间距，单位:ms；这个时间和后面的开始结束时间差，
-                                // 以及画波的时间之间的关系需要验证；
-                                // 之前是8，20，都不行
+    private int wave_speed = 15;//波速: x mm/s   5 太小太短， 25稍快， 35太快了
+    private int sleepTime = 50; //每次锁屏的时间间距，单位:ms；这个时间和后面的开始结束时间差，
+    // 以及画波的时间之间的关系需要验证；
+    // 8不行，20不行  50可以 100太慢
     private float lockWidth;//每次锁屏需要画的
     private int ecgPerCount = 1;//每次画心电数据的个数，心电每秒有500个数据包
 
@@ -109,7 +109,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
         //每毫米有多少px
         double px1mm = diagonalPx / diagonalMm;
         //每秒画多少px
-        double px1s = wave_speed * px1mm;
+        double px1s = wave_speed * px1mm * 1.2;
         //每次锁屏所需画的宽度
         lockWidth = (float) (px1s * (sleepTime / 1000f));
     }
@@ -240,11 +240,11 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
             float mStartX = startX;
             if (ecgDatas.size() > ecgPerCount) {
 //                for (int i = 0; i < ecgPerCount; i++) {
-                    float newX = (float) (mStartX + ecgXOffset);
-                    int newY = ecgConver(ecgDatas.poll());
-                    mCanvas.drawLine(mStartX, startY, newX, newY, mPaint);
-                    mStartX = newX;
-                    startY = newY;
+                float newX = (float) (mStartX + ecgXOffset);
+                int newY = ecgConver(ecgDatas.poll());
+                mCanvas.drawLine(mStartX, startY, newX, newY, mPaint);
+                mStartX = newX;
+                startY = newY;
 //                }
             } else {
                 /**
