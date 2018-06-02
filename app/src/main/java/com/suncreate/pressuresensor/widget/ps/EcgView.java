@@ -177,6 +177,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
         mCanvas.drawColor(Color.parseColor(bgColor));
 
         drawBackground();
+        drawYaxis();
         drawWave();
 
         surfaceHolder.unlockCanvasAndPost(mCanvas);
@@ -259,6 +260,37 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
         } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 画y坐标轴
+     */
+    private void drawYaxis() {
+        try {
+            mPaint.setColor(Color.parseColor("#F5F5F5"));
+            mPaint.setStrokeWidth(6);
+            mPaint.setTextSize(20);
+
+            //画竖状白线
+            mCanvas.drawLine(0, 0, 0, mHeight, mPaint);
+
+            //画纵坐标值
+            mCanvas.drawText("-0", 0, mHeight - 10, mPaint);
+            mCanvas.drawText("-30", 0, (mHeight - 45) * 3 / 4, mPaint);
+            mCanvas.drawText("-60", 0, (mHeight - 45) / 2, mPaint);
+            mCanvas.drawText("-90", 0, (mHeight - 45) / 4, mPaint);
+            mCanvas.drawText("-120", 0, 35, mPaint);
+
+            //画纵坐标名称
+            mCanvas.drawText("压力值大小(mmHg)", 2, 15, mPaint);
+
+        } catch (
+                NoSuchElementException e)
+
+        {
+            e.printStackTrace();
+        }
+
     }
 
     /**
