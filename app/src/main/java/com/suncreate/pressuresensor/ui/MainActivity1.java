@@ -294,12 +294,12 @@ public class MainActivity1 extends BaseActivityBlueToothLE implements BaseViewIn
             case R.id.action_scan_record:
                 UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.SCAN_RECORD);
                 break;
-            case R.id.action_select_ble:
+            /*case R.id.action_select_ble:
                 UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.CONNECT_BLE_LIST);
 //                Intent intent;
 //                intent = new Intent(MainActivity.this, BluetoothActivity.class);
 //                startActivity(intent);
-                break;
+                break;*/
             default:
                 break;
         }

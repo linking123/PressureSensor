@@ -471,9 +471,9 @@ public class ConstipineTrainingActivity extends BaseActivityBlueToothLE implemen
             case android.R.id.home:
                 UIHelper.returnHome(this);
                 break;
-            case R.id.action_select_ble:
+            /*case R.id.action_select_ble:
                 UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.CONNECT_BLE_LIST);
-                break;
+                break;*/
             case R.id.action_scan_record:
                 UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.SCAN_RECORD);
                 break;

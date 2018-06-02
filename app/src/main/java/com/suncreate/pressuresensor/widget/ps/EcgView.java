@@ -32,7 +32,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
     public static boolean isRunning;
     private Canvas mCanvas;
 
-    private float ecgMax = 120;//心电的最大值
+    private float ecgMax = 150;//心电的最大值  ，理论最大值120，但不能就是这么大吧
     private String bgColor = "#151F28";
     private int wave_speed = 15;//波速: x mm/s   5 太小太短， 25稍快， 35太快了
     private int sleepTime = 50; //每次锁屏的时间间距，单位:ms；这个时间和后面的开始结束时间差，
@@ -264,8 +264,8 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
     /**
      * 将心电数据转换成用于显示的Y坐标
      *
-     * @param data da
-     * @return
+     * @param data data
+     * @return 转换后的y坐标
      */
     private int ecgConver(int data) {
         data = (int) (ecgMax - data);

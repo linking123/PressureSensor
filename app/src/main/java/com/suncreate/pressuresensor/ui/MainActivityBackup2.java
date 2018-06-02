@@ -577,10 +577,10 @@ public class MainActivityBackup2 extends BaseActivityBlueToothLE implements Base
 //            UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.SCAN_RECORD);
             return true;
         }
-        if (id == R.id.action_blutooth) {
+       /* if (id == R.id.action_blutooth) {
 //            UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.SCAN_RECORD);
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
