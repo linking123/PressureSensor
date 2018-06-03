@@ -240,13 +240,14 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
             mPaint.setStrokeWidth(6);
             float mStartX = startX;
             if (ecgDatas.size() > ecgPerCount) {
-//                for (int i = 0; i < ecgPerCount; i++) {
                 float newX = (float) (mStartX + ecgXOffset);
-                int newY = ecgConver(ecgDatas.poll());
+                int nowPressureData = ecgDatas.poll();
+                int newY = ecgConver(nowPressureData);
                 mCanvas.drawLine(mStartX, startY, newX, newY, mPaint);
                 mStartX = newX;
                 startY = newY;
-//                }
+                //画当前压力值
+                mCanvas.drawText("当前压力值：" + nowPressureData + "mmHg", mWidth - 250, 20, mPaint);
             } else {
                 /**
                  * 如果没有数据
@@ -256,6 +257,8 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
                 int newY = mHeight - 10;
                 mCanvas.drawLine(mStartX, startY, newX, newY, mPaint);
                 startY = newY;
+                //画当前压力值
+                mCanvas.drawText("当前压力值：" + "0 mmHg", mWidth - 220, 20, mPaint);
             }
         } catch (NoSuchElementException e) {
             e.printStackTrace();
@@ -284,14 +287,14 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
             //画纵坐标名称
             mCanvas.drawText("压力值大小(mmHg)", 2, 15, mPaint);
 
-        } catch (
-                NoSuchElementException e)
-
-        {
+        } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
-
     }
+
+    /**
+     * 画实时压力值
+     */
 
     /**
      * 将心电数据转换成用于显示的Y坐标
