@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -56,6 +57,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -69,8 +71,13 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
 
     protected static final String TAG = FloorDetectionActivity1.class.getSimpleName();
 
-//    @Bind(R.id.btn_test)
-//    Button btn_test;
+    @Bind(R.id.ev_box)
+    EcgView ev_box;
+    @Bind(R.id.btn_start_or_stop)
+    Button btn_start_or_stop;
+    @Bind(R.id.tbn_play_next)
+    Button tbn_play_next;
+
 
     //蓝牙对象,..
     private BluetoothLe mBluetoothLe;
@@ -130,7 +137,6 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
     @Override
     public void initData() {
         registerListener();
-//        EcgView.isRunning = false;
     }
 
 
@@ -143,12 +149,25 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
     public void onClick(View v) {
         final int id = v.getId();
         switch (id) {
-            case R.id.btn_test:
-                AppContext.showToastShort("开始连接设备，请稍后");
-                scan();
+            case R.id.btn_start_or_stop:
+                tonggleEcgRunning();
+                break;
+            case R.id.tbn_play_next:
+
                 break;
             default:
                 break;
+        }
+    }
+
+    //切换心电图的运行停止状态
+    private void tonggleEcgRunning() {
+        if (EcgView.isRunning) {
+            btn_start_or_stop.setText("start");
+            ev_box.stopThread();
+        } else {
+            btn_start_or_stop.setText("stop");
+            ev_box.startThread();
         }
     }
 
@@ -169,7 +188,8 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
         IntentFilter filter = new IntentFilter(Constants.INTENT_ACTION_NOTICE);
         filter.addAction(Constants.INTENT_ACTION_LOGOUT);
         NoticeUtils.bindToService(this);
-//        btn_test.setOnClickListener(this);
+        btn_start_or_stop.setOnClickListener(this);
+        tbn_play_next.setOnClickListener(this);
     }
 
     @Override

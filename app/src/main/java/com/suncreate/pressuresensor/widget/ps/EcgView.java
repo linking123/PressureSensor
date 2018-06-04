@@ -18,6 +18,8 @@ import com.suncreate.pressuresensor.R;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Queue;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * 心电图视图
@@ -35,7 +37,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
     private float ecgMax = 150;//心电的最大值  ，理论最大值120，但不能就是这么大吧
     private String bgColor = "#151F28";
     private int wave_speed = 15;//波速: x mm/s   5 太小太短， 25稍快， 35太快了
-    private int sleepTime = 50; //每次锁屏的时间间距，单位:ms；这个时间和后面的开始结束时间差，
+    private int sleepTime = 30; //每次锁屏的时间间距，单位:ms；这个时间和后面的开始结束时间差，
     // 以及画波的时间之间的关系需要验证；
     // 8不行，20不行  50可以 100太慢
     private float lockWidth;//每次锁屏需要画的
@@ -141,12 +143,12 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
         stopThread();
     }
 
-    private void startThread() {
+    public void startThread() {
         isRunning = true;
         new Thread(drawRunnable).start();
     }
 
-    private void stopThread() {
+    public void stopThread() {
         isRunning = false;
     }
 
@@ -247,7 +249,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
                 mStartX = newX;
                 startY = newY;
                 //画当前压力值
-                mCanvas.drawText("当前压力值：" + nowPressureData + "mmHg", mWidth - 250, 20, mPaint);
+                mCanvas.drawText("压力值：" + nowPressureData + "mmHg", mWidth - 250, 20, mPaint);
             } else {
                 /**
                  * 如果没有数据
@@ -258,7 +260,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
                 mCanvas.drawLine(mStartX, startY, newX, newY, mPaint);
                 startY = newY;
                 //画当前压力值
-                mCanvas.drawText("当前压力值：" + "0 mmHg", mWidth - 220, 20, mPaint);
+                mCanvas.drawText("压力值：" + "0 mmHg", mWidth - 220, 20, mPaint);
             }
         } catch (NoSuchElementException e) {
             e.printStackTrace();
@@ -291,10 +293,6 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
             e.printStackTrace();
         }
     }
-
-    /**
-     * 画实时压力值
-     */
 
     /**
      * 将心电数据转换成用于显示的Y坐标
