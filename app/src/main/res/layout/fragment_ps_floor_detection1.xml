@@ -16,29 +16,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/space_10"
-        android:orientation="horizontal"
+        android:layout_marginEnd="@dimen/space_10"
+        android:orientation="vertical"
         android:stateListAnimator="@null">
 
         <Button
             android:id="@+id/btn_start_or_stop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/selector_send"
-            android:padding="@dimen/space_10"
-            android:text="Start"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_16" />
+            android:layout_marginEnd="@dimen/space_10"
+            android:background="@drawable/start_32" />
 
         <Button
             android:id="@+id/tbn_play_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/next_"
-            android:padding="@dimen/space_10"
-            android:text="Next"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_16" />
+            android:background="@drawable/next_white_32" />
     </LinearLayout>
 
 

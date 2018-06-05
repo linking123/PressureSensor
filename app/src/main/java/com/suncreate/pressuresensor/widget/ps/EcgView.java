@@ -121,7 +121,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
         Canvas canvas = holder.lockCanvas();
 //        canvas.drawColor(Color.parseColor(bgColor));
         holder.unlockCanvasAndPost(canvas);
-        startThread();
+        startDrawBgThread(); //开始即绘制背景
     }
 
     @Override
@@ -134,7 +134,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
         super.onSizeChanged(w, h, oldw, oldh);
         mWidth = w;
         mHeight = h;
-        isRunning = true;
+        isRunning = false;
         init();
     }
 
@@ -146,6 +146,10 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
     public void startThread() {
         isRunning = true;
         new Thread(drawRunnable).start();
+    }
+
+    public void startDrawBgThread() {
+        new Thread(drawBgRunnable).start();
     }
 
     public void stopThread() {
@@ -172,6 +176,27 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
         }
     };
 
+    Runnable drawBgRunnable = new Runnable() {
+        @Override
+        public void run() {
+
+                startDrawBackground();
+            }
+    };
+
+    private void startDrawBackground() {
+//        rect.set(startX, 0, (int) (startX + lockWidth + blankLineWidth), mHeight);
+//        mCanvas = surfaceHolder.lockCanvas(rect);
+        mCanvas = surfaceHolder.lockCanvas();
+        if (mCanvas == null) return;
+        mCanvas.drawColor(Color.parseColor(bgColor));
+
+        drawBackground();
+        drawYaxis();
+
+        surfaceHolder.unlockCanvasAndPost(mCanvas);
+    }
+
     private void startDrawWave() {
         rect.set(startX, 0, (int) (startX + lockWidth + blankLineWidth), mHeight);
         mCanvas = surfaceHolder.lockCanvas(rect);
@@ -179,8 +204,8 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
         mCanvas.drawColor(Color.parseColor(bgColor));
 
         drawBackground();
-        drawYaxis();
         drawWave();
+        drawYaxis();
 
         surfaceHolder.unlockCanvasAndPost(mCanvas);
 

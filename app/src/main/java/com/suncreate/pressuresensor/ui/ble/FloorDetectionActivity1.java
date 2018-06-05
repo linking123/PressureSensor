@@ -163,10 +163,12 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
     //切换心电图的运行停止状态
     private void tonggleEcgRunning() {
         if (EcgView.isRunning) {
-            btn_start_or_stop.setText("start");
+//            btn_start_or_stop.setText("开始");
+            btn_start_or_stop.setBackgroundResource(R.drawable.start_32);
             ev_box.stopThread();
         } else {
-            btn_start_or_stop.setText("stop");
+//            btn_start_or_stop.setText("结束");
+            btn_start_or_stop.setBackgroundResource(R.drawable.pause_32);
             ev_box.startThread();
         }
     }
@@ -473,7 +475,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
 
     private void changeHeight(int pressureNum) {
 
-        if (pressureNum > 0) {
+        if (pressureNum > 0 && EcgView.isRunning) {
             Log.i("has pressureNum: ", "success");
 
             /**
