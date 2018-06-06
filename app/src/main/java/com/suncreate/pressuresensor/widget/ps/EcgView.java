@@ -14,6 +14,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import com.suncreate.pressuresensor.R;
+import com.suncreate.pressuresensor.interf.PsNumCallback;
 
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
@@ -33,6 +34,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
     private SurfaceHolder surfaceHolder;
     public static boolean isRunning;
     private Canvas mCanvas;
+    private static PsNumCallback setNowPsNumCallback;
 
     private float ecgMax = 150;//心电的最大值  ，理论最大值120，但不能就是这么大吧
     private String bgColor = "#151F28";
@@ -180,8 +182,8 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
         @Override
         public void run() {
 
-                startDrawBackground();
-            }
+            startDrawBackground();
+        }
     };
 
     private void startDrawBackground() {
@@ -274,7 +276,8 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
                 mStartX = newX;
                 startY = newY;
                 //画当前压力值
-                mCanvas.drawText("压力值：" + nowPressureData + "mmHg", mWidth - 250, 20, mPaint);
+                setNowPsNumCallback.setNowPsNum(String.valueOf(nowPressureData));
+
             } else {
                 /**
                  * 如果没有数据
@@ -284,8 +287,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
                 int newY = mHeight - 10;
                 mCanvas.drawLine(mStartX, startY, newX, newY, mPaint);
                 startY = newY;
-                //画当前压力值
-                mCanvas.drawText("压力值：" + "0 mmHg", mWidth - 220, 20, mPaint);
+                setNowPsNumCallback.setNowPsNum("0");
             }
         } catch (NoSuchElementException e) {
             e.printStackTrace();
@@ -334,6 +336,10 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
 
     public static void addEcgData(int data) {
         ecgDatas.add(data);
+    }
+
+    public void setSetNowPsNumCallback(PsNumCallback psNumCallback) {
+        setNowPsNumCallback = psNumCallback;
     }
 
 }

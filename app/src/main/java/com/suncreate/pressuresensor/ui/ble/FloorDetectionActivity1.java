@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qindachang.bluetoothle.BluetoothLe;
@@ -41,6 +42,7 @@ import com.suncreate.pressuresensor.bean.Constants;
 import com.suncreate.pressuresensor.bean.SimpleBackPage;
 import com.suncreate.pressuresensor.interf.BaseViewInterface;
 import com.suncreate.pressuresensor.interf.BluetoothUUID;
+import com.suncreate.pressuresensor.interf.PsNumCallback;
 import com.suncreate.pressuresensor.service.NoticeUtils;
 import com.suncreate.pressuresensor.ui.ApiLevelHelper;
 import com.suncreate.pressuresensor.ui.SimpleBackActivity;
@@ -77,7 +79,8 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
     Button btn_start_or_stop;
     @Bind(R.id.tbn_play_next)
     Button tbn_play_next;
-
+    @Bind(R.id.tc_ps_num)
+    TextView tc_ps_num;
 
     //蓝牙对象,..
     private BluetoothLe mBluetoothLe;
@@ -137,6 +140,20 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
     @Override
     public void initData() {
         registerListener();
+
+
+        final PsNumCallback psNumCallback = new PsNumCallback() {
+            @Override
+            public void setNowPsNum(final String psNum) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tc_ps_num.setText(psNum);
+                    }
+                });
+            }
+        };
+        ev_box.setSetNowPsNumCallback(psNumCallback);
     }
 
 
@@ -163,11 +180,12 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
     //切换心电图的运行停止状态
     private void tonggleEcgRunning() {
         if (EcgView.isRunning) {
-//            btn_start_or_stop.setText("开始");
             btn_start_or_stop.setBackgroundResource(R.drawable.start_32);
             ev_box.stopThread();
         } else {
-//            btn_start_or_stop.setText("结束");
+            if (!mBluetoothLe.getConnected()){
+                AppContext.showToastShort("设备未连接，请稍候");
+            }
             btn_start_or_stop.setBackgroundResource(R.drawable.pause_32);
             ev_box.startThread();
         }
@@ -343,7 +361,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
             @Override
             public void onDeviceConnected() {
                 Log.i(TAG, "成功连接！");
-                AppContext.showToastShort("设备连接成功，愉快的玩耍吧");
+                AppContext.showToastShort("设备连接成功，点击开始按钮，愉快的玩耍吧");
                 mBluetoothLe.stopScan();  //连接成功后停止扫描
 //                EcgView.isRunning = true;
             }
