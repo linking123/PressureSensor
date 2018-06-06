@@ -183,8 +183,9 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
             btn_start_or_stop.setBackgroundResource(R.drawable.start_32);
             ev_box.stopThread();
         } else {
-            if (!mBluetoothLe.getConnected()){
+            if (!mBluetoothLe.getConnected()) {
                 AppContext.showToastShort("设备未连接，请稍候");
+                return;
             }
             btn_start_or_stop.setBackgroundResource(R.drawable.pause_32);
             ev_box.startThread();
