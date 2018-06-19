@@ -268,7 +268,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
             mPaint.setColor(Color.parseColor("#7EA52F"));
             mPaint.setStrokeWidth(6);
             float mStartX = startX;
-            if (ecgDatas.size() > ecgPerCount) {
+            if (ecgDatas.size() > ecgPerCount && ecgDatas != null) {
                 float newX = (float) (mStartX + ecgXOffset);
                 int nowPressureData = ecgDatas.poll();
                 int newY = ecgConver(nowPressureData);
@@ -277,7 +277,6 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
                 startY = newY;
                 //画当前压力值
                 setNowPsNumCallback.setNowPsNum(String.valueOf(nowPressureData));
-
             } else {
                 /**
                  * 如果没有数据
@@ -291,6 +290,7 @@ public class EcgView extends SurfaceView implements SurfaceHolder.Callback {
             }
         } catch (NoSuchElementException e) {
             e.printStackTrace();
+            Log.e("ecgDatas", "drawWave: err");
         }
     }
 

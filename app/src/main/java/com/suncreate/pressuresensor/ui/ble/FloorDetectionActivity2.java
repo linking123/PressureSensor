@@ -45,7 +45,6 @@ import com.suncreate.pressuresensor.interf.BluetoothUUID;
 import com.suncreate.pressuresensor.interf.PsNumCallback;
 import com.suncreate.pressuresensor.service.NoticeUtils;
 import com.suncreate.pressuresensor.ui.ApiLevelHelper;
-import com.suncreate.pressuresensor.ui.MainActivity;
 import com.suncreate.pressuresensor.ui.SimpleBackActivity;
 import com.suncreate.pressuresensor.util.LocationUtils;
 import com.suncreate.pressuresensor.util.UIHelper;
@@ -65,15 +64,15 @@ import butterknife.ButterKnife;
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
 /**
- * 盆底检测-前静息期
+ * 盆底检测-快肌检测
  *
  * @author linking
- *         created on 2018/5/5 22:31
+ *         created on 2018/6/11 22:55
  */
-public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements View.OnClickListener,
+public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements View.OnClickListener,
         BaseViewInterface {
 
-    protected static final String TAG = FloorDetectionActivity1.class.getSimpleName();
+    protected static final String TAG = FloorDetectionActivity2.class.getSimpleName();
 
     @Bind(R.id.ev_box)
     EcgView ev_box;
@@ -173,7 +172,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
                 tonggleEcgRunning();
                 break;
             case R.id.tbn_play_next:
-                Intent intent0 = new Intent(FloorDetectionActivity1.this, FloorDetectionActivity2.class);
+                Intent intent0 = new Intent(FloorDetectionActivity2.this, FloorDetectionActivity2.class);
                 startActivity(intent0);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
                 finish();

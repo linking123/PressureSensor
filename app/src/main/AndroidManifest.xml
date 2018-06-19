@@ -168,7 +168,11 @@
                 android:screenOrientation="landscape" />
         <activity
             android:name="com.suncreate.pressuresensor.ui.ble.FloorDetectionActivity1"
-            android:label="盆底检测"
+            android:label="前静息期"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.suncreate.pressuresensor.ui.ble.FloorDetectionActivity2"
+            android:label="快肌检测"
             android:screenOrientation="landscape" />
         <activity
             android:name="com.suncreate.pressuresensor.ui.LoginBindActivityChooseActivity"

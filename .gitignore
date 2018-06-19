@@ -15,7 +15,7 @@ out
 .gradle
 /local.properties
 /build
-build.gradle
+## build.gradle
 ###OSX###
 
 .DS_Store
