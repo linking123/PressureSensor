@@ -172,7 +172,23 @@
             android:screenOrientation="landscape" />
         <activity
             android:name="com.suncreate.pressuresensor.ui.ble.FloorDetectionActivity2"
-            android:label="快肌检测"
+            android:label="快肌检测(IIA纤维)"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.suncreate.pressuresensor.ui.ble.FloorDetectionActivity3"
+            android:label="快肌检测(IIB纤维)"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.suncreate.pressuresensor.ui.ble.FloorDetectionActivity4"
+            android:label="慢肌检测(I类纤维)"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.suncreate.pressuresensor.ui.ble.FloorDetectionActivity5"
+            android:label="耐力检测"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.suncreate.pressuresensor.ui.ble.FloorDetectionActivity6"
+            android:label="后静息期"
             android:screenOrientation="landscape" />
         <activity
             android:name="com.suncreate.pressuresensor.ui.LoginBindActivityChooseActivity"

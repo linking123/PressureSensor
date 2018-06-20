@@ -8,14 +8,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,15 +62,15 @@ import butterknife.ButterKnife;
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
 /**
- * 盆底检测-快肌检测(IIA纤维)
+ * 盆底检测-快肌检测(IIB纤维)
  *
  * @author linking
- *         created on 2018/6/11 22:55
+ *         created on 2018/6/21 6:55
  */
-public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements View.OnClickListener,
+public class FloorDetectionActivity3 extends BaseActivityBlueToothLE implements View.OnClickListener,
         BaseViewInterface {
 
-    protected static final String TAG = FloorDetectionActivity2.class.getSimpleName();
+    protected static final String TAG = FloorDetectionActivity3.class.getSimpleName();
 
     @Bind(R.id.ev_box)
     EcgView ev_box;
@@ -172,7 +170,7 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
                 tonggleEcgRunning();
                 break;
             case R.id.tbn_play_next:
-                Intent intent0 = new Intent(FloorDetectionActivity2.this, FloorDetectionActivity2.class);
+                Intent intent0 = new Intent(FloorDetectionActivity3.this, FloorDetectionActivity4.class);
                 startActivity(intent0);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
                 finish();

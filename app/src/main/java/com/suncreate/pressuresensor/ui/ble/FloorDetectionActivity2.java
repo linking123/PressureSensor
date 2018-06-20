@@ -64,7 +64,7 @@ import butterknife.ButterKnife;
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
 /**
- * 盆底检测-快肌检测
+ * 盆底检测-快肌检测(IIA纤维)
  *
  * @author linking
  *         created on 2018/6/11 22:55
@@ -172,7 +172,7 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
                 tonggleEcgRunning();
                 break;
             case R.id.tbn_play_next:
-                Intent intent0 = new Intent(FloorDetectionActivity2.this, FloorDetectionActivity2.class);
+                Intent intent0 = new Intent(FloorDetectionActivity2.this, FloorDetectionActivity3.class);
                 startActivity(intent0);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
                 finish();

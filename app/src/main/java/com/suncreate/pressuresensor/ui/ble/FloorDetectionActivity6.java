@@ -62,15 +62,15 @@ import butterknife.ButterKnife;
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
 /**
- * 盆底检测-耐力检测
+ * 盆底检测-后静息期
  *
  * @author linking
  *         created on 2018/6/21 6:55
  */
-public class FloorDetectionActivity5 extends BaseActivityBlueToothLE implements View.OnClickListener,
+public class FloorDetectionActivity6 extends BaseActivityBlueToothLE implements View.OnClickListener,
         BaseViewInterface {
 
-    protected static final String TAG = FloorDetectionActivity5.class.getSimpleName();
+    protected static final String TAG = FloorDetectionActivity6.class.getSimpleName();
 
     @Bind(R.id.ev_box)
     EcgView ev_box;
@@ -170,7 +170,7 @@ public class FloorDetectionActivity5 extends BaseActivityBlueToothLE implements 
                 tonggleEcgRunning();
                 break;
             case R.id.tbn_play_next:
-                Intent intent0 = new Intent(FloorDetectionActivity5.this, FloorDetectionActivity5.class);
+                Intent intent0 = new Intent(FloorDetectionActivity6.this, FloorDetectionActivity6.class);
                 startActivity(intent0);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
                 finish();
