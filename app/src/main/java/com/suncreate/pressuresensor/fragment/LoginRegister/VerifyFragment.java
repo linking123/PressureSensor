@@ -222,7 +222,7 @@ public class VerifyFragment extends BaseFragment {
         });
     }
 
-    class TimeCount extends CountDownTimer {
+     class TimeCount extends CountDownTimer {
         public TimeCount(long millisInFuture, long countDownInterval) {
             super(millisInFuture, countDownInterval);// 参数依次为总时长,和计时的时间间隔
         }

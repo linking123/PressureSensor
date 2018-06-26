@@ -66,6 +66,19 @@
             android:background="@drawable/next_white_32" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_time_residual"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:textColor="@color/yellow"
+        android:minHeight="40dp"
+        android:minWidth="40dp"
+        android:padding="10dp"
+        android:text="60秒" />
 
     <me.zhanghai.android.materialprogressbar.MaterialProgressBar
         android:id="@+id/progressBar"
@@ -73,11 +86,11 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:indeterminate="true"
-        android:tooltipText="设备连接中，请稍候"
         android:maxHeight="160dp"
         android:maxWidth="160dp"
         android:minHeight="100dp"
         android:minWidth="100dp"
+        android:tooltipText="设备连接中，请稍候"
         app:mpb_determinateCircularProgressStyle='dynamic'
         app:mpb_progressStyle="circular" />
 </RelativeLayout>
