@@ -8,15 +8,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.support.annotation.IdRes;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,7 +43,6 @@ import com.suncreate.pressuresensor.interf.BluetoothUUID;
 import com.suncreate.pressuresensor.interf.PsNumCallback;
 import com.suncreate.pressuresensor.service.NoticeUtils;
 import com.suncreate.pressuresensor.ui.ApiLevelHelper;
-import com.suncreate.pressuresensor.ui.MainActivity;
 import com.suncreate.pressuresensor.ui.SimpleBackActivity;
 import com.suncreate.pressuresensor.util.CountDownTime;
 import com.suncreate.pressuresensor.util.LocationUtils;
@@ -199,7 +195,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
             }
             btn_start_or_stop.setBackgroundResource(R.drawable.pause_32);
             ev_box.startThread();
-            timer.start(); //开始计时
+            timerCount.start(); //开始计时
         }
     }
 
@@ -212,20 +208,21 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
         btn_start_or_stop.setOnClickListener(this);
         tbn_play_next.setOnClickListener(this);
 
-        initTimer(); //计数器
+        initTimerCount(); //计数器
     }
 
-    CountDownTime timer;
+    CountDownTime timerCount;
 
-    private void initTimer() {
-        timer = new CountDownTime();//实例化
-        timer.setTotalTime(60 * 1000);//设置毫秒数
-        timer.setIntervalTime(1000);//设置间隔数
-        timer.setTimerLiener(new CountDownTime.TimeListener() {
+    private void initTimerCount() {
+        timerCount = new CountDownTime();//实例化
+        timerCount.setTotalTime(60 * 1000);//设置毫秒数
+        timerCount.setIntervalTime(1000);//设置间隔数
+        timerCount.setTimerLiener(new CountDownTime.TimeListener() {
             @Override
             public void onFinish() {
-                //测试完成，显示数据；倾向于 弹出框
+                //测试完成，暂停，结束；显示数据；倾向于 弹出框
                 AppContext.showToastShort("wancheng");
+                tonggleEcgRunning();
             }
 
             @Override
@@ -388,9 +385,11 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
             @Override
             public void onDeviceConnected() {
                 Log.i(TAG, "成功连接！");
+                //连接成功一连串操作
                 mProgressBar.setVisibility(View.GONE);
                 AppContext.showToastShort("连接成功，点击开始按钮，愉快的玩耍吧");
                 mBluetoothLe.stopScan();  //连接成功后停止扫描
+                tv_time_residual.setVisibility(View.VISIBLE);
 //                EcgView.isRunning = true;
             }
 

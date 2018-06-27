@@ -73,6 +73,7 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:maxHeight="100dp"
+        android:visibility="invisible"
         android:maxWidth="100dp"
         android:textColor="@color/yellow"
         android:minHeight="40dp"
