@@ -47,6 +47,7 @@ import com.suncreate.pressuresensor.ui.SimpleBackActivity;
 import com.suncreate.pressuresensor.util.CountDownTime;
 import com.suncreate.pressuresensor.util.LocationUtils;
 import com.suncreate.pressuresensor.util.UIHelper;
+import com.suncreate.pressuresensor.widget.CircleTextProgressbar;
 import com.suncreate.pressuresensor.widget.ps.EcgView;
 
 import java.util.ArrayList;
@@ -80,11 +81,13 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
     @Bind(R.id.tbn_play_next)
     Button tbn_play_next;
     @Bind(R.id.tc_ps_num)
-    TextView tc_ps_num;
+    TextView tc_ps_num;/*
     @Bind(R.id.tv_time_residual)
-    TextView tv_time_residual;
+    TextView tv_time_residual;*/
     @Bind(R.id.progressBar)
     MaterialProgressBar mProgressBar;
+    @Bind(R.id.tv_red_progress_text1)
+    CircleTextProgressbar mProgressBarTime;
 
     //蓝牙对象,..
     private BluetoothLe mBluetoothLe;
@@ -188,6 +191,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
         if (EcgView.isRunning) {
             btn_start_or_stop.setBackgroundResource(R.drawable.start_32);
             ev_box.stopThread();
+            mProgressBarTime.stop();
         } else {
             if (!mBluetoothLe.getConnected()) {
                 AppContext.showToastShort("设备未连接，请稍候");
@@ -195,7 +199,8 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
             }
             btn_start_or_stop.setBackgroundResource(R.drawable.pause_32);
             ev_box.startThread();
-            timerCount.start(); //开始计时
+          /*  timerCount.start(); //开始计时*/
+            mProgressBarTime.reStart(); //CircleTextProgressBar 倒计时开始
         }
     }
 
@@ -208,9 +213,13 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
         btn_start_or_stop.setOnClickListener(this);
         tbn_play_next.setOnClickListener(this);
 
-        initTimerCount(); //计数器
-    }
+       /* initTimerCount(); //计数器*/
+        mProgressBarTime.setTimeMillis(60000);
+        mProgressBarTime.setProgress(1000);
+        mProgressBarTime.setCountdownProgressListener(1, progressListener);
 
+    }
+/*
     CountDownTime timerCount;
 
     private void initTimerCount() {
@@ -230,7 +239,18 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
                 tv_time_residual.setText(remainTime / 1000 + "秒");//剩余多少秒
             }
         });
-    }
+    }*/
+
+    private CircleTextProgressbar.OnCountdownProgressListener progressListener =
+            new CircleTextProgressbar.OnCountdownProgressListener() {
+                @Override
+                public void onProgress(int what, int progress) {
+                    if (what == 1) {
+                        mProgressBarTime.setText(progress + "秒");
+                    }
+                    // 比如在首页，这里可以判断进度，进度到了100或者0的时候，你可以做跳过操作。
+                }
+            };
 
     @Override
     protected void onResume() {
@@ -389,7 +409,8 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
                 mProgressBar.setVisibility(View.GONE);
                 AppContext.showToastShort("连接成功，点击开始按钮，愉快的玩耍吧");
                 mBluetoothLe.stopScan();  //连接成功后停止扫描
-                tv_time_residual.setVisibility(View.VISIBLE);
+                /*tv_time_residual.setVisibility(View.VISIBLE);*/
+                mProgressBarTime.setVisibility(View.VISIBLE);
 //                EcgView.isRunning = true;
             }
 
