@@ -81,9 +81,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
     @Bind(R.id.tbn_play_next)
     Button tbn_play_next;
     @Bind(R.id.tc_ps_num)
-    TextView tc_ps_num;/*
-    @Bind(R.id.tv_time_residual)
-    TextView tv_time_residual;*/
+    TextView tc_ps_num;
     @Bind(R.id.progressBar)
     MaterialProgressBar mProgressBar;
     @Bind(R.id.tv_red_progress_text1)
@@ -199,8 +197,11 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
             }
             btn_start_or_stop.setBackgroundResource(R.drawable.pause_32);
             ev_box.startThread();
-          /*  timerCount.start(); //开始计时*/
-            mProgressBarTime.reStart(); //CircleTextProgressBar 倒计时开始
+            if (mProgressBarTime.getProgress() > 0){
+                mProgressBarTime.start(); //CircleTextProgressBar 倒计时开始，或继续
+            } else {
+                mProgressBarTime.reStart(); //CircleTextProgressBar 倒计时重新开始
+            }
         }
     }
 
@@ -215,31 +216,10 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
 
        /* initTimerCount(); //计数器*/
         mProgressBarTime.setTimeMillis(60000);
-        mProgressBarTime.setProgress(1000);
+        mProgressBarTime.setProgress(60);
         mProgressBarTime.setCountdownProgressListener(1, progressListener);
 
     }
-/*
-    CountDownTime timerCount;
-
-    private void initTimerCount() {
-        timerCount = new CountDownTime();//实例化
-        timerCount.setTotalTime(60 * 1000);//设置毫秒数
-        timerCount.setIntervalTime(1000);//设置间隔数
-        timerCount.setTimerLiener(new CountDownTime.TimeListener() {
-            @Override
-            public void onFinish() {
-                //测试完成，暂停，结束；显示数据；倾向于 弹出框
-                AppContext.showToastShort("wancheng");
-                tonggleEcgRunning();
-            }
-
-            @Override
-            public void onInterval(long remainTime) {
-                tv_time_residual.setText(remainTime / 1000 + "秒");//剩余多少秒
-            }
-        });
-    }*/
 
     private CircleTextProgressbar.OnCountdownProgressListener progressListener =
             new CircleTextProgressbar.OnCountdownProgressListener() {
@@ -292,6 +272,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
             }
             if (mBluetoothLe.getConnected()) {
                 mProgressBar.setVisibility(View.GONE);
+                mProgressBarTime.setVisibility(View.VISIBLE);
             } else {
                 startScan();
             }
@@ -409,7 +390,6 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
                 mProgressBar.setVisibility(View.GONE);
                 AppContext.showToastShort("连接成功，点击开始按钮，愉快的玩耍吧");
                 mBluetoothLe.stopScan();  //连接成功后停止扫描
-                /*tv_time_residual.setVisibility(View.VISIBLE);*/
                 mProgressBarTime.setVisibility(View.VISIBLE);
 //                EcgView.isRunning = true;
             }
