@@ -44,6 +44,7 @@ import com.suncreate.pressuresensor.interf.PsNumCallback;
 import com.suncreate.pressuresensor.service.NoticeUtils;
 import com.suncreate.pressuresensor.ui.ApiLevelHelper;
 import com.suncreate.pressuresensor.ui.SimpleBackActivity;
+import com.suncreate.pressuresensor.ui.dialog.CommonDialog;
 import com.suncreate.pressuresensor.util.CountDownTime;
 import com.suncreate.pressuresensor.util.LocationUtils;
 import com.suncreate.pressuresensor.util.UIHelper;
@@ -61,6 +62,7 @@ import java.util.UUID;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
 /**
@@ -197,7 +199,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
             }
             btn_start_or_stop.setBackgroundResource(R.drawable.pause_32);
             ev_box.startThread();
-            if (mProgressBarTime.getProgress() > 0){
+            if (mProgressBarTime.getProgress() > 0) {
                 mProgressBarTime.start(); //CircleTextProgressBar 倒计时开始，或继续
             } else {
                 mProgressBarTime.reStart(); //CircleTextProgressBar 倒计时重新开始
@@ -229,6 +231,26 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
                         mProgressBarTime.setText(progress + "秒");
                     }
                     // 比如在首页，这里可以判断进度，进度到了100或者0的时候，你可以做跳过操作。
+                    if (progress == 0) {
+                        // 最后跳出检测结果；首先计算结果
+                        new SweetAlertDialog(FloorDetectionActivity1.this, SweetAlertDialog.WARNING_TYPE)
+                                .setTitleText("检测结果")
+                                .setContentText("检测结果")
+                                .setConfirmText("下一项目")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismissWithAnimation();
+                                        //进入下一个项目
+                                    }
+                                }).setCancelText("重来").setCancelClickListener(
+                                new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        //重新开始
+                                    }
+                                }).show();
+                    }
                 }
             };
 

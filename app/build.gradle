@@ -133,4 +133,8 @@ dependencies {
 
     //progressBar
     compile 'me.zhanghai.android.materialprogressbar:library:1.4.1'
+
+    //https://github.com/pedant/sweet-alert-dialog
+    compile 'cn.pedant.sweetalert:library:1.3'
+
 }
