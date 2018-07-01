@@ -53,6 +53,8 @@ import com.suncreate.pressuresensor.widget.ps.EcgView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -102,7 +104,10 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
     private static final int dtcType3 = 3;
     private static final int dtcType4 = 4;
 
+    // 用作 展示数据的 队列，先进先出
     private Queue<Integer> dataQueue = new LinkedList<>();
+    // 用作记录所有数据的列表，计算最大值，显示最终结果
+    private List<Integer> dataList = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -176,14 +181,19 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
                 tonggleEcgRunning();
                 break;
             case R.id.tbn_play_next:
-                Intent intent0 = new Intent(FloorDetectionActivity1.this, FloorDetectionActivity2.class);
-                startActivity(intent0);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
-                finish();
+                nextGame();
                 break;
             default:
                 break;
         }
+    }
+
+    //跳到下一个项目
+    private void nextGame() {
+        Intent intent0 = new Intent(FloorDetectionActivity1.this, FloorDetectionActivity2.class);
+        startActivity(intent0);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
+        finish();
     }
 
     //切换心电图的运行停止状态
@@ -194,7 +204,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
             mProgressBarTime.stop();
         } else {
             if (!mBluetoothLe.getConnected()) {
-                AppContext.showToastShort("设备未连接，请稍候");
+                AppContext.showToastShort("设备未连接，请连接后重试");
                 return;
             }
             btn_start_or_stop.setBackgroundResource(R.drawable.pause_32);
@@ -206,6 +216,8 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
             }
         }
     }
+
+    // 开始，重新开始
 
     @Override
     public void initView() {
@@ -230,26 +242,37 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
                     if (what == 1) {
                         mProgressBarTime.setText(progress + "秒");
                     }
-                    // 比如在首页，这里可以判断进度，进度到了100或者0的时候，你可以做跳过操作。
+                    // 比如在首页，这里可以判断进度，进度到0的时候，自定义操作。
                     if (progress == 0) {
+                        //停止
+                        EcgView.isRunning = false;
+
                         // 最后跳出检测结果；首先计算结果
-                        new SweetAlertDialog(FloorDetectionActivity1.this, SweetAlertDialog.WARNING_TYPE)
+                        //1. 最大值，若大于 5 mmHg，则警告
+                        int maxPs = Collections.max(dataList);
+                        int mAlertType = SweetAlertDialog.SUCCESS_TYPE;
+                        if (maxPs > 5) {
+                            mAlertType = SweetAlertDialog.WARNING_TYPE;
+                        }
+                        new SweetAlertDialog(FloorDetectionActivity1.this, mAlertType)
                                 .setTitleText("检测结果")
-                                .setContentText("检测结果")
+                                .setContentText("最大压力值：" + maxPs + " mmHg")
                                 .setConfirmText("下一项目")
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
                                         sDialog.dismissWithAnimation();
                                         //进入下一个项目
+                                        nextGame();
                                     }
-                                }).setCancelText("重来").setCancelClickListener(
+                                })/*.setCancelText("重来").setCancelClickListener(
                                 new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                                         //重新开始
+
                                     }
-                                }).show();
+                                })*/.show();
                     }
                 }
             };
@@ -554,6 +577,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
             try {
 
                 dataQueue.add(pressureNum);
+                dataList.add(pressureNum);
             } catch (Exception e) {
                 e.printStackTrace();
                 Log.d(TAG, "changeHeight: 数据加入队列失败");

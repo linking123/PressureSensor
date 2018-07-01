@@ -203,6 +203,7 @@ public class FloorDetectionActivity6 extends BaseActivityBlueToothLE implements 
         NoticeUtils.bindToService(this);
         btn_start_or_stop.setOnClickListener(this);
         tbn_play_next.setOnClickListener(this);
+        tbn_play_next.setVisibility(View.GONE);
     }
 
     @Override
