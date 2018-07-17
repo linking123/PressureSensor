@@ -240,7 +240,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
                 @Override
                 public void onProgress(int what, int progress) {
                     if (what == 1) {
-                        mProgressBarTime.setText(progress + "秒");
+                        mProgressBarTime.setText(progress);
                     }
                     // 比如在首页，这里可以判断进度，进度到0的时候，自定义操作。
                     if (progress == 0) {

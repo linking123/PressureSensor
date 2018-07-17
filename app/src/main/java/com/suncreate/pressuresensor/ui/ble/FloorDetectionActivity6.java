@@ -382,7 +382,7 @@ public class FloorDetectionActivity6 extends BaseActivityBlueToothLE implements 
                 //发送数据等必须在发现服务后做
                 String writeStr = "0xA5F1010097";
                 mBluetoothLe.writeDataToCharacteristic(writeStr.getBytes(),
-                        BluetoothUUID.psServiceUUID, BluetoothUUID.psWriteUUID);
+                        BluetoothUUID.psServiceUUID,     BluetoothUUID.psWriteUUID);
 
                 //读数据
                 mBluetoothLe.readCharacteristic(BluetoothUUID.psServiceUUID, BluetoothUUID.psReadUUID);
@@ -418,7 +418,7 @@ public class FloorDetectionActivity6 extends BaseActivityBlueToothLE implements 
                 Log.i("pressureNum", String.valueOf(pressureNum));
 
                 //1.数据大于0才传输
-                if (pressureNum == 0) {
+                if (pressureNum <= 0) {
                     return;
                 }
 
