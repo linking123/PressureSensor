@@ -86,10 +86,10 @@ public class StringUtils {
     public static String friendly_time(String sdate) {
         Date time = null;
 
-        if (TimeZoneUtil.isInEasternEightZones())
+        if (TimeUtil.isInEasternEightZones())
             time = toDate(sdate);
         else
-            time = TimeZoneUtil.transformTime(toDate(sdate),
+            time = TimeUtil.transformTime(toDate(sdate),
                     TimeZone.getTimeZone("GMT+08"), TimeZone.getDefault());
 
         if (time == null) {

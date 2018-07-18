@@ -6,8 +6,10 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -47,11 +49,15 @@ import com.suncreate.pressuresensor.service.NoticeUtils;
 import com.suncreate.pressuresensor.ui.ApiLevelHelper;
 import com.suncreate.pressuresensor.ui.SimpleBackActivity;
 import com.suncreate.pressuresensor.util.LocationUtils;
+import com.suncreate.pressuresensor.util.MyTimeRunnable;
+import com.suncreate.pressuresensor.util.TimeUtil;
 import com.suncreate.pressuresensor.util.UIHelper;
+import com.suncreate.pressuresensor.widget.CircleTextProgressbar;
 import com.suncreate.pressuresensor.widget.ps.EcgView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -61,6 +67,7 @@ import java.util.UUID;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
 /**
@@ -84,6 +91,8 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
     TextView tc_ps_num;
     @Bind(R.id.progressBar)
     MaterialProgressBar mProgressBar;
+    @Bind(R.id.tv_time_count)
+    TextView tv_time_count;
 
     //蓝牙对象,..
     private BluetoothLe mBluetoothLe;
@@ -100,10 +109,17 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
 
     private Queue<Integer> dataQueue = new LinkedList<>();
 
+    private MyTimeRunnable runnable;
+    int time = 0;
+    Handler mHandler;
+    boolean isPause = false;//是否暂停
+    private MediaPlayer mPlayer;
+    boolean isRuning = false;//是否运行中
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_ps_floor_detection1);
+        setContentView(R.layout.fragment_ps_floor_detection2);
 
         ButterKnife.bind(this);
         initView();
@@ -115,13 +131,10 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
         }
 
         mBluetoothLe = BluetoothLe.getDefault();
-
         initData();
-
         simulator();
-
         checkSupport();
-
+        mHandler = new Handler();
     }
 
     /**
@@ -158,7 +171,6 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
         ev_box.setSetNowPsNumCallback(psNumCallback);
     }
 
-
     public void startScan() {
         AppContext.showToastShort("开始连接设备，请稍后");
         scan();
@@ -169,13 +181,11 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
         final int id = v.getId();
         switch (id) {
             case R.id.btn_start_or_stop:
+                playRunnableSound();
                 tonggleEcgRunning();
                 break;
             case R.id.tbn_play_next:
-                Intent intent0 = new Intent(FloorDetectionActivity2.this, FloorDetectionActivity3.class);
-                startActivity(intent0);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
-                finish();
+                nextGame();
                 break;
             default:
                 break;
@@ -205,6 +215,57 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
         NoticeUtils.bindToService(this);
         btn_start_or_stop.setOnClickListener(this);
         tbn_play_next.setOnClickListener(this);
+
+    }
+
+    private void playRunnableSound() {
+        if (!EcgView.isRunning) {
+            time = Integer.valueOf(tv_time_count.getText().toString());
+            if (time > 0) {
+                runnable = new MyTimeRunnable(mHandler, time) {
+                    @Override
+                    protected void onPlayMusic30s() {
+                        AppContext.showToastShort("30");
+                    }
+
+                    @Override
+                    protected void onPlayMusic20s() {
+                        AppContext.showToastShort("20");
+                    }
+
+                    /**
+                     * 结束时调用
+                     */
+                    @Override
+                    protected void overTime() {
+                        if (mPlayer != null)
+                            mPlayer.stop();
+                        tv_time_count.setText("开始");
+                    }
+
+                    /**
+                     * 启动音乐
+                     */
+                    @Override
+                    protected void onPlayNotification() {
+//                        onPlay();
+                    }
+
+                    /**
+                     * 更新显示时间
+                     */
+                    @Override
+                    protected void turnoverTime(int time) {
+                        tv_time_count.setText(TimeUtil.getTime(time));
+                    }
+                };
+                mHandler.postDelayed(runnable, 1000);
+                tv_time_count.setText("暂停");
+            }
+        } else {
+            mHandler.removeCallbacks(runnable);
+            tv_time_count.setText("继续");
+        }
     }
 
     @Override
@@ -233,6 +294,14 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
         mBluetoothLe.destroy(TAG);
         //关闭GATT
 //        //mBluetoothLe.close();
+    }
+
+    //跳到下一个项目
+    private void nextGame() {
+        Intent intent0 = new Intent(FloorDetectionActivity2.this, FloorDetectionActivity3.class);
+        startActivity(intent0);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
+        finish();
     }
 
     public void checkSupport() {
@@ -550,7 +619,7 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
         super.onBackPressed();
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
@@ -567,9 +636,9 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
             case android.R.id.home:
                 UIHelper.returnHome(this);
                 break;
-            /*case R.id.action_select_ble:
+            *//*case R.id.action_select_ble:
                 UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.CONNECT_BLE_LIST);
-                break;*/
+                break;*//*
             case R.id.action_scan_record:
                 UIHelper.showSimpleBack(getApplicationContext(), SimpleBackPage.SCAN_RECORD);
                 break;
@@ -577,6 +646,6 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
 }
