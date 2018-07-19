@@ -317,6 +317,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
             }
             if (mBluetoothLe.getConnected()) {
                 mProgressBar.setVisibility(View.GONE);
+                tbn_play_next.setVisibility(View.VISIBLE);
                 mProgressBarTime.setVisibility(View.VISIBLE);
             } else {
                 startScan();
@@ -435,6 +436,7 @@ public class FloorDetectionActivity1 extends BaseActivityBlueToothLE implements 
                 mProgressBar.setVisibility(View.GONE);
                 AppContext.showToastShort("连接成功，点击开始按钮，愉快的玩耍吧");
                 mBluetoothLe.stopScan();  //连接成功后停止扫描
+                tbn_play_next.setVisibility(View.VISIBLE);
                 mProgressBarTime.setVisibility(View.VISIBLE);
 //                EcgView.isRunning = true;
             }

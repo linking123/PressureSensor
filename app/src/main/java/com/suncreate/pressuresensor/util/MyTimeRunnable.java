@@ -17,7 +17,7 @@ public abstract class MyTimeRunnable implements Runnable {
 
     @Override
     public void run() {
-        time = time - 1;
+        time = time + 1;
         turnoverTime(time);
         if (time == 30) {
             onPlayMusic30s();

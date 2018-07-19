@@ -154,6 +154,17 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
     }
 
     @Override
+    public void initView() {
+
+        IntentFilter filter = new IntentFilter(Constants.INTENT_ACTION_NOTICE);
+        filter.addAction(Constants.INTENT_ACTION_LOGOUT);
+        NoticeUtils.bindToService(this);
+        btn_start_or_stop.setOnClickListener(this);
+        tbn_play_next.setOnClickListener(this);
+
+    }
+
+    @Override
     public void initData() {
         registerListener();
 
@@ -181,7 +192,6 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
         final int id = v.getId();
         switch (id) {
             case R.id.btn_start_or_stop:
-                playRunnableSound();
                 tonggleEcgRunning();
                 break;
             case R.id.tbn_play_next:
@@ -204,24 +214,14 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
             }
             btn_start_or_stop.setBackgroundResource(R.drawable.pause_32);
             ev_box.startThread();
+            playRunnableSound();
         }
-    }
-
-    @Override
-    public void initView() {
-
-        IntentFilter filter = new IntentFilter(Constants.INTENT_ACTION_NOTICE);
-        filter.addAction(Constants.INTENT_ACTION_LOGOUT);
-        NoticeUtils.bindToService(this);
-        btn_start_or_stop.setOnClickListener(this);
-        tbn_play_next.setOnClickListener(this);
-
     }
 
     private void playRunnableSound() {
         if (!EcgView.isRunning) {
             time = Integer.valueOf(tv_time_count.getText().toString());
-            if (time > 0) {
+            if (time == 0) {
                 runnable = new MyTimeRunnable(mHandler, time) {
                     @Override
                     protected void onPlayMusic30s() {
@@ -359,7 +359,7 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
         if (!checkLocationPermission()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("权限需求")
-                    .setMessage("Android 6.0 以上的系统版本，扫描蓝牙需要地理位置权限。请允许。")
+                    .setMessage("Android 6.0 以上的系统版本，扫描蓝牙需要地理位置权限，请允许。")
                     .setNeutralButton("取消", null)
                     .setPositiveButton("确认", new DialogInterface.OnClickListener() {
                         @Override
@@ -372,7 +372,7 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
         }
         //如果系统版本是7.0以上，则请求打开位置信息
         if (!LocationUtils.isOpenLocService(this) && ApiLevelHelper.isAtLeast(Build.VERSION_CODES.N)) {
-            Toast.makeText(this, "您的Android版本在7.0以上，扫描需要打开位置信息。", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "您的Android版本在7.0以上，扫描蓝牙需要打开位置信息。", Toast.LENGTH_LONG).show();
             LocationUtils.gotoLocServiceSettings(this);
             return;
         }
