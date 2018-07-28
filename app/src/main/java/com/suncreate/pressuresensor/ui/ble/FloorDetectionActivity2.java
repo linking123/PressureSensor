@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -55,6 +56,7 @@ import com.suncreate.pressuresensor.util.UIHelper;
 import com.suncreate.pressuresensor.widget.CircleTextProgressbar;
 import com.suncreate.pressuresensor.widget.ps.EcgView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -224,13 +226,19 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
             if (time == 0) {
                 runnable = new MyTimeRunnable(mHandler, time) {
                     @Override
-                    protected void onPlayMusic30s() {
-                        AppContext.showToastShort("30");
+                    protected void onPlayMusic0s() {
+//                        mPlayer = new MediaPlayer();
+                        onPlay();
                     }
 
                     @Override
                     protected void onPlayMusic20s() {
                         AppContext.showToastShort("20");
+                    }
+
+                    @Override
+                    protected void onPlayMusic30s() {
+                        AppContext.showToastShort("30");
                     }
 
                     /**
@@ -241,14 +249,6 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
                         if (mPlayer != null)
                             mPlayer.stop();
                         tv_time_count.setText("开始");
-                    }
-
-                    /**
-                     * 启动音乐
-                     */
-                    @Override
-                    protected void onPlayNotification() {
-//                        onPlay();
                     }
 
                     /**
@@ -265,6 +265,21 @@ public class FloorDetectionActivity2 extends BaseActivityBlueToothLE implements 
         } else {
             mHandler.removeCallbacks(runnable);
             tv_time_count.setText("继续");
+        }
+    }
+
+    /**
+     * 音乐播放
+     */
+    private void onPlay() {
+        try {
+            AssetFileDescriptor fd = getAssets().openFd("voice/C03A.wav");
+            mPlayer = new MediaPlayer();
+            mPlayer.setDataSource(fd.getFileDescriptor());
+            mPlayer.prepare();
+            mPlayer.start();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

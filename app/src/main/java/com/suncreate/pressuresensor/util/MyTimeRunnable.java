@@ -17,8 +17,11 @@ public abstract class MyTimeRunnable implements Runnable {
 
     @Override
     public void run() {
+        if (time == 0){
+            onPlayMusic0s();
+        }
         time = time + 1;
-        turnoverTime(time);
+        turnoverTime(time);//更新显示时间
         if (time == 30) {
             onPlayMusic30s();
         }
@@ -32,13 +35,13 @@ public abstract class MyTimeRunnable implements Runnable {
         }
     }
 
-    protected abstract void onPlayMusic30s(); //30秒时执行
+    protected abstract void onPlayMusic0s(); //0秒时执行
 
     protected abstract void onPlayMusic20s(); //20秒时执行
 
-    protected abstract void overTime();
+    protected abstract void onPlayMusic30s(); //30秒时执行
 
-    protected abstract void onPlayNotification();
+    protected abstract void overTime();
 
     protected abstract void turnoverTime(int time);
 }
